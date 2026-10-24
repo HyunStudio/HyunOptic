@@ -151,6 +151,9 @@ def test_external_requires_locked_source_and_complete_test_by_default(tmp_path):
     assert (folder/"external_summary.md").exists()
     assert (folder/"external_aggregate.json").exists()
     assert (folder/"external_private_cases.json").exists()
+    aggregate_text = (folder/"external_aggregate.json").read_text()
+    assert '"case_id"' not in aggregate_text
+    assert "bosch/img_000" not in aggregate_text
     report=(folder/"external_summary.md").read_text()
     assert "NOT clinical accuracy" in report
     with pytest.raises(FileExistsError):
