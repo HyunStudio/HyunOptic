@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.4 research integrity and internal benchmarking toolkit (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.5 reproducible research toolkit (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -102,6 +102,23 @@ streamlit run app.py
 
 See [v0.4 research protocol](docs/V04_DATA_QUALITY_AND_NULL_PROTOCOL.md). Both **Study Results** and **Dataset Quality** are available in the Streamlit multipage sidebar.
 
+## v0.5 — run the official public dataset reproducibly
+
+**New local commands:**
+- `hyunoptic-download` — opt-in download from official Figshare article metadata, integrity validation and safe ZIP extraction.
+- `hyunoptic-reproduce` — strict archive completeness gate, internal measurement-reliability study, run provenance and data-derived research summary.
+- **Manual GitHub Actions run** (requires explicit dataset processing consent) — process official archive on an ephemeral runner and upload **aggregate report only**. Does not run automatically.
+
+```powershell
+# Review https://figshare.com/articles/dataset/PAPILA/14798004 first.
+hyunoptic-download --archive "D:\\datasets\\PAPILA.zip" --extract-to "D:\\datasets\\PAPILA" --accept-dataset-terms
+hyunoptic-reproduce --papila-root "D:\\datasets\\PAPILA" --output-dir reports\\v05 --verify-pixels
+```
+
+The gated run generates `inventory.json`, `study.json`, `case_metrics.csv`, `run_manifest.json` and `research_summary.md`. Case-level outputs should not be publicly posted without careful privacy and dataset-license review.
+
+**No actual complete-PAPILA study results have been claimed in this repository.** Download, extraction and study execution are implemented and tested with **synthetic fixtures only**; the real 563 MB archive remains to be run. See [v0.5 reproducible real-data protocol](docs/V05_REPRODUCIBLE_REAL_DATA_RUN.md).
+
 ## Planned research, not yet implemented
 
 1. Running and verifying full PAPILA-file compatibility and reporting predeclared internal outcomes without holdout tuning.
@@ -120,6 +137,7 @@ See [v0.4 research protocol](docs/V04_DATA_QUALITY_AND_NULL_PROTOCOL.md). Both *
 - [v0.2 sensitivity and exploratory research protocol](docs/V02_UNCERTAINTY_PROTOCOL.md)
 - [v0.3 patient-disjoint internal research protocol](docs/V03_PATIENT_SPLIT_PROTOCOL.md)
 - [v0.4 dataset quality and permutation null protocol](docs/V04_DATA_QUALITY_AND_NULL_PROTOCOL.md)
+- [v0.5 reproducible official dataset run](docs/V05_REPRODUCIBLE_REAL_DATA_RUN.md)
 
 ## Research dataset information
 
