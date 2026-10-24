@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.2 executable research prototype (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.3 executable experimental research pipeline (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -66,10 +66,31 @@ Example batch command:
 hyunoptic --papila-root /path/to/PAPILA_DBv1 --batch --output reports/audit.json --csv-output reports/audit.csv
 ```
 
+## Added in v0.3 — patient-disjoint internal benchmark (CLI)
+
+- Reference-free **candidate-only** image/contour features: cup-outline isoperimetric roughness and local grayscale boundary contrast, alongside v0.2 Q95 and vCDR comparators.
+- Reproducible 60/20/20 **patient-level** development/validation/internal holdout partition (both eyes of one patient stay together).
+- Fixed equal-weight combination of development-standardized candidate-only features; no fitting to or leakage of expert-2 labels.
+- Precision and recall at a fixed 20% expert-review budget against retrospective **inter-reader vCDR disagreement**, not glaucoma outcomes.
+- Patient-cluster bootstrap interval for paired precision difference versus v0.2 baseline, including possible null/negative results.
+- JSON/CSV case reports, protocol hash, skipped-case trace, and regression tests that alter expert-2 labels without altering candidate-only scores.
+
+**Why v0.3 matters:** with fixed log-scale perturbation settings, the previous Q95 sensitivity score is effectively proportional to candidate vCDR. v0.3 treats it as a *baseline*, not as newly demonstrated evidence of annotation unreliability.
+
+Run with lawfully downloaded local PAPILA files:
+
+```bash
+hyunoptic-study --papila-root /path/to/PAPILA_DBv1 --output reports/v03.json --csv-output reports/v03.csv
+```
+
+Details: [v0.3 patient split / evaluation protocol](docs/V03_PATIENT_SPLIT_PROTOCOL.md).
+
+**Scientific limit:** Candidate scoring logic and synthetic tests are implemented; no actual full PAPILA trial, superiority claim or independent external Chákṣu test is completed. The v0.3 benchmark is exploratory, not a glaucoma diagnostic tool. The interactive Streamlit viewer remains focused on the v0.2 measurement and sensitivity screens.
+
 ## Planned research, not yet implemented
 
-1. Validating actual PAPILA-file coverage and realistic **spatial** contour perturbations.
-2. Calibrated and comparative reference-free QC scores (v0.2 Q95 is a hypothetical candidate score, not a validated reliability prediction).
+1. Running and verifying full PAPILA-file compatibility and reporting predeclared internal outcomes without holdout tuning.
+2. Testing anatomical/spatial perturbations and stronger literature-supported reference-free baseline methods.
 3. Patient-disjoint internal validation and locked Chákṣu external evaluation.
 4. Failure-mode, reproducibility and subgroup analyses using real data.
 5. English research report, poster and PhD portfolio presentation.
@@ -82,6 +103,7 @@ hyunoptic --papila-root /path/to/PAPILA_DBv1 --batch --output reports/audit.json
 - [English research protocol](docs/RESEARCH_PROTOCOL_EN.md)
 - [Installation, data format and methodology](docs/GETTING_STARTED.md)
 - [v0.2 sensitivity and exploratory research protocol](docs/V02_UNCERTAINTY_PROTOCOL.md)
+- [v0.3 patient-disjoint internal research protocol](docs/V03_PATIENT_SPLIT_PROTOCOL.md)
 
 ## Research dataset information
 
