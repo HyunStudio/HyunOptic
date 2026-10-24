@@ -66,3 +66,53 @@ def test_sampled_audit_always_partial(tmp_path):
     archive=synthetic_test_zip(tmp_path/"Test.zip")
     result,_=check_chaksu_archive(archive,max_cases=1)
     assert result["partial_audit_or_unverified"]
+
+
+def test_strict_external_evaluation_cannot_bypass_failed_all_reader_preflight(tmp_path, monkeypatch):
+    """Even a forged 336-path inventory must fail if actual mask payload checks fail."""
+    import hyunoptic.external as external
+    from hyunoptic.uncertainty import PerturbationConfig
+    test_file=tmp_path/"Test.zip"
+    test_file.write_bytes(b"synthetic placeholder")
+    monkeypatch.setattr(external, "load_lock", lambda path, permit_partial=False: {
+        "model": {"source_is_partial": False, "perturbation": PerturbationConfig().__dict__,
+                  "scaler": {}, "review_fraction": .2, "research_disagreement_threshold": .1},
+        "sha256": "mocked-lock-for-test",
+    })
+    monkeypatch.setattr(external, "scan_test_archive", lambda path: (
+        [object()], {"matches_published_test_file_layout": True}
+    ))
+    observed=[]
+    def reject_preflight(path):
+        observed.append(path)
+        return {"all_published_test_masks_structurally_verified": False}, [{"case_id": "fake"}]
+    monkeypatch.setattr(external, "check_chaksu_archive", reject_preflight)
+    import pytest
+    with pytest.raises(ValueError, match="preflight failed"):
+        external.run_external_test(test_file, tmp_path/"lock.json")
+    assert observed == [test_file]
+
+
+def test_suspicious_member_names_do_not_escape_into_aggregate(tmp_path):
+    from hyunoptic.external import save_external
+    summary={
+        "project": "HyunOptic", "version": "0.8.0",
+        "test_file_layout": {
+            "missing_annotation_cases": [],
+            "ambiguous_duplicate_members": [],
+            "suspicious_members": [{"member": "PRIVATE_PATIENT_NAME.tif", "reason": "oversize"}],
+        },
+        "failures": [],
+        "results": {},
+        "source_lock_sha256": "frozen",
+        "full_layout_and_readability_verified": False,
+        "partial_or_unverified_external": True,
+        "n_test_images_scored": 0,
+        "n_failed": 0,
+        "limitations": [],
+    }
+    dest=tmp_path/"report"
+    save_external(summary,[],dest)
+    assert "PRIVATE_PATIENT_NAME" not in (dest/"external_aggregate.json").read_text()
+    assert "PRIVATE_PATIENT_NAME" in (dest/"external_private_cases.json").read_text()
+    assert "n_suspicious_member_names" in (dest/"external_aggregate.json").read_text()
