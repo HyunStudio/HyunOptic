@@ -5,7 +5,7 @@ import streamlit as st
 
 st.set_page_config(page_title="HyunOptic | External Dataset", page_icon="🌐", layout="wide")
 st.title("HyunOptic — Chákṣu External-Domain Evaluation")
-st.caption("v0.7 · PAPILA source-frozen → Chákṣu Test · research only")
+st.caption("v0.8 · PAPILA source-frozen → Chákṣu Test · research only")
 st.warning("Inter-reader disagreement is NOT glaucoma diagnosis or clinical validation.")
 
 uploaded = st.file_uploader("Open local external_aggregate.json", type=["json"])
@@ -15,8 +15,8 @@ if uploaded is None:
 
 try:
     summary = json.load(uploaded)
-    if summary.get("project") != "HyunOptic" or summary.get("version") != "0.7.0":
-        raise ValueError("Expected a HyunOptic v0.7 external report")
+    if summary.get("project") != "HyunOptic" or summary.get("version") not in ("0.7.0", "0.8.0"):
+        raise ValueError("Expected a HyunOptic v0.7/v0.8 external report")
     if summary.get("reference_label", "").startswith("absolute expert1") is not True:
         raise ValueError("Unexpected research endpoint")
     groups = summary["results"]
@@ -55,6 +55,13 @@ for camera, group in groups.items():
 st.subheader("Fixed protocol: Overall and by camera")
 st.dataframe(data, use_container_width=True, hide_index=True)
 st.caption("AP and ROC AUC refer only to expert1–expert2 vCDR disagreement, not diagnostic outcomes.")
+if summary.get("version") == "0.8.0":
+    st.subheader("Descriptive difference from vCDR-only ranking")
+    st.caption("Paired image-level descriptive comparison ONLY; no patient-independent statistical inference.")
+    for camera, group in groups.items():
+        delta = group.get("comparison_to_vcdr_descriptive", {})
+        if "precision_at_review_budget_delta" in delta:
+            st.write(f"**{camera}**: precision@budget difference = {delta['precision_at_review_budget_delta']:+.3f}")
 with st.expander("Method limitations"):
     for issue in summary.get("limitations", []):
         st.write("- " + issue)
