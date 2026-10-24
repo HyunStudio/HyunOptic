@@ -68,7 +68,7 @@ def test_second_reader_has_no_influence_on_candidate_scoring(tmp_path):
     np.savetxt(annotation, rectangle(12,11,34,35))
     # Changing a reference contour invalidates the raw-data fingerprint;
     # refreeze to compare candidate-only score invariance fairly.
-    with pytest.raises(ValueError, match="source files differ"):
+    with pytest.raises(ValueError, match="source CONTENT differs"):
         evaluate_source(root, first_lock, allow_partial=True, bootstrap_draws=100)
     new_lock = tmp_path / "new_model_lock.json"
     save_lock(freeze_papila_model(root, seed=11, draws=70, allow_partial=True), new_lock)
