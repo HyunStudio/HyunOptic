@@ -14,6 +14,7 @@ from .external_qc import check_chaksu_archive
 from .evaluation import evaluate_at_budget
 from .freeze import load_lock
 from .mask_features import apply_mask_score, mask_features
+from .multi_reader import READERS, five_reader_targets
 from .measure import measure_masks
 from .ranking import ranking_metrics
 from .uncertainty import PerturbationConfig
@@ -48,7 +49,7 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
     with zipfile.ZipFile(test_zip) as zf:
         for case in cases:
             try:
-                image, masks = load_test_case(zf, case)
+                image, masks = load_test_case(zf, case, readers=READERS)
                 # No expert2 measurement, other experts or fused masks enter scoring.
                 first_disc, first_cup = masks[("expert 1", "disc")], masks[("expert 1", "cup")]
                 features = mask_features(image, first_disc, first_cup, cfg)
@@ -56,11 +57,23 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
                 second = measure_masks(masks[("expert 2", "disc")],
                                        masks[("expert 2", "cup")])
                 disagreement = abs(features["candidate_vcdr"] - second.vertical_cdr)
+                # Secondary five-reader outcomes are calculated only AFTER the
+                # single-reader candidate score is frozen for this case.
+                all_reader_vcdr = {
+                    reader: measure_masks(masks[(reader, "disc")], masks[(reader, "cup")]).vertical_cdr
+                    for reader in READERS
+                }
+                peer = five_reader_targets(
+                    all_reader_vcdr,
+                    threshold=lock["research_disagreement_threshold"],
+                    candidate_reader="expert 1",
+                )
                 rows.append({
                     "case_id": case.case_id, "camera": case.camera,
                     **features, "combined_candidate_score": score,
                     "reference_reader": "expert 2",
                     "absolute_expert1_expert2_vcdr_difference": disagreement,
+                    "secondary_five_reader": peer,
                 })
             except (OSError, ValueError, RuntimeError, KeyError) as exc:
                 failures.append({"case_id": case.case_id, "error": str(exc)})
@@ -117,8 +130,40 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
             "interpretation": "Descriptive paired-cohort difference only. "
                               "No significance test, population confidence interval, or clinical claim.",
         }
+    secondary_evaluation: dict[str, dict] = {}
+    for group_name in ("all", *EXPECTED_TEST):
+        subset = [r for r in rows if group_name == "all" or r["camera"] == group_name]
+        if not subset:
+            secondary_evaluation[group_name] = {"n": 0, "missing": True}
+            continue
+        # Target >=2 disagreements among 4 reference readers; fixed
+        # research voting rule, not a glaucoma diagnosis and not independent.
+        target = np.array(
+            [1.0 if r["secondary_five_reader"]["candidate_vs_four_at_least_two_high"]
+             else 0.0 for r in subset], dtype=float
+        )
+        secondary_evaluation[group_name] = {
+            "n_images": len(subset),
+            "high_disagreement_with_at_least_two_of_four_peers": int(target.sum()),
+            "mean_of_all_ten_unique_reader_pairs_abs_vcdr": float(
+                np.mean([r["secondary_five_reader"]["all_ten_pairs_mean_absolute_vcdr"]
+                         for r in subset])),
+            "scores": {
+                name: {
+                    "review": evaluate_at_budget(
+                        [r[name] for r in subset], target,
+                        discrepancy_threshold=0.5,
+                        review_fraction=lock["review_fraction"]
+                    ).to_dict(),
+                    "ranking": ranking_metrics(
+                        [r[name] for r in subset], target, threshold=0.5
+                    ),
+                }
+                for name in ("candidate_vcdr", "mask_q95", "combined_candidate_score")
+            },
+        }
     manifest = {
-        "project": "HyunOptic", "version": "0.8.0", "status": "research-only",
+        "project": "HyunOptic", "version": "0.9.0", "status": "research-only",
         "study": "PAPILA-development-locked candidate mask scoring on external Chaksu Test",
         "external_test_source": "Chaksu original Test.zip, five individual readers in archive",
         "fused_annotations_never_used": True,
@@ -135,11 +180,14 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
         "all_five_readers_payload_preflight_verified": bool(full_preflight and full_preflight["all_published_test_masks_structurally_verified"]),
         "partial_or_unverified_external": not fully_verified,
         "results": metrics,
+        "secondary_five_reader_results": secondary_evaluation,
+        "secondary_five_reader_target": "expert1 disagrees >0.10 in vCDR with at least 2 of experts2-5",
         "limitations": [
             "External DOMAIN validation of measurement agreement, NOT clinical glaucoma diagnosis.",
             "Candidate expert 1 and reference expert 2 are only a fixed illustrative pair of five annotators.",
             "No patient-identifiers exist for most Chaksu images; do NOT assume independent patients.",
             "Camera-stratified results can be low-powered and are exploratory.",
+            "Secondary four-peer voting is a research-defined disagreement endpoint, NOT consensus medical truth.",
             "This uses a new, uniform mask feature family; prior PAPILA polygon-score performance is not directly comparable.",
             "A source-lock digest is not third-party preregistration; mask shape checks are not proof of clinical correctness.",
             "Do not inspect these results to retune the purported frozen external scoring protocol.",
@@ -209,6 +257,27 @@ def save_external(summary: dict, rows: list[dict], output_dir: str | Path) -> No
             delta = value["comparison_to_vcdr_descriptive"]["precision_at_review_budget_delta"]
             lines.append(f"| {group_name} | {delta:+.3f} |")
     lines.append("")
+    lines.extend(["", "## Secondary analysis: all five independent experts", "",
+                  "Candidate QC scores still use ONLY expert 1 + photo. This analysis",
+                  "compares that score to a separately computed 2-of-4 reader",
+                  "disagreement target. These readers are correlated and no",
+                  "majority medical diagnosis or clinical correctness is implied.",
+                  "",
+                  "| Camera | n images | 2-of-4 high disagreement | Score | Precision@budget | AP |",
+                  "|---|---:|---:|---|---:|---:|"])
+    secondary = summary["secondary_five_reader_results"]
+    for camera, result in secondary.items():
+        if result.get("missing"):
+            continue
+        for name in ("candidate_vcdr", "combined_candidate_score"):
+            record = result["scores"][name]
+            ap = record["ranking"]["average_precision"]
+            fmt_ap = "N/A" if ap is None else f"{ap:.3f}"
+            lines.append(
+                f"| {camera} | {result['n_images']} | "
+                f"{result['high_disagreement_with_at_least_two_of_four_peers']} | "
+                f"{name} | {record['review']['precision_at_budget']:.3f} | {fmt_ap} |"
+            )
     lines.extend(["", "## Interpretation", ""])
     lines += ["- " + limitation for limitation in summary["limitations"]]
     lines.extend(["", "Scores are descriptive and hypothesis-generating. "
