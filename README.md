@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v1.0.0 software release (2026-10-24).** The full research chain — PAPILA inventory, development-only model freeze, patient-disjoint source holdout, Chákṣu Test five-reader preflight, external analysis, evidence gate and HTML report — runs with one command. All code is tested with synthetic data in GitHub Actions; **the complete real PAPILA/Chákṣu study has not yet been executed**, so no real-data result exists in this repository. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v1.1.0 software release (2026-10-24).** A multi-page research workspace app now covers dataset integrity, image review, reliability, source-holdout and external-validation results, reports and evidence export. The full research chain — PAPILA inventory, development-only model freeze, patient-disjoint source holdout, Chákṣu Test five-reader preflight, external analysis, evidence gate and HTML report — runs with one command. All code is tested with synthetic data in GitHub Actions; **the complete real PAPILA/Chákṣu study has not yet been executed**, so no real-data result exists in this repository. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -20,9 +20,39 @@ pytest -q
 streamlit run app.py
 ```
 
-The viewer opens with a **synthetic geometry demo** that uses no patient images.
+With no dataset connected, the workspace shows a **synthetic geometry demo** that uses no patient images.
 
 Windows PowerShell instructions, PAPILA file layout and CLI examples: **[Getting Started](docs/GETTING_STARTED.md)**.
+
+## v1.1.0 — research workspace app
+
+![Research Overview on synthetic demo data](docs/images/app_overview.png)
+
+`streamlit run app.py` opens a multi-page workspace:
+
+| Page | What it shows (only from your local data and run outputs) |
+|---|---|
+| **Overview** | Connected datasets, analysis status, quick image review with measurement summary, latest run steps and key results |
+| **Image Review** | PAPILA (2 experts) or Chákṣu Test (5 experts) images; single, side-by-side and expert-comparison overlays (colour **and** line style per expert); brightness/contrast for display only; vCDR, area ratio, Dice, candidate features, frozen combined score; perturbation sensitivity; JSON/PNG export |
+| **Datasets** | Dataset locations, counts, integrity checks (archive SHA-256, layout, annotation readability, five-reader masks) with timings and a local history |
+| **Reliability Analysis** | Precision/recall at the review budget, AP, ROC-AUC with deltas against the vCDR baseline, precision–recall curves, partition comparison, disagreement distribution, patient bootstrap interval |
+| **Source Holdout** | PAPILA validation/holdout results, patient split, bootstrap, content/inventory/model hashes |
+| **External Validation** | Chákṣu Test results overall and by camera (primary and five-reader secondary endpoints), lock match, candidate-feature shift box plots |
+| **Reports** | Preview/download aggregate files, regenerate the HTML report, evidence-package readiness and ZIP export (per-image files excluded) |
+| **Tools** | Model lock inspection (read-only), evidence-gate check, Batch Analysis that runs `hyunoptic-pipeline` with live progress |
+
+**Nothing is invented.** Before a run exists, result pages show an empty state rather than placeholder numbers; any partial, subset or synthetic run carries a warning banner. The search box jumps to an image or patient ID. Display settings (text size, high-contrast contours, dashed cup outline, line thickness) are under the gear icon.
+
+Try it without the real datasets:
+
+```bash
+hyunoptic-demo-data --output-dir demo_data      # procedurally drawn, clearly marked SYNTHETIC
+streamlit run app.py                            # Datasets → set the two demo paths → Batch Analysis
+```
+
+Demo data is far smaller than the published datasets and carries a `SYNTHETIC_DEMO_DATA.txt` marker, so its results are always labelled partial and must never be cited. Workspace settings and history are stored locally in `.hyunoptic/` (set `HYUNOPTIC_WORKSPACE` to move it).
+
+![External Validation on synthetic demo data](docs/images/app_external_validation.png)
 
 ## v1.0.0 — run the whole study with one command
 
@@ -79,7 +109,7 @@ hyunoptic --papila-root /path/to/PAPILA_DBv1 --image-id RET001OD --output report
 - [v1.0 release candidate data identity and external validation checklist](docs/V10_RELEASE_CANDIDATE_CHECKLIST.md)
 - [v1.0-rc2 research evidence-package readiness guide](docs/V10_RC2_EVIDENCE_REVIEW.md)
 - [v1.0-rc3 PAPILA source-mask holdout and evidence chain](docs/V10_RC3_SOURCE_MASK_HOLDOUT.md)
-- [v1.0.0 one-command runbook, HTML report and accessibility](docs/V10_RUNBOOK.md)
+- [v1.0.0 one-command runbook, HTML report, accessibility and v1.1 workspace app](docs/V10_RUNBOOK.md)
 
 ## Research dataset information
 

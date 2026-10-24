@@ -52,7 +52,9 @@ def run_pipeline(
     chaksu_test_zip: str | Path | None = None, papila_zip: str | Path | None = None,
     allow_partial: bool = False, verify_pixels: bool = False,
     seed: int = 42, draws: int = 500, bootstrap_draws: int = 1000,
+    progress=None,
 ) -> dict:
+    """``progress(name, status, detail)`` is called after every step, e.g. to update a UI."""
     out = Path(output_dir)
     if out.exists() and any(out.iterdir()):
         raise FileExistsError("Output folder is not empty; choose a NEW folder to preserve provenance")
@@ -81,6 +83,8 @@ def run_pipeline(
 
     def step(name: str, status: str, detail: str = "") -> None:
         steps.append({"name": name, "status": status, "detail": detail})
+        if progress is not None:
+            progress(name, status, detail)
 
     def run(name: str, action) -> bool:
         # An action returns its detail text, or (detail, complete) where

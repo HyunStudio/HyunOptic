@@ -7,7 +7,6 @@ import json
 import math
 import streamlit as st
 
-st.set_page_config(page_title="HyunOptic | Study Results", page_icon="📊", layout="wide")
 st.title("HyunOptic — Research Evaluation")
 st.warning("Research only. Reader disagreement is not glaucoma ground truth. No clinical interpretation.")
 
@@ -53,7 +52,7 @@ for name, metrics in scores.items():
         "flagged": int(metrics["cases_reviewed"]),
         "high disagreement": int(metrics["n_discrepant"]),
     })
-st.dataframe(dataset, use_container_width=True, hide_index=True)
+st.dataframe(dataset, width="stretch", hide_index=True)
 st.bar_chart({item["candidate score"]: item["precision"] for item in dataset})
 st.caption("Chart: precision among top-ranked cases; a higher number does not imply external validity.")
 

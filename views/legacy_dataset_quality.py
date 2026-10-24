@@ -3,7 +3,6 @@ from __future__ import annotations
 import json
 import streamlit as st
 
-st.set_page_config(page_title="HyunOptic | Dataset Quality", page_icon="🧪", layout="wide")
 st.title("HyunOptic — PAPILA Dataset Integrity")
 st.caption("v0.4 · Research-only inventory viewer")
 st.warning("Dataset completeness and coordinate checks do not establish clinical correctness.")
@@ -44,7 +43,7 @@ quality = [
 ]
 if quality:
     st.subheader("Cases requiring inspection")
-    st.dataframe(quality, use_container_width=True, hide_index=True)
+    st.dataframe(quality, width="stretch", hide_index=True)
 else:
     st.success("No reported case-level structural issues in this inventory.")
 with st.expander("Duplicate and unrecognized annotation filenames"):

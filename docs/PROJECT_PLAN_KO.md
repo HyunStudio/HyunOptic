@@ -251,7 +251,7 @@ Harvard-GDP는 OCT RNFL 맵과 일부 진행 관련 레이블을 제공하지만
 8. STARD-AI (2025), 진단 정확도 연구로 별도 발전한 경우에만 해당 보고 지침. https://www.nature.com/articles/s41591-025-03953-8
 9. American Academy of Ophthalmology, POAG Suspect Preferred Practice Pattern(2026 publication page). https://www.aaojournal.org/article/S0161-6420%2825%2900814-0/fulltext
 
-## 12. 구현 현황 (2026-10-24, 소프트웨어 v1.0.0)
+## 12. 구현 현황 (2026-10-24, 소프트웨어 v1.1.0)
 
 | ID | 상태 | 구현 위치 |
 |---|---|---|
@@ -264,6 +264,7 @@ Harvard-GDP는 OCT RNFL 맵과 일부 진행 관련 레이블을 제공하지만
 | F07 기준선·외부 평가 | 구현(실데이터 미실행) | `hyunoptic-source-check`, `hyunoptic-external test` |
 | F08 연구 보고서 JSON/CSV/HTML | 구현 | `hyunoptic-pipeline`, `hyunoptic-report`(집계 전용 HTML) |
 | F09 접근성 | 구현 | 글자 크기, 고대비, 점선 cup 윤곽, 선 굵기; 보고서는 PASS/FAIL 문자 표기 |
+| 화면 구성 (§5) | 구현 (v1.1.0) | Overview → Image Review → Datasets → Reliability → Source Holdout → External Validation → Reports + Tools; 결과가 없으면 빈 상태 표시, 수치를 지어내지 않음 |
 | F10 OCT/RNFL 확장 | 미착수(P2) | 별도 프로토콜·라이선스 승인 후 |
 
 **남은 일:** 실제 PAPILA·Chákṣu 원본으로 `hyunoptic-pipeline` 전체 실행 → 결과(음성 결과 포함) 검토 → 영문 보고서·포스터 작성 → 소프트웨어 라이선스 선택. 실행 방법은 [v1.0 runbook](V10_RUNBOOK.md) 참조. 이 시점까지 실제 데이터 성능 결과는 없다.

@@ -19,3 +19,6 @@ dist/
 reports/
 .streamlit/secrets.toml
 .DS_Store
+# Local workspace settings and history
+.hyunoptic/
+demo_data/

@@ -92,7 +92,19 @@ Any subset of inputs is accepted; missing sections are named in the report rathe
 - PASS/FAIL are written as words, not only colours; tables use captions and header scopes; base text is 16 px and follows the system light/dark preference; narrow screens scroll tables horizontally.
 - Streamlit viewer: *Display & accessibility* sidebar with text size (Standard/Large/Extra large), high-contrast yellow/blue contours, dashed cup vs solid disc outline, and line thickness. The image caption always states colour **and** line style.
 
-## 6. What remains for the researcher
+## 6. Using the v1.1 research workspace app
+
+```powershell
+streamlit run app.py
+```
+
+1. **Datasets** → *Edit* on each card: set the extracted PAPILA folder (optionally `PAPILA.zip`) and the original Chákṣu `Test.zip`. Run the **Integrity Check** for each.
+2. **Batch Analysis** → *Start analysis*. This calls `hyunoptic-pipeline` and writes a new folder under `reports/`; the run becomes the active run in the sidebar. Leave *Allow partial data* off for the real datasets.
+3. Review **Reliability Analysis**, **Source Holdout** and **External Validation**, run **Evidence Check**, then export from **Reports**.
+
+Result pages read only the selected run folder. Per-image files are used locally for curves and box plots but are never exported. To try the app without real data, run `hyunoptic-demo-data` and point the Datasets page at its two outputs; every result will be marked partial.
+
+## 7. What remains for the researcher
 
 1. Run the full chain on the original PAPILA and Chákṣu archives and keep the output folder unchanged.
 2. Review `report.html`, the limitations, and the evidence gate. Report null or negative results as they are (plan §8 Stop/Pivot rule).
