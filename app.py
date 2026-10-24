@@ -16,7 +16,7 @@ from hyunoptic.uncertainty import PerturbationConfig, analyze_vertical_sensitivi
 
 st.set_page_config(page_title="HyunOptic — Research Prototype", page_icon="🔬", layout="wide")
 st.title("HyunOptic")
-st.caption("Quantitative optic nerve measurement · Research-only prototype v0.2")
+st.caption("Quantitative optic nerve measurement · Research-only prototype v1.0")
 st.warning("Research/education only — NOT a glaucoma diagnostic tool or a medical device.")
 
 
@@ -59,6 +59,20 @@ with st.sidebar:
     cup_sd = st.slider("Cup-specific boundary log-SD", min_value=0.0, max_value=0.15, value=0.03, step=0.005)
     disc_sd = st.slider("Disc-specific boundary log-SD", min_value=0.0, max_value=0.15, value=0.03, step=0.005)
     seed = st.number_input("Random seed", min_value=0, max_value=999999, value=42, step=1)
+    st.divider()
+    st.subheader("Display & accessibility")
+    text_size = st.select_slider("Text size", options=["Standard", "Large", "Extra large"],
+                                 value="Standard")
+    high_contrast = st.toggle("High-contrast contour colours", value=False,
+                              help="Yellow disc / blue cup, distinguishable with common colour-vision deficiencies")
+    dashed_cup = st.toggle("Dashed cup outline", value=True,
+                           help="Disc stays solid so the two outlines differ without relying on colour")
+    line_scale = st.slider("Contour line thickness", min_value=1, max_value=5, value=2)
+
+_FONT_SIZE = {"Standard": None, "Large": "18px", "Extra large": "21px"}[text_size]
+if _FONT_SIZE:
+    st.markdown(f"<style>html, body, [class*='st-'], .stMarkdown p {{font-size: {_FONT_SIZE};}}</style>",
+                unsafe_allow_html=True)
 
 if data_source == "Synthetic demo":
     img, pair = example()
@@ -83,7 +97,10 @@ size = img.size
 try:
     result = compare_readers(*pair["exp1"], *pair["exp2"], size)
     selected_disc, selected_cup = pair[selected_expert]
-    view = overlay_contours(img, selected_disc, selected_cup, line_width=max(2, img.width // 500))
+    view = overlay_contours(img, selected_disc, selected_cup,
+                            line_width=max(1, int(line_scale)) * max(1, img.width // 1000),
+                            palette="high_contrast" if high_contrast else "standard",
+                            dashed_cup=dashed_cup)
     if zoom:
         view = optic_crop(view, selected_disc)
     sensitivity = analyze_vertical_sensitivity(
@@ -105,7 +122,11 @@ for col, (name, value) in zip(st.columns(4), [
 
 left, right = st.columns([3, 2])
 with left:
-    st.image(view, caption="Cyan: disc contour · Coral: cup contour; contours belong to selected reader", use_container_width=True)
+    disc_colour, cup_colour = ("Yellow", "Blue") if high_contrast else ("Cyan", "Coral")
+    cup_style = "dashed" if dashed_cup else "solid"
+    st.image(view, caption=f"{disc_colour} solid line: disc contour · {cup_colour} {cup_style} line: "
+                           f"cup contour · contours belong to {selected_expert}",
+             use_container_width=True)
 with right:
     st.subheader("Independent reader agreement")
     st.write({"disc Dice": round(result["disc_dice"], 4), "cup Dice": round(result["cup_dice"], 4)})
@@ -142,7 +163,7 @@ with st.expander("Covariance-aware error propagation and assumptions"):
     st.caption("The continuous-coordinate sensitivity ratio can differ from pixel-mask CDR above. "
                "Covariance is induced by ASSUMED shared perturbations; it is not estimated from experts. "
                "Percentiles are NOT clinical 95% confidence intervals.")
-payload = {"project": "HyunOptic", "version": "0.2.0", "status": "research-only", "image_id": case_name,
+payload = {"project": "HyunOptic", "version": "1.0.0", "status": "research-only", "image_id": case_name,
            "image_size": list(size), "reader_comparison": result,
            "candidate_only_sensitivity": sensitivity.to_dict()}
 st.download_button("Download measurement JSON", data=json.dumps(payload, indent=2),

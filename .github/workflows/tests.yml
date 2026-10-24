@@ -27,4 +27,6 @@ jobs:
       - run: hyunoptic-verify-sources --help
       - run: hyunoptic-evidence --help
       - run: hyunoptic-source-check --help
+      - run: hyunoptic-pipeline --help
+      - run: hyunoptic-report --help
       - run: pytest -q
