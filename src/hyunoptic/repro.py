@@ -5,6 +5,9 @@ The report is exploratory and never a statement of clinical effectiveness.
 from __future__ import annotations
 import hashlib
 import json
+import os
+import platform
+import subprocess
 from pathlib import Path
 from .inventory import inspect_papila, save_inventory
 from .research_report import write_research_summary
@@ -17,6 +20,10 @@ def reproduce(
     bootstrap_draws: int = 1000, verify_pixels: bool = False,
 ) -> dict:
     folder = Path(out_dir)
+    if folder.exists() and any(folder.iterdir()):
+        raise FileExistsError(
+            "Output folder already contains files; choose a NEW output directory to preserve provenance."
+        )
     folder.mkdir(parents=True, exist_ok=True)
     inventory = inspect_papila(root, verify_pixels=verify_pixels)
     save_inventory(inventory, folder / "inventory.json")
@@ -32,7 +39,16 @@ def reproduce(
     )
     save_study(summary, rows, folder / "study.json", folder / "case_metrics.csv")
     study_bytes = (folder / "study.json").read_bytes()
+    try:
+        commit = subprocess.check_output(
+            ["git", "-C", str(Path(__file__).resolve().parents[2]), "rev-parse", "HEAD"],
+            text=True, stderr=subprocess.DEVNULL, timeout=5
+        ).strip()
+    except (OSError, subprocess.SubprocessError):
+        commit = None
     result = {
+        "python_runtime": platform.python_version(),
+        "source_code_git_commit_if_available": commit or os.environ.get("GITHUB_SHA"),
         "project": "HyunOptic", "version": "0.5.0", "status": "research-only",
         "data_source": "PAPILA provided locally by user",
         "full_published_inventory_shape_match": complete,
