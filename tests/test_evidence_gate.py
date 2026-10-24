@@ -23,6 +23,7 @@ def evidence_files(tmp_path):
         "feature_names": list(MASK_FEATURES),
         "source_is_partial": False, "source_complete_inventory": True,
         "source_metadata_fingerprint": "local-metadata-sha",
+        "source_content_sha256": "f" * 64,
         "review_fraction": .2, "research_disagreement_threshold": .1,
         "no_outcome_labels_used_in_scaling": True,
         "no_external_data_used_in_scaling": True,
@@ -44,6 +45,23 @@ def evidence_files(tmp_path):
             "inventory_sha256_of_paths_and_sizes_only": "local-metadata-sha",
         }),
         "model_lock": _put(tmp_path/"lock.json", lock),
+        "source_holdout": _put(tmp_path/"source.json", {
+            "project": "HyunOptic", "source_lock_sha256": lock["sha256"],
+            "source_content_sha256": "f" * 64,
+            "source_inventory_fingerprint": "local-metadata-sha",
+            "full_source_holdout_scored": True, "partial_or_unverified": False,
+            "n_source_images_discovered": 488, "n_source_patient_groups": 244,
+            "n_failed": 0,
+            "patient_split_counts": {
+                "development": {"n_images": 292},
+                "validation": {"n_images": 98},
+                "holdout": {"n_images": 98},
+            },
+            "evaluation": {
+                "validation": {"n_images": 98},
+                "holdout": {"n_images": 98},
+            },
+        }),
         "chaksu_audit": _put(tmp_path/"audit.json", {
             "project": "HyunOptic", "all_published_test_masks_structurally_verified": True,
             "n_checked": 336, "n_readable_with_all_five_experts": 336, "n_errors": 0,
@@ -124,3 +142,23 @@ def test_missing_inputs_are_errors_not_passing(tmp_path):
     paths["sources"].unlink()
     with pytest.raises(FileNotFoundError):
         review_evidence(**paths)
+
+
+def test_missing_source_holdout_cannot_pass_evidence_gate(tmp_path):
+    files = evidence_files(tmp_path)
+    body = json.loads(files["source_holdout"].read_text())
+    body["n_failed"] = 1
+    body["partial_or_unverified"] = True
+    _put(files["source_holdout"], body)
+    result = review_evidence(**files)
+    assert not result["checks"]["complete_PAPILA_source_mask_holdout"]["passed"]
+    assert not result["all_required_artifacts_consistent"]
+
+
+def test_source_content_binding_must_match_locked_dataset(tmp_path):
+    files = evidence_files(tmp_path)
+    body = json.loads(files["source_holdout"].read_text())
+    body["source_content_sha256"] = "0" * 64
+    _put(files["source_holdout"], body)
+    result = review_evidence(**files)
+    assert not result["checks"]["same_PAPILA_content_sha256_for_source_evaluation"]["passed"]
