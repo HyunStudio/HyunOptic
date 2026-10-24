@@ -95,10 +95,11 @@ def acquire_archive(
         with os.fdopen(fd, "wb") as output:
             request = urllib.request.Request(source["download_url"], headers={"User-Agent": "HyunOptic-research/0.5"})
             with open_url(request, timeout=120) as response:
-                # Detect an unexpected off-domain redirect where possible.
+                # Figshare's official downloader may redirect to an HTTPS object-store CDN.
+                # Restrict the INITIAL URL to Figshare and the final redirect to HTTPS.
                 resolved = getattr(response, "url", None)
-                if resolved:
-                    _official_url(resolved)
+                if resolved and urllib.parse.urlparse(resolved).scheme != "https":
+                    raise ValueError("Refusing non-HTTPS download redirect")
                 while True:
                     block = response.read(1024 * 1024)
                     if not block:
