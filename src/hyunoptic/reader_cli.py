@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .inventory import inspect_papila
 from .reader_symmetry import run_reader_symmetry, save_reader_symmetry
+from .reader_report import write_reader_summary
 from .uncertainty import PerturbationConfig
 
 
@@ -43,6 +44,7 @@ def main(argv: list[str] | None = None) -> int:
         result["partial_or_unverified_input"] = not manifest["matches_full_published_shape"]
         save_reader_symmetry(result, rows, args.output_dir / "reader_symmetry.json",
                              args.output_dir / "reader_case_metrics.csv")
+        write_reader_summary(result, args.output_dir / "reader_role_summary.md")
     except (OSError, ValueError) as error:
         parser.error(str(error))
     print(json.dumps({
@@ -52,7 +54,7 @@ def main(argv: list[str] | None = None) -> int:
         "partial_or_unverified_input": result["partial_or_unverified_input"],
         "protocol_sha256": result["protocol_sha256"],
         "reader_role_agreement": result["evaluation"]["holdout"]["reader_role_agreement"],
-        "files": ["inventory.json", "reader_symmetry.json", "reader_case_metrics.csv"],
+        "files": ["inventory.json", "reader_symmetry.json", "reader_case_metrics.csv", "reader_role_summary.md"],
         "warning": "Inter-reader disagreement is not a clinical ground truth.",
     }, ensure_ascii=False, indent=2))
     return 0
