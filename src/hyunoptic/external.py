@@ -96,8 +96,29 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
                 } for name in SCORES
             },
         }
+    for group in metrics.values():
+        if group.get("missing"):
+            continue
+        baseline = group["scores"]["candidate_vcdr"]
+        proposed = group["scores"]["combined_candidate_score"]
+        b, p = baseline["review"], proposed["review"]
+        bk, pk = baseline["ranking"], proposed["ranking"]
+        group["comparison_to_vcdr_descriptive"] = {
+            "precision_at_review_budget_delta": p["precision_at_budget"] - b["precision_at_budget"],
+            "recall_at_review_budget_delta": None
+                if p["recall_at_budget"] is None or b["recall_at_budget"] is None
+                else p["recall_at_budget"] - b["recall_at_budget"],
+            "average_precision_delta": None
+                if pk["average_precision"] is None or bk["average_precision"] is None
+                else pk["average_precision"] - bk["average_precision"],
+            "roc_auc_delta": None
+                if pk["roc_auc"] is None or bk["roc_auc"] is None
+                else pk["roc_auc"] - bk["roc_auc"],
+            "interpretation": "Descriptive paired-cohort difference only. "
+                              "No significance test, population confidence interval, or clinical claim.",
+        }
     manifest = {
-        "project": "HyunOptic", "version": "0.7.0", "status": "research-only",
+        "project": "HyunOptic", "version": "0.8.0", "status": "research-only",
         "study": "PAPILA-development-locked candidate mask scoring on external Chaksu Test",
         "external_test_source": "Chaksu original Test.zip, five individual readers in archive",
         "fused_annotations_never_used": True,
@@ -108,6 +129,7 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
         "test_file_layout": data_manifest,
         "n_test_images_scored": len(rows),
         "n_failed": len(failures),
+        "statistical_inference": "Descriptive only: dependence of repeated patient images is not identified.",
         "failures": failures,
         "full_layout_and_readability_verified": fully_verified,
         "all_five_readers_payload_preflight_verified": bool(full_preflight and full_preflight["all_published_test_masks_structurally_verified"]),
@@ -174,6 +196,16 @@ def save_external(summary: dict, rows: list[dict], output_dir: str | Path) -> No
                 f"{fmt(r['precision_at_budget'])} | {fmt(r['recall_at_budget'])} | "
                 f"{fmt(k['average_precision'])} | {fmt(k['roc_auc'])} |"
             )
+    lines.extend(["", "## Descriptive comparison against vCDR ranking", "",
+                  "The difference below is on the SAME scored images. A positive value is",
+                  "not proof of real-world benefit or statistical significance.", "",
+                  "| Camera | Delta precision@budget (combined - vCDR) |",
+                  "|---|---:|"])
+    for group_name, value in summary["results"].items():
+        if not value.get("missing"):
+            delta = value["comparison_to_vcdr_descriptive"]["precision_at_review_budget_delta"]
+            lines.append(f"| {group_name} | {delta:+.3f} |")
+    lines.append("")
     lines.extend(["", "## Interpretation", ""])
     lines += ["- " + limitation for limitation in summary["limitations"]]
     lines.extend(["", "Scores are descriptive and hypothesis-generating. "
