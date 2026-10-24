@@ -13,6 +13,7 @@ from dataclasses import asdict
 from pathlib import Path
 import numpy as np
 from .evaluation import evaluate_at_budget
+from .nulls import grouped_permutation_null
 from .features import FEATURE_NAMES, candidate_features
 from .measure import compare_readers
 from .papila import discover_cases, load_contours, load_image
@@ -154,6 +155,17 @@ def run_study(
             },
         }
     holdout = [r for r in rows if r["split"] == "holdout"]
+    permutation_controls = {
+        name: grouped_permutation_null(
+            [r[name] for r in holdout],
+            [r["heldout_absolute_vcdr_difference"] for r in holdout],
+            [r["patient_id"] for r in holdout],
+            [r["eye"] for r in holdout],
+            threshold=discrepancy_threshold, review_fraction=review_fraction,
+            draws=499, seed=split_seed,
+        )
+        for name in ("v02_q95", "combined_candidate_score")
+    }
     bs = _patient_bootstrap_difference(
         holdout, baseline="v02_q95", candidate="combined_candidate_score",
         threshold=discrepancy_threshold, fraction=review_fraction,
@@ -169,13 +181,14 @@ def run_study(
     }
     protocol_hash = hashlib.sha256(json.dumps(protocol_settings, sort_keys=True).encode()).hexdigest()
     summary = {
-        "project": "HyunOptic", "version": "0.3.0", "status": "research-only",
+        "project": "HyunOptic", "version": "0.4.0", "status": "research-only",
         "study_type": "PAPILA-only exploratory patient-disjoint INTERNAL holdout",
         "not_external_validation": True, "not_clinical_diagnosis": True,
         "protocol_sha256": protocol_hash, "protocol_settings": protocol_settings,
         "n_analyzed": len(rows), "n_skipped": len(skipped), "skipped": skipped,
         "development_only_unsupervised_scaling": norm,
         "evaluation": results, "paired_holdout_bootstrap": bs,
+        "permutation_null_holdout_exploratory": permutation_controls,
         "caveats": [
             "No clinical labels or external dataset used for the primary target.",
             "The second expert is only a retrospective disagreement target, not disease truth.",
@@ -183,6 +196,7 @@ def run_study(
             "v0.2 Q95 is largely proportional to vCDR under fixed log-scale perturbation settings.",
             "Feature combination is a fixed exploratory heuristic; superiority is NOT presupposed.",
             "Do not treat internal holdout as external validation or iterate on it indefinitely.",
+            "The group permutation null assumes patient exchangeability and is exploratory.",
         ],
     }
     return summary, rows
