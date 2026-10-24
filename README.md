@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.3 executable experimental research pipeline (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.4 research integrity and internal benchmarking toolkit (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -87,6 +87,21 @@ Details: [v0.3 patient split / evaluation protocol](docs/V03_PATIENT_SPLIT_PROTO
 
 **Scientific limit:** Candidate scoring logic and synthetic tests are implemented; no actual full PAPILA trial, superiority claim or independent external Chákṣu test is completed. The v0.3 benchmark is exploratory, not a glaucoma diagnostic tool. The interactive Streamlit viewer remains focused on the v0.2 measurement and sensitivity screens.
 
+## Added in v0.4 — data integrity and null controls
+
+- `hyunoptic-inventory` command checks PAPILA image/patient/annotation counts, bilateral pairing, image sizes, missing contours, coordinate bounds, and duplicate-like annotations without copying source images.
+- **Dataset Quality** Streamlit page shows issues from your own local inventory JSON; it displays no example clinical measurements unless you load a file.
+- The `hyunoptic-study` output now includes an **exploratory patient-group permutation null** for v0.2 Q95 and combined candidate score alongside the patient-cluster bootstrap. It maintains within-patient eye grouping and does not use reader 2 for ranking.
+- Version 0.4 is still **not validated on the complete real PAPILA archive or Chákṣu external dataset**; no clinical correctness or performance improvement has been shown.
+
+```powershell
+hyunoptic-inventory --papila-root "D:\\datasets\\PAPILA_DBv1" --output reports\\inventory_v04.json --strict-full --verify-pixels
+hyunoptic-study --papila-root "D:\\datasets\\PAPILA_DBv1" --output reports\\study_v04.json --csv-output reports\\study_v04.csv
+streamlit run app.py
+```
+
+See [v0.4 research protocol](docs/V04_DATA_QUALITY_AND_NULL_PROTOCOL.md). Both **Study Results** and **Dataset Quality** are available in the Streamlit multipage sidebar.
+
 ## Planned research, not yet implemented
 
 1. Running and verifying full PAPILA-file compatibility and reporting predeclared internal outcomes without holdout tuning.
@@ -104,6 +119,7 @@ Details: [v0.3 patient split / evaluation protocol](docs/V03_PATIENT_SPLIT_PROTO
 - [Installation, data format and methodology](docs/GETTING_STARTED.md)
 - [v0.2 sensitivity and exploratory research protocol](docs/V02_UNCERTAINTY_PROTOCOL.md)
 - [v0.3 patient-disjoint internal research protocol](docs/V03_PATIENT_SPLIT_PROTOCOL.md)
+- [v0.4 dataset quality and permutation null protocol](docs/V04_DATA_QUALITY_AND_NULL_PROTOCOL.md)
 
 ## Research dataset information
 
