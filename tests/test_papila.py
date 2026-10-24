@@ -53,3 +53,20 @@ def test_cli_json_and_research_label(tmp_path):
     text = output.read_text()
     assert '"research-only"' in text
     assert '"disc_dice": 1.0' in text
+
+
+def test_hash_named_official_extract_root_discovered(tmp_path):
+    """Publisher ZIP can unpack into a changing, hash-bearing top-level folder."""
+    original = build_sample(tmp_path)
+    renamed = original.rename(tmp_path / "PAPILA_DBv1_8f90ab293b")
+    cases = discover_cases(tmp_path)
+    assert [c.image_id for c in cases] == ["RET007OD", "RET007OS"]
+    assert all(renamed in c.image_path.parents for c in cases)
+
+
+def test_multiple_dataset_roots_refused_instead_of_mixed(tmp_path):
+    import shutil
+    original = build_sample(tmp_path)
+    shutil.copytree(original, tmp_path / "PAPILA_db_other")
+    with pytest.raises(ValueError, match="Multiple PAPILA datasets"):
+        discover_cases(tmp_path)
