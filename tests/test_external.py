@@ -49,7 +49,7 @@ def mask_image(width, height, box):
     return Image.fromarray(values)
 
 
-def chaksu_fixture(path, *, cases=3, missing=None, corrupt=None):
+def chaksu_fixture(path, *, cases=3, missing=None, corrupt=None, expert5_shift=0):
     with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for n in range(cases):
             cam = ("Bosch","Forus","Remidio")[n % 3]
@@ -62,7 +62,7 @@ def chaksu_fixture(path, *, cases=3, missing=None, corrupt=None):
                     if identifier == missing:
                         continue
                     # Cup for expert 2 sometimes has a distinct measured height.
-                    box = (5,5,39,42) if structure == "Disc" else (13,14,28,31 + (expert==2)*4 + n%2)
+                    box = (5,5,39,42) if structure == "Disc" else (13,14,28,31 + (expert==2)*4 + (expert==5)*expert5_shift + n%2)
                     sample = mask_image(44,48,box)
                     if identifier == corrupt:
                         sample = mask_image(30,48,box)
@@ -171,3 +171,24 @@ def test_external_cli_round_trip_partial_only(tmp_path):
                          "--chaksu-test-zip",str(chaksu),
                          "--output-dir",str(out),"--allow-partial"])==0
     assert json.loads((out/"external_aggregate.json").read_text())["n_test_images_scored"]==2
+
+
+def test_v09_secondary_five_reader_outcomes_are_separate_from_candidate_score(tmp_path):
+    """Changing expert5 must affect the secondary target, never the expert1 QC score."""
+    papila=source_fixture(tmp_path/"papila",count=9)
+    lock=tmp_path/"model.json"
+    save_lock(freeze_papila_model(papila,draws=60,allow_partial=True),lock)
+    first=chaksu_fixture(tmp_path/"first.zip",cases=3,expert5_shift=0)
+    second=chaksu_fixture(tmp_path/"second.zip",cases=3,expert5_shift=6)
+    a,rows_a=run_external_test(first,lock,allow_partial=True)
+    b,rows_b=run_external_test(second,lock,allow_partial=True)
+    assert a["version"]==b["version"]=="0.9.0"
+    assert "secondary_five_reader_results" in a
+    assert a["secondary_five_reader_results"]["all"]["n_images"]==3
+    assert rows_a[0]["secondary_five_reader"]["all_unique_expert_pairs"]==10
+    for old,new in zip(rows_a,rows_b):
+        for field in ("candidate_vcdr","mask_q95","mask_roughness",
+                      "mask_boundary_weakness","combined_candidate_score"):
+            assert old[field]==new[field]
+        assert old["absolute_expert1_expert2_vcdr_difference"]==new["absolute_expert1_expert2_vcdr_difference"]
+        assert old["secondary_five_reader"]["all_ten_pairs_mean_absolute_vcdr"] != new["secondary_five_reader"]["all_ten_pairs_mean_absolute_vcdr"]
