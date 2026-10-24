@@ -66,6 +66,32 @@ with st.expander("Method limitations"):
     for issue in summary.get("limitations", []):
         st.write("- " + issue)
 
+if summary.get("version") == "1.0.0rc1":
+    st.divider()
+    st.subheader("Candidate-only feature distribution shift")
+    st.caption(
+        "Source-standardized features compared by camera. No external reader outcomes "
+        "enter this diagnostic, and a large shift is not a clinical error rate."
+    )
+    drift = summary.get("camera_feature_shift_candidate_only", {})
+    shift_rows = []
+    for camera, bucket in drift.get("camera_groups", {}).items():
+        if "features" not in bucket:
+            continue
+        for name, measures in bucket["features"].items():
+            shift_rows.append({
+                "Camera": camera,
+                "Feature": name,
+                "N images": bucket["n_images"],
+                "Mean source-z": round(measures["mean_source_standardized"], 3),
+                "Fraction |z|>3": round(measures["fraction_abs_z_over_threshold"], 3),
+            })
+    st.dataframe(shift_rows, use_container_width=True, hide_index=True)
+    st.info(
+        "These unlabeled domain-shift results are descriptive; do not use Test "
+        "outcomes to refit or optimize the frozen PAPILA model."
+    )
+
 if summary.get("version") in ("0.9.0", "1.0.0rc1"):
     st.divider()
     st.subheader("Secondary: Five-expert measurement disagreement")
