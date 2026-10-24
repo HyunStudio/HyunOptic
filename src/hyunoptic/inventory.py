@@ -33,7 +33,6 @@ def inspect_papila(root: str | Path, *, verify_pixels: bool = False) -> dict:
     all_contours = sorted(contour_dir.glob("*.txt"), key=lambda p: p.name)
     skipped = []
     entries = []
-    observed_ids = set()
     for case in cases:
         errors, warnings = [], []
         expected = [case.contour_path(s, e) for e in ("exp1", "exp2") for s in ("disc", "cup")]
@@ -71,7 +70,6 @@ def inspect_papila(root: str | Path, *, verify_pixels: bool = False) -> dict:
         entries.append(entry)
         if errors:
             skipped.append(case.image_id)
-        observed_ids.add(case.image_id)
     patient_eyes: dict[str, set[str]] = {}
     for c in cases:
         patient_eyes.setdefault(c.patient_id, set()).add(c.eye)
@@ -85,9 +83,10 @@ def inspect_papila(root: str | Path, *, verify_pixels: bool = False) -> dict:
         (str(path.relative_to(contour_dir)), int(path.stat().st_size)) for path in all_contours if path.is_file()
     ]
     inventory_hash = hashlib.sha256(json.dumps(fingerprint_material, sort_keys=True).encode()).hexdigest()
+    n_dim_mismatches = sum("unexpected published PAPILA image dimensions" in row["warnings"] for row in entries)
     full_shape_matches = (
         len(cases) == 488 and len(patient_eyes) == 244 and n_bilateral == 244
-        and canonical == 1952 and len(skipped) == 0
+        and canonical == 1952 and len(skipped) == 0 and n_dim_mismatches == 0
     )
     return {
         "project": "HyunOptic", "version": "0.4.0",
@@ -102,6 +101,7 @@ def inspect_papila(root: str | Path, *, verify_pixels: bool = False) -> dict:
             "duplicate_like_contours": len(duplicate_like),
             "unexpected_txt_files": len(unexpected_txt),
             "unusable_images": len(skipped),
+            "image_dimension_mismatches": n_dim_mismatches,
         },
         "matches_full_published_shape": full_shape_matches,
         "inventory_sha256_of_paths_and_sizes_only": inventory_hash,
