@@ -15,6 +15,7 @@ from pathlib import Path
 import numpy as np
 
 from .evaluation import evaluate_at_budget
+from .agreement import reader_agreement
 from .features import FEATURE_NAMES, candidate_features
 from .measure import compare_readers
 from .papila import discover_cases, load_contours, load_image
@@ -106,6 +107,8 @@ def run_reader_symmetry(
             # Ground truth disagreement computed after BOTH candidate scores.
             comparison = compare_readers(d1, c1, d2, c2, image.size)
             outcome = comparison["absolute_vcdr_difference"]
+            reader_vcdr_1 = comparison["exp1"]["vertical_cdr"]
+            reader_vcdr_2 = comparison["exp2"]["vertical_cdr"]
             for reader, feat in (("exp1", f1), ("exp2", f2)):
                 by_reader[reader].append({
                     "patient_id": case.patient_id,
@@ -115,6 +118,8 @@ def run_reader_symmetry(
                     "candidate_reader": reader,
                     **feat,
                     "heldout_absolute_vcdr_difference": outcome,
+                    "exp1_retrospective_vcdr": reader_vcdr_1,
+                    "exp2_retrospective_vcdr": reader_vcdr_2,
                 })
         except (OSError, ValueError, RuntimeError) as exc:
             skipped.append({"image_id": case.image_id, "reason": str(exc)})
@@ -147,6 +152,14 @@ def run_reader_symmetry(
             }
         a = [r for r in by_reader["exp1"] if r["split"] == split]
         b = [r for r in by_reader["exp2"] if r["split"] == split]
+        try:
+            evaluation[split]["bland_altman_inter_reader"] = reader_agreement(
+                [r["exp1_retrospective_vcdr"] for r in a],
+                [r["exp2_retrospective_vcdr"] for r in a],
+                [r["patient_id"] for r in a], draws=500, seed=seed,
+            )
+        except ValueError as exc:
+            evaluation[split]["bland_altman_inter_reader"] = {"available": False, "reason": str(exc)}
         evaluation[split]["reader_role_agreement"] = {
             name: _score_agreement(a, b, metric=name, review_fraction=review_fraction)
             for name in ("candidate_vcdr", "v02_q95", "combined_candidate_score")
@@ -185,6 +198,7 @@ def run_reader_symmetry(
             "ROC AUC is undefined when only one class exists.",
             "Repeated internal holdout inspection precludes confirmatory claims.",
             "Tie-breaking at fixed review fraction uses deterministic image order.",
+            "Bland-Altman limits are descriptive normal-theory limits, not clinical acceptance limits.",
         ],
     }, by_reader["exp1"] + by_reader["exp2"]
 
