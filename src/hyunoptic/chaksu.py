@@ -31,6 +31,9 @@ EXPECTED_RESOLUTION = {
 }
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".tif", ".tiff"}
 MASK_SUFFIXES = {".tif", ".tiff", ".png"}
+# Bosch file stems can encode repeated photographs for the same subject:
+# P11_image_1 and P11_image_2. Other cameras may have no recoverable ID.
+KNOWN_PATIENT_STEM = re.compile(r"^(p\\d+)[_-]", re.IGNORECASE)
 MAX_SINGLE_FILE = 160_000_000
 
 def _camera(name: str) -> str:
@@ -107,6 +110,14 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
             missing.append({"case_id": f"{cam}/{stem}", "missing": absent})
         else:
             cases.append(ChaksuCase(f"{cam}/{stem}", cam, image_member, found))
+    # Do not mistake consecutive photographs for independent subjects.
+    # This is only a partial linkage, NOT complete unique-patient identification.
+    known_groups = {}
+    for cam, stem in images:
+        matched = KNOWN_PATIENT_STEM.match(stem)
+        if matched:
+            known_groups.setdefault((cam, matched.group(1).lower()), 0)
+            known_groups[(cam, matched.group(1).lower())] += 1
     camera_counts = {cam: sum(c.camera == cam for c in cases) for cam in CAMERAS}
     fingerprint = hashlib.sha256(json.dumps({
         "images": sorted(images.items()), "masks": sorted(masks.items()),
@@ -120,6 +131,11 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
         "published_test_counts": EXPECTED_TEST,
         "image_entries": len(images),
         "complete_5_reader_cases": len(cases),
+        "images_with_partially_decodable_patient_id": sum(known_groups.values()),
+        "known_repeat_patient_groups": sum(n > 1 for n in known_groups.values()),
+        "images_in_known_repeat_groups": sum(n for n in known_groups.values() if n > 1),
+        "patient_id_linkage_incomplete": True,
+
         "readable_case_counts_by_camera": camera_counts,
         "missing_annotation_cases": missing,
         "ambiguous_duplicate_members": duplicate,
