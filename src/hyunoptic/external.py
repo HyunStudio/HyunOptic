@@ -12,6 +12,7 @@ import numpy as np
 from .chaksu import EXPECTED_TEST, load_test_case, scan_test_archive
 from .external_qc import check_chaksu_archive
 from .evaluation import evaluate_at_budget
+from .domain_shift import camera_feature_shift
 from .freeze import load_lock
 from .mask_features import apply_mask_score, mask_features
 from .multi_reader import READERS, five_reader_targets
@@ -163,7 +164,7 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
             },
         }
     manifest = {
-        "project": "HyunOptic", "version": "0.9.0", "status": "research-only",
+        "project": "HyunOptic", "version": "1.0.0rc1", "status": "research-only",
         "study": "PAPILA-development-locked candidate mask scoring on external Chaksu Test",
         "external_test_source": "Chaksu original Test.zip, five individual readers in archive",
         "fused_annotations_never_used": True,
@@ -180,6 +181,7 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
         "all_five_readers_payload_preflight_verified": bool(full_preflight and full_preflight["all_published_test_masks_structurally_verified"]),
         "partial_or_unverified_external": not fully_verified,
         "results": metrics,
+        "camera_feature_shift_candidate_only": camera_feature_shift(rows, lock["scaler"]),
         "secondary_five_reader_results": secondary_evaluation,
         "secondary_five_reader_target": "expert1 disagrees >0.10 in vCDR with at least 2 of experts2-5",
         "limitations": [
@@ -191,6 +193,7 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
             "This uses a new, uniform mask feature family; prior PAPILA polygon-score performance is not directly comparable.",
             "A source-lock digest is not third-party preregistration; mask shape checks are not proof of clinical correctness.",
             "Do not inspect these results to retune the purported frozen external scoring protocol.",
+            "Source-standardized camera feature drift is descriptive, not a diagnostic calibration metric.",
         ],
     }
     return manifest, rows
