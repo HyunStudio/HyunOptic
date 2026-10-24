@@ -19,4 +19,5 @@ jobs:
       - run: hyunoptic-inventory --help
       - run: hyunoptic-download --help
       - run: hyunoptic-reproduce --help
+      - run: hyunoptic-reader-check --help
       - run: pytest -q
