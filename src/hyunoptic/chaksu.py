@@ -33,7 +33,7 @@ IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".tif", ".tiff"}
 MASK_SUFFIXES = {".tif", ".tiff", ".png"}
 # Bosch file stems can encode repeated photographs for the same subject:
 # P11_image_1 and P11_image_2. Other cameras may have no recoverable ID.
-KNOWN_PATIENT_STEM = re.compile(r"^(p\\d+)[_-]", re.IGNORECASE)
+KNOWN_PATIENT_STEM = re.compile(r"^(p[0-9]+)[_-]", re.IGNORECASE)
 MAX_SINGLE_FILE = 160_000_000
 
 def _camera(name: str) -> str:
