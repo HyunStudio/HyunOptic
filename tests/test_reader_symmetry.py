@@ -89,6 +89,11 @@ def test_reader_cli_explicit_partial_writes_reports(tmp_path):
     assert rc == 0
     assert (out / "reader_symmetry.json").exists()
     assert (out / "reader_case_metrics.csv").exists()
+    assert (out / "reader_role_summary.md").exists()
+    text = (out / "reader_role_summary.md").read_text()
+    assert "Bland-Altman" in text and "NOT glaucoma diagnosis" in text
+    assert "RET000OD" not in text
+
     s = json.loads((out / "reader_symmetry.json").read_text())["summary"]
     assert s["partial_or_unverified_input"]
     assert "reader_role_agreement" in s["evaluation"]["holdout"]
