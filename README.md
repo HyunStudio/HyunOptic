@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v1.0.0rc2 research evidence-package readiness candidate (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v1.0.0rc3 PAPILA-source mask holdout and external replication candidate (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -180,6 +180,27 @@ hyunoptic-external test --model-lock reports\\v08\\papila_frozen_mask_model.json
 
 See [v0.8 external integrity protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md).
 
+## v1.0.0rc3 — test on PAPILA with the EXACT external mask score
+
+**Addresses a critical scientific gap:** before rc3, the source study used older polygon features while the Chákṣu external analysis used a distinct mask-based score. Results for the two models cannot be compared directly. The new `hyunoptic-source-check` evaluates exactly the **same frozen mask-feature scoring family** as the external evaluator on PAPILA's patient-disjoint **validation and holdout** patients.
+
+- Use **PAPILA exp1** image/contour masks for candidate scores; load **exp2 only after scoring** for retrospective vCDR disagreement labels. No development reader-2 outcomes enter the source evaluation.
+- Evaluate frozen combined score, untrained Q95 and vCDR baselines using review-budget precision/recall, AP, ROC-AUC and exploratory *patient-cluster* bootstrap intervals, clearly internal only.
+- Freeze now stores a streaming **SHA-256 of actual fundus/contour file contents**, not merely names and file lengths. Source holdout rejects altered data even if a replacement file is exactly the same size. Previously frozen model-lock JSONs need to be regenerated for the rc3 internal evaluation.
+- The `hyunoptic-evidence` gate now requires **six artifacts**, including the PAPILA `source_aggregate.json` and matching content hash/source model lock; no package can pass the metadata readiness gate without the internal source comparison.
+- Streamlit **Source Holdout** page reads the real local aggregate JSON; no synthetic performance scores are displayed by default.
+
+```powershell
+git pull
+python -m pip install -e ".[ui,dev]"
+hyunoptic-external freeze --papila-root "D:\\datasets\\PAPILA" --output "reports\\rc3\\papila_mask_lock.json"
+hyunoptic-source-check --papila-root "D:\\datasets\\PAPILA" --model-lock "reports\\rc3\\papila_mask_lock.json" --output-dir "reports\\rc3\\source_holdout"
+```
+
+Read the [rc3 source-mask holdout and content-fingerprint protocol](docs/V10_RC3_SOURCE_MASK_HOLDOUT.md) for complete source → external → evidence gate instructions.
+
+**Software tested with synthetic assets only.** Real PAPILA and Chákṣu evaluation results, clinical safety, and actual score superiority have **not** been established.
+
 ## v1.0.0rc2 — verify that real research artifacts belong to one experiment
 
 The newest release candidate does **not** claim a new scientific result. It adds an evidence-package checklist that combines five previously separate tools:
@@ -262,6 +283,7 @@ See [v0.9 five-reader sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PRO
 - [v0.9 five-reader secondary sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PROTOCOL.md)
 - [v1.0 release candidate data identity and external validation checklist](docs/V10_RELEASE_CANDIDATE_CHECKLIST.md)
 - [v1.0-rc2 research evidence-package readiness guide](docs/V10_RC2_EVIDENCE_REVIEW.md)
+- [v1.0-rc3 PAPILA source-mask holdout and evidence chain](docs/V10_RC3_SOURCE_MASK_HOLDOUT.md)
 
 ## Research dataset information
 
