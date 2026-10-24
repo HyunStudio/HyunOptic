@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.9 exploratory five-expert disagreement sensitivity (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v1.0.0rc1 reproducible research software release candidate (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -180,6 +180,27 @@ hyunoptic-external test --model-lock reports\\v08\\papila_frozen_mask_model.json
 
 See [v0.8 external integrity protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md).
 
+## v1.0 release candidate — source identity and unlabeled camera shift
+
+**This is a software release candidate, NOT a completed real-data or clinical study.**
+
+- `hyunoptic-verify-sources`: compute SHA-256 for **local PAPILA.zip / Chákṣu Test.zip without uploading anything**, and compare with checksums published by an independent open-source dataset index. A match confirms identical archive bytes to that reference, **not publisher signature, medical annotation accuracy or patient identity**.
+- `hyunoptic-external test`: on top of unchanged v0.9 primary and secondary reader-disagreement analyses, report **candidate-only camera-domain-shift diagnostics** using PAPILA development mean/SD locked *before* external testing.
+- The **External Validation** viewer can display aggregate per-camera source-standardized shift and existing descriptive disagreement rankings only when you upload a genuine local report.
+- Automated CI tests include reference-checksum streaming, source-label separation, malformed inputs and no fabricated UI results.
+
+```powershell
+git pull
+python -m pip install -e ".[ui,dev]"
+
+# Both raw archives must be acquired under the source terms in advance.
+hyunoptic-verify-sources --papila-zip "D:\\datasets\\PAPILA.zip" --chaksu-test-zip "D:\\datasets\\Chaksu\\Test.zip" --output reports\\v10\\sources.json --require-reference-match
+```
+
+For source freezing, Test preflight, test execution and the exact acceptance checklist, see **[v1.0-rc1 reproducibility guide](docs/V10_RELEASE_CANDIDATE_CHECKLIST.md)**.
+
+**Research caveat:** The actual complete PAPILA/Chákṣu archives remain unexecuted in the current working environment. Prior 107+ CI tests and the new synthetic tests prove software behavior only; they do **not** demonstrate superior clinical/measurement outcomes or scientific novelty.
+
 ## v0.9 — four-reference secondary sensitivity without label leakage
 
 Chákṣu supplies five independent specialists' disc/cup masks, but previous external analysis used only expert 1 and expert 2. v0.9 **keeps expert1↔expert2 as the unchanged primary endpoint** and adds a clearly labelled **secondary** five-reader analysis.
@@ -220,6 +241,7 @@ See [v0.9 five-reader sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PRO
 - [v0.7 PAPILA-to-Chákṣu frozen external-domain protocol](docs/V07_EXTERNAL_VALIDATION_PROTOCOL.md)
 - [v0.8 external integrity and statistical reporting protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md)
 - [v0.9 five-reader secondary sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PROTOCOL.md)
+- [v1.0 release candidate data identity and external validation checklist](docs/V10_RELEASE_CANDIDATE_CHECKLIST.md)
 
 ## Research dataset information
 
