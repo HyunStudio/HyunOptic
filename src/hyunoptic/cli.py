@@ -1,48 +1,68 @@
-"""Batch-friendly CLI. Avoids requiring Streamlit to run measurements."""
+"""Offline CLI for image-level and exploratory PAPILA batch reports."""
 from __future__ import annotations
-
 import argparse
 import json
 from pathlib import Path
-
-from .measure import compare_readers, measure_contours
+from .batch import audit_papila, write_audit
+from .measure import compare_readers
 from .papila import discover_cases, load_contours, load_image
-
+from .uncertainty import PerturbationConfig, analyze_vertical_sensitivity
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="HyunOptic research-only PAPILA reader comparison")
+    parser = argparse.ArgumentParser(description="HyunOptic research-only PAPILA audit")
     parser.add_argument("--papila-root", type=Path, required=True, help="Directory containing PAPILA_DBv1 or dataset subfolders")
     parser.add_argument("--image-id", type=str, default=None, help="Example: RET001OD")
-    parser.add_argument("--output", type=Path, default=None, help="Optional local JSON path")
+    parser.add_argument("--output", type=Path, default=None, help="Optional JSON output path")
+    parser.add_argument("--batch", action="store_true", help="Exploratory full-folder audit, NOT independent validation")
+    parser.add_argument("--csv-output", type=Path, default=None, help="Optional batch CSV report")
+    parser.add_argument("--draws", type=int, default=500)
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--shared-log-sd", type=float, default=0.02)
+    parser.add_argument("--cup-log-sd", type=float, default=0.03)
+    parser.add_argument("--disc-log-sd", type=float, default=0.03)
+    parser.add_argument("--disagreement-threshold", type=float, default=0.10)
+    parser.add_argument("--review-fraction", type=float, default=0.20)
     args = parser.parse_args(argv)
-    cases = discover_cases(args.papila_root)
-    if not cases:
-        parser.error("No complete PAPILA cases found. Verify directory and annotation files.")
-    if args.image_id:
-        matches = [case for case in cases if case.image_id == args.image_id.upper()]
+    cfg = PerturbationConfig(args.draws, args.seed, args.shared_log_sd, args.cup_log_sd, args.disc_log_sd)
+    try:
+        cfg.validate()
+        if args.batch:
+            summary, rows = audit_papila(args.papila_root, config=cfg,
+                                         disagreement_threshold=args.disagreement_threshold,
+                                         review_fraction=args.review_fraction)
+            if args.output:
+                write_audit(summary, rows, args.output, args.csv_output)
+                print(f"Saved exploratory audit: {args.output} ({len(rows)} images)")
+            else:
+                print(json.dumps({"summary": summary, "cases": rows}, ensure_ascii=False, indent=2))
+            return 0
+        cases = discover_cases(args.papila_root)
+        if not cases:
+            parser.error("No complete PAPILA cases found. Verify directory and annotation files.")
+        matches = [case for case in cases if case.image_id == args.image_id.upper()] if args.image_id else cases
         if not matches:
             parser.error("Requested image ID is not a complete discovered PAPILA case")
         case = matches[0]
-    else:
-        case = cases[0]
-    image = load_image(case)
-    d1, c1 = load_contours(case, "exp1")
-    d2, c2 = load_contours(case, "exp2")
-    result = {
-        "project": "HyunOptic", "status": "research-only", "image_id": case.image_id,
-        "patient_id": case.patient_id, "eye": case.eye,
-        "image_size": list(image.size),
-        "reader_comparison": compare_readers(d1, c1, d2, c2, image.size),
-    }
-    output = json.dumps(result, indent=2, ensure_ascii=False)
-    if args.output:
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_text(output + "\n", encoding="utf-8")
-        print(f"Wrote {args.output}")
-    else:
-        print(output)
-    return 0
-
+        image = load_image(case)
+        d1, c1 = load_contours(case, "exp1")
+        d2, c2 = load_contours(case, "exp2")
+        result = {
+            "project": "HyunOptic", "version": "0.2.0", "status": "research-only",
+            "image_id": case.image_id, "patient_id": case.patient_id, "eye": case.eye,
+            "image_size": list(image.size),
+            "candidate_only_sensitivity": analyze_vertical_sensitivity(d1, c1, cfg).to_dict(),
+            "reader_comparison": compare_readers(d1, c1, d2, c2, image.size),
+        }
+        output = json.dumps(result, indent=2, ensure_ascii=False)
+        if args.output:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(output + "\n", encoding="utf-8")
+            print(f"Wrote {args.output}")
+        else:
+            print(output)
+        return 0
+    except (ValueError, FileNotFoundError) as exc:
+        parser.error(str(exc))
 
 if __name__ == "__main__":
     raise SystemExit(main())
