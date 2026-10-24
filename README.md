@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.1 executable research prototype (2026-10-24).** The software has undergone synthetic-data unit tests. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.2 executable research prototype (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -49,12 +49,29 @@ hyunoptic --papila-root /path/to/PAPILA_DBv1 --image-id RET001OD --output report
 
 **No images or clinical dataset files are bundled or uploaded by the tool.** PAPILA format support was based on the dataset descriptor and file convention; running against the complete original archive is still required.
 
+## Added in v0.2 (implemented as research prototypes)
+
+- Reproducible candidate-only vertical-span perturbation simulation (independent/shared log-normal factors).
+- Covariance-aware delta-method error propagation and empirical simulated vCDR variance.
+- Simulated 2.5–97.5% range and Q95 absolute perturbation-induced vCDR change, **not medical confidence intervals or diagnostic probabilities**.
+- Streamlit sensitivity control panel and candidate-only sensitivity export in JSON.
+- Exploratory PAPILA batch CLI with JSON/CSV export, top-20%-review ranking, retrospective independent-reader comparison, and patient-cluster bootstrap for the **dataset-level** mean difference.
+- No claimed calibration, diagnostic accuracy, external validation, novelty or superiority.
+
+See [v0.2 uncertainty and evaluation protocol](docs/V02_UNCERTAINTY_PROTOCOL.md). The implemented perturbation model uses **assumed** correlated scale changes, not observed expert error. A proper patient-disjoint evaluation and Chákṣu external test remain future work.
+
+Example batch command:
+
+```bash
+hyunoptic --papila-root /path/to/PAPILA_DBv1 --batch --output reports/audit.json --csv-output reports/audit.csv
+```
+
 ## Planned research, not yet implemented
 
-1. Paired boundary perturbation and covariance/bootstrapped measurement sensitivity.
-2. **Reference-free quality-control** scores computed without a second reader.
+1. Validating actual PAPILA-file coverage and realistic **spatial** contour perturbations.
+2. Calibrated and comparative reference-free QC scores (v0.2 Q95 is a hypothetical candidate score, not a validated reliability prediction).
 3. Patient-disjoint internal validation and locked Chákṣu external evaluation.
-4. Detailed failure-mode, reproducibility and subgroup analyses.
+4. Failure-mode, reproducibility and subgroup analyses using real data.
 5. English research report, poster and PhD portfolio presentation.
 
 **Research question:** Can a reference-free QC score better prioritize measurements that will disagree substantially with an independent expert at a fixed expert-review budget? This remains an untested hypothesis; prior literature already addresses segmentation, CDR and uncertainty.
@@ -64,6 +81,7 @@ hyunoptic --papila-root /path/to/PAPILA_DBv1 --image-id RET001OD --output report
 - [Korean research plan](docs/PROJECT_PLAN_KO.md)
 - [English research protocol](docs/RESEARCH_PROTOCOL_EN.md)
 - [Installation, data format and methodology](docs/GETTING_STARTED.md)
+- [v0.2 sensitivity and exploratory research protocol](docs/V02_UNCERTAINTY_PROTOCOL.md)
 
 ## Research dataset information
 
