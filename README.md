@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v1.0.0rc1 reproducible research software release candidate (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v1.0.0rc2 research evidence-package readiness candidate (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -180,6 +180,25 @@ hyunoptic-external test --model-lock reports\\v08\\papila_frozen_mask_model.json
 
 See [v0.8 external integrity protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md).
 
+## v1.0.0rc2 — verify that real research artifacts belong to one experiment
+
+The newest release candidate does **not** claim a new scientific result. It adds an evidence-package checklist that combines five previously separate tools:
+
+- `hyunoptic-evidence` checks that the **official-source ZIP reference hashes, complete PAPILA inventory, untouched PAPILA development model lock, all-five-reader Chákṣu Test preflight, and external aggregate** are present and internally consistent.
+- Rejects mismatching frozen-lock SHA-256, partial-source scoring, incomplete expert masks, and incomplete Test results when run with `--strict`.
+- Labels **scientific validity** and **clinical accuracy** as *not established*, **even when all artifact checks pass**. Synthetically constructed JSONs can satisfy metadata checks, so the gate is not independent certification.
+- The Chákṣu manifest now counts **known possible repeated-patient image groups** from eligible filename patterns, without pretending all patients can be identified or building invalid independent-patient confidence intervals.
+
+```powershell
+git pull
+python -m pip install -e ".[ui,dev]"
+hyunoptic-evidence --help
+```
+
+Read [v1.0-rc2 evidence-package execution guide](docs/V10_RC2_EVIDENCE_REVIEW.md) for complete Windows commands and provenance limitations.
+
+**Not yet done:** The complete official PAPILA/Chákṣu archives have not been processed in the agent runtime. Clinical performance and any improvement over vCDR-only ranking remain unproven.
+
 ## v1.0 release candidate — source identity and unlabeled camera shift
 
 **This is a software release candidate, NOT a completed real-data or clinical study.**
@@ -242,6 +261,7 @@ See [v0.9 five-reader sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PRO
 - [v0.8 external integrity and statistical reporting protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md)
 - [v0.9 five-reader secondary sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PROTOCOL.md)
 - [v1.0 release candidate data identity and external validation checklist](docs/V10_RELEASE_CANDIDATE_CHECKLIST.md)
+- [v1.0-rc2 research evidence-package readiness guide](docs/V10_RC2_EVIDENCE_REVIEW.md)
 
 ## Research dataset information
 
