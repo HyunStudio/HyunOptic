@@ -158,15 +158,18 @@ def save_external(summary: dict, rows: list[dict], output_dir: str | Path) -> No
     layout = dict(aggregate["test_file_layout"])
     missing_details = layout.pop("missing_annotation_cases", [])
     duplicate_details = layout.pop("ambiguous_duplicate_members", [])
+    suspicious_details = layout.pop("suspicious_members", [])
     layout["n_missing_annotation_cases"] = len(missing_details)
     layout["n_duplicate_member_names"] = len(duplicate_details)
+    layout["n_suspicious_member_names"] = len(suspicious_details)
     aggregate["test_file_layout"] = layout
     (dest / "external_aggregate.json").write_text(
         json.dumps(aggregate, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
     (dest / "external_private_cases.json").write_text(
         json.dumps({"rows": rows, "failures": summary["failures"],
                     "missing_annotation_cases": missing_details,
-                    "duplicate_member_names": duplicate_details},
+                    "duplicate_member_names": duplicate_details,
+                    "suspicious_member_names": suspicious_details},
                    indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
     lines = [
         "# HyunOptic — Chaksu Test external-domain consistency analysis",
