@@ -54,3 +54,12 @@ def test_explicit_partial_generates_fingerprinted_study(tmp_path):
     body = json.loads((output / "study.json").read_text())
     assert body["summary"]["not_external_validation"] is True
     assert "clinical" in report["note"]
+
+def test_run_prevents_overwriting_previous_research_output(tmp_path):
+    root = make_fake_papila(tmp_path)
+    target = tmp_path / "existing_report"
+    target.mkdir()
+    (target / "study.json").write_text("previous output")
+    with pytest.raises(FileExistsError, match="NEW output directory"):
+        reproduce(root, target, allow_partial=True, draws=50, bootstrap_draws=100)
+    assert (target / "study.json").read_text() == "previous output"
