@@ -116,11 +116,20 @@ def save_external(summary: dict, rows: list[dict], output_dir: str | Path) -> No
         raise FileExistsError("Refusing to overwrite prior external research results")
     dest.mkdir(parents=True, exist_ok=True)
     # Keep case-level results local/private, not GitHub Actions artifacts.
+    # Do not leak per-image identifiers through the "aggregate" manifest.
+    aggregate = {k: v for k, v in summary.items() if k != "failures"}
+    layout = dict(aggregate["test_file_layout"])
+    missing_details = layout.pop("missing_annotation_cases", [])
+    duplicate_details = layout.pop("ambiguous_duplicate_members", [])
+    layout["n_missing_annotation_cases"] = len(missing_details)
+    layout["n_duplicate_member_names"] = len(duplicate_details)
+    aggregate["test_file_layout"] = layout
     (dest / "external_aggregate.json").write_text(
-        json.dumps({k: v for k, v in summary.items() if k != "failures"},
-                   indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
+        json.dumps(aggregate, indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
     (dest / "external_private_cases.json").write_text(
-        json.dumps({"rows": rows, "failures": summary["failures"]},
+        json.dumps({"rows": rows, "failures": summary["failures"],
+                    "missing_annotation_cases": missing_details,
+                    "duplicate_member_names": duplicate_details},
                    indent=2, ensure_ascii=False, allow_nan=False) + "\n", encoding="utf-8")
     lines = [
         "# HyunOptic — Chaksu Test external-domain consistency analysis",
