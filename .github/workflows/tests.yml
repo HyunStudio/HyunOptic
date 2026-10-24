@@ -25,4 +25,5 @@ jobs:
       - run: hyunoptic-external test --help
       - run: hyunoptic-chaksu-audit --help
       - run: hyunoptic-verify-sources --help
+      - run: hyunoptic-evidence --help
       - run: pytest -q
