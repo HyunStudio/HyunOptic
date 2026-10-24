@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.7 cross-dataset external-domain research framework (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.8 external Test-archive integrity and cautious statistical reporting (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -158,6 +158,28 @@ streamlit run app.py
 
 Read [v0.7 frozen external-domain study protocol](docs/V07_EXTERNAL_VALIDATION_PROTOCOL.md) for design, assumptions, access terms, camera stratification and important limitations.
 
+## v0.8 — all-five-reader ZIP preflight and descriptive score comparison
+
+The official Chákṣu Test archive includes 336 images (Bosch 41, Forus 31, Remidio 264) and independent optic disc/cup masks from five experts. A complete *filename count* alone cannot guarantee that all ten masks for each image are decodable. v0.8 adds a real-payload **preflight requiring all five readers** before any full external-domain evaluation is accepted.
+
+- `hyunoptic-chaksu-audit` scans every selected original Test image, all ten expert masks, image-to-mask resolution agreement, nonempty binary structure, cup/disc geometry, published camera dimensions, and suspicious ZIP entries — with no full extraction.
+- Handles archive name aliases `Test`, `Test set`, `Test_set`, and `Remidio`/`Remedio`.
+- Reports aggregate numbers in `audit_aggregate.json` and locally restricted failure identifiers in `audit_private_errors.json`.
+- Unqualified external evaluation rechecks the all-five-reader integrity gate. `--allow-partial` flags a result as exploratory/unverified.
+- Frozen combined-score performance is compared with vCDR-only baseline using same-case **descriptive deltas** in precision, recall, AP and ROC-AUC. No p-value, independence assumption or clinical accuracy claim is made.
+
+```powershell
+git pull
+python -m pip install -e ".[ui,dev]"
+hyunoptic-chaksu-audit --chaksu-test-zip "D:\\datasets\\Chaksu\\Test.zip" --output-dir reports\\v08\\audit --strict
+hyunoptic-external freeze --papila-root "D:\\datasets\\PAPILA" --output reports\\v08\\papila_frozen_mask_model.json
+hyunoptic-external test --model-lock reports\\v08\\papila_frozen_mask_model.json --chaksu-test-zip "D:\\datasets\\Chaksu\\Test.zip" --output-dir reports\\v08\\external
+```
+
+**No original full PAPILA/Chákṣu performance result has been obtained in this release.** The implemented compatibility and statistical-reporting checks were tested using synthetic data, not a real clinical cohort.
+
+See [v0.8 external integrity protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md).
+
 ## Planned research, not yet implemented
 
 1. Running and verifying full PAPILA-file compatibility and reporting predeclared internal outcomes without holdout tuning.
@@ -179,6 +201,7 @@ Read [v0.7 frozen external-domain study protocol](docs/V07_EXTERNAL_VALIDATION_P
 - [v0.5 reproducible official dataset run](docs/V05_REPRODUCIBLE_REAL_DATA_RUN.md)
 - [v0.6 reader-role robustness and measurement agreement](docs/V06_READER_ROLE_ROBUSTNESS.md)
 - [v0.7 PAPILA-to-Chákṣu frozen external-domain protocol](docs/V07_EXTERNAL_VALIDATION_PROTOCOL.md)
+- [v0.8 external integrity and statistical reporting protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md)
 
 ## Research dataset information
 
