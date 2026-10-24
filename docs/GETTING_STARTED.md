@@ -56,3 +56,15 @@ PAPILA expert contour files must be whitespace-delimited (x,y) coordinates in **
 - Different contour rasterization conventions can change pixel-level results; use one convention for all baselines and document any comparisons.
 - The full PAPILA archive was not bundled with this release. Run the application against your lawful local download to confirm dataset-wide compatibility.
 - Next phase: boundary perturbation analysis and leak-proof reference-free QC assessment with patient-group splits and external evaluation.
+
+## HyunOptic v0.2 — Candidate-only sensitivity
+
+The Streamlit sidebar provides a Monte Carlo **geometry sensitivity** experiment with configurable shared and independent log-normal perturbations. The simulated 2.5–97.5% range is **not a clinical confidence interval**; the 95th-percentile absolute vCDR change is **not a probability that an annotation is wrong**.
+
+The single-case CLI JSON now includes a `candidate_only_sensitivity` object. For an **exploratory retrospective** batch audit (not an independent external validation), run:
+
+```powershell
+hyunoptic --papila-root "D:\\datasets\\PAPILA_DBv1" --batch --output reports\\papila_audit.json --csv-output reports\\papila_audit.csv
+```
+
+For the batch, candidate scores are computed from `exp1` only and later compared with independent `exp2` results. A patient-group bootstrap estimates a **dataset-level** mean difference rather than treating two eyes as independent people. No novel reliability performance, patient-disjoint validation, external testing or clinical usefulness has been established. See the [v0.2 method limitations](V02_UNCERTAINTY_PROTOCOL.md).
