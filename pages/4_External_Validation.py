@@ -15,8 +15,8 @@ if uploaded is None:
 
 try:
     summary = json.load(uploaded)
-    if summary.get("project") != "HyunOptic" or summary.get("version") not in ("0.7.0", "0.8.0", "0.9.0"):
-        raise ValueError("Expected a HyunOptic v0.7–v0.9 external report")
+    if summary.get("project") != "HyunOptic" or summary.get("version") not in ("0.7.0", "0.8.0", "0.9.0", "1.0.0rc1"):
+        raise ValueError("Expected a HyunOptic v0.7–v1.0rc1 external report")
     if summary.get("reference_label", "").startswith("absolute expert1") is not True:
         raise ValueError("Unexpected research endpoint")
     groups = summary["results"]
@@ -55,7 +55,7 @@ for camera, group in groups.items():
 st.subheader("Fixed protocol: Overall and by camera")
 st.dataframe(data, use_container_width=True, hide_index=True)
 st.caption("AP and ROC AUC refer only to expert1–expert2 vCDR disagreement, not diagnostic outcomes.")
-if summary.get("version") in ("0.8.0", "0.9.0"):
+if summary.get("version") in ("0.8.0", "0.9.0", "1.0.0rc1"):
     st.subheader("Descriptive difference from vCDR-only ranking")
     st.caption("Paired image-level descriptive comparison ONLY; no patient-independent statistical inference.")
     for camera, group in groups.items():
@@ -66,7 +66,7 @@ with st.expander("Method limitations"):
     for issue in summary.get("limitations", []):
         st.write("- " + issue)
 
-if summary.get("version") == "0.9.0":
+if summary.get("version") in ("0.9.0", "1.0.0rc1"):
     st.divider()
     st.subheader("Secondary: Five-expert measurement disagreement")
     st.info(
