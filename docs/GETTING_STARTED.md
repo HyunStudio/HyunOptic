@@ -68,3 +68,17 @@ hyunoptic --papila-root "D:\\datasets\\PAPILA_DBv1" --batch --output reports\\pa
 ```
 
 For the batch, candidate scores are computed from `exp1` only and later compared with independent `exp2` results. A patient-group bootstrap estimates a **dataset-level** mean difference rather than treating two eyes as independent people. No novel reliability performance, patient-disjoint validation, external testing or clinical usefulness has been established. See the [v0.2 method limitations](V02_UNCERTAINTY_PROTOCOL.md).
+
+## v0.3 — Patient-disjoint research benchmark and results viewer
+
+After downloading and extracting the public PAPILA archive to your **local computer**, run:
+
+```powershell
+hyunoptic-study --papila-root "D:\\datasets\\PAPILA_DBv1" --output reports\\papila_v03.json --csv-output reports\\papila_v03.csv
+```
+
+The command computes **first-reader-only** contour/edge features before comparing against the independent second reader. It assigns patients, not individual eyes, to development (60%), validation (20%) and internal holdout (20%). It calculates precision/recall at a fixed review budget plus paired patient-bootstrap intervals; the resulting JSON/CSV reports contain study-derived metrics rather than fabricated scores.
+
+Launch `streamlit run app.py` and select **Study Results** from the sidebar navigation. Upload the resulting local `reports/papila_v03.json` to inspect evaluation results in a read-only dashboard. Without a real run and report, the dashboard displays no performance metrics.
+
+The PAPILA archive is approximately 563 MB, and is **not bundled** in this repository. Confirm the license, file layout and complete case count locally. See [v0.3 protocol](V03_PATIENT_SPLIT_PROTOCOL.md). An internal patient-disjoint holdout is not an external clinical or camera-site validation.
