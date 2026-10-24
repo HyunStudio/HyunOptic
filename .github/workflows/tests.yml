@@ -23,4 +23,5 @@ jobs:
       - run: hyunoptic-external --help
       - run: hyunoptic-external freeze --help
       - run: hyunoptic-external test --help
+      - run: hyunoptic-chaksu-audit --help
       - run: pytest -q
