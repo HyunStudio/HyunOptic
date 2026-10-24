@@ -265,7 +265,7 @@ def save_external(summary: dict, rows: list[dict], output_dir: str | Path) -> No
                   "",
                   "| Camera | n images | 2-of-4 high disagreement | Score | Precision@budget | AP |",
                   "|---|---:|---:|---|---:|---:|"])
-    secondary = summary["secondary_five_reader_results"]
+    secondary = summary.get("secondary_five_reader_results", {})
     for camera, result in secondary.items():
         if result.get("missing"):
             continue
