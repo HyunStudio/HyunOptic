@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hyunoptic"
-version = "0.6.0"
+version = "0.7.0"
 description = "Research-only optic disc/cup measurement and validation prototype"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -22,6 +22,7 @@ hyunoptic-inventory = "hyunoptic.inventory_cli:main"
 hyunoptic-download = "hyunoptic.acquisition_cli:main"
 hyunoptic-reproduce = "hyunoptic.repro:main"
 hyunoptic-reader-check = "hyunoptic.reader_cli:main"
+hyunoptic-external = "hyunoptic.external_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
