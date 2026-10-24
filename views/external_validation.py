@@ -5,13 +5,14 @@ import pandas as pd
 import streamlit as st
 
 from hyunoptic.ui import charts
-from hyunoptic.ui.components import disclaimer, empty, fmt, kpi, kpi_row, page_title, score_legend, section, table
+from hyunoptic.ui.components import badge, disclaimer, empty, fmt, kpi, kpi_row, page_title, score_legend, section, table
 from hyunoptic.ui.results import METRICS, partitions
 from hyunoptic.ui.state import active_run, load_json_upload, partial_banner
 from hyunoptic.ui.workspace import run_from_uploads
 
 page_title("External Validation",
-           "The PAPILA-frozen score applied unchanged to the Chákṣu Test set and its three cameras.")
+           "The PAPILA-frozen score applied unchanged to the Chákṣu Test set and its three cameras.",
+           [badge("Candidate-QC study", "neutral")])
 run = active_run()
 if run is None or run.external is None:
     empty("No external results",

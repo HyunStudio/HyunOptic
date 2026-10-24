@@ -29,6 +29,7 @@ class Workspace:
     papila_zip: str = ""
     chaksu_zip: str = ""
     reports_dir: str = "reports"
+    models_dir: str = "models"
     seed: int = 42
     draws: int = 500
     bootstrap_draws: int = 1000

@@ -1,14 +1,12 @@
 """Image review workspace shared by the Overview and Image Review pages."""
 from __future__ import annotations
 
-from html import escape
-
 import streamlit as st
 
 from .. import __version__
 from ..mask_features import apply_mask_score, mask_features
 from ..uncertainty import PerturbationConfig
-from .components import badge, fmt, gauge, html, kv, section, stat
+from .components import badge, fmt, gauge, html, kv, line_legend, section, stat
 from .images import SYNTHETIC, adjust, case_metrics, crop_to_disc, render_overlay
 from .state import _mtime, active_run, available_datasets, case_data, case_thumb, cases, dataset_location
 from .theme import EXPERT_COLORS
@@ -124,13 +122,6 @@ def _adjustments(prefix: str) -> tuple[int, int]:
 
     st.button("Reset", icon=":material/restart_alt:", key=f"{prefix}_reset", on_click=reset)
     return bri, con
-
-
-def _legend(items: list[tuple[str, str, str]]) -> str:
-    cls = {"solid": "", "dashed": "dash", "dotted": "dot"}
-    return '<div class="hz-legend">' + "".join(
-        f'<span style="color:{c}"><i class="{cls[s]}"></i><span style="color:#3B4A5E">'
-        f"{escape(label)} · {s}</span></span>" for label, c, s in items) + "</div>"
 
 
 def _summary(prefix: str, m: dict, dataset: str) -> None:
@@ -250,7 +241,7 @@ def review_workspace(prefix: str, *, default_mode: str, compact: bool) -> None:
                 left.image(base, caption=f"Original image — {title}", width="stretch")
                 right.image(overlay, caption=("Expert comparison overlay" if mode == "Expert comparison"
                                               else "Annotation overlay"), width="stretch")
-            html(_legend(legend))
+            html(line_legend(legend))
         with st.container(border=True):
             _summary(prefix, metrics, dataset)
 

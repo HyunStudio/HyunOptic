@@ -22,3 +22,5 @@ reports/
 # Local workspace settings and history
 .hyunoptic/
 demo_data/
+# Trained model bundles stay local (weights are not published)
+models/

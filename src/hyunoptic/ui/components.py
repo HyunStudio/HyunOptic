@@ -143,3 +143,11 @@ def score_legend(scores: list[str]) -> None:
     html('<div class="hz-legend">' + "".join(
         f'<span><b style="display:inline-block;width:.8rem;height:.8rem;border-radius:3px;'
         f'background:{SCORE_COLORS[s]}"></b>{escape(SCORE_LABELS[s])}</span>' for s in scores) + "</div>")
+
+
+def line_legend(items: list[tuple[str, str, str]]) -> str:
+    """Legend of (label, colour, line style) — style is written out, never colour alone."""
+    cls = {"solid": "", "dashed": "dash", "dotted": "dot"}
+    return '<div class="hz-legend">' + "".join(
+        f'<span style="color:{c}"><i class="{cls[s]}"></i><span style="color:#3B4A5E">'
+        f"{escape(label)} · {s}</span></span>" for label, c, s in items) + "</div>"

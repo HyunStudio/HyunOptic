@@ -16,6 +16,11 @@ SCORE_LABELS = {
     "mask_q95": "Mask Q95 (negative control)",
 }
 DATASET_COLORS = {"PAPILA": "#6250d6", "Chákṣu": "#eda100"}
+# Structures in model-experiment charts (validated pair, distinct from the slots above).
+STRUCTURE_COLORS = {"Disc": "#008300", "Cup": "#e87ba4"}
+# Model prediction overlay on images: model = cyan/magenta, solid disc + dashed cup;
+# experts are drawn dotted in their own colours, so model and humans never share a style.
+MODEL_DISC, MODEL_CUP = "#00E5FF", "#FF4FD8"
 
 # Overlay colours (image annotations, not charts).
 DISC_COLOR = "#22C55E"

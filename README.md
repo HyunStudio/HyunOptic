@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v1.1.0 software release (2026-10-24).** A multi-page research workspace app now covers dataset integrity, image review, reliability, source-holdout and external-validation results, reports and evidence export. The full research chain — PAPILA inventory, development-only model freeze, patient-disjoint source holdout, Chákṣu Test five-reader preflight, external analysis, evidence gate and HTML report — runs with one command. All code is tested with synthetic data in GitHub Actions; **the complete real PAPILA/Chákṣu study has not yet been executed**, so no real-data result exists in this repository. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v1.2.0 software release (2026-10-25).** v1.2.0 adds an optional PyTorch optic disc/cup segmentation pipeline (tested on synthetic data only) to the multi-page research workspace app, which covers dataset integrity, image review, reliability, source-holdout and external-validation results, reports and evidence export. The full research chain — PAPILA inventory, development-only model freeze, patient-disjoint source holdout, Chákṣu Test five-reader preflight, external analysis, evidence gate and HTML report — runs with one command. All code is tested with synthetic data in GitHub Actions; **the complete real PAPILA/Chákṣu study has not yet been executed**, so no real-data result exists in this repository. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -23,6 +23,17 @@ streamlit run app.py
 With no dataset connected, the workspace shows a **synthetic geometry demo** that uses no patient images.
 
 Windows PowerShell instructions, PAPILA file layout and CLI examples: **[Getting Started](docs/GETTING_STARTED.md)**.
+
+## v1.2.0 — experimental PyTorch optic disc/cup segmentation
+
+Implements the [PyTorch segmentation design](docs/superpowers/specs/2026-10-25-pytorch-optic-segmentation-design.md) as an optional extra (`pip install -e ".[ml]"`). The rest of HyunOptic never imports PyTorch.
+
+- `hyunoptic-seg train`: a small U-Net trained with an explicit PyTorch loop on PAPILA **development** patients using **expert 1** masks only; the checkpoint is selected on **validation** patients. Writes an immutable bundle (weights, config, split manifest, training history), with SHA-256 recorded for every file.
+- `hyunoptic-seg evaluate`: the internal PAPILA **holdout is evaluated once**, giving per-image disc/cup Dice, vCDR error from the shared measurement code, the share of errors above 0.10, expert-2 sensitivity, expert-1-vs-2 context and patient-grouped intervals. Chákṣu results are always **exploratory**.
+- App: a **Model Inference** page (image-only prediction from a verified local bundle, expert comparison in a separate panel that is off by default, provenance, and guarded export) and a read-only **Model Experiment** page (training curves and evaluator reports). The sidebar now groups Measurements, Model (experimental) and Research reports, and the existing QC pages are badged as a separate study.
+- Tested on synthetic fixtures only (CPU CI job). **No real-data model has been trained; real-data results are pending.** This is not CT, 3-D or clinical work.
+
+Commands and the design-to-code map: [runbook §8](docs/V10_RUNBOOK.md#8-experimental-pytorch-segmentation).
 
 ## v1.1.0 — research workspace app
 
@@ -123,7 +134,7 @@ Respect the individual dataset license, consent and redistribution restrictions.
 
 ## Technology
 
-Python · NumPy · Pillow · Streamlit · pytest. Research dataset ingestion uses local files; no automatic downloads, API keys or cloud upload endpoints.
+Python · NumPy · Pillow · Streamlit · pytest · PyTorch (optional `ml` extra). Research dataset ingestion uses local files; no automatic downloads, API keys or cloud upload endpoints.
 
 ## Release history
 

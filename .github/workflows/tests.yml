@@ -30,4 +30,17 @@ jobs:
       - run: hyunoptic-pipeline --help
       - run: hyunoptic-report --help
       - run: hyunoptic-demo-data --help
+      - run: hyunoptic-seg --help
       - run: pytest -q
+  ml:
+    name: PyTorch segmentation (CPU, synthetic data only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -e '.[ui,dev]'
+      - run: hyunoptic-seg train --help
+      - run: pytest -q tests/test_seg_contract.py tests/test_seg_torch.py

@@ -9,7 +9,7 @@ import streamlit as st
 
 from .. import __version__
 from .components import html
-from .icons import LOGO, icon
+from .icons import LOGO
 from .images import SYNTHETIC, CaseRef, list_cases, load_case, thumbnail
 from .theme import inject_theme
 from .workspace import (DatasetStatus, RunData, Workspace, chaksu_status, find_runs,

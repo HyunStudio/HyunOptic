@@ -5,9 +5,9 @@ from hyunoptic.mask_features import MASK_FEATURES
 from hyunoptic.ui.components import badge, empty, fmt, hash_card, html, kpi, kpi_row, note, page_title, section, table
 from hyunoptic.ui.state import require_run, workspace
 
-page_title("Model Settings", "The frozen candidate-only scoring model. Locks are read-only by design.",
+page_title("QC Model Lock", "The frozen candidate-only QC scoring model (not the PyTorch model). Read-only by design.",
            [badge("Frozen", "info")])
-run = require_run("Model Settings")
+run = require_run("QC Model Lock")
 if run is None:
     st.stop()
 if not run.lock:

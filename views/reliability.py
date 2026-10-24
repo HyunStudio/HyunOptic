@@ -9,7 +9,7 @@ from hyunoptic.ui.state import partial_banner, require_run
 
 page_title("Reliability Analysis",
            "Do candidate-only QC scores prioritise images where two experts disagree?",
-           [badge("Research only", "info"), badge("Not diagnostic", "warn")])
+           [badge("Candidate-QC study", "neutral"), badge("Research only", "info"), badge("Not diagnostic", "warn")])
 run = require_run("Reliability Analysis")
 if run is None:
     st.stop()

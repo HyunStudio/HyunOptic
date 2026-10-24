@@ -20,7 +20,7 @@ from hyunoptic.viz import mask_outline
 APP = str(Path(__file__).resolve().parents[1] / "app.py")
 PAGES = ["overview", "image_review", "datasets", "reliability", "source_holdout", "external_validation",
          "reports", "model_settings", "evidence_check", "batch_analysis", "legacy_study_results",
-         "legacy_dataset_quality", "legacy_reader_roles"]
+         "legacy_dataset_quality", "legacy_reader_roles", "model_inference", "model_experiment"]
 
 
 @pytest.fixture(scope="module")

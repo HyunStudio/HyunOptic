@@ -11,17 +11,23 @@ from hyunoptic.ui import state  # noqa: E402  (page config must come first)
 state.init_prefs()
 
 pages = {
-    "Workspace": [
+    "Measurements & experts": [
         st.Page("views/overview.py", title="Overview", icon=":material/home:", default=True),
         st.Page("views/image_review.py", title="Image Review", icon=":material/visibility:"),
         st.Page("views/datasets.py", title="Datasets", icon=":material/database:"),
-        st.Page("views/reliability.py", title="Reliability Analysis", icon=":material/bar_chart:"),
-        st.Page("views/source_holdout.py", title="Source Holdout", icon=":material/verified_user:"),
-        st.Page("views/external_validation.py", title="External Validation", icon=":material/hub:"),
+    ],
+    "Model (experimental)": [
+        st.Page("views/model_inference.py", title="Model Inference", icon=":material/neurology:"),
+    ],
+    "Research reports": [
+        st.Page("views/reliability.py", title="Reliability (QC)", icon=":material/bar_chart:"),
+        st.Page("views/source_holdout.py", title="Source Holdout (QC)", icon=":material/verified_user:"),
+        st.Page("views/external_validation.py", title="External Validation (QC)", icon=":material/hub:"),
+        st.Page("views/model_experiment.py", title="Model Experiment", icon=":material/science:"),
         st.Page("views/reports.py", title="Reports", icon=":material/description:"),
     ],
     "Tools": [
-        st.Page("views/model_settings.py", title="Model Settings", icon=":material/tune:"),
+        st.Page("views/model_settings.py", title="QC Model Lock", icon=":material/tune:"),
         st.Page("views/evidence_check.py", title="Evidence Check", icon=":material/shield:"),
         st.Page("views/batch_analysis.py", title="Batch Analysis", icon=":material/play_arrow:"),
     ],

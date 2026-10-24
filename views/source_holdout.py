@@ -12,7 +12,8 @@ SHORT = {"combined_candidate_score": "Combined QC", "candidate_vcdr": "vCDR base
 from hyunoptic.ui.workspace import run_from_uploads
 
 page_title("PAPILA Source Holdout",
-           "The same frozen mask score evaluated on PAPILA patients never used to fit it.")
+           "The same frozen mask score evaluated on PAPILA patients never used to fit it.",
+           [badge("Candidate-QC study", "neutral")])
 run = active_run()
 if run is None or run.source is None:
     empty("No source-holdout results",

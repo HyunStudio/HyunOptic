@@ -5,7 +5,7 @@ import altair as alt
 import numpy as np
 import pandas as pd
 
-from .theme import DATASET_COLORS, SCORE_COLORS, SCORE_LABELS
+from .theme import DATASET_COLORS, SCORE_COLORS, SCORE_LABELS, STRUCTURE_COLORS
 
 INK, MUTED, GRID = "#3B4A5E", "#66768A", "#E6EBF1"
 
@@ -125,3 +125,47 @@ def feature_boxes(df: pd.DataFrame, feature: str, *, title: str, height: int = 2
                                                      range=[DATASET_COLORS[d] for d in domain])),
     )
     return _style(box, height)
+
+
+def binned_structures(hists: dict[str, dict], *, height: int = 240, title: str = "") -> alt.Chart:
+    """Pre-binned aggregate histograms (no per-image data) for Disc and Cup, side by side."""
+    rows = []
+    for structure, h in hists.items():
+        edges, counts = h["bin_edges"], h["counts"]
+        rows += [{"Structure": structure, "start": edges[i], "end": edges[i + 1], "Images": c}
+                 for i, c in enumerate(counts)]
+    data = pd.DataFrame(rows)
+    domain = list(hists)
+    bars = alt.Chart(data, title=title or alt.Undefined).mark_bar(cornerRadiusTopLeft=2, cornerRadiusTopRight=2).encode(
+        x=alt.X("start:Q", title="Dice", scale=alt.Scale(domain=[0, 1]), bin="binned"),
+        x2="end:Q",
+        y=alt.Y("Images:Q", title="Images", stack=None),
+        color=alt.Color("Structure:N", scale=alt.Scale(domain=domain, range=[STRUCTURE_COLORS[d] for d in domain])),
+        opacity=alt.value(0.75),
+        tooltip=["Structure:N", alt.Tooltip("start:Q", title="From", format=".2f"),
+                 alt.Tooltip("end:Q", title="To", format=".2f"), "Images:Q"],
+    )
+    return _style(bars, height)
+
+
+def training_curves(history: list[dict], *, height: int = 220) -> tuple[alt.Chart, alt.Chart]:
+    """Two single-axis charts: validation Dice per structure, and training loss."""
+    data = pd.DataFrame(history)
+    dice_rows = pd.concat([
+        pd.DataFrame({"epoch": data["epoch"], "Structure": "Disc", "Dice": data["val_disc_dice"]}),
+        pd.DataFrame({"epoch": data["epoch"], "Structure": "Cup", "Dice": data["val_cup_dice"]}),
+    ])
+    dice_chart = alt.Chart(dice_rows, title="Validation Dice (expert 1)").mark_line(
+        strokeWidth=2, point=alt.OverlayMarkDef(size=40)).encode(
+        x=alt.X("epoch:Q", title="Epoch", axis=alt.Axis(tickMinStep=1)),
+        y=alt.Y("Dice:Q", scale=alt.Scale(domain=[0, 1])),
+        color=alt.Color("Structure:N", scale=alt.Scale(domain=["Disc", "Cup"],
+                                                       range=[STRUCTURE_COLORS["Disc"], STRUCTURE_COLORS["Cup"]])),
+        tooltip=["epoch:Q", "Structure:N", alt.Tooltip("Dice:Q", format=".3f")],
+    )
+    loss_chart = alt.Chart(data, title="Training loss").mark_line(strokeWidth=2, color="#3B4A5E").encode(
+        x=alt.X("epoch:Q", title="Epoch", axis=alt.Axis(tickMinStep=1)),
+        y=alt.Y("train_loss:Q", title="Loss", scale=alt.Scale(zero=False)),
+        tooltip=["epoch:Q", alt.Tooltip("train_loss:Q", format=".4f")],
+    )
+    return _style(dice_chart, height), _style(loss_chart, height)

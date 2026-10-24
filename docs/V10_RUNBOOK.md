@@ -113,6 +113,40 @@ Result pages read only the selected run folder. Per-image files are used locally
 
 ---
 
+## 8. Experimental PyTorch segmentation
+
+Design: [PyTorch optic segmentation design](superpowers/specs/2026-10-25-pytorch-optic-segmentation-design.md).
+Training, splitting and evaluation are **CLI-only and offline**; the app only reads verified bundles and reports.
+
+```powershell
+python -m pip install -e ".[ui,dev,ml]"     # or install a CPU/GPU torch build first, then this
+# 1. Train on PAPILA development patients (expert 1), select the checkpoint on validation patients
+hyunoptic-seg train --papila-root "D:\datasets\PAPILA" --output models\unet_run1 --image-size 384 --epochs 40
+# 2. Evaluate the untouched internal holdout ONCE (a repeat is refused unless marked exploratory)
+hyunoptic-seg evaluate --bundle models\unet_run1 --papila-root "D:\datasets\PAPILA"
+# 3. Optional exploratory external analysis (Chákṣu was already inspected by the QC protocol)
+hyunoptic-seg evaluate --bundle models\unet_run1 --chaksu-test-zip "D:\datasets\Chaksu\Test.zip"
+# Check a bundle without loading PyTorch
+hyunoptic-seg verify --bundle models\unet_run1
+```
+
+| Design requirement | Implementation |
+|---|---|
+| Image-only inference | `seg.inference.Predictor.predict(image)` takes a PIL image only; whole-image letterbox, no optic-disc crop |
+| Patient-disjoint split, frozen with a hash | `seg.data.build_split_manifest` reuses `study.patient_splits` (same 60/20/20 as the QC study); `split_manifest.json` + SHA-256 in the bundle |
+| Expert 2 never in training/selection | Targets read `exp1` only (tested by recording every contour read); expert 2 is loaded by the evaluator after prediction |
+| Explicit training loop | `seg.train`: U-Net (`unet_small_v1`), CE + mean soft Dice (disc, rim, cup), AdamW, cosine schedule, predeclared augmentations, seeded |
+| Checkpoint by validation only | Best mean per-image (disc + cup Dice)/2 on validation; holdout untouched until `evaluate` |
+| Holdout once | `evaluation/papila_holdout/` is write-once; `--exploratory-rerun` writes a separately labelled folder |
+| Shared vCDR definition | Predicted masks go through `measure.measure_masks`, like expert masks |
+| Safe weights | `weights.pt` is a tensor `state_dict` loaded with `torch.load(weights_only=True)` after SHA-256 checks of every bundle file |
+| Patient-grouped intervals, failures counted | `evaluation.patient_cluster_bootstrap_mean` for PAPILA; failure categories reported; no intervals for Chákṣu |
+| Aggregate vs private outputs | `model_eval_aggregate.json` (no identifiers) and `model_eval_private_cases.json` (local) |
+
+**In the app:** *Model Inference* shows the empty state until PyTorch and a verified bundle exist, rejects tampered bundles visibly, predicts from the image only, labels whether the image was in this model's development/validation/holdout split, keeps the expert comparison in a separate panel that is off by default, and disables case-level export until the risk is acknowledged. *Model Experiment* shows only evaluator reports and the bundle's training history; the internal holdout is listed first and Chákṣu is always badged exploratory. Bundles trained on synthetic or partial data carry a red or amber banner everywhere.
+
+**Status:** pipeline implemented and tested on synthetic fixtures only. No model has been trained on the real PAPILA archive, so the honest description is: *PyTorch training/evaluation pipeline implemented; real-data results pending.*
+
 ## 한국어 요약
 
 - **v1.0.0**은 새 점수 방법을 추가하지 않고, v0.7–rc3에서 고정한 프로토콜 전체를 `hyunoptic-pipeline` 한 번으로 실행하도록 묶은 첫 정식 소프트웨어 릴리스입니다.
