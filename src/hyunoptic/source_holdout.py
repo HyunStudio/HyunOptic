@@ -19,6 +19,7 @@ from .measure import measure_masks, polygon_mask
 from .papila import discover_cases, load_contours, load_image
 from .ranking import ranking_metrics
 from .study import _patient_bootstrap_difference, patient_splits
+from .source_fingerprint import papila_content_sha256
 from .uncertainty import PerturbationConfig
 
 SCORE_NAMES = (
@@ -43,6 +44,17 @@ def evaluate_source(
         raise ValueError("PAPILA source files differ from those used for the frozen model")
     if not allow_partial and not inventory["matches_full_published_shape"]:
         raise ValueError("Full original PAPILA inventory is required for source validation")
+    content_hash = model.get("source_content_sha256")
+    if not content_hash:
+        raise ValueError(
+            "Frozen PAPILA model lacks source content SHA-256; regenerate lock "
+            "with the current software before source holdout analysis."
+        )
+    if papila_content_sha256(root) != content_hash:
+        raise ValueError(
+            "PAPILA source CONTENT differs from the frozen model; "
+            "a same-sized change is not accepted."
+        )
     cases = discover_cases(root)
     assignments = patient_splits([c.patient_id for c in cases], seed=model["split_seed"])
     groups = {
@@ -146,6 +158,7 @@ def evaluate_source(
         "candidate_expert": "exp1", "reference_expert": "exp2",
         "source_lock_sha256": payload["sha256"],
         "source_inventory_fingerprint": model["source_metadata_fingerprint"],
+        "source_content_sha256": content_hash,
         "model_scoring_method": model["method"],
         "source_complete_inventory": inventory["matches_full_published_shape"],
         "source_partial": model["source_is_partial"],
