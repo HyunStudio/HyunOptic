@@ -65,7 +65,7 @@ def test_second_reader_has_no_influence_on_candidate_scoring(tmp_path):
     before, before_rows = evaluate_source(root, first_lock, allow_partial=True, bootstrap_draws=100)
     target = next(r["image_id"] for r in before_rows if r["split"]=="holdout")
     annotation = root / "ExpertsSegmentations" / "Contours" / f"{target}_cup_exp2.txt"
-    np.savetxt(annotation, rectangle(12,11,34,35))
+    np.savetxt(annotation, rectangle(12,16,34,23))
     # Changing a reference contour invalidates the raw-data fingerprint;
     # refreeze to compare candidate-only score invariance fairly.
     with pytest.raises(ValueError, match="source CONTENT differs"):
