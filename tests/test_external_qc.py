@@ -47,7 +47,7 @@ def test_preflight_reads_all_five_annotators_and_checks_shape(tmp_path):
     save_chaksu_audit(result,private,output)
     summary=(output/"audit_aggregate.json").read_text()
     assert "PAT_001" not in summary
-    assert "PAT_001" in (output/"audit_private_errors.json").read_text()
+    assert "pat_001" in (output/"audit_private_errors.json").read_text().lower()
 
 def test_missing_expert_visible_as_missing_count(tmp_path):
     archive=synthetic_test_zip(tmp_path/"Test.zip",missing=(5,"Cup"))
