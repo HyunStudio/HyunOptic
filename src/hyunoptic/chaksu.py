@@ -22,6 +22,13 @@ BINARY = "3.0_doctors_annotations_binary_od_oc"
 EXPERTS = tuple(f"expert {i}" for i in range(1, 6))
 CAMERAS = ("bosch", "forus", "remidio")
 EXPECTED_TEST = {"bosch": 41, "forus": 31, "remidio": 264}
+# Some published descriptions say "Test set", some archives use "Test".
+TEST_ROOTS = {"test", "test set", "test_set"}
+EXPECTED_RESOLUTION = {
+    "bosch": {(1920, 1440)},
+    "forus": {(2048, 1536)},
+    "remidio": {(2448, 3264), (3264, 2448)},
+}
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".tif", ".tiff"}
 MASK_SUFFIXES = {".tif", ".tiff", ".png"}
 MAX_SINGLE_FILE = 160_000_000
@@ -52,18 +59,22 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
         raise ValueError("Expected a locally obtained official Chaksu Test.zip")
     images, masks = {}, {}
     duplicate = []
+    sizes = []
+    suspicious = []
     with zipfile.ZipFile(path) as zf:
         entries = [v for v in zf.infolist() if not v.is_dir()]
         for entry in entries:
+            if entry.flag_bits & 0x1 or entry.file_size > MAX_SINGLE_FILE:
+                suspicious.append({"member": entry.filename, "reason": "encrypted or oversize"})
+                continue
+            sizes.append((entry.filename, int(entry.file_size)))
             parts = PurePosixPath(entry.filename.replace("\\", "/")).parts
             lowered = [s.lower() for s in parts]
-            if entry.file_size > MAX_SINGLE_FILE:
-                continue
             if ORIGINAL in lowered:
                 i = lowered.index(ORIGINAL)
                 if len(parts) <= i + 2 or PurePosixPath(parts[-1]).suffix.lower() not in IMAGE_SUFFIXES:
                     continue
-                if "test" not in lowered[:i]:
+                if not any(part in TEST_ROOTS for part in lowered[:i]):
                     continue  # never use Train as external holdout
                 cam = _camera(parts[i + 1])
                 if cam not in CAMERAS:
@@ -76,7 +87,7 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
                 i = lowered.index(BINARY)
                 if len(parts) <= i + 4 or PurePosixPath(parts[-1]).suffix.lower() not in MASK_SUFFIXES:
                     continue
-                if "test" not in lowered[:i]:
+                if not any(part in TEST_ROOTS for part in lowered[:i]):
                     continue
                 expert = lowered[i + 1]
                 cam = _camera(parts[i + 2])
@@ -99,9 +110,10 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
     camera_counts = {cam: sum(c.camera == cam for c in cases) for cam in CAMERAS}
     fingerprint = hashlib.sha256(json.dumps({
         "images": sorted(images.items()), "masks": sorted(masks.items()),
+        "entry_names_and_sizes": sorted(sizes),
     }, sort_keys=True).encode()).hexdigest()
     complete = (camera_counts == EXPECTED_TEST and len(images) == 336
-                and len(cases) == 336 and not duplicate)
+                and len(cases) == 336 and not duplicate and not suspicious)
     manifest = {
         "dataset": "Chaksu", "study_partition": "published Test only",
         "source": "local ZIP; no upload of eye images",
@@ -111,8 +123,10 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
         "readable_case_counts_by_camera": camera_counts,
         "missing_annotation_cases": missing,
         "ambiguous_duplicate_members": duplicate,
+        "suspicious_members": suspicious,
         "matches_published_test_file_layout": complete,
         "metadata_path_fingerprint_only": fingerprint,
+        "fingerprint_uses_entry_names_and_uncompressed_sizes": True,
         "note": "File count and names do not establish correct mask semantics or external validity.",
     }
     return cases, manifest
