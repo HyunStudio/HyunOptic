@@ -1,0 +1,21 @@
+# Private or third-party datasets (never commit patient imagery)
+data/
+PAPILA_DBv1/
+FundusImages/
+ExpertsSegmentations/
+ClinicalData/
+*.zip
+*.7z
+*.tif
+*.tiff
+# Local outputs and environments
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+reports/
+.streamlit/secrets.toml
+.DS_Store
