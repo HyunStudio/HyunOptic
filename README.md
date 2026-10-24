@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.8 external Test-archive integrity and cautious statistical reporting (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.9 exploratory five-expert disagreement sensitivity (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -180,6 +180,23 @@ hyunoptic-external test --model-lock reports\\v08\\papila_frozen_mask_model.json
 
 See [v0.8 external integrity protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md).
 
+## v0.9 — four-reference secondary sensitivity without label leakage
+
+Chákṣu supplies five independent specialists' disc/cup masks, but previous external analysis used only expert 1 and expert 2. v0.9 **keeps expert1↔expert2 as the unchanged primary endpoint** and adds a clearly labelled **secondary** five-reader analysis.
+
+- Compute the frozen candidate quality score using only the fundus image + expert 1 masks. The four independent readers' masks are NOT feature inputs.
+- **After candidate scoring**, calculate vCDR from expert 2–5 masks, four expert1-to-peer differences, and all 10 unordered expert pairs.
+- Secondary research flag: expert 1's vCDR differs by more than **0.10** from **at least 2 of 4** other experts. This is **not medical consensus, disease truth or an accepted clinical threshold**.
+- Evaluate both primary and secondary disagreement rankings under the same previously frozen review budget, with camera-specific summary tables and null/undefined metrics shown honestly.
+- Read-only **External Validation** Streamlit dashboard displays secondary outcomes only when supplied with an actual v0.9 `external_aggregate.json` report.
+- No outcome-based model retraining, no independent-patient claim on unidentified Chákṣu images, and no clinical classification.
+
+Use the same `hyunoptic-external freeze` and `hyunoptic-external test` commands described above, with new output paths (e.g. `reports/v09/`). The generated `external_summary.md` documents both primary and secondary analyses. Private case-level outputs remain local.
+
+**No original full PAPILA/Chákṣu study result has been generated.** Only synthetic-image/ZIP software testing has been completed; numerical research benefit is unknown.
+
+See [v0.9 five-reader sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PROTOCOL.md).
+
 ## Planned research, not yet implemented
 
 1. Running and verifying full PAPILA-file compatibility and reporting predeclared internal outcomes without holdout tuning.
@@ -202,6 +219,7 @@ See [v0.8 external integrity protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md).
 - [v0.6 reader-role robustness and measurement agreement](docs/V06_READER_ROLE_ROBUSTNESS.md)
 - [v0.7 PAPILA-to-Chákṣu frozen external-domain protocol](docs/V07_EXTERNAL_VALIDATION_PROTOCOL.md)
 - [v0.8 external integrity and statistical reporting protocol](docs/V08_EXTERNAL_INTEGRITY_PROTOCOL.md)
+- [v0.9 five-reader secondary sensitivity protocol](docs/V09_FIVE_READER_SENSITIVITY_PROTOCOL.md)
 
 ## Research dataset information
 
