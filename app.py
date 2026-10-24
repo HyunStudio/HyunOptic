@@ -12,10 +12,11 @@ import streamlit as st
 from hyunoptic.measure import compare_readers, measure_contours
 from hyunoptic.papila import discover_cases, load_contours, load_image
 from hyunoptic.viz import optic_crop, overlay_contours
+from hyunoptic.uncertainty import PerturbationConfig, analyze_vertical_sensitivity
 
 st.set_page_config(page_title="HyunOptic — Research Prototype", page_icon="🔬", layout="wide")
 st.title("HyunOptic")
-st.caption("Quantitative optic nerve measurement · Research-only prototype v0.1")
+st.caption("Quantitative optic nerve measurement · Research-only prototype v0.2")
 st.warning("Research/education only — NOT a glaucoma diagnostic tool or a medical device.")
 
 
@@ -50,6 +51,14 @@ with st.sidebar:
         st.caption("Dataset remains on your computer; this app does not upload it.")
     selected_expert = st.selectbox("Overlay annotation", ["exp1", "exp2"])
     zoom = st.toggle("Crop around optic disc", value=True)
+    st.divider()
+    st.subheader("Sensitivity experiment")
+    st.caption("Parameters are hypothetical perturbations, NOT calibrated clinical uncertainty.")
+    draws = st.slider("Monte Carlo draws", min_value=100, max_value=3000, value=500, step=100)
+    shared_sd = st.slider("Shared boundary log-SD", min_value=0.0, max_value=0.15, value=0.02, step=0.005)
+    cup_sd = st.slider("Cup-specific boundary log-SD", min_value=0.0, max_value=0.15, value=0.03, step=0.005)
+    disc_sd = st.slider("Disc-specific boundary log-SD", min_value=0.0, max_value=0.15, value=0.03, step=0.005)
+    seed = st.number_input("Random seed", min_value=0, max_value=999999, value=42, step=1)
 
 if data_source == "Synthetic demo":
     img, pair = example()
@@ -77,6 +86,11 @@ try:
     view = overlay_contours(img, selected_disc, selected_cup, line_width=max(2, img.width // 500))
     if zoom:
         view = optic_crop(view, selected_disc)
+    sensitivity = analyze_vertical_sensitivity(
+        selected_disc, selected_cup,
+        PerturbationConfig(draws=int(draws), seed=int(seed), shared_log_sd=float(shared_sd),
+                           cup_log_sd=float(cup_sd), disc_log_sd=float(disc_sd)),
+    )
 except ValueError as exc:
     st.error(f"Annotation geometry error: {exc}")
     st.stop()
@@ -106,8 +120,31 @@ with right:
             st.warning(f"{expert}: {warning}")
     st.caption("This retrospective agreement is NOT a reference-free uncertainty score or diagnostic result.")
 
-payload = {"project": "HyunOptic", "status": "research-only", "image_id": case_name,
-           "image_size": list(size), "reader_comparison": result}
+st.divider()
+st.subheader("Candidate-only measurement sensitivity (v0.2)")
+st.info("Reference-free: only the SELECTED reader's cup/disc contours are used here. "
+        "This is a geometric sensitivity experiment, NOT a probability of glaucoma, "
+        "calibrated reader error, or an individual confidence interval.")
+sc1, sc2, sc3 = st.columns(3)
+sc1.metric("Q95 |ΔvCDR| under perturbation", f"{sensitivity.q95_absolute_vcdr_change:.4f}")
+sc2.metric("Simulated vCDR SD", f"{sensitivity.simulated_sd_vcdr:.4f}")
+sc3.metric("Cov(cup, disc) [px²]", f"{sensitivity.covariance_cup_disc_vertical:.3f}")
+st.write("**2.5–97.5% simulated sensitivity range:** "
+         f"{sensitivity.simulated_percentile_2_5:.4f} – {sensitivity.simulated_percentile_97_5:.4f}")
+with st.expander("Covariance-aware error propagation and assumptions"):
+    st.write({
+        "continuous-coordinate nominal vCDR": round(sensitivity.nominal_continuous_vcdr, 6),
+        "empirical variance of simulated ratios": round(sensitivity.empirical_variance_vcdr, 9),
+        "delta-method variance (with covariance)": round(sensitivity.delta_method_variance_vcdr, 9),
+        "delta-method variance (without covariance)": round(sensitivity.delta_method_variance_without_covariance, 9),
+        "implied correlation": sensitivity.implied_cup_disc_correlation,
+    })
+    st.caption("The continuous-coordinate sensitivity ratio can differ from pixel-mask CDR above. "
+               "Covariance is induced by ASSUMED shared perturbations; it is not estimated from experts. "
+               "Percentiles are NOT clinical 95% confidence intervals.")
+payload = {"project": "HyunOptic", "version": "0.2.0", "status": "research-only", "image_id": case_name,
+           "image_size": list(size), "reader_comparison": result,
+           "candidate_only_sensitivity": sensitivity.to_dict()}
 st.download_button("Download measurement JSON", data=json.dumps(payload, indent=2),
                    file_name=f"hyunoptic_{case_name}.json", mime="application/json")
 byte_buf = io.BytesIO()
