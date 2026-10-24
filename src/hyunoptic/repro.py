@@ -7,6 +7,7 @@ import hashlib
 import json
 from pathlib import Path
 from .inventory import inspect_papila, save_inventory
+from .research_report import write_research_summary
 from .study import run_study, save_study
 from .uncertainty import PerturbationConfig
 
@@ -44,6 +45,10 @@ def reproduce(
         "n_skipped_by_study": summary["n_skipped"],
         "note": "Not external validation, clinical diagnosis, prospective evidence, or a guarantee of novelty.",
     }
+    write_research_summary(result, summary, folder / "research_summary.md")
+    result["research_summary_md_sha256"] = hashlib.sha256(
+        (folder / "research_summary.md").read_bytes()
+    ).hexdigest()
     (folder / "run_manifest.json").write_text(
         json.dumps(result, indent=2) + "\n", encoding="utf-8"
     )
