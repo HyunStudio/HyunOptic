@@ -10,6 +10,7 @@ import zipfile
 from pathlib import Path
 import numpy as np
 from .chaksu import EXPECTED_TEST, load_test_case, scan_test_archive
+from .external_qc import check_chaksu_archive
 from .evaluation import evaluate_at_budget
 from .freeze import load_lock
 from .mask_features import apply_mask_score, mask_features
@@ -31,6 +32,17 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
                          "no full external claim permitted")
     if not cases:
         raise ValueError("No complete Chaksu Test image/five-reader mask pairs discovered")
+    # A correct FILE COUNT is insufficient: verify all five human mask payloads
+    # before presenting a fully verified external-domain analysis. This doubles
+    # some I/O but avoids an unverified 3rd–5th reader masquerading as validated.
+    full_preflight = None
+    if not allow_partial:
+        full_preflight, _ = check_chaksu_archive(test_zip)
+        if not full_preflight["all_published_test_masks_structurally_verified"]:
+            raise ValueError(
+                "Chaksu five-reader payload preflight failed. "
+                "Run hyunoptic-chaksu-audit for private case-level diagnostics."
+            )
     cfg = PerturbationConfig(**lock["perturbation"])
     rows, failures = [], []
     with zipfile.ZipFile(test_zip) as zf:
@@ -54,7 +66,9 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
                 failures.append({"case_id": case.case_id, "error": str(exc)})
     fully_verified = (data_manifest["matches_published_test_file_layout"]
                       and len(rows) == 336 and not failures
-                      and not lock["source_is_partial"])
+                      and not lock["source_is_partial"]
+                      and full_preflight is not None
+                      and full_preflight["all_published_test_masks_structurally_verified"])
     if not fully_verified and not allow_partial:
         raise ValueError(f"External Test decoding/measurements incomplete "
                          f"({len(failures)} failures, {len(rows)}/336 usable); "
@@ -96,6 +110,7 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
         "n_failed": len(failures),
         "failures": failures,
         "full_layout_and_readability_verified": fully_verified,
+        "all_five_readers_payload_preflight_verified": bool(full_preflight and full_preflight["all_published_test_masks_structurally_verified"]),
         "partial_or_unverified_external": not fully_verified,
         "results": metrics,
         "limitations": [
@@ -104,7 +119,7 @@ def run_external_test(test_zip: str | Path, frozen_lock: str | Path,
             "No patient-identifiers exist for most Chaksu images; do NOT assume independent patients.",
             "Camera-stratified results can be low-powered and are exploratory.",
             "This uses a new, uniform mask feature family; prior PAPILA polygon-score performance is not directly comparable.",
-            "A source-lock digest is not third-party preregistration, and archive folder checks do not prove authenticity.",
+            "A source-lock digest is not third-party preregistration; mask shape checks are not proof of clinical correctness.",
             "Do not inspect these results to retune the purported frozen external scoring protocol.",
         ],
     }
