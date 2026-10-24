@@ -24,13 +24,14 @@ def _json_file(path: str | Path, label: str) -> dict:
 
 def review_evidence(
     *, sources: str | Path, papila_inventory: str | Path,
-    model_lock: str | Path, chaksu_audit: str | Path,
+    model_lock: str | Path, source_holdout: str | Path, chaksu_audit: str | Path,
     external_aggregate: str | Path,
 ) -> dict:
     """Assess provenance and cross-file consistency without reading patient rows."""
     source = _json_file(sources, "archive identity")
     inventory = _json_file(papila_inventory, "PAPILA inventory")
     audit = _json_file(chaksu_audit, "Chaksu all-expert preflight")
+    source_result = _json_file(source_holdout, "PAPILA mask holdout aggregate")
     aggregate = _json_file(external_aggregate, "external aggregate")
     try:
         lock = load_lock(model_lock, permit_partial=True)
@@ -71,6 +72,28 @@ def review_evidence(
             inventory.get("inventory_sha256_of_paths_and_sizes_only")
             and bool(body.get("source_metadata_fingerprint"))),
            "Model and inventory point to identical file-name/size fingerprint.")
+    record("same_PAPILA_content_sha256_for_source_evaluation",
+           bool(body.get("source_content_sha256")) and
+           body["source_content_sha256"] == source_result.get("source_content_sha256"),
+           "Source evaluation uses the exact file contents bound to the frozen model.")
+    validation = source_result.get("evaluation", {})
+    partitions = source_result.get("patient_split_counts", {})
+    record("complete_PAPILA_source_mask_holdout",
+           source_result.get("project") == "HyunOptic" and
+           source_result.get("full_source_holdout_scored") is True and
+           source_result.get("partial_or_unverified") is False and
+           source_result.get("n_source_images_discovered") == 488 and
+           source_result.get("n_source_patient_groups") == 244 and
+           source_result.get("n_failed") == 0 and
+           source_result.get("source_lock_sha256") == lock["sha256"] and
+           source_result.get("source_inventory_fingerprint") ==
+               inventory.get("inventory_sha256_of_paths_and_sizes_only") and
+           all(validation.get(split, {}).get("n_images", 0) > 0
+               for split in ("validation", "holdout")) and
+           sum(partitions.get(split, {}).get("n_images", 0)
+               for split in ("development", "validation", "holdout")) == 488,
+           "Internal PAPILA source holdout uses same frozen MASK model, patient split, "
+           "and provides nonempty held-out comparison on original 488 eyes.")
     record("full_Chaksu_five_reader_preflight",
            audit.get("project") == "HyunOptic" and
            audit.get("all_published_test_masks_structurally_verified") is True and
@@ -99,7 +122,7 @@ def review_evidence(
     complete = all(row["passed"] for row in checks.values())
     return {
         "project": "HyunOptic",
-        "gate_version": "1.0.0rc2",
+        "gate_version": "1.0.0rc3",
         "purpose": "internal evidence-package readiness for independent scientific review",
         "all_required_artifacts_consistent": complete,
         "scientific_validity_established": False,
