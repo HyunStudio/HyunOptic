@@ -182,7 +182,7 @@ def test_v09_secondary_five_reader_outcomes_are_separate_from_candidate_score(tm
     second=chaksu_fixture(tmp_path/"second.zip",cases=3,expert5_shift=6)
     a,rows_a=run_external_test(first,lock,allow_partial=True)
     b,rows_b=run_external_test(second,lock,allow_partial=True)
-    assert a["version"]==b["version"]=="0.9.0"
+    assert a["version"]==b["version"]=="1.0.0rc1"
     assert "secondary_five_reader_results" in a
     assert a["secondary_five_reader_results"]["all"]["n_images"]==3
     assert rows_a[0]["secondary_five_reader"]["all_unique_expert_pairs"]==10
