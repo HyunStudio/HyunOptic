@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.6 bidirectional reader robustness research toolkit (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.7 cross-dataset external-domain research framework (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -134,6 +134,30 @@ In Streamlit select **Reader Roles** and upload `reader_symmetry.json`. The outp
 
 **Scientific gate:** automated synthetic tests are NOT a successful real-PAPILA experiment. The original 488-image study and Chákṣu external evaluation still must be executed and independently checked. Read the [v0.6 robustness protocol](docs/V06_READER_ROLE_ROBUSTNESS.md).
 
+## v0.7 — PAPILA-frozen → Chákṣu Test external-domain research
+
+**New shared mask-feature protocol:** PAPILA stores expert-drawn contour coordinates, whereas Chákṣu provides five experts' *binary masks*. v0.7 converts PAPILA expert-1 contours to masks before feature extraction, then applies **identically defined mask-based features** to the original Chákṣu Test.zip. The earlier v0.6 polygon-score results are a separate experiment and **cannot** be compared directly to v0.7 scores.
+
+- `hyunoptic-external freeze`: fit a mask-feature normalization model **only on the patient-disjoint PAPILA development partition**, then write an integrity-hashed JSON lock. Independent expert labels and external Test data do not enter scoring.
+- `hyunoptic-external test`: read original Chákṣu **Test.zip in place**, without expanding its TIFF masks to disk; verify all five expert mask paths but score expert 1 only, using expert 2 exclusively for retrospective reference disagreement.
+- Strict external gate: 336 Test images (**Bosch 41 / Forus 31 / Remidio 264**) and complete readable mask pairs are required. The `--allow-partial` option exists **only for synthetic fixtures/partial exploratory runs** and marks results invalid as full external evidence.
+- Aggregate scores and camera-specific metrics: precision/recall at a fixed 20% review budget, Average Precision (AP), and ROC AUC, **all for reader disagreement and NOT glaucoma diagnosis**.
+- Streamlit **External Validation** page reads `external_aggregate.json` and displays no results before you supply data.
+
+**No actual original Chákṣu Test archive was executed during v0.7 implementation.** GitHub CI tests only verify synthetic-image/ZIP parsing, frozen configurations, missing-label checks and method reproducibility. Results are not invented and no clinical claims are supported.
+
+```powershell
+# First obtain and verify PAPILA under its published research/data terms:
+hyunoptic-external freeze --papila-root "D:\\datasets\\PAPILA" --output "reports\\v07\\papila_frozen_mask_model.json"
+
+# Separately obtain the original Chákṣu Test.zip from Figshare:
+hyunoptic-external test --model-lock "reports\\v07\\papila_frozen_mask_model.json" --chaksu-test-zip "D:\\datasets\\Chaksu\\Test.zip" --output-dir "reports\\v07\\external"
+
+streamlit run app.py
+```
+
+Read [v0.7 frozen external-domain study protocol](docs/V07_EXTERNAL_VALIDATION_PROTOCOL.md) for design, assumptions, access terms, camera stratification and important limitations.
+
 ## Planned research, not yet implemented
 
 1. Running and verifying full PAPILA-file compatibility and reporting predeclared internal outcomes without holdout tuning.
@@ -154,6 +178,7 @@ In Streamlit select **Reader Roles** and upload `reader_symmetry.json`. The outp
 - [v0.4 dataset quality and permutation null protocol](docs/V04_DATA_QUALITY_AND_NULL_PROTOCOL.md)
 - [v0.5 reproducible official dataset run](docs/V05_REPRODUCIBLE_REAL_DATA_RUN.md)
 - [v0.6 reader-role robustness and measurement agreement](docs/V06_READER_ROLE_ROBUSTNESS.md)
+- [v0.7 PAPILA-to-Chákṣu frozen external-domain protocol](docs/V07_EXTERNAL_VALIDATION_PROTOCOL.md)
 
 ## Research dataset information
 
