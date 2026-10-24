@@ -73,7 +73,7 @@ def test_study_is_patient_disjoint_and_deterministic(tmp_path):
     a,rows=run_study(root,**params)
     b,rows_b=run_study(root,**params)
     assert a==b and rows==rows_b
-    assert a["version"]=="0.3.0"
+    assert a["version"]=="0.4.0"
     splits={}
     for row in rows:
         splits.setdefault(row["patient_id"],set()).add(row["split"])
