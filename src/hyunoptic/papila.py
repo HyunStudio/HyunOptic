@@ -33,15 +33,28 @@ class PapilaCase:
 
 def _resolve_dirs(root: str | Path) -> tuple[Path, Path]:
     root = Path(root).expanduser().resolve()
-    candidates = (root, root / "PAPILA_DBv1")
+    if not root.is_dir():
+        raise FileNotFoundError(f"PAPILA folder does not exist: {root}")
+    # Published archives can use a hash-bearing top-level directory, not
+    # necessarily PAPILA_DBv1. Only inspect this directory and its direct
+    # children; do not recursively guess or mix data from multiple archives.
+    candidates = [root, *(p for p in sorted(root.iterdir()) if p.is_dir())]
+    matches = []
     for base in candidates:
         images = base / "FundusImages"
         contours = base / "ExpertsSegmentations" / "Contours"
         if images.is_dir() and contours.is_dir():
-            return images, contours
+            matches.append((images, contours))
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        raise ValueError(
+            "Multiple PAPILA datasets found; provide the exact extraction subfolder."
+        )
     raise FileNotFoundError(
-        "Expected FundusImages/ and ExpertsSegmentations/Contours/ "
-        "under the provided directory (or its PAPILA_DBv1/ child)."
+        "Expected a single directory with both FundusImages/ and "
+        "ExpertsSegmentations/Contours/ under the provided directory or "
+        "one of its direct children (hash-named archive roots are accepted)."
     )
 
 
