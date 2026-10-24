@@ -20,4 +20,7 @@ jobs:
       - run: hyunoptic-download --help
       - run: hyunoptic-reproduce --help
       - run: hyunoptic-reader-check --help
+      - run: hyunoptic-external --help
+      - run: hyunoptic-external freeze --help
+      - run: hyunoptic-external test --help
       - run: pytest -q
