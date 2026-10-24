@@ -67,6 +67,60 @@ The motivating a2z Radiology AI role emphasizes custom PyTorch training loops, e
 
 **Statistical unit:** PAPILA has paired eyes, so use patient-level grouping for bootstrap intervals or paired comparisons. Do not use an independent-image bootstrap when patient linkage is known. Do not invent patient clusters in Chákṣu where linkage is unverified. Report negative and null results.
 
+## UI/UX integration with the existing Streamlit app
+
+**Selected UI approach:** add a dedicated `Model Inference` research page to the existing multipage Streamlit sidebar, plus a separate read-only `Model Experiment` summary page only when a valid aggregate evaluation report exists. This preserves the current `app.py` expert-measurement viewer and the existing `Source Holdout` / `External Validation` candidate-QC pages. The alternatives considered were (a) placing a prediction toggle directly in the expert-measurement viewer, which risks conflating human and model contours, and (b) building a second web app, which duplicates navigation and provenance conventions. Neither fits the goal as well as distinct pages in one research workspace. The new pages are **planned**, not implemented.
+
+### Information architecture and user journey
+
+1. The sidebar groups **Measurements & expert comparison** (existing), **Model Inference** (new), and **Research reports** (existing QC pages plus the new model-experiment page). The new model page is visibly marked `Research only · experimental`; no diagnosis or patient-care label appears.
+2. On first opening `Model Inference`, show a clear empty state: `No verified local model loaded. Inference is unavailable.` Offer a link to the local training/evaluation instructions, not a button that downloads or trains a model automatically. A synthetic example may demonstrate layout, but is prominently labeled `Synthetic UI demo — not a trained-model result` and must not present a plausible prediction as evidence.
+3. The researcher selects an **approved local run** from a manifest (checkpoint hash, architecture/config version, training dataset/split hash, validation-selection rule, date, software version, permitted-use note). The app verifies manifest/schema/hash and loads the checkpoint lazily. Never accept an arbitrary uploaded pickle or silently fetch weights. Prefer a safer tensor-only format or a restricted `weights_only` load path; reject incompatible or unverified files with actionable errors. UI entry remains disabled until this gate passes.
+4. The researcher selects an authorized local fundus image/case. The app runs **image-only inference** using the exact frozen preprocessing and checkpoint. The displayed case ID is local-only and privacy-conscious; no image, mask, or identifier is sent to an external service. The app should be documented as **local-host use only** unless a future deployment review proves that statement for its hosting setup.
+5. The main panel shows the source image and predicted disc/cup overlay side by side. Toggles expose disc and cup individually; a legend names both structures in text and line style, not color alone. A separate, explicitly labeled **Expert comparison** panel appears only when lawful reference annotations are locally available. Its overlay and metrics are never inputs to prediction. Default to the model-only view so expert annotations cannot be mistaken for the algorithm's output.
+6. The researcher can inspect measurement consequences, errors, and provenance, then export a **local research report**. Case-level export is disabled by default and requires an explicit privacy/data-rights warning; aggregate-only export is the default for sharing. The existing QC reports remain a different workflow and must not be relabeled as model-performance reports.
+
+A minimal screen layout to plan against:
+
+```text
+Sidebar                       Model Inference — Research only
+Measurements                  [No model / verified model]  [run ID + hash]  [data status]
+Model Inference  ← new         Input: local image/case          Source + prediction overlay
+Research reports              Predicted disc/cup vCDR          Image-only inference note
+  Source Holdout (QC)          Expert comparison (optional, clearly separate)
+  External Validation (QC)    Failure/provenance details       Export controls
+  Model Experiment ← new
+```
+
+### Screen states and language
+
+| State | Primary UI behavior |
+| --- | --- |
+| No checkpoint, missing manifest, or inaccessible dataset | Show an empty/error state with the failed gate and remediation; no prediction, metrics, or sample accuracy. Existing pages still work without PyTorch. |
+| Synthetic fixture only | Show mechanics/layout demonstration with a persistent synthetic banner; no real-data performance claim or clinical-looking score card. |
+| Verified local checkpoint + authorized image | Show image-only prediction and run provenance. Individual vCDR is a descriptive measurement, not a glaucoma risk score or calibrated confidence. |
+| Human labels present | Permit side-by-side or toggled human-versus-model comparison; distinguish expert 1, expert 2, and model with text labels. Explain that expert labels are references, not disease truth. |
+| Prediction failure, invalid geometry, or domain mismatch | Preserve the image and error reason; show no fabricated vCDR. If a domain warning exists, state that it is a research caution, not calibrated uncertainty. |
+| Aggregate evaluation report missing/partial | Keep `Model Experiment` empty or flagged exploratory; never show placeholder performance numbers. |
+
+### Interaction and data contracts
+
+- Training, split creation, and holdout evaluation remain **CLI-only, explicit, and offline**. The Streamlit interface reads an immutable local inference bundle and a versioned aggregate-report schema; it cannot retrain, change the split, select a checkpoint by test performance, or edit locked evaluation outputs.
+- A narrow inference adapter returns image dimensions, predicted class mask/contours, status/errors, preprocessing metadata, checkpoint/run IDs and hashes. The UI calls the shared mask-measurement code for vCDR. Do not route predictions through a function that first requires expert contours or uses expert-derived optic-disc crops.
+- The `Model Experiment` page accepts only a validated aggregate report generated by the evaluator. It displays cohort/split counts, failure counts, cup/disc Dice distributions, vCDR error, patient-grouped intervals, dataset provenance, and limitations; it distinguishes internal holdout from exploratory cross-dataset results. It never computes benchmark metrics ad hoc from whichever cases a user browses.
+- Keep existing `Source Holdout` and `External Validation` headings, schemas, and endpoint labels tied to the older candidate-QC experiment. New model outputs use a separate schema, namespace, and visual badge so two different studies cannot be combined into one chart or implied to validate each other.
+- Cache verified weights by checkpoint hash and image-only inference by image-content hash plus preprocessing/model version. Do not cache or log raw patient imagery in shared or persistent storage by default; invalidate when a hash/version changes. Limit image size and provide a progress/error state so a malformed case does not freeze the UI.
+- Because this project is partly motivated by the author's visual impairment, ensure keyboard-operable controls, descriptive image/figure text, zoom, readable type/contrast, and a non-color-only legend. Tables must remain readable without relying on tiny plot labels.
+
+### UI acceptance checks before release
+
+- With no PyTorch extra or model bundle, every existing page still opens, and the new page shows the honest empty state.
+- Synthetic-only mode cannot display real-data metrics; a mismatched/missing hash, unsupported schema, or unsafe checkpoint is rejected visibly.
+- A test that changes expert-2 masks leaves image-only predictions unchanged; removing all expert masks still permits inference, while disabling expert comparison.
+- Displayed predicted vCDR matches the shared mask-measurement library; overlay resize and crop preserve original-image coordinates. Inference never receives an expert-derived crop.
+- Internal and external report badges are correct; a partial/exploratory result cannot acquire a full-validation label through UI input.
+- Keyboard navigation, zoom, text legends, and local-only/privacy notices are manually checked at desktop and narrow-window widths.
+
 ## Architecture and integration boundaries
 
 - Add a self-contained model-training package/CLI under the HyunOptic repository; keep raw data paths local and configurable. Do not make Streamlit import PyTorch or download checkpoints by default.
@@ -93,7 +147,7 @@ The project should enable a concrete answer to the hiring question, “Tell us a
 
 - Compute budget and available GPU determine image resolution, batch size, and whether a second architecture is feasible.
 - Confirm original PAPILA and candidate external archive access, terms, and integrity before choosing the full-run environment.
-- Decide whether the optional UI viewer is needed only after the trained model and evaluator are trustworthy.
+- UI implementation is staged: first the honest empty state and contracts, then local inference after a verified trained checkpoint, then the aggregate experiment page after evaluator outputs exist. No performance UI is populated in advance.
 - Seek an independent clinical/vision-science reviewer before making clinical-facing interpretations.
 
 ## References
