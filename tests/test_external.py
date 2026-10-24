@@ -184,6 +184,9 @@ def test_v09_secondary_five_reader_outcomes_are_separate_from_candidate_score(tm
     b,rows_b=run_external_test(second,lock,allow_partial=True)
     assert a["version"]==b["version"]=="1.0.0rc1"
     assert "secondary_five_reader_results" in a
+    assert "camera_feature_shift_candidate_only" in a
+    assert a["camera_feature_shift_candidate_only"] == b["camera_feature_shift_candidate_only"]
+    assert a["camera_feature_shift_candidate_only"]["camera_groups"]["all"]["n_images"] == 3
     assert a["secondary_five_reader_results"]["all"]["n_images"]==3
     assert rows_a[0]["secondary_five_reader"]["all_unique_expert_pairs"]==10
     for old,new in zip(rows_a,rows_b):
