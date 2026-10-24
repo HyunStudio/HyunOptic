@@ -15,8 +15,8 @@ if uploaded is None:
 
 try:
     summary = json.load(uploaded)
-    if summary.get("project") != "HyunOptic" or summary.get("version") not in ("0.7.0", "0.8.0"):
-        raise ValueError("Expected a HyunOptic v0.7/v0.8 external report")
+    if summary.get("project") != "HyunOptic" or summary.get("version") not in ("0.7.0", "0.8.0", "0.9.0"):
+        raise ValueError("Expected a HyunOptic v0.7–v0.9 external report")
     if summary.get("reference_label", "").startswith("absolute expert1") is not True:
         raise ValueError("Unexpected research endpoint")
     groups = summary["results"]
@@ -55,7 +55,7 @@ for camera, group in groups.items():
 st.subheader("Fixed protocol: Overall and by camera")
 st.dataframe(data, use_container_width=True, hide_index=True)
 st.caption("AP and ROC AUC refer only to expert1–expert2 vCDR disagreement, not diagnostic outcomes.")
-if summary.get("version") == "0.8.0":
+if summary.get("version") in ("0.8.0", "0.9.0"):
     st.subheader("Descriptive difference from vCDR-only ranking")
     st.caption("Paired image-level descriptive comparison ONLY; no patient-independent statistical inference.")
     for camera, group in groups.items():
@@ -65,3 +65,30 @@ if summary.get("version") == "0.8.0":
 with st.expander("Method limitations"):
     for issue in summary.get("limitations", []):
         st.write("- " + issue)
+
+if summary.get("version") == "0.9.0":
+    st.divider()
+    st.subheader("Secondary: Five-expert measurement disagreement")
+    st.info(
+        "This SECONDARY analysis tests whether the candidate first expert disagrees "
+        "with at least 2 of 4 other experts by more than the research vCDR threshold. "
+        "It is NOT a glaucoma diagnosis or expert-voted clinical ground truth."
+    )
+    peers = summary.get("secondary_five_reader_results", {})
+    peer_rows = []
+    for cam, details in peers.items():
+        if details.get("missing"):
+            continue
+        for name in ("candidate_vcdr", "combined_candidate_score"):
+            evaluation = details["scores"][name]
+            peer_rows.append({
+                "Camera": cam,
+                "Score": name,
+                "Images": details["n_images"],
+                "At least 2 of 4 peers disagree": details["high_disagreement_with_at_least_two_of_four_peers"],
+                "Precision@review": round(evaluation["review"]["precision_at_budget"], 4),
+                "Average precision": None if evaluation["ranking"]["average_precision"] is None
+                                     else round(evaluation["ranking"]["average_precision"], 4),
+            })
+    st.dataframe(peer_rows, use_container_width=True, hide_index=True)
+    st.caption("No patient-level confidence interval or clinical performance inference is claimed.")
