@@ -46,6 +46,11 @@ def test_explicit_partial_generates_fingerprinted_study(tmp_path):
     assert (output / "run_manifest.json").exists()
     assert (output / "study.json").exists()
     assert (output / "case_metrics.csv").exists()
+    assert (output / "research_summary.md").exists()
+    md = (output / "research_summary.md").read_text()
+    assert "not external validation" in md.lower()
+    assert "Fixed-budget internal comparison" in md
+    assert report["research_summary_md_sha256"]
     body = json.loads((output / "study.json").read_text())
     assert body["summary"]["not_external_validation"] is True
     assert "clinical" in report["note"]
