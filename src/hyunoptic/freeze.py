@@ -14,6 +14,7 @@ from .mask_features import MASK_FEATURES, MASK_FEATURE_VERSION, fit_mask_scaler,
 from .measure import polygon_mask
 from .papila import discover_cases, load_contours, load_image
 from .study import patient_splits
+from .source_fingerprint import papila_content_sha256
 from .uncertainty import PerturbationConfig
 
 def canonical_digest(data: dict) -> str:
@@ -59,6 +60,7 @@ def freeze_papila_model(root: str | Path, *, seed: int = 42,
         "source_complete_inventory": inventory["matches_full_published_shape"],
         "source_is_partial": not inventory["matches_full_published_shape"],
         "source_metadata_fingerprint": inventory["inventory_sha256_of_paths_and_sizes_only"],
+        "source_content_sha256": papila_content_sha256(root),
         "n_development_images": len(development),
         "review_fraction": 0.20,
         "research_disagreement_threshold": 0.10,
