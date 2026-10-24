@@ -2,7 +2,7 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
-**Status: v0.5 reproducible research toolkit (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
+**Status: v0.6 bidirectional reader robustness research toolkit (2026-10-24).** The software has undergone synthetic-data unit tests and UI smoke tests through GitHub Actions; no full real-dataset scientific validation has been conducted. **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
 
 > Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
 
@@ -119,6 +119,21 @@ The gated run generates `inventory.json`, `study.json`, `case_metrics.csv`, `run
 
 **No actual complete-PAPILA study results have been claimed in this repository.** Download, extraction and study execution are implemented and tested with **synthetic fixtures only**; the real 563 MB archive remains to be run. See [v0.5 reproducible real-data protocol](docs/V05_REPRODUCIBLE_REAL_DATA_RUN.md).
 
+## v0.6 — robustness to expert-reader choice
+
+The two ophthalmologists can disagree about cup/disc boundaries. v0.6 now runs a symmetrical, patient-disjoint **expert-role sensitivity** study to test whether a candidate-only QC score changes when exp1 and exp2 exchange roles.
+
+**Added:** tie-aware average precision (AP) and ROC-AUC for inter-reader **disagreement**, stable top-20% review-overlap, tie-aware Spearman ranking, signed expert vCDR bias and exploratory Bland–Altman limits with patient-cluster bootstrap intervals. AP/AUC do **not** refer to glaucoma diagnosis. No ground-truth disease outcomes or external results have been claimed.
+
+```powershell
+hyunoptic-reader-check --papila-root "D:\\datasets\\PAPILA" --output-dir reports\\reader_v06
+streamlit run app.py
+```
+
+In Streamlit select **Reader Roles** and upload `reader_symmetry.json`. The output folder includes `reader_role_summary.md` for an **aggregate-only, data-derived** research summary and private per-case files that should not be published without license/privacy review. A complete PAPILA inventory is required by default; `--allow-partial` is for synthetic/incomplete exploratory fixtures only.
+
+**Scientific gate:** automated synthetic tests are NOT a successful real-PAPILA experiment. The original 488-image study and Chákṣu external evaluation still must be executed and independently checked. Read the [v0.6 robustness protocol](docs/V06_READER_ROLE_ROBUSTNESS.md).
+
 ## Planned research, not yet implemented
 
 1. Running and verifying full PAPILA-file compatibility and reporting predeclared internal outcomes without holdout tuning.
@@ -138,6 +153,7 @@ The gated run generates `inventory.json`, `study.json`, `case_metrics.csv`, `run
 - [v0.3 patient-disjoint internal research protocol](docs/V03_PATIENT_SPLIT_PROTOCOL.md)
 - [v0.4 dataset quality and permutation null protocol](docs/V04_DATA_QUALITY_AND_NULL_PROTOCOL.md)
 - [v0.5 reproducible official dataset run](docs/V05_REPRODUCIBLE_REAL_DATA_RUN.md)
+- [v0.6 reader-role robustness and measurement agreement](docs/V06_READER_ROLE_ROBUSTNESS.md)
 
 ## Research dataset information
 
