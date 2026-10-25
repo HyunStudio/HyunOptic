@@ -37,6 +37,8 @@ Implements the [PyTorch segmentation design](docs/superpowers/specs/2026-10-25-p
 
 **Optional photometric follow-up:** `hyunoptic-seg train --photometric-policy camera_robust_v2` adds stronger training-only color/exposure augmentation. One actual seed-43 run gave mixed results: paired external vCDR MAE improved 0.2553→0.1167 (284 common measurable images), while external model failures increased 16→19 and disc Dice decreased. The prespecified overall rule failed; `baseline_v1` remains the default. [Complete results, tradeoffs and reproduction](docs/experiments/2026-10-25-photometric-remediation/README.md).
 
+**Additional university-data tests:** four frozen models were evaluated on all 2,000 Harvard-FairSeg Test SLO images. Transfer remains poor: the photometric model has Disc/Cup Dice 0.2049/0.2630 and 493 undefined measurements. A measurable output can still localize the wrong structure. Separate OLIVES (30-file pilot) and Iowa (60 stereo views) checks assess execution/geometry only; Duke results re-analyse provided OCT boundaries, and Columbia patient data were not available for testing. [Exact scope, negative results, sources and reproducibility](docs/experiments/2026-10-25-university-transfer/README.md).
+
 Commands and the design-to-code map: [runbook §8](docs/V10_RUNBOOK.md#8-experimental-pytorch-segmentation).
 
 ## v1.1.0 — research workspace app

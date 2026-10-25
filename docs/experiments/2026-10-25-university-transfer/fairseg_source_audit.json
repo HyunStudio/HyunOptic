@@ -1,0 +1,13 @@
+{
+  "n_files": 2000,
+  "image_shapes": {
+    "(664, 798)": 2000
+  },
+  "reference_label_presence_counts": {
+    "-2.0": 2000,
+    "-1.0": 2000,
+    "0.0": 2000
+  },
+  "duplicate_pixel_array_hashes": 0,
+  "shape_or_nonfinite_reference_failures": 0
+}

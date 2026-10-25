@@ -1,0 +1,29 @@
+{
+  "one_image_check_only": true,
+  "results": [
+    {
+      "model": "papila_real_v1_20261025",
+      "max_abs_logit_difference": 0.004420042037963867,
+      "raw_argmax_disagreement_pixels": 2,
+      "postprocessed_disagreement_pixels": 1
+    },
+    {
+      "model": "papila_real_seed43_20261025",
+      "max_abs_logit_difference": 0.0008001327514648438,
+      "raw_argmax_disagreement_pixels": 0,
+      "postprocessed_disagreement_pixels": 0
+    },
+    {
+      "model": "papila_real_seed44_20261025",
+      "max_abs_logit_difference": 0.0024971961975097656,
+      "raw_argmax_disagreement_pixels": 0,
+      "postprocessed_disagreement_pixels": 0
+    },
+    {
+      "model": "papila_camera_robust_seed43_20261025",
+      "max_abs_logit_difference": 0.010862350463867188,
+      "raw_argmax_disagreement_pixels": 1,
+      "postprocessed_disagreement_pixels": 0
+    }
+  ]
+}

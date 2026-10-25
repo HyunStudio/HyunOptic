@@ -1,0 +1,5 @@
+Model,Images,Dice n,Disc Dice,Cup Dice,vCDR n,vCDR MAE,Model failures,Reference failures
+baseline42,2000,2000,0.1003,0.1379,1957,0.2586,43,0
+baseline43,2000,2000,0.0101,0.0237,412,0.3796,1588,0
+baseline44,2000,2000,0.1291,0.2485,1640,0.3592,360,0
+photometric43,2000,2000,0.2049,0.2630,1507,0.2014,493,0
