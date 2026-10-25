@@ -26,6 +26,8 @@ def main(argv: list[str] | None = None) -> int:
     t.add_argument("--seed", type=int, default=42)
     t.add_argument("--split-seed", type=int, default=42, help="Same seed as the QC protocol by default")
     t.add_argument("--device", default="auto", help="auto, cpu or cuda")
+    t.add_argument("--photometric-policy", choices=("baseline_v1", "camera_robust_v2"),
+                   default="baseline_v1", help="Optional training-only camera color/exposure augmentation")
     t.add_argument("--allow-partial", action="store_true", help="Synthetic fixtures or subsets ONLY")
     e = sub.add_parser("evaluate", help="Evaluate a frozen bundle (PAPILA holdout once; Chaksu exploratory)")
     e.add_argument("--bundle", type=Path, required=True)
@@ -61,7 +63,8 @@ def main(argv: list[str] | None = None) -> int:
             out = train(a.papila_root, a.output, image_size=a.image_size, epochs=a.epochs,
                         batch_size=a.batch_size, lr=a.lr, weight_decay=a.weight_decay,
                         base_channels=a.base_channels, depth=a.depth, seed=a.seed, split_seed=a.split_seed,
-                        allow_partial=a.allow_partial, device=a.device, progress=show)
+                        allow_partial=a.allow_partial, device=a.device,
+                        photometric_policy=a.photometric_policy, progress=show)
             bundle = verify_bundle(out)
             print(f"Bundle: {out}  run {bundle.run_id}  best epoch {bundle.manifest['training']['best_epoch']}")
             print("The holdout has not been touched. Evaluate it once with `hyunoptic-seg evaluate`.")

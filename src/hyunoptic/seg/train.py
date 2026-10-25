@@ -33,6 +33,12 @@ AUGMENTATIONS = [
     "rotation ±10°, scale 0.9–1.1, translation ±5% (image bilinear, mask nearest, black fill)",
     "brightness ×0.9–1.1 and contrast ×0.9–1.1 (image only)",
 ]
+PHOTOMETRIC_POLICIES = ("baseline_v1", "camera_robust_v2")
+CAMERA_ROBUST_AUGMENTATIONS = AUGMENTATIONS[:2] + [
+    "brightness x0.7-1.3 and contrast x0.7-1.3 (image only, foreground mean)",
+    "independent RGB gains x0.65-1.35 and gamma 0.7-1.5 (image only)",
+    "retain black pixels <=1/255 after spatial transforms; targets unchanged by photometry",
+]
 SELECTION_RULE = ("highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, "
                   "post-processed predictions vs expert 1")
 
@@ -43,7 +49,14 @@ def dice(pred: np.ndarray, ref: np.ndarray) -> float:
     return 1.0 if total == 0 else float(2 * np.count_nonzero(a & b) / total)
 
 
-def _augment(x: torch.Tensor, y: torch.Tensor, gen: torch.Generator) -> tuple[torch.Tensor, torch.Tensor]:
+def _augment(x: torch.Tensor, y: torch.Tensor, gen: torch.Generator, *,
+             photometric_policy: str = "baseline_v1",
+             photometric_gen: torch.Generator | None = None) -> tuple[torch.Tensor, torch.Tensor]:
+    if photometric_policy not in PHOTOMETRIC_POLICIES:
+        raise ValueError(f"Unknown photometric policy {photometric_policy!r}")
+    robust = photometric_policy == "camera_robust_v2"
+    if robust and photometric_gen is None:
+        raise ValueError("camera_robust_v2 requires a separate photometric generator")
     b = x.shape[0]
     flip = torch.rand(b, generator=gen) < 0.5
     x = torch.where(flip[:, None, None, None], x.flip(-1), x)
@@ -61,10 +74,23 @@ def _augment(x: torch.Tensor, y: torch.Tensor, gen: torch.Generator) -> tuple[to
     mean = torch.tensor(preprocess.MEAN).view(1, 3, 1, 1)
     std = torch.tensor(preprocess.STD).view(1, 3, 1, 1)
     raw = x * std + mean
-    bright = 1 + (torch.rand(b, 1, 1, 1, generator=gen) * 2 - 1) * 0.1
-    contrast = 1 + (torch.rand(b, 1, 1, 1, generator=gen) * 2 - 1) * 0.1
-    centre = raw.mean(dim=(1, 2, 3), keepdim=True)
+    strength = 0.3 if robust else 0.1
+    # Keep these two legacy draws on gen: added photometry must not change
+    # shuffle/spatial RNG progression compared with the same baseline seed.
+    bright = 1 + (torch.rand(b, 1, 1, 1, generator=gen) * 2 - 1) * strength
+    contrast = 1 + (torch.rand(b, 1, 1, 1, generator=gen) * 2 - 1) * strength
+    if robust:
+        foreground = raw.amax(dim=1, keepdim=True) > 1 / 255
+        centre = (raw * foreground).sum(dim=(1, 2, 3), keepdim=True) / (
+            3 * foreground.sum(dim=(1, 2, 3), keepdim=True).clamp_min(1))
+    else:
+        centre = raw.mean(dim=(1, 2, 3), keepdim=True)
     raw = ((raw * bright - centre) * contrast + centre).clamp(0, 1)
+    if robust:
+        gains = 0.65 + torch.rand(b, 3, 1, 1, generator=photometric_gen) * 0.7
+        gamma = 0.7 + torch.rand(b, 1, 1, 1, generator=photometric_gen) * 0.8
+        raw = (raw * gains).clamp(0, 1).pow(gamma)
+        raw = torch.where(foreground, raw, torch.zeros_like(raw))
     return (raw - mean) / std, y
 
 
@@ -98,7 +124,9 @@ def _load(root, split_body, split, size):
 def train(papila_root: str | Path, output_dir: str | Path, *, image_size: int = 384, epochs: int = 40,
           batch_size: int = 8, lr: float = 1e-3, weight_decay: float = 1e-4, base_channels: int = 16,
           depth: int = 4, seed: int = 42, split_seed: int = 42, allow_partial: bool = False,
-          device: str = "auto", progress=None) -> Path:
+          device: str = "auto", photometric_policy: str = "baseline_v1", progress=None) -> Path:
+    if photometric_policy not in PHOTOMETRIC_POLICIES:
+        raise ValueError(f"Unknown photometric policy {photometric_policy!r}")
     out = Path(output_dir)
     if out.exists() and any(out.iterdir()):
         raise FileExistsError("Bundle folder is not empty; choose a NEW folder (bundles are immutable)")
@@ -119,6 +147,9 @@ def train(papila_root: str | Path, output_dir: str | Path, *, image_size: int = 
     np.random.seed(seed)
     torch.use_deterministic_algorithms(True, warn_only=True)
     gen = torch.Generator().manual_seed(seed)
+    photometric_seed = (seed + 1_000_003) % (2 ** 63)
+    photometric_gen = (torch.Generator().manual_seed(photometric_seed)
+                       if photometric_policy == "camera_robust_v2" else None)
 
     split = build_split_manifest(papila_root, split_seed)
     body = split["manifest"]
@@ -139,7 +170,8 @@ def train(papila_root: str | Path, output_dir: str | Path, *, image_size: int = 
         losses = []
         for i in range(0, len(order), batch_size):
             idx = order[i:i + batch_size]
-            x, y = _augment(dev_x[idx], targets[idx], gen)
+            x, y = _augment(dev_x[idx], targets[idx], gen, photometric_policy=photometric_policy,
+                            photometric_gen=photometric_gen)
             loss = segmentation_loss(model(x.to(device)), y.to(device))
             optimiser.zero_grad(set_to_none=True)
             loss.backward()
@@ -166,6 +198,9 @@ def train(papila_root: str | Path, output_dir: str | Path, *, image_size: int = 
         "loss": "cross-entropy + mean soft Dice over disc (rim ∪ cup), rim and cup", "augmentations": AUGMENTATIONS,
         "seed": seed, "split_seed": split_seed, "device": device, "selection_rule": SELECTION_RULE,
     }
+    if photometric_policy == "camera_robust_v2":
+        config.update(photometric_policy=photometric_policy, photometric_generator_seed=photometric_seed,
+                      augmentations=CAMERA_ROBUST_AUGMENTATIONS)
     (out / CONFIG).write_text(json.dumps(config, indent=2) + "\n", encoding="utf-8")
     (out / SPLIT).write_text(json.dumps(split, indent=2) + "\n", encoding="utf-8")
     (out / HISTORY).write_text(json.dumps(history, indent=2) + "\n", encoding="utf-8")

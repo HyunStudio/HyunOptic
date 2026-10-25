@@ -36,6 +36,8 @@ def test_training_reads_only_expert1_and_writes_verified_bundle(tmp_path, monkey
                           depth=2, allow_partial=True)
     assert set(seen) == {"exp1"}
     bundle = verify_bundle(out)
+    legacy_config = json.loads((out / "config.json").read_text(encoding="utf-8"))
+    assert "photometric_policy" not in legacy_config and "photometric_generator_seed" not in legacy_config
     tr = bundle.manifest["training"]
     assert tr["expert2_used"] is False and tr["holdout_used_in_training_or_selection"] is False
     assert bundle.synthetic and bundle.partial
