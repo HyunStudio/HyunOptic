@@ -139,7 +139,7 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, ValueError) as exc:
         p.error(str(exc))
     print(f"Synthetic PAPILA-shaped folder: {root}")
-    print(f"Synthetic Chákṣu-shaped Test.zip: {archive}")
+    print(f"Synthetic Chaksu-shaped Test.zip: {archive}")
     print("Set these on the Datasets page. Results from them are always partial and must never be cited.")
     return 0
 

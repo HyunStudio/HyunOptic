@@ -231,7 +231,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--papila-root", type=Path, required=True,
                    help="Extracted PAPILA folder (contains FundusImages/ and ExpertsSegmentations/)")
     p.add_argument("--chaksu-test-zip", type=Path,
-                   help="Original Chákṣu Test.zip; omit for a PAPILA-only run")
+                   help="Original Chaksu Test.zip; omit for a PAPILA-only run")
     p.add_argument("--papila-zip", type=Path,
                    help="Original PAPILA.zip, used only for the archive identity check")
     p.add_argument("--output-dir", type=Path, default=Path("reports/v1"))

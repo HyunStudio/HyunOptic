@@ -27,7 +27,7 @@ def main(argv: list[str] | None = None) -> int:
     t.add_argument("--split-seed", type=int, default=42, help="Same seed as the QC protocol by default")
     t.add_argument("--device", default="auto", help="auto, cpu or cuda")
     t.add_argument("--allow-partial", action="store_true", help="Synthetic fixtures or subsets ONLY")
-    e = sub.add_parser("evaluate", help="Evaluate a frozen bundle (PAPILA holdout once; Chákṣu exploratory)")
+    e = sub.add_parser("evaluate", help="Evaluate a frozen bundle (PAPILA holdout once; Chaksu exploratory)")
     e.add_argument("--bundle", type=Path, required=True)
     e.add_argument("--papila-root", type=Path)
     e.add_argument("--chaksu-test-zip", type=Path, help="Exploratory external analysis")
@@ -73,7 +73,7 @@ def main(argv: list[str] | None = None) -> int:
             if a.papila_root is not None:
                 print("Holdout report:", evaluate_holdout(bundle, a.papila_root, exploratory_rerun=a.exploratory_rerun))
             if a.chaksu_test_zip is not None:
-                print("Exploratory Chákṣu report:", evaluate_chaksu(bundle, a.chaksu_test_zip))
+                print("Exploratory Chaksu report:", evaluate_chaksu(bundle, a.chaksu_test_zip))
         else:
             from PIL import Image
 
