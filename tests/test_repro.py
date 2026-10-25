@@ -47,11 +47,11 @@ def test_explicit_partial_generates_fingerprinted_study(tmp_path):
     assert (output / "study.json").exists()
     assert (output / "case_metrics.csv").exists()
     assert (output / "research_summary.md").exists()
-    md = (output / "research_summary.md").read_text()
+    md = (output / "research_summary.md").read_text(encoding="utf-8")
     assert "not external validation" in md.lower()
     assert "Fixed-budget internal comparison" in md
     assert report["research_summary_md_sha256"]
-    body = json.loads((output / "study.json").read_text())
+    body = json.loads((output / "study.json").read_text(encoding="utf-8"))
     assert body["summary"]["not_external_validation"] is True
     assert "clinical" in report["note"]
 
@@ -62,4 +62,4 @@ def test_run_prevents_overwriting_previous_research_output(tmp_path):
     (target / "study.json").write_text("previous output")
     with pytest.raises(FileExistsError, match="NEW output directory"):
         reproduce(root, target, allow_partial=True, draws=50, bootstrap_draws=100)
-    assert (target / "study.json").read_text() == "previous output"
+    assert (target / "study.json").read_text(encoding="utf-8") == "previous output"

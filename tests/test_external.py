@@ -102,7 +102,7 @@ def test_freeze_has_no_second_reader_leakage(tmp_path):
                rectangle(10,10,33,33))
     b=freeze_papila_model(root,draws=60,seed=8,allow_partial=True)
     assert a["model"]["scaler"] == b["model"]["scaler"]
-    altered=json.loads(lock.read_text())
+    altered=json.loads(lock.read_text(encoding="utf-8"))
     altered["model"]["review_fraction"]=.8
     with pytest.raises(ValueError,match="SHA-256"):
         validate_model_lock(altered,permit_partial=True)
@@ -151,10 +151,10 @@ def test_external_requires_locked_source_and_complete_test_by_default(tmp_path):
     assert (folder/"external_summary.md").exists()
     assert (folder/"external_aggregate.json").exists()
     assert (folder/"external_private_cases.json").exists()
-    aggregate_text = (folder/"external_aggregate.json").read_text()
+    aggregate_text = (folder/"external_aggregate.json").read_text(encoding="utf-8")
     assert '"case_id"' not in aggregate_text
     assert "bosch/img_000" not in aggregate_text
-    report=(folder/"external_summary.md").read_text()
+    report=(folder/"external_summary.md").read_text(encoding="utf-8")
     assert "NOT clinical accuracy" in report
     with pytest.raises(FileExistsError):
         save_external(summary,rows,folder)
@@ -170,7 +170,7 @@ def test_external_cli_round_trip_partial_only(tmp_path):
     assert external_cli(["test","--model-lock",str(lock),
                          "--chaksu-test-zip",str(chaksu),
                          "--output-dir",str(out),"--allow-partial"])==0
-    assert json.loads((out/"external_aggregate.json").read_text())["n_test_images_scored"]==2
+    assert json.loads((out/"external_aggregate.json").read_text(encoding="utf-8"))["n_test_images_scored"]==2
 
 
 def test_v09_secondary_five_reader_outcomes_are_separate_from_candidate_score(tmp_path):

@@ -251,6 +251,25 @@ Harvard-GDP는 OCT RNFL 맵과 일부 진행 관련 레이블을 제공하지만
 8. STARD-AI (2025), 진단 정확도 연구로 별도 발전한 경우에만 해당 보고 지침. https://www.nature.com/articles/s41591-025-03953-8
 9. American Academy of Ophthalmology, POAG Suspect Preferred Practice Pattern(2026 publication page). https://www.aaojournal.org/article/S0161-6420%2825%2900814-0/fulltext
 
+## 12. 구현 현황 (2026-10-25, 소프트웨어 v1.2.0)
+
+| ID | 상태 | 구현 위치 |
+|---|---|---|
+| F01 데이터 로딩·검증 | 구현 | `hyunoptic-inventory`, `hyunoptic-verify-sources`, `hyunoptic-chaksu-audit` |
+| F02 윤곽 표시 | 구현 | Streamlit 뷰어(원본/확대/중첩) |
+| F03 vCDR·hCDR·aCDR | 구현 | `measure.py` + 합성 마스크 테스트 |
+| F04 전문가 간 차이 | 구현 | Dice, ΔvCDR, Bland–Altman(`hyunoptic-reader-check`) |
+| F05 교란 기반 불확실성 | 구현 | `uncertainty.py`(seed 고정, 공분산·델타법) |
+| F06 Reference-free QC 점수 | 구현 | exp1 전용 마스크 특징, exp2 변경 시 점수 불변 테스트 |
+| F07 기준선·외부 평가 | 구현(실데이터 미실행) | `hyunoptic-source-check`, `hyunoptic-external test` |
+| F08 연구 보고서 JSON/CSV/HTML | 구현 | `hyunoptic-pipeline`, `hyunoptic-report`(집계 전용 HTML) |
+| F09 접근성 | 구현 | 글자 크기, 고대비, 점선 cup 윤곽, 선 굵기; 보고서는 PASS/FAIL 문자 표기 |
+| 화면 구성 (§5) | 구현 (v1.1.0) | Overview → Image Review → Datasets → Reliability → Source Holdout → External Validation → Reports + Tools; 결과가 없으면 빈 상태 표시, 수치를 지어내지 않음 |
+| F10 OCT/RNFL 확장 | 미착수(P2) | 별도 프로토콜·라이선스 승인 후 |
+| PyTorch 시신경유두·컵 분할 (실험) | 파이프라인 구현 (v1.2.0), 실데이터 학습 전 | `hyunoptic-seg` train/evaluate/predict/verify, Model Inference·Model Experiment 페이지; 합성 데이터로만 검증 |
+
+**남은 일:** 실제 PAPILA·Chákṣu 원본으로 `hyunoptic-pipeline` 전체 실행 → 결과(음성 결과 포함) 검토 → 영문 보고서·포스터 작성 → 소프트웨어 라이선스 선택. 실행 방법은 [v1.0 runbook](V10_RUNBOOK.md) 참조. 이 시점까지 실제 데이터 성능 결과는 없다.
+
 ---
 
 **검토 상태:** 계획 문서 v0.1. 임상적 유효성, 새로운 방법의 참신성, 데이터셋 라이선스의 최종 법률 해석은 확인된 사실로 주장하지 않음. 문헌·실험·권리 검수에 따라 업데이트 예정.

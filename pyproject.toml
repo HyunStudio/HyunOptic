@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hyunoptic"
-version = "1.0.0rc3"
+version = "1.2.0"
 description = "Research-only optic disc/cup measurement and validation prototype"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -12,8 +12,9 @@ license = {text = "License not yet selected; all rights reserved"}
 dependencies = ["numpy>=1.24,<3", "Pillow>=10,<13"]
 
 [project.optional-dependencies]
-ui = ["streamlit>=1.38,<2"]
+ui = ["streamlit>=1.60,<2"]
 dev = ["pytest>=8,<10"]
+ml = ["torch>=2.2"]
 
 [project.scripts]
 hyunoptic = "hyunoptic.cli:main"
@@ -27,6 +28,10 @@ hyunoptic-chaksu-audit = "hyunoptic.external_qc_cli:main"
 hyunoptic-verify-sources = "hyunoptic.source_integrity_cli:main"
 hyunoptic-evidence = "hyunoptic.evidence_cli:main"
 hyunoptic-source-check = "hyunoptic.source_holdout_cli:main"
+hyunoptic-pipeline = "hyunoptic.pipeline:main"
+hyunoptic-report = "hyunoptic.html_report:main"
+hyunoptic-demo-data = "hyunoptic.demo_data:main"
+hyunoptic-seg = "hyunoptic.seg.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

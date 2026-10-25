@@ -5,7 +5,6 @@ No measured results exist until the user supplies a local JSON report.
 import json
 import streamlit as st
 
-st.set_page_config(page_title="HyunOptic | Reader Roles", page_icon="🔎", layout="wide")
 st.title("HyunOptic — Reader-Role Sensitivity")
 st.caption("v0.6 · exploratory internal reliability analysis")
 st.warning("Research only. Agreement between experts does not establish glaucoma diagnosis or clinical correctness.")
@@ -53,7 +52,7 @@ for reader in ("exp1", "exp2"):
             "ROC AUC": None if k["roc_auc"] is None else round(k["roc_auc"], 4),
         })
 st.subheader("Same images, reversed expert roles")
-st.dataframe(table, use_container_width=True, hide_index=True)
+st.dataframe(table, width="stretch", hide_index=True)
 st.caption("AP/ROC AUC refer to inter-reader disagreement, NOT glaucoma diagnosis.")
 st.subheader("Reader-role ranking stability")
 for name, info in evaluation[split]["reader_role_agreement"].items():

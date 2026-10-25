@@ -13,7 +13,7 @@ from .uncertainty import PerturbationConfig
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="HyunOptic exploratory exp1↔exp2 role sensitivity (not diagnostic validation)"
+        description="HyunOptic exploratory exp1 <-> exp2 role sensitivity (not diagnostic validation)"
     )
     parser.add_argument("--papila-root", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, default=Path("reports/reader_v06"))

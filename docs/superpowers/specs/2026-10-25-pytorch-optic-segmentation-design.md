@@ -1,7 +1,7 @@
 # HyunOptic PyTorch optic-disc/cup segmentation — design
 
 **Date:** 2026-10-25  
-**Status:** proposed design; no model training or real-data performance result is asserted here.  
+**Status:** implemented in v1.2.0 (software milestone 2 of §Implementation and evidence milestones); tested on synthetic fixtures only. No real-data training or performance result is asserted here.  
 **Decision:** extend HyunOptic with one reproducible retinal fundus-image model experiment. Do not start a separate glaucoma, retinal, or visual-cortex app.
 
 ## Intent and context
@@ -69,7 +69,7 @@ The motivating a2z Radiology AI role emphasizes custom PyTorch training loops, e
 
 ## UI/UX integration with the existing Streamlit app
 
-**Selected UI approach:** add a dedicated `Model Inference` research page to the existing multipage Streamlit sidebar, plus a separate read-only `Model Experiment` summary page only when a valid aggregate evaluation report exists. This preserves the current `app.py` expert-measurement viewer and the existing `Source Holdout` / `External Validation` candidate-QC pages. The alternatives considered were (a) placing a prediction toggle directly in the expert-measurement viewer, which risks conflating human and model contours, and (b) building a second web app, which duplicates navigation and provenance conventions. Neither fits the goal as well as distinct pages in one research workspace. The new pages are **planned**, not implemented.
+**Selected UI approach:** add a dedicated `Model Inference` research page to the existing multipage Streamlit sidebar, plus a separate read-only `Model Experiment` summary page only when a valid aggregate evaluation report exists. This preserves the current `app.py` expert-measurement viewer and the existing `Source Holdout` / `External Validation` candidate-QC pages. The alternatives considered were (a) placing a prediction toggle directly in the expert-measurement viewer, which risks conflating human and model contours, and (b) building a second web app, which duplicates navigation and provenance conventions. Neither fits the goal as well as distinct pages in one research workspace. The new pages are implemented in v1.2.0 (`views/model_inference.py`, `views/model_experiment.py`).
 
 ### Information architecture and user journey
 
@@ -156,3 +156,14 @@ The project should enable a concrete answer to the hiring question, “Tell us a
 - PAPILA official dataset: https://figshare.com/articles/dataset/PAPILA/14798004
 - REFUGE challenge task definitions: https://refuge.grand-challenge.org/Details/
 - a2z role: https://a2zradiology.ai/careers/ml-research-engineer-scientist-remote-international/
+
+## Implementation status (v1.2.0)
+
+| Milestone | Status |
+|---|---|
+| 1. Baseline integrity on real PAPILA | **Not done here**: real archives were not available in the development environment. Run the inventory and pipeline first. |
+| 2. PyTorch pipeline | **Implemented**: `src/hyunoptic/seg/` (data/split manifest, preprocessing, model/loss, trainer, evaluator, bundle verification, CLI). Synthetic fixtures train; image-only inference, expert-2 isolation, split, hash and holdout-once tests pass (`tests/test_seg_contract.py`, `tests/test_seg_torch.py`). |
+| UI stage 1–3 | **Implemented**: honest empty states, verified-bundle inference page, aggregate-only experiment page; synthetic/partial bundles are bannered. |
+| 3–5. Real source experiment, external analysis, portfolio review | **Pending** real data, compute and independent review. |
+
+One method decision was made during implementation, before any real data was seen: the loss uses the mean soft Dice over disc, rim **and** cup. With only disc and cup terms, small synthetic images converged to a degenerate "whole disc is cup" solution.

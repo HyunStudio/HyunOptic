@@ -42,13 +42,21 @@ jobs:
         run: |
           hyunoptic-reader-check --papila-root "$RUNNER_TEMP/papila" \
             --output-dir reports/v06
+      - name: v1.0 frozen mask model, source holdout and HTML report (PAPILA-only)
+        run: |
+          hyunoptic-pipeline --papila-root "$RUNNER_TEMP/papila" \
+            --output-dir reports/v1 --verify-pixels
       - name: Upload aggregated research summary only
         uses: actions/upload-artifact@v4
         with:
-          name: hyunoptic-v06-aggregate-report
+          name: hyunoptic-v1-aggregate-report
           path: |
             reports/v05/research_summary.md
             reports/v05/run_manifest.json
             reports/v06/reader_role_summary.md
+            reports/v1/pipeline_manifest.json
+            reports/v1/report.html
+            reports/v1/source_holdout/source_aggregate.json
+            reports/v1/source_holdout/source_summary.md
           if-no-files-found: error
           retention-days: 7
