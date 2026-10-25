@@ -156,3 +156,24 @@ def test_demo_data_cannot_pass_as_complete(demo):
     assert (papila / "SYNTHETIC_DEMO_DATA.txt").is_file()
     with Image.open(next((papila / "FundusImages").glob("*.jpg"))) as img:
         assert img.size == (640, 480)  # published PAPILA is 2576×1934
+
+
+@pytest.mark.parametrize("change", ["location", "contents"])
+def test_dataset_verification_is_invalidated_when_inputs_change(tmp_path, monkeypatch, change):
+    root = make_papila(tmp_path / "PAPILA", patients=4)
+    use_workspace(monkeypatch, tmp_path, papila_root=str(root))
+    app = open_page("datasets")
+    next(b for b in app.button if b.label == "Run Integrity Check").click().run()
+    assert not app.exception
+    assert page_text(app).split("Recent Verification History")[0].count("Never") == 1
+    if change == "location":
+        replacement = make_papila(tmp_path / "replacement", patients=4)
+        app.text_input(key="pap_root").set_value(str(replacement))
+        app.button(key="pap_save").click().run()
+    else:
+        contour = next((root / "ExpertsSegmentations" / "Contours").glob("*.txt"))
+        contour.write_text("1 1\n2 2\n3 3\n", encoding="utf-8")
+        app.run()
+    assert not app.exception
+    assert page_text(app).split("Recent Verification History")[0].count("Never") == 2
+    assert any("Results and timings appear here" in caption.value for caption in app.caption)

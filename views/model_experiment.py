@@ -48,7 +48,8 @@ with st.container(border=True):
 reports = []
 for path in find_reports(bundle.folder):
     try:
-        reports.append((path.parent.name, validate_report(json.loads(path.read_text(encoding="utf-8")))))
+        reports.append((path.parent.name, validate_report(json.loads(path.read_text(encoding="utf-8")),
+                                                        bundle=bundle)))
     except (ValueError, OSError) as exc:
         note(f"<b>Report rejected</b> ({path.parent.name}): {exc}", "bad")
 if not reports:

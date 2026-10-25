@@ -6,6 +6,7 @@ working directory, or the folder named by ``HYUNOPTIC_WORKSPACE``). No network.
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import zipfile
 from dataclasses import asdict, dataclass, field
@@ -53,6 +54,32 @@ class Workspace:
         path = folder / "workspace.json"
         path.write_text(json.dumps(asdict(self), indent=2) + "\n", encoding="utf-8")
         return path
+
+
+def integrity_input_identity(ws: Workspace, dataset: str, check: str) -> str | None:
+    """Invalidate historic checks when paths or file metadata change.
+
+    This cheap UI snapshot is not a content checksum or a replacement for
+    rerunning verification. Unreadable inputs never inherit a verified state.
+    """
+    archive = ws.papila_zip if dataset == "PAPILA" else ws.chaksu_zip
+    locations = [archive]
+    if dataset == "PAPILA" and check != "Archive SHA-256":
+        locations.append(ws.papila_root)
+    records = []
+    try:
+        for location in locations:
+            if not location:
+                records.append(None)
+                continue
+            path = Path(location).expanduser().resolve(strict=True)
+            files = sorted(p for p in path.rglob("*") if p.is_file()) if path.is_dir() else [path]
+            records.append([str(path), [
+                [str(p.relative_to(path)) if path.is_dir() else p.name,
+                 p.stat().st_size, p.stat().st_mtime_ns] for p in files]])
+    except OSError:
+        return None
+    return hashlib.sha256(json.dumps(records, ensure_ascii=False).encode("utf-8")).hexdigest()
 
 
 @dataclass

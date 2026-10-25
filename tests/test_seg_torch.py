@@ -164,3 +164,26 @@ def test_tampered_bundle_is_rejected_visibly(trained, tmp_path, monkeypatch):
     (copy / "config.json").write_text("{}")
     app = _page(monkeypatch, tmp_path, "model_inference", models_dir=str(copy.parent))
     assert "Bundle rejected" in _text(app)
+
+
+@pytest.mark.parametrize("field,value", [
+    ("run_id", "another-run"), ("weights_sha256", "0" * 64),
+    ("split_manifest_sha256", "0" * 64),
+    ("bundle_data_status", {"synthetic": False, "partial": False, "inventory_complete": True}),
+    ("exploratory", False),
+])
+def test_experiment_rejects_reports_with_wrong_model_or_data_status(trained, tmp_path, monkeypatch, field, value):
+    import shutil
+    from hyunoptic.seg.evaluate import evaluate_holdout
+    _, root, bundle_dir = trained
+    copy = tmp_path / "models" / "run"
+    shutil.copytree(bundle_dir, copy)
+    if (copy / "evaluation").exists():
+        shutil.rmtree(copy / "evaluation")
+    report_path = evaluate_holdout(verify_bundle(copy), root) / "model_eval_aggregate.json"
+    report = json.loads(report_path.read_text())
+    report[field] = value
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    app = _page(monkeypatch, tmp_path, "model_experiment", models_dir=str(copy.parent))
+    assert "Report rejected" in _text(app)
+    assert "Median cup Dice" not in _text(app)

@@ -216,7 +216,7 @@ def run_pipeline(
         if rel != "pipeline_manifest.json" and (out / rel).is_file()}
     # inventory.json lists per-image entries, so it stays local like *private* files.
     manifest["private_local_files_not_for_sharing"] = sorted(
-        str(p.relative_to(out)) for p in out.rglob("*")
+        p.relative_to(out).as_posix() for p in out.rglob("*")
         if p.is_file() and ("private" in p.name or p.name == "inventory.json"))
     (out / "pipeline_manifest.json").write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False, allow_nan=False) + "\n",

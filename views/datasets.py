@@ -15,17 +15,22 @@ from hyunoptic.source_integrity import verify_archive
 from hyunoptic.ui.components import badge, html, kv, note, page_title, section, step, table
 from hyunoptic.ui.icons import icon
 from hyunoptic.ui.state import datasets, save_workspace, workspace
-from hyunoptic.ui.workspace import append_history, read_history
+from hyunoptic.ui.workspace import append_history, integrity_input_identity, read_history
 
 page_title("Datasets & Integrity",
            "Connect local datasets and verify data integrity, structure and annotations. Nothing is uploaded.")
 ws = workspace()
 papila, chaksu = datasets()
 history = read_history("integrity", limit=50)
+identities = {(name, check): integrity_input_identity(ws, name, check)
+              for name in ("PAPILA", "Chákṣu")
+              for check in ("Archive SHA-256", "Full integrity check")}
 
 
 def last(dataset: str, check: str) -> dict | None:
-    return next((h for h in history if h.get("dataset") == dataset and h.get("check") == check), None)
+    identity = identities[dataset, check]
+    return next((h for h in history if identity is not None and h.get("dataset") == dataset
+                 and h.get("check") == check and h.get("input_identity") == identity), None)
 
 
 def short(path: str) -> str:
@@ -153,6 +158,7 @@ with right:
                                 {"sha256": r["computed_sha256"], "match": ok})
                     tone, detail, extra = timed("Archive SHA-256", sha)
                     append_history("integrity", dataset=name, check="Archive SHA-256",
+                                   input_identity=identities[name, "Archive SHA-256"],
                                    result="Match" if extra.get("match") else
                                    ("Mismatch" if tone != "bad" else "Error"),
                                    details=detail, sha256=extra.get("sha256"))
@@ -208,13 +214,17 @@ with right:
                 "warn" if any(r[0] == "warn" for r in results) else "ok")
             summary = {"ok": "Passed", "warn": "Issues found", "bad": "Error"}[worst]
             append_history("integrity", dataset=name, check="Full integrity check", result=summary,
+                           input_identity=identities[name, "Full integrity check"],
                            details="; ".join(f"{r[1]}: {r[2]}" for r in results)[:300],
                            complete_published_dataset=complete)
             st.session_state["ic_last"] = {"dataset": name, "steps": results, "summary": summary,
+                                           "input_identity": identities[name, "Full integrity check"],
                                            "worst": worst, "complete": complete}
             st.rerun()  # refresh the cards and history with the new entries
         last_run = st.session_state.get("ic_last")
-        if last_run and last_run["dataset"] == name:
+        if (last_run and last_run["dataset"] == name
+                and identities[name, "Full integrity check"] is not None
+                and last_run.get("input_identity") == identities[name, "Full integrity check"]):
             html("".join(step(*r) for r in last_run["steps"]))
             text = {"ok": "All checks passed.", "warn": "Checks ran; issues need review.",
                     "bad": "A check failed to run."}[last_run["worst"]]

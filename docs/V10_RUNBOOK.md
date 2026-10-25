@@ -147,6 +147,14 @@ hyunoptic-seg verify --bundle models\unet_run1
 
 **Status:** pipeline implemented and tested on synthetic fixtures only. No model has been trained on the real PAPILA archive, so the honest description is: *PyTorch training/evaluation pipeline implemented; real-data results pending.*
 
+### Review safeguards
+
+Model Experiment rejects reports whose run ID, weights hash, data status or internal source/split hashes differ from the selected bundle. Synthetic and partial model reports must remain exploratory. Tiny nonempty prediction masks remain drawable; their outlines do not change measurement masks.
+
+Dataset verification cards show a historic check only while its input paths and file metadata match the checked snapshot. Changing a location or ordinary file contents invalidates the displayed status; older history without a snapshot must be checked again. This UI snapshot is not a content checksum: rerun integrity verification before relying on data identity, including after any change that preserves file size and timestamps.
+
+The test workflow covers Linux Python 3.10/3.12 and Windows Python 3.12, with a separate CPU PyTorch synthetic-data job. Passing these tests demonstrates software behavior, not real-data model performance.
+
 ## 한국어 요약
 
 - **v1.0.0**은 새 점수 방법을 추가하지 않고, v0.7–rc3에서 고정한 프로토콜 전체를 `hyunoptic-pipeline` 한 번으로 실행하도록 묶은 첫 정식 소프트웨어 릴리스입니다.

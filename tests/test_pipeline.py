@@ -38,7 +38,7 @@ def test_full_chain_partial_fixture_runs_every_step(tmp_path):
         assert rel in manifest["output_sha256"]
     assert "inventory.json" in manifest["private_local_files_not_for_sharing"]
     assert "external/external_private_cases.json" in manifest["private_local_files_not_for_sharing"]
-    saved = json.loads((out / "pipeline_manifest.json").read_text())
+    saved = json.loads((out / "pipeline_manifest.json").read_text(encoding="utf-8"))
     assert saved["steps"] == manifest["steps"]
 
 
@@ -47,10 +47,10 @@ def test_report_and_manifest_hold_no_case_identifiers(tmp_path):
     run(tmp_path, chaksu_test_zip=archive)
     out = tmp_path / "out"
     for rel in ("report.html", "pipeline_manifest.json"):
-        text = (out / rel).read_text()
+        text = (out / rel).read_text(encoding="utf-8")
         assert "RET00" not in text
         assert "IMG_00" not in text and "img_00" not in text
-    html = (out / "report.html").read_text()
+    html = (out / "report.html").read_text(encoding="utf-8")
     assert "NOT for clinical use" in html
     assert "PARTIAL or UNVERIFIED" in html
 
@@ -61,7 +61,7 @@ def test_papila_only_run_skips_external_and_gate(tmp_path):
     assert status["chaksu_external_test"] == "skipped"
     assert status["evidence_gate"] == "skipped"
     assert status["papila_source_holdout"] == "incomplete"
-    html = (tmp_path / "out" / "report.html").read_text()
+    html = (tmp_path / "out" / "report.html").read_text(encoding="utf-8")
     assert "Chákṣu external analysis" in html  # listed as not included
 
 
@@ -110,7 +110,7 @@ def test_html_report_cli(tmp_path):
                                 "all_published_test_masks_structurally_verified": False,
                                 "readable_by_camera": {"Bosch": 1}}))
     assert report_main(["--chaksu-audit", str(good), "--output", str(tmp_path / "r.html")]) == 0
-    assert "all-five-reader" in (tmp_path / "r.html").read_text()
+    assert "all-five-reader" in (tmp_path / "r.html").read_text(encoding="utf-8")
 
 
 def test_dashed_cup_and_high_contrast_overlay():

@@ -7,6 +7,7 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+from PIL import Image
 from streamlit.testing.v1 import AppTest
 
 from hyunoptic.demo_data import make_papila
@@ -43,6 +44,21 @@ def test_postprocess_keeps_largest_disc_and_cup_inside_it():
     assert out[15:17, 15:17].sum() == 0 and (out == 2).sum() == 9 and (out >= 1).sum() == 64
     with pytest.raises(ValueError):
         preprocess.plan(10, 10, 50)  # not a multiple of 16
+
+
+@pytest.mark.parametrize("pixels", [[(16, 16)], [(16, 16), (16, 17)]])
+def test_tiny_prediction_masks_render_without_losing_source(pixels):
+    from hyunoptic.ui.model_ui import draw_prediction
+    image = Image.new("RGB", (32, 32), "black")
+    disc = np.zeros((32, 32), bool)
+    disc[8:24, 8:24] = True
+    cup = np.zeros_like(disc)
+    for y, x in pixels:
+        cup[y, x] = True
+    overlay, legend = draw_prediction(image, disc, cup, show_disc=True, show_cup=True)
+    assert overlay.size == image.size and image.getpixel((16, 16)) == (0, 0, 0)
+    assert overlay.getpixel((16, 16)) != (0, 0, 0)
+    assert [label for label, _, _ in legend] == ["Model disc", "Model cup"]
 
 
 def test_split_manifest_is_patient_disjoint_and_tamper_evident(tmp_path):

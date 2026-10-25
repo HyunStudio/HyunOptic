@@ -90,7 +90,11 @@ def mask_outline(mask: np.ndarray, *, rays: int = 180) -> np.ndarray:
     np.maximum.at(far, bins, radii + 0.5)
     filled = far > 0
     if filled.sum() < 3:
-        raise ValueError("Mask too small to outline")
+        # A one/two-pixel prediction is still drawable. Enclose its pixel cells
+        # rather than inventing a radial polygon or failing the entire viewer.
+        left, right = float(xs.min()) - 0.5, float(xs.max()) + 0.5
+        top, bottom = float(ys.min()) - 0.5, float(ys.max()) + 0.5
+        return np.array([[left, top], [right, top], [right, bottom], [left, bottom]])
     centers = (np.arange(rays) + 0.5) / rays * 2 * np.pi - np.pi
     r = np.interp(centers, centers[filled], far[filled], period=2 * np.pi)
     return np.column_stack((cx + r * np.cos(centers), cy + r * np.sin(centers)))
