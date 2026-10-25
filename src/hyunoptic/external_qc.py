@@ -49,6 +49,7 @@ def check_chaksu_archive(archive: str | Path, *, max_cases: int | None = None) -
         "research_only": True,
         "filename_structure_matches_published_dataset": manifest["matches_published_test_file_layout"],
         "n_test_images_in_archive": manifest["image_entries"],
+        "n_ignored_os_metadata_entries": manifest.get("ignored_os_metadata_entries", 0),
         "n_cases_with_all_expert_mask_paths": len(cases),
         "n_checked": len(selection),
         "n_readable_with_all_five_experts": sum(successes.values()),

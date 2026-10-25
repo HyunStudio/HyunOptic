@@ -120,6 +120,23 @@ def test_test_archive_five_readers_and_no_fused_labels(tmp_path):
     assert masks[("expert 1","cup")].sum()>0
 
 
+def test_os_metadata_is_not_counted_as_external_images_or_masks(tmp_path):
+    archive = chaksu_fixture(tmp_path / "test.zip")
+    with zipfile.ZipFile(archive, "a") as zf:
+        zf.writestr("__MACOSX/Test/1.0_Original_Fundus_Images/Bosch/._IMG_000.png", b"resource fork")
+        zf.writestr("Test/3.0_Doctors_Annotations_Binary_OD_OC/Expert 1/Bosch/Cup/._IMG_000.tif",
+                    b"resource fork")
+        zf.writestr("Test/.DS_Store", b"finder metadata")
+    cases, manifest = scan_test_archive(archive)
+    assert len(cases) == 3
+    assert manifest["image_entries"] == 3
+    assert manifest["missing_annotation_cases"] == []
+    assert manifest["ignored_os_metadata_entries"] == 3
+    with zipfile.ZipFile(archive) as zf:
+        image, masks = load_test_case(zf, cases[0])
+    assert image.size == (44, 48) and len(masks) == 4
+
+
 def test_missing_reader_and_corrupt_size_are_flagged(tmp_path):
     missing=chaksu_fixture(tmp_path/"missing.zip",missing=(0,5,"Cup"))
     cases,manifest=scan_test_archive(missing)
