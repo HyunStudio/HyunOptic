@@ -1,0 +1,28 @@
+{
+  "architecture": {
+    "name": "unet_small_v1",
+    "in_channels": 3,
+    "n_classes": 3,
+    "base_channels": 16,
+    "depth": 4
+  },
+  "image_size": 384,
+  "epochs": 40,
+  "batch_size": 4,
+  "optimizer": {
+    "name": "AdamW",
+    "lr": 0.001,
+    "weight_decay": 0.0001
+  },
+  "scheduler": "CosineAnnealingLR(T_max=epochs), stepped per epoch",
+  "loss": "cross-entropy + mean soft Dice over disc (rim \u222a cup), rim and cup",
+  "augmentations": [
+    "horizontal flip p=0.5 (image and mask)",
+    "rotation \u00b110\u00b0, scale 0.9\u20131.1, translation \u00b15% (image bilinear, mask nearest, black fill)",
+    "brightness \u00d70.9\u20131.1 and contrast \u00d70.9\u20131.1 (image only)"
+  ],
+  "seed": 42,
+  "split_seed": 42,
+  "device": "cuda",
+  "selection_rule": "highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, post-processed predictions vs expert 1"
+}

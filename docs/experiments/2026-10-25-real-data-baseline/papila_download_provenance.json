@@ -1,0 +1,32 @@
+{
+  "article_id": 14798004,
+  "version": 2,
+  "doi": "10.6084/m9.figshare.14798004.v2",
+  "license": {
+    "value": 6,
+    "name": "GPL 3.0+",
+    "url": "https://www.gnu.org/licenses/gpl-3.0.html"
+  },
+  "file": {
+    "id": 35013982,
+    "name": "PAPILA.zip",
+    "size": 590857635,
+    "is_link_only": false,
+    "download_url": "https://ndownloader.figshare.com/files/35013982",
+    "supplied_md5": "7d73fc5157d44b221a62ed5a4baf3779",
+    "computed_md5": "7d73fc5157d44b221a62ed5a4baf3779",
+    "mimetype": "application/zip"
+  },
+  "size_bytes": 590857635,
+  "md5": "7d73fc5157d44b221a62ed5a4baf3779",
+  "sha256": "15b053dff496bc8e53eb8a8d0707ef73ba3d56c988eea92b65832c9c82852a7d",
+  "md5_verified_against_figshare": true,
+  "transport": "8 workers, fresh Figshare redirect per range (signed URL expires in 10 seconds); full official MD5 verified",
+  "downloaded_utc": "2026-10-25T01:36:12.011534+00:00",
+  "extraction": {
+    "entries": 2979,
+    "uncompressed_bytes": 618217486,
+    "warning": "Extracted data are local research assets, not cleared for GitHub redistribution."
+  },
+  "publication_note": "Local absolute extraction path omitted from public copy; source archive hashes unchanged."
+}

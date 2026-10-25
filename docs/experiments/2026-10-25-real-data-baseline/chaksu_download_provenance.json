@@ -1,0 +1,26 @@
+{
+  "article_id": 20123135,
+  "version": 2,
+  "doi": "10.6084/m9.figshare.20123135.v2",
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "file": {
+    "id": 37875687,
+    "name": "Test.zip",
+    "size": 2704908552,
+    "is_link_only": false,
+    "download_url": "https://ndownloader.figshare.com/files/37875687",
+    "supplied_md5": "9fdac2596e1e884c7a19dabce1ee7339",
+    "computed_md5": "9fdac2596e1e884c7a19dabce1ee7339",
+    "mimetype": "application/zip"
+  },
+  "size_bytes": 2704908552,
+  "md5": "9fdac2596e1e884c7a19dabce1ee7339",
+  "sha256": "90e89ad01bfb0c4c238ba22a4a46ab46b5849e2fc9253c7bda09509f6ca259fa",
+  "md5_verified_against_figshare": true,
+  "transport": "8 workers, fresh Figshare redirect per range (signed URL expires in 10 seconds); full official MD5 verified",
+  "downloaded_utc": "2026-10-25T01:41:09.178801+00:00"
+}

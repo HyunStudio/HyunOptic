@@ -1,0 +1,20 @@
+{
+  "selected_checkpoint_matches_validation_only_rule": true,
+  "patient_disjoint_split_verified": true,
+  "bundle_hashes_verified": true,
+  "checks": [
+    {
+      "evaluation": "internal_papila_holdout",
+      "n_images": 98,
+      "n_failed": 2,
+      "aggregate_recomputed_from_private_rows": true
+    },
+    {
+      "evaluation": "exploratory_external_chaksu",
+      "n_images": 336,
+      "n_failed": 27,
+      "aggregate_recomputed_from_private_rows": true
+    }
+  ],
+  "note": "Arithmetic and provenance checks, not independent scientific or clinical certification."
+}

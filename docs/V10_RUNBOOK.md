@@ -145,7 +145,7 @@ hyunoptic-seg verify --bundle models\unet_run1
 
 **In the app:** *Model Inference* shows the empty state until PyTorch and a verified bundle exist, rejects tampered bundles visibly, predicts from the image only, labels whether the image was in this model's development/validation/holdout split, keeps the expert comparison in a separate panel that is off by default, and disables case-level export until the risk is acknowledged. *Model Experiment* shows only evaluator reports and the bundle's training history; the internal holdout is listed first and Chákṣu is always badged exploratory. Bundles trained on synthetic or partial data carry a red or amber banner everywhere.
 
-**Status:** pipeline implemented and tested on synthetic fixtures only. No model has been trained on the real PAPILA archive, so the honest description is: *PyTorch training/evaluation pipeline implemented; real-data results pending.*
+**Status:** pipeline implemented, with synthetic-fixture CI and an [executed real-data segmentation baseline](experiments/2026-10-25-real-data-baseline/README.md) on PAPILA plus exploratory Chákṣu evaluation. The separate candidate-QC study and clinical validation remain uncompleted; see the experiment report for denominators, failures and limitations.
 
 ### Review safeguards
 
