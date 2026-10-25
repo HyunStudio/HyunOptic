@@ -1,0 +1,80 @@
+{
+  "schema": "hyunoptic.seg_bundle/v1",
+  "run_id": "seg-20261025-062335-1430f6c9",
+  "created_utc": "2026-10-25T06:23:35+00:00",
+  "software_version": "1.2.0",
+  "git_commit": "e9f4d3a4d1aed524173169decd498224e11c4dd6",
+  "runtime": {
+    "python": "3.12.10",
+    "torch": "2.13.0+cu126",
+    "numpy": "2.5.4",
+    "device": "cuda",
+    "training_seconds": 436.1
+  },
+  "architecture": {
+    "name": "unet_small_v1",
+    "in_channels": 3,
+    "n_classes": 3,
+    "base_channels": 16,
+    "depth": 4
+  },
+  "preprocessing": {
+    "method": "letterbox_v1",
+    "image_size": 384,
+    "mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "std": [
+      0.25,
+      0.25,
+      0.25
+    ],
+    "image_interpolation": "bilinear",
+    "mask_interpolation": "nearest"
+  },
+  "postprocessing": "largest_disc_component_v1 (largest 4-connected disc, cup inside it)",
+  "training": {
+    "dataset": "PAPILA",
+    "reader": "exp1",
+    "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+    "source_inventory_fingerprint": "718b11ecbdb23a2085b4b1ec7790013051fe2e67d19b7ccfbb5f3208e5413f43",
+    "split_manifest_sha256": "f5aaf86fd2004eefa85b7adbdc798b919c27c9ddaceae71687197cf855a205e9",
+    "split_seed": 42,
+    "n_images": {
+      "development": 292,
+      "validation": 98,
+      "holdout": 98
+    },
+    "n_patients": {
+      "development": 146,
+      "validation": 49,
+      "holdout": 49
+    },
+    "class_balance_development": {
+      "background": 0.9738993419722698,
+      "disc_rim": 0.02201917581543712,
+      "cup": 0.004081482212293094
+    },
+    "selection_rule": "highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, post-processed predictions vs expert 1",
+    "best_epoch": 38,
+    "best_validation_score": 0.8362121134282489,
+    "epochs": 40,
+    "holdout_used_in_training_or_selection": false,
+    "expert2_used": false
+  },
+  "data_status": {
+    "synthetic": false,
+    "partial": false,
+    "inventory_complete": true,
+    "n_images_discovered": 488
+  },
+  "permitted_use": "Research only. Not for clinical use, diagnosis or patient care. Local use only.",
+  "files": {
+    "weights.pt": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+    "config.json": "cc4d2cdd32e52973853df453c55e067395c52eb92b40c2fdf6c4d8e35e36a531",
+    "split_manifest.json": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+    "history.json": "3e1b28733b28c7d57812fee2ea0c46f312dd97dbf0ba7bff05c7e7b43b274beb"
+  }
+}

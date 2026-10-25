@@ -1,0 +1,103 @@
+{
+  "created_utc": "2026-10-25T06:15:28.146885+00:00",
+  "purpose": "One exploratory photometric-domain remediation run after inspecting previous holdout/external results; no causal or clinical claim.",
+  "code_commit": "e9f4d3a4d1aed524173169decd498224e11c4dd6",
+  "one_run_budget": 1,
+  "comparison_training_seed": 43,
+  "baseline_identities": {
+    "42": {
+      "run_id": "seg-20261025-014501-8d7c01ba",
+      "weights_sha256": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff"
+    },
+    "43": {
+      "run_id": "seg-20261025-053553-c5282e43",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747"
+    },
+    "44": {
+      "run_id": "seg-20261025-054239-e0929581",
+      "weights_sha256": "e092958143798f0e24ff708e49bd9092c981efe9480f5ec96d908f1791adaa87"
+    }
+  },
+  "baseline_config": {
+    "architecture": {
+      "name": "unet_small_v1",
+      "in_channels": 3,
+      "n_classes": 3,
+      "base_channels": 16,
+      "depth": 4
+    },
+    "image_size": 384,
+    "epochs": 40,
+    "batch_size": 4,
+    "optimizer": {
+      "name": "AdamW",
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    },
+    "scheduler": "CosineAnnealingLR(T_max=epochs), stepped per epoch",
+    "loss": "cross-entropy + mean soft Dice over disc (rim ∪ cup), rim and cup",
+    "augmentations": [
+      "horizontal flip p=0.5 (image and mask)",
+      "rotation ±10°, scale 0.9–1.1, translation ±5% (image bilinear, mask nearest, black fill)",
+      "brightness ×0.9–1.1 and contrast ×0.9–1.1 (image only)"
+    ],
+    "seed": 43,
+    "split_seed": 42,
+    "device": "cuda",
+    "selection_rule": "highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, post-processed predictions vs expert 1"
+  },
+  "training": {
+    "image_size": 384,
+    "epochs": 40,
+    "batch_size": 4,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "base_channels": 16,
+    "depth": 4,
+    "seed": 43,
+    "split_seed": 42,
+    "device": "cuda",
+    "photometric_policy": "camera_robust_v2"
+  },
+  "new_augmentation_descriptions": [
+    "horizontal flip p=0.5 (image and mask)",
+    "rotation ±10°, scale 0.9–1.1, translation ±5% (image bilinear, mask nearest, black fill)",
+    "brightness x0.7-1.3 and contrast x0.7-1.3 (image only, foreground mean)",
+    "independent RGB gains x0.65-1.35 and gamma 0.7-1.5 (image only)",
+    "retain black pixels <=1/255 after spatial transforms; targets unchanged by photometry"
+  ],
+  "photometric_generator_seed": 1000046,
+  "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+  "split_manifest_sha256": "f5aaf86fd2004eefa85b7adbdc798b919c27c9ddaceae71687197cf855a205e9",
+  "source_file_sha256": {
+    "src/hyunoptic/seg/train.py": "3a3d1254498d7516100dcf3b8ae71c2ee1108263629b5bb4324e75781b070ba3",
+    "src/hyunoptic/seg/cli.py": "326cee2690d99f4ee5132e30eb7669a2e5f8ee47e0b7e0f7d89633fa4f56a162",
+    "src/hyunoptic/seg/model.py": "f598f8bd5c5da2edead75ae042e9f68680c63af03f398d4189dc35d0e0314594",
+    "src/hyunoptic/seg/preprocess.py": "c36a8e4be2114ff651f562ecbe04fe4e4a81a9e4940c52dc39657b4e9b9cb382",
+    "src/hyunoptic/seg/inference.py": "fcce89ed70f3b4c1c3df0b447e6032f2494a843acbc070137147f9dbc5187ce9",
+    "src/hyunoptic/seg/evaluate.py": "4800de0240c9dadcdd1bf18259fb276a281630cfbf56f1f8d340bf52f19f1a23",
+    "src/hyunoptic/seg/data.py": "f8d013f127e3571fac8008c90b012750d6586e6008361ed27882b45fe132968d",
+    "src/hyunoptic/chaksu.py": "8c0f50af23ed5a9e77ae17d3e0b49650cb58d81cee8e34bbd3137142473198a6"
+  },
+  "selection": "Highest validation mean disc/cup Dice only; freeze checkpoint before evaluation. Do not change settings or add runs based on outcomes.",
+  "evaluation": "One exploratory internal and external evaluation. Same original masks/postprocessing; keep 25 external reference failures and every model failure/denominator.",
+  "success_rule": {
+    "external_model_failures_less_than": 16,
+    "external_conditional_vcdr_mae_less_than": 0.25531008981230335,
+    "external_cup_dice_at_least": 0.5548701898781451,
+    "internal_tradeoff_disc_drop_greater_than": 0.02,
+    "internal_tradeoff_cup_drop_greater_than": 0.02,
+    "internal_tradeoff_failures_greater_than": 6
+  },
+  "additional_metrics": "Paired vCDR MAE on common measurable cases; separate descriptive research penalty=1 for model-invalid predictions over all reference-valid cases. Penalty is not observed MAE or clinical utility.",
+  "diagnostics": "Prior seed43 invalid/high-error/low-error selected cases plus image-only color samples; not performance estimates or proof of root cause.",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch": "2.13.0+cu126",
+    "cuda_runtime": "12.6",
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "omp_threads": 4,
+    "mkl_threads": 4
+  },
+  "limitation": "Fixed-seed single follow-up run on already inspected cohorts; CUDA nll_loss2d nondeterminism warning remains. No stability or superiority inference from one new run."
+}

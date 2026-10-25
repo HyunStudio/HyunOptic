@@ -49,4 +49,4 @@ jobs:
       - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
       - run: python -m pip install -e '.[ui,dev]'
       - run: hyunoptic-seg train --help
-      - run: pytest -q tests/test_seg_contract.py tests/test_seg_torch.py
+      - run: pytest -q tests/test_seg_contract.py tests/test_seg_torch.py tests/test_seg_photometric.py

@@ -147,6 +147,8 @@ hyunoptic-seg verify --bundle models\unet_run1
 
 **Status:** pipeline implemented, with synthetic-fixture CI and an [executed real-data segmentation baseline](experiments/2026-10-25-real-data-baseline/README.md) on PAPILA plus exploratory Chákṣu evaluation. The separate candidate-QC study and clinical validation remain uncompleted; see the experiment report for denominators, failures and limitations.
 
+Training optionally accepts `--photometric-policy camera_robust_v2`: stronger brightness/contrast, per-channel gains and gamma with separate extra RNG and black-pixel preservation. Default `baseline_v1` and inference/postprocessing remain unchanged. The [single-run photometric follow-up](experiments/2026-10-25-photometric-remediation/README.md) has mixed outcomes and did not meet its full prespecified rule; this is an experimental option, not a promoted replacement.
+
 ### Review safeguards
 
 Model Experiment rejects reports whose run ID, weights hash, data status or internal source/split hashes differ from the selected bundle. Synthetic and partial model reports must remain exploratory. Tiny nonempty prediction masks remain drawable; their outlines do not change measurement masks.

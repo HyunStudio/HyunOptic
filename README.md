@@ -35,6 +35,8 @@ Implements the [PyTorch segmentation design](docs/superpowers/specs/2026-10-25-p
 
 **Fixed-split seed follow-up:** seeds 42/43/44 give mean ± sample SD expert-1 Cup Dice of 0.6949 ± 0.0171 internally and 0.5698 ± 0.0089 externally. External vCDR MAE spans 0.1904–0.2553 and model geometry failures span 1–16; stable Dice alone does not establish stable measurement behavior. [All runs, denominators, failures and reproducibility](docs/experiments/2026-10-25-seed-stability/README.md).
 
+**Optional photometric follow-up:** `hyunoptic-seg train --photometric-policy camera_robust_v2` adds stronger training-only color/exposure augmentation. One actual seed-43 run gave mixed results: paired external vCDR MAE improved 0.2553→0.1167 (284 common measurable images), while external model failures increased 16→19 and disc Dice decreased. The prespecified overall rule failed; `baseline_v1` remains the default. [Complete results, tradeoffs and reproduction](docs/experiments/2026-10-25-photometric-remediation/README.md).
+
 Commands and the design-to-code map: [runbook §8](docs/V10_RUNBOOK.md#8-experimental-pytorch-segmentation).
 
 ## v1.1.0 — research workspace app
