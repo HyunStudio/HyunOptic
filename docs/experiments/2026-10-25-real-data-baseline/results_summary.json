@@ -1,0 +1,115 @@
+{
+  "created_kst": "2026-10-25T11:03:56.109163+09:00",
+  "run_id": "seg-20261025-014501-8d7c01ba",
+  "weights_sha256": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff",
+  "training": {
+    "dataset": "PAPILA",
+    "reader": "exp1",
+    "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+    "source_inventory_fingerprint": "718b11ecbdb23a2085b4b1ec7790013051fe2e67d19b7ccfbb5f3208e5413f43",
+    "split_manifest_sha256": "f5aaf86fd2004eefa85b7adbdc798b919c27c9ddaceae71687197cf855a205e9",
+    "split_seed": 42,
+    "n_images": {
+      "development": 292,
+      "validation": 98,
+      "holdout": 98
+    },
+    "n_patients": {
+      "development": 146,
+      "validation": 49,
+      "holdout": 49
+    },
+    "class_balance_development": {
+      "background": 0.9738993419722698,
+      "disc_rim": 0.02201917581543712,
+      "cup": 0.004081482212293094
+    },
+    "selection_rule": "highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, post-processed predictions vs expert 1",
+    "best_epoch": 38,
+    "best_validation_score": 0.8235348747347004,
+    "epochs": 40,
+    "holdout_used_in_training_or_selection": false,
+    "expert2_used": false
+  },
+  "runtime": {
+    "python": "3.12.10",
+    "torch": "2.13.0+cu126",
+    "numpy": "2.5.4",
+    "device": "cuda",
+    "training_seconds": 403.6
+  },
+  "rows": [
+    {
+      "dataset": "PAPILA internal holdout",
+      "reference": "expert1",
+      "n_images": 98,
+      "n_prediction_or_reference_failures": 2,
+      "n_dice": 98,
+      "disc_dice_mean": 0.9139625790256125,
+      "disc_dice_median": 0.9541056924081922,
+      "cup_dice_mean": 0.6821466211052779,
+      "cup_dice_median": 0.7987788466125154,
+      "n_vcdr": 96,
+      "vcdr_mae": 0.07765167141112078,
+      "vcdr_error_median": 0.04957614986542977,
+      "n_vcdr_error_over_0_10": 26,
+      "fraction_vcdr_error_over_0_10": 0.2708333333333333
+    },
+    {
+      "dataset": "PAPILA internal holdout",
+      "reference": "expert2",
+      "n_images": 98,
+      "n_prediction_or_reference_failures": 2,
+      "n_dice": 98,
+      "disc_dice_mean": 0.8890949765703952,
+      "disc_dice_median": 0.9232623889853422,
+      "cup_dice_mean": 0.6614068995850922,
+      "cup_dice_median": 0.7688152297053145,
+      "n_vcdr": 96,
+      "vcdr_mae": 0.0790615059179708,
+      "vcdr_error_median": 0.0563265291239336,
+      "n_vcdr_error_over_0_10": 31,
+      "fraction_vcdr_error_over_0_10": 0.3229166666666667
+    },
+    {
+      "dataset": "Chaksu exploratory external",
+      "reference": "expert1",
+      "n_images": 336,
+      "n_prediction_or_reference_failures": 27,
+      "n_dice": 311,
+      "disc_dice_mean": 0.8154083845167555,
+      "disc_dice_median": 0.9235857898715042,
+      "cup_dice_mean": 0.5594925707876086,
+      "cup_dice_median": 0.5916672754279592,
+      "n_vcdr": 309,
+      "vcdr_mae": 0.1904415950984664,
+      "vcdr_error_median": 0.17234455525065262,
+      "n_vcdr_error_over_0_10": 222,
+      "fraction_vcdr_error_over_0_10": 0.7184466019417476
+    },
+    {
+      "dataset": "Chaksu exploratory external",
+      "reference": "expert2",
+      "n_images": 336,
+      "n_prediction_or_reference_failures": 27,
+      "n_dice": 311,
+      "disc_dice_mean": 0.8206269767461091,
+      "disc_dice_median": 0.9288546600619494,
+      "cup_dice_mean": 0.5825353045673871,
+      "cup_dice_median": 0.6343878678316762,
+      "n_vcdr": 309,
+      "vcdr_mae": 0.1631438292705599,
+      "vcdr_error_median": 0.14103117882667082,
+      "n_vcdr_error_over_0_10": 204,
+      "fraction_vcdr_error_over_0_10": 0.6601941747572816
+    }
+  ],
+  "external_audit_complete": false,
+  "limitations": [
+    "Internal single-run patient-disjoint experiment, not clinical validation.",
+    "Expert annotations are references; disease diagnosis is not evaluated.",
+    "Chaksu is exploratory; patient identities largely unavailable, no patient intervals.",
+    "CUDA nll_loss2d lacks deterministic implementation; bitwise GPU reproducibility not established.",
+    "No tuning or retraining after the internal holdout was opened."
+  ]
+}

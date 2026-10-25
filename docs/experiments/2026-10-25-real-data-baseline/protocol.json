@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-10-25T01:29:24.446288+00:00",
+  "code_commit": "8aebd4cfdc8954678896c436321a22159afe1769",
+  "purpose": "First real-data segmentation baseline, not clinical validation",
+  "source": {
+    "dataset": "PAPILA",
+    "article_id": 14798004,
+    "version": 2,
+    "license": "GPL 3.0+",
+    "paper": "https://doi.org/10.1038/s41597-022-01388-1"
+  },
+  "external": {
+    "dataset": "Chaksu Test",
+    "article_id": 20123135,
+    "version": 2,
+    "license": "CC BY 4.0",
+    "paper": "https://doi.org/10.1038/s41597-023-01943-4",
+    "status": "exploratory; previously specified QC dataset, not untouched confirmation"
+  },
+  "training": {
+    "image_size": 384,
+    "epochs": 40,
+    "batch_size": 4,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "base_channels": 16,
+    "depth": 4,
+    "seed": 42,
+    "split_seed": 42,
+    "device": "cuda",
+    "selection": "highest validation mean disc/cup Dice",
+    "targets": "expert1 only"
+  },
+  "split": "patient-grouped sha256(seed|patient_id), 60/20/20; no holdout inspection before selected checkpoint frozen",
+  "evaluation": "run internal holdout once; disc/cup Dice, absolute vCDR error, >0.10 error share, failure counts, expert2 sensitivity, patient bootstrap; external per-camera exploratory metrics",
+  "data_use": "User requested publicly available data for real training and evaluation. Official metadata licenses reviewed; local computation. No raw data, case identifiers or model weights published.",
+  "predeclared_fallback": "Only reduce batch_size if GPU out-of-memory before evaluation; record any failed attempt. No outcome-based changes after holdout inspection."
+}

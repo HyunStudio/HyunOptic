@@ -1,0 +1,51 @@
+HyunOptic real-data baseline, 2026-10-25
+
+Official sources and attribution:
+PAPILA v2: https://doi.org/10.6084/m9.figshare.14798004.v2 (GPL 3.0+)
+Kovalyk et al. (2022): https://doi.org/10.1038/s41597-022-01388-1
+Chaksu v2: https://doi.org/10.6084/m9.figshare.20123135.v2 (CC BY 4.0)
+Kumar et al. (2023): https://doi.org/10.1038/s41597-023-01943-4
+Obtain the official archives separately under their terms. See download provenance
+JSON for exact file IDs, sizes, official MD5 and locally calculated SHA-256.
+Extract PAPILA into data/PAPILA; retain Chaksu Test.zip as data/Chaksu_Test.zip.
+No raw images, annotations, patient identifiers, or trained weights are in this ZIP.
+
+Repository: https://github.com/HyunStudio/HyunOptic
+Actual training commit: 8aebd4cfdc8954678896c436321a22159afe1769
+Actual external evaluation commit: f423de717c05c6658ccda65ddeb6228e4bc63f8f
+Merged main containing both changes: d0b0755298db2807fa9ccc8de4c93765fe252ebf
+Only archive metadata indexing changed between training and external evaluation.
+execution_versions.json preserves the evaluation source hashes and case-set check.
+
+To reproduce in a fresh checkout/environment (PowerShell):
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements_reproduce.txt
+python -m pip install -e .
+$env:OMP_NUM_THREADS='4'
+$env:MKL_NUM_THREADS='4'
+$env:CUBLAS_WORKSPACE_CONFIG=':4096:8'
+hyunoptic-chaksu-audit --chaksu-test-zip data/Chaksu_Test.zip --output-dir reports/chaksu_audit
+hyunoptic-seg train --papila-root data/PAPILA --output models/new_real_run --image-size 384 --epochs 40 --batch-size 4 --lr 0.001 --weight-decay 0.0001 --base-channels 16 --depth 4 --seed 42 --split-seed 42 --device cuda
+hyunoptic-seg evaluate --bundle models/new_real_run --papila-root data/PAPILA
+hyunoptic-seg evaluate --bundle models/new_real_run --chaksu-test-zip data/Chaksu_Test.zip
+
+Use a NEW output folder. The commands document reproduction and are not a request
+to repeat evaluation of the existing frozen run. Model selection uses validation
+only; inspect the internal holdout once, after selection. Chaksu is exploratory.
+Our actual executions called these same package train/evaluate APIs from local
+orchestration scripts to additionally capture environment and progress logs.
+Training used CUDA; both evaluations used the package's CPU inference path.
+GPU nll_loss2d emitted a nondeterminism warning: exact weights are not guaranteed
+to repeat despite fixed seeds. These are research segmentation metrics, not
+glaucoma diagnostic accuracy or clinical validation.
+
+Evidence: history.json is the recorded 40-epoch history; bundle_manifest.json
+records selection, split counts, hashes and timing. CSV/aggregate JSON contain
+original-resolution scores. Dice includes invalid predicted geometries where
+masks exist; vCDR requires a valid measurement and has a smaller denominator.
+External reference-loading failures are excluded from metric denominators and
+explicitly counted. No original masks were repaired to improve results.
+evidence_verification.json records independent arithmetic recomputation from
+local case rows, and is not independent clinical certification.
+evidence_manifest.json records SHA-256 for every other file in this ZIP.

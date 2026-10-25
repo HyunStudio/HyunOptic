@@ -1,0 +1,21 @@
+{
+  "training_code_commit": "8aebd4cfdc8954678896c436321a22159afe1769",
+  "external_evaluation_code_commit": "f423de717c05c6658ccda65ddeb6228e4bc63f8f",
+  "compatibility_fix_pr": "https://github.com/HyunStudio/HyunOptic/pull/2",
+  "metadata_fix_does_not_change_evaluated_case_set": true,
+  "n_cases": 336,
+  "ignored_os_metadata_entries": 3971,
+  "original_full_mask_preflight_completed": true,
+  "corrected_layout_preflight_rerun_in_progress": false,
+  "source_file_sha256": {
+    "src/hyunoptic/chaksu.py": "8c0f50af23ed5a9e77ae17d3e0b49650cb58d81cee8e34bbd3137142473198a6",
+    "src/hyunoptic/seg/evaluate.py": "4800de0240c9dadcdd1bf18259fb276a281630cfbf56f1f8d340bf52f19f1a23",
+    "src/hyunoptic/seg/inference.py": "fcce89ed70f3b4c1c3df0b447e6032f2494a843acbc070137147f9dbc5187ce9",
+    "src/hyunoptic/seg/preprocess.py": "c36a8e4be2114ff651f562ecbe04fe4e4a81a9e4940c52dc39657b4e9b9cb382",
+    "src/hyunoptic/seg/model.py": "f598f8bd5c5da2edead75ae042e9f68680c63af03f398d4189dc35d0e0314594"
+  },
+  "merged_main_commit": "d0b0755298db2807fa9ccc8de4c93765fe252ebf",
+  "corrected_preflight_n_checked": 336,
+  "corrected_preflight_n_readable": 311,
+  "corrected_preflight_n_errors": 26
+}

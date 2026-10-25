@@ -1,0 +1,39 @@
+{
+  "project": "HyunOptic",
+  "version": "0.8.0",
+  "dataset": "Chaksu Test.zip",
+  "research_only": true,
+  "filename_structure_matches_published_dataset": true,
+  "n_test_images_in_archive": 336,
+  "n_ignored_os_metadata_entries": 3971,
+  "n_cases_with_all_expert_mask_paths": 336,
+  "n_checked": 336,
+  "n_readable_with_all_five_experts": 311,
+  "n_errors": 26,
+  "readable_by_camera": {
+    "bosch": 31,
+    "forus": 29,
+    "remidio": 251
+  },
+  "decode_errors_by_camera": {
+    "bosch": 10,
+    "forus": 2,
+    "remidio": 13
+  },
+  "resolution_flags_by_camera": {
+    "bosch": 0,
+    "forus": 0,
+    "remidio": 1
+  },
+  "number_of_missing_annotation_cases": 0,
+  "number_of_ambiguous_duplicate_members": 0,
+  "number_of_suspicious_members": 0,
+  "all_published_test_masks_structurally_verified": false,
+  "partial_audit_or_unverified": true,
+  "warnings": [
+    "All-five-reader structural verification is not evidence that any segmentation is clinically correct.",
+    "The check never uses fused masks as independent expert labels.",
+    "Partial/sampled audit results cannot be claimed as complete Test-set validation.",
+    "Cases can fail containment although published human masks are authentic; investigate failures without silently editing source masks."
+  ]
+}
