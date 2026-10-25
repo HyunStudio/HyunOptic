@@ -64,15 +64,22 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
     duplicate = []
     sizes = []
     suspicious = []
+    ignored_os_metadata = 0
     with zipfile.ZipFile(path) as zf:
         entries = [v for v in zf.infolist() if not v.is_dir()]
         for entry in entries:
             if entry.flag_bits & 0x1 or entry.file_size > MAX_SINGLE_FILE:
                 suspicious.append({"member": entry.filename, "reason": "encrypted or oversize"})
                 continue
-            sizes.append((entry.filename, int(entry.file_size)))
             parts = PurePosixPath(entry.filename.replace("\\", "/")).parts
             lowered = [s.lower() for s in parts]
+            # The official Test.zip contains AppleDouble sidecars whose names
+            # end in image suffixes. They are filesystem metadata, not images.
+            if ("__macosx" in lowered or parts[-1].startswith("._")
+                    or lowered[-1] == ".ds_store"):
+                ignored_os_metadata += 1
+                continue
+            sizes.append((entry.filename, int(entry.file_size)))
             if ORIGINAL in lowered:
                 i = lowered.index(ORIGINAL)
                 if len(parts) <= i + 2 or PurePosixPath(parts[-1]).suffix.lower() not in IMAGE_SUFFIXES:
@@ -130,6 +137,7 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
         "source": "local ZIP; no upload of eye images",
         "published_test_counts": EXPECTED_TEST,
         "image_entries": len(images),
+        "ignored_os_metadata_entries": ignored_os_metadata,
         "complete_5_reader_cases": len(cases),
         "images_with_partially_decodable_patient_id": sum(known_groups.values()),
         "known_repeat_patient_groups": sum(n > 1 for n in known_groups.values()),
