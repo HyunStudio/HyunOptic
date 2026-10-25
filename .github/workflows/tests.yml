@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Verify frozen university experiment evidence
+        run: python docs/experiments/2026-10-25-university-transfer/scripts/verify_public_evidence.py
       - run: python -m pip install -e '.[ui,dev]'
       - run: python -m compileall -q app.py views src
       - run: hyunoptic-study --help

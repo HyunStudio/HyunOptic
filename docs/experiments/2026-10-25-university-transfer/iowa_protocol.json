@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-10-25T14:17:29.012572+00:00",
+  "runner_sha256": "aed939d6a02cfbf6f1f0e7176b6515b6d9b69d9a0f5c72c873f3d2ba511a8007",
+  "archive_sha256": "f5b5abb116a30f372587797d59c49f2bad93017632bf7c13e843e0a5da961579",
+  "source": "https://webeye.ophth.uiowa.edu/abramoff/pamidataset.rar",
+  "selection": "All 30 original non-TransDepth TIFFs, both original frames in file/frame order (60 views). No image selection or stereo registration.",
+  "n_stereo_files": 30,
+  "n_views": 60,
+  "n_depth_reference_files": 30,
+  "models": {
+    "baseline42": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff",
+    "baseline43": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+    "baseline44": "e092958143798f0e24ff708e49bd9092c981efe9480f5ec96d908f1791adaa87",
+    "photometric43": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4"
+  },
+  "no_retraining": true,
+  "metrics": "Execution/geometry availability only; no OD/OC reference masks and no accuracy claim. Provided RGBA depth-reference visualizations are not binarized into invented disc/cup masks.",
+  "input": "Original whole RGB frame, letterbox384, fixed normalization, existing largest_disc_component_v1, CUDA float32 batch8.",
+  "research_only": true,
+  "exploratory": true,
+  "not_independent_views_or_patients": true
+}

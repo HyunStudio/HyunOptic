@@ -1,0 +1,621 @@
+{
+  "summary": {
+    "fairseg": {
+      "baseline42": {
+        "n_images": 2000,
+        "n_measurable": 1957,
+        "n_model_failed": 43,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 1957,
+          "invalid_geometry": 43
+        },
+        "disc_dice": {
+          "n": 2000,
+          "mean": 0.10029013063887368,
+          "median": 0.0
+        },
+        "cup_dice": {
+          "n": 2000,
+          "mean": 0.1379347049517543,
+          "median": 0.0
+        },
+        "abs_vcdr_error": {
+          "n": 1957,
+          "mean": 0.2586201211428052,
+          "median": 0.25
+        }
+      },
+      "baseline43": {
+        "n_images": 2000,
+        "n_measurable": 412,
+        "n_model_failed": 1588,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "invalid_geometry": 1588,
+          "ok": 412
+        },
+        "disc_dice": {
+          "n": 2000,
+          "mean": 0.010131669820221621,
+          "median": 0.0
+        },
+        "cup_dice": {
+          "n": 2000,
+          "mean": 0.02374639493183981,
+          "median": 0.0
+        },
+        "abs_vcdr_error": {
+          "n": 412,
+          "mean": 0.3795566239481017,
+          "median": 0.3614143920595534
+        }
+      },
+      "baseline44": {
+        "n_images": 2000,
+        "n_measurable": 1640,
+        "n_model_failed": 360,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "invalid_geometry": 360,
+          "ok": 1640
+        },
+        "disc_dice": {
+          "n": 2000,
+          "mean": 0.12910186722641684,
+          "median": 0.04201206721790609
+        },
+        "cup_dice": {
+          "n": 2000,
+          "mean": 0.24850738159450003,
+          "median": 0.07032058933147932
+        },
+        "abs_vcdr_error": {
+          "n": 1640,
+          "mean": 0.3592290447152169,
+          "median": 0.35
+        }
+      },
+      "photometric43": {
+        "n_images": 2000,
+        "n_measurable": 1507,
+        "n_model_failed": 493,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "invalid_geometry": 493,
+          "ok": 1507
+        },
+        "disc_dice": {
+          "n": 2000,
+          "mean": 0.20486297189452615,
+          "median": 0.16709755015936656
+        },
+        "cup_dice": {
+          "n": 2000,
+          "mean": 0.2629777163536797,
+          "median": 0.21691598801975337
+        },
+        "abs_vcdr_error": {
+          "n": 1507,
+          "mean": 0.20135789271216717,
+          "median": 0.17568052862170508
+        }
+      }
+    },
+    "olives_pilot": {
+      "baseline42": {
+        "n_images": 30,
+        "n_measurable": 30,
+        "n_model_failed": 0,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 30
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      },
+      "baseline43": {
+        "n_images": 30,
+        "n_measurable": 22,
+        "n_model_failed": 8,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 22,
+          "invalid_geometry": 8
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      },
+      "baseline44": {
+        "n_images": 30,
+        "n_measurable": 26,
+        "n_model_failed": 4,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 26,
+          "invalid_geometry": 4
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      },
+      "photometric43": {
+        "n_images": 30,
+        "n_measurable": 22,
+        "n_model_failed": 8,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 22,
+          "invalid_geometry": 8
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      }
+    }
+  },
+  "paired": {
+    "fairseg": {
+      "n": 349,
+      "baseline43": {
+        "n": 349,
+        "mean": 0.3752677779063093,
+        "median": 0.36036036036036034
+      },
+      "photometric43": {
+        "n": 349,
+        "mean": 0.17918450303367683,
+        "median": 0.1491461100569259
+      }
+    },
+    "olives_pilot": {
+      "n": 0,
+      "baseline43": {
+        "n": 0,
+        "mean": null,
+        "median": null
+      },
+      "photometric43": {
+        "n": 0,
+        "mean": null,
+        "median": null
+      }
+    }
+  },
+  "duke": {
+    "protocol": {
+      "task": "Re-analyse distributed automatic OCT layer boundaries against both manual readers",
+      "primary_summary": "Unweighted mean of subject-level MAE over common finite in-bounds points; also report per-layer and coverage",
+      "models": [
+        "automaticLayersDME",
+        "automaticLayersNormal"
+      ],
+      "references": [
+        "manualLayers1",
+        "manualLayers2"
+      ],
+      "no_retraining": true,
+      "not_hyunoptic_model_performance": true,
+      "no_imputation": true,
+      "no_od_oc_metrics": true,
+      "not_independent_validation_of_original_Duke_algorithm": true
+    },
+    "results": [
+      {
+        "algorithm": "automaticLayersDME",
+        "reference": "manualLayers1",
+        "n_subject_files": 10,
+        "mean_subject_mae_px": 1.702348931809252,
+        "common_valid_points": 451159,
+        "reference_points": 460941,
+        "reference_points_without_finite_prediction": 9782,
+        "out_of_bounds_finite_pairs": 0,
+        "annotated_reference_bscans": 110,
+        "mean_subject_per_layer_mae_px": [
+          1.4849885641581713,
+          1.9033005932894778,
+          2.1069998630648583,
+          2.282338536181838,
+          2.2489634135724086,
+          1.1165840823892759,
+          1.293887677158323,
+          1.318668897401794
+        ]
+      },
+      {
+        "algorithm": "automaticLayersDME",
+        "reference": "manualLayers2",
+        "n_subject_files": 10,
+        "mean_subject_mae_px": 1.762965903189021,
+        "common_valid_points": 449327,
+        "reference_points": 459104,
+        "reference_points_without_finite_prediction": 9777,
+        "out_of_bounds_finite_pairs": 0,
+        "annotated_reference_bscans": 110,
+        "mean_subject_per_layer_mae_px": [
+          1.3410901481589126,
+          2.1500019341139165,
+          2.2320836515055698,
+          2.4182592101836518,
+          2.21071209686619,
+          1.1042272993187485,
+          1.390374203680452,
+          1.397416308570189
+        ]
+      },
+      {
+        "algorithm": "automaticLayersNormal",
+        "reference": "manualLayers1",
+        "n_subject_files": 10,
+        "mean_subject_mae_px": 3.957984786600143,
+        "common_valid_points": 460941,
+        "reference_points": 460941,
+        "reference_points_without_finite_prediction": 0,
+        "out_of_bounds_finite_pairs": 0,
+        "annotated_reference_bscans": 110,
+        "mean_subject_per_layer_mae_px": [
+          1.203828389562038,
+          7.2635747382348,
+          7.625217113816424,
+          6.208295457998909,
+          5.511888700079919,
+          1.2448621533092752,
+          1.2802274045031106,
+          1.5332759225230983
+        ]
+      },
+      {
+        "algorithm": "automaticLayersNormal",
+        "reference": "manualLayers2",
+        "n_subject_files": 10,
+        "mean_subject_mae_px": 4.174910490644947,
+        "common_valid_points": 459104,
+        "reference_points": 459104,
+        "reference_points_without_finite_prediction": 0,
+        "out_of_bounds_finite_pairs": 0,
+        "annotated_reference_bscans": 110,
+        "mean_subject_per_layer_mae_px": [
+          1.1348816487452975,
+          7.706351462555707,
+          8.116799019455788,
+          6.576213469164058,
+          5.927193210381699,
+          1.193027757421514,
+          1.4275929216047691,
+          1.610622449985658
+        ]
+      }
+    ]
+  },
+  "iowa": {
+    "protocol": {
+      "created_utc": "2026-10-25T14:17:29.012572+00:00",
+      "runner_sha256": "aed939d6a02cfbf6f1f0e7176b6515b6d9b69d9a0f5c72c873f3d2ba511a8007",
+      "archive_sha256": "f5b5abb116a30f372587797d59c49f2bad93017632bf7c13e843e0a5da961579",
+      "source": "https://webeye.ophth.uiowa.edu/abramoff/pamidataset.rar",
+      "selection": "All 30 original non-TransDepth TIFFs, both original frames in file/frame order (60 views). No image selection or stereo registration.",
+      "n_stereo_files": 30,
+      "n_views": 60,
+      "n_depth_reference_files": 30,
+      "models": {
+        "baseline42": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff",
+        "baseline43": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+        "baseline44": "e092958143798f0e24ff708e49bd9092c981efe9480f5ec96d908f1791adaa87",
+        "photometric43": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4"
+      },
+      "no_retraining": true,
+      "metrics": "Execution/geometry availability only; no OD/OC reference masks and no accuracy claim. Provided RGBA depth-reference visualizations are not binarized into invented disc/cup masks.",
+      "input": "Original whole RGB frame, letterbox384, fixed normalization, existing largest_disc_component_v1, CUDA float32 batch8.",
+      "research_only": true,
+      "exploratory": true,
+      "not_independent_views_or_patients": true
+    },
+    "summary": {
+      "baseline42": {
+        "n_images": 60,
+        "n_measurable": 60,
+        "n_model_failed": 0,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 60
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      },
+      "baseline43": {
+        "n_images": 60,
+        "n_measurable": 60,
+        "n_model_failed": 0,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 60
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      },
+      "baseline44": {
+        "n_images": 60,
+        "n_measurable": 60,
+        "n_model_failed": 0,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 60
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      },
+      "photometric43": {
+        "n_images": 60,
+        "n_measurable": 60,
+        "n_model_failed": 0,
+        "n_reference_failed": 0,
+        "model_status_counts": {
+          "ok": 60
+        },
+        "disc_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "cup_dice": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        },
+        "abs_vcdr_error": {
+          "n": 0,
+          "mean": null,
+          "median": null
+        }
+      }
+    },
+    "all_model_hashes_unchanged": true,
+    "source_inventory": {
+      "stereo_tiff_files": 30,
+      "original_views": 60,
+      "rgba_depth_references": 30,
+      "top_level_group_directories": 15,
+      "patient_count_not_verified": true
+    },
+    "notes": [
+      "Two stereo frames are correlated views, not independent cases/patients.",
+      "Geometry-valid output can still be anatomically incorrect.",
+      "No accuracy, depth-prediction or clinical-validation claim."
+    ]
+  },
+  "access": {
+    "research_date_kst": "2026-10-25",
+    "iowa": {
+      "source": "https://eye.medicine.uiowa.edu/inspire-datasets",
+      "request_form": "https://uiowa.qualtrics.com/jfe/form/SV_2fq4TQSnyHm6pp3?Q_JFE=qdg",
+      "status": "all60_original_stereo_views_tested_with_four_frozen_models",
+      "observed_required_fields": [
+        "first and last name",
+        "credentials",
+        "institution",
+        "city/state/country",
+        "email",
+        "CAPTCHA"
+      ],
+      "form_submitted": "user_completed_in_another_window",
+      "model_inference_performed": true,
+      "accuracy_metrics_available": false,
+      "reason": "User supplied official download after registration. HTTPS download and extraction succeeded. All30 stereo TIFFs/both frames tested;30 RGBA depth references are not OD/OC masks.",
+      "form_prepared": true,
+      "download_url": "https://webeye.ophth.uiowa.edu/abramoff/pamidataset.rar",
+      "download_bytes": 82129815
+    },
+    "columbia": {
+      "paper": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11008801/",
+      "related_code": "https://github.com/LIINC/TCAV4OCT",
+      "status": "no_public_patient_data_download_verified",
+      "model_inference_performed": false,
+      "accuracy_metrics_available": false,
+      "reason": "185 OCT reports and physician eye tracking are described in the paper; no verified public download for that patient dataset was found. Related code/model availability is not evidence of patient-image availability. No author contacted."
+    }
+  },
+  "protocol": {
+    "created_utc": "2026-10-25T13:54:02.563248+00:00",
+    "code_commit": "1f42b54385d8cf918c8417b475c0629d25ce874c",
+    "runner_sha256": "786af310b517225e3ef8d6fbf8b1cfac7afeb6a790f5020177a35b5cf86e53be",
+    "models": {
+      "baseline42": {
+        "folder": "papila_real_v1_20261025",
+        "weights_sha256": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff",
+        "run_id": "seg-20261025-014501-8d7c01ba"
+      },
+      "baseline43": {
+        "folder": "papila_real_seed43_20261025",
+        "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+        "run_id": "seg-20261025-053553-c5282e43"
+      },
+      "baseline44": {
+        "folder": "papila_real_seed44_20261025",
+        "weights_sha256": "e092958143798f0e24ff708e49bd9092c981efe9480f5ec96d908f1791adaa87",
+        "run_id": "seg-20261025-054239-e0929581"
+      },
+      "photometric43": {
+        "folder": "papila_camera_robust_seed43_20261025",
+        "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+        "run_id": "seg-20261025-062335-1430f6c9"
+      }
+    },
+    "research_only": true,
+    "exploratory": true,
+    "retraining": false,
+    "reference_based_crops": false,
+    "selection": "All 2000 official FairSeg Test NPZ; OLIVES all complete fundus TIFFs in predeclared bounded archive-prefix pilot",
+    "fairseg_mapping": "0 background, -1 rim, -2 cup; disc union(-1,-2), cup=-2; official utils confirms class2 cup",
+    "fairseg_input": "uint8 original SLO, replicated to RGB via PIL; no contrast stretch, crop, histogram adaptation or target-derived preprocessing",
+    "inference": "Existing whole-image letterbox384, fixed normalization and largest_disc_component_v1; CUDA float32 batches8, no AMP",
+    "metrics": "Original-resolution per-image Dice includes invalid predictions; vCDR pixel-span MAE only when measurable; paired error separately",
+    "no_claims": [
+      "clinical validity",
+      "diagnostic accuracy",
+      "population fairness",
+      "independent institutional validation"
+    ],
+    "runtime": {
+      "python": "3.12.10",
+      "torch": "2.13.0+cu126",
+      "device": "NVIDIA GeForce RTX 3070 Laptop GPU"
+    }
+  },
+  "verification_checks": [
+    "fairseg/baseline42: unique rows, counts and independent means verified",
+    "fairseg/baseline43: unique rows, counts and independent means verified",
+    "fairseg/baseline44: unique rows, counts and independent means verified",
+    "fairseg/photometric43: unique rows, counts and independent means verified",
+    "olives_pilot/baseline42: unique rows, counts and independent means verified",
+    "olives_pilot/baseline43: unique rows, counts and independent means verified",
+    "olives_pilot/baseline44: unique rows, counts and independent means verified",
+    "olives_pilot/photometric43: unique rows, counts and independent means verified",
+    "iowa/baseline42: all60 views, counts and absent accuracy metrics verified",
+    "iowa/baseline43: all60 views, counts and absent accuracy metrics verified",
+    "iowa/baseline44: all60 views, counts and absent accuracy metrics verified",
+    "iowa/photometric43: all60 views, counts and absent accuracy metrics verified"
+  ],
+  "evaluation_roles": {
+    "fairseg": {
+      "kind": "frozen_model_segmentation_accuracy",
+      "reference_available": true,
+      "n_images": 2000
+    },
+    "olives_pilot": {
+      "kind": "bounded_execution_geometry_pilot",
+      "reference_available": false,
+      "n_reference_missing": 30,
+      "full_cohort": false
+    },
+    "iowa": {
+      "kind": "all_original_stereo_views_execution_geometry",
+      "od_oc_reference_available": false,
+      "n_reference_missing": 60,
+      "independent_patients": false
+    },
+    "duke": {
+      "kind": "reanalysis_of_distributed_automatic_boundaries",
+      "hyunoptic_inference": false,
+      "new_pytorch_training": false
+    },
+    "columbia": {
+      "kind": "access_audit_only",
+      "model_evaluated": false
+    }
+  },
+  "additional_descriptive_diagnostics": {
+    "baseline42": {
+      "n_images": 2000,
+      "zero_disc_overlap": 1384,
+      "zero_cup_overlap": 1552,
+      "geometry_measurable_but_zero_disc_overlap": 1345
+    },
+    "baseline43": {
+      "n_images": 2000,
+      "zero_disc_overlap": 1670,
+      "zero_cup_overlap": 1679,
+      "geometry_measurable_but_zero_disc_overlap": 82
+    },
+    "baseline44": {
+      "n_images": 2000,
+      "zero_disc_overlap": 854,
+      "zero_cup_overlap": 903,
+      "geometry_measurable_but_zero_disc_overlap": 521
+    },
+    "photometric43": {
+      "n_images": 2000,
+      "zero_disc_overlap": 737,
+      "zero_cup_overlap": 858,
+      "geometry_measurable_but_zero_disc_overlap": 302
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-10-25T13:54:02.563248+00:00",
+  "code_commit": "1f42b54385d8cf918c8417b475c0629d25ce874c",
+  "runner_sha256": "786af310b517225e3ef8d6fbf8b1cfac7afeb6a790f5020177a35b5cf86e53be",
+  "models": {
+    "baseline42": {
+      "folder": "papila_real_v1_20261025",
+      "weights_sha256": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff",
+      "run_id": "seg-20261025-014501-8d7c01ba"
+    },
+    "baseline43": {
+      "folder": "papila_real_seed43_20261025",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+      "run_id": "seg-20261025-053553-c5282e43"
+    },
+    "baseline44": {
+      "folder": "papila_real_seed44_20261025",
+      "weights_sha256": "e092958143798f0e24ff708e49bd9092c981efe9480f5ec96d908f1791adaa87",
+      "run_id": "seg-20261025-054239-e0929581"
+    },
+    "photometric43": {
+      "folder": "papila_camera_robust_seed43_20261025",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+      "run_id": "seg-20261025-062335-1430f6c9"
+    }
+  },
+  "research_only": true,
+  "exploratory": true,
+  "retraining": false,
+  "reference_based_crops": false,
+  "selection": "All 2000 official FairSeg Test NPZ; OLIVES all complete fundus TIFFs in predeclared bounded archive-prefix pilot",
+  "fairseg_mapping": "0 background, -1 rim, -2 cup; disc union(-1,-2), cup=-2; official utils confirms class2 cup",
+  "fairseg_input": "uint8 original SLO, replicated to RGB via PIL; no contrast stretch, crop, histogram adaptation or target-derived preprocessing",
+  "inference": "Existing whole-image letterbox384, fixed normalization and largest_disc_component_v1; CUDA float32 batches8, no AMP",
+  "metrics": "Original-resolution per-image Dice includes invalid predictions; vCDR pixel-span MAE only when measurable; paired error separately",
+  "no_claims": [
+    "clinical validity",
+    "diagnostic accuracy",
+    "population fairness",
+    "independent institutional validation"
+  ],
+  "runtime": {
+    "python": "3.12.10",
+    "torch": "2.13.0+cu126",
+    "device": "NVIDIA GeForce RTX 3070 Laptop GPU"
+  }
+}

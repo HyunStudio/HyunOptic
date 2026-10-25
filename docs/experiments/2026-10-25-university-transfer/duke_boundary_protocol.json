@@ -1,0 +1,17 @@
+{
+  "task": "Re-analyse distributed automatic OCT layer boundaries against both manual readers",
+  "primary_summary": "Unweighted mean of subject-level MAE over common finite in-bounds points; also report per-layer and coverage",
+  "models": [
+    "automaticLayersDME",
+    "automaticLayersNormal"
+  ],
+  "references": [
+    "manualLayers1",
+    "manualLayers2"
+  ],
+  "no_retraining": true,
+  "not_hyunoptic_model_performance": true,
+  "no_imputation": true,
+  "no_od_oc_metrics": true,
+  "not_independent_validation_of_original_Duke_algorithm": true
+}

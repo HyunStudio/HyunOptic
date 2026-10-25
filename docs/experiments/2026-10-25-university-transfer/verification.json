@@ -1,0 +1,18 @@
+{
+  "checks": [
+    "fairseg/baseline42: unique rows, counts and independent means verified",
+    "fairseg/baseline43: unique rows, counts and independent means verified",
+    "fairseg/baseline44: unique rows, counts and independent means verified",
+    "fairseg/photometric43: unique rows, counts and independent means verified",
+    "olives_pilot/baseline42: unique rows, counts and independent means verified",
+    "olives_pilot/baseline43: unique rows, counts and independent means verified",
+    "olives_pilot/baseline44: unique rows, counts and independent means verified",
+    "olives_pilot/photometric43: unique rows, counts and independent means verified",
+    "iowa/baseline42: all60 views, counts and absent accuracy metrics verified",
+    "iowa/baseline43: all60 views, counts and absent accuracy metrics verified",
+    "iowa/baseline44: all60 views, counts and absent accuracy metrics verified",
+    "iowa/photometric43: all60 views, counts and absent accuracy metrics verified"
+  ],
+  "paired_verified": true,
+  "unique_case_order_verified": true
+}
