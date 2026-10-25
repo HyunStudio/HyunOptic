@@ -29,11 +29,11 @@
 
 ## Execution
 
-- [ ] Record timestamped protocol, code/source hashes and baseline identity before training.
-- [ ] Train seed 43 and seed 44 in new bundles; verify config equality except seed, full data, same source/split hashes, 40 finite epochs and validation selection.
-- [ ] Freeze both checkpoints, then evaluate each once internally and externally, labeling follow-up analyses exploratory. Retain progress and private rows locally.
-- [ ] Recompute aggregates from private rows without rerunning inference; compare seed 42/43/44 and produce charts, per-run CSV and descriptive mean/SD/range.
-- [ ] Review public evidence independently, verify hashes/links/privacy and publish follow-up PR. No product-code changes are planned.
+- [x] Record timestamped protocol, code/source hashes and baseline identity before training.
+- [x] Train seed 43 and seed 44 in new bundles; verify config equality except seed, full data, same source/split hashes, 40 finite epochs and validation selection.
+- [x] Freeze both checkpoints, then evaluate each once internally and externally, labeling follow-up analyses exploratory. Retain progress and private rows locally.
+- [x] Recompute aggregates from private rows without rerunning inference; compare seed 42/43/44 and produce charts, per-run CSV and descriptive mean/SD/range.
+- [x] Review public evidence independently, verify hashes/links/privacy and publish follow-up PR. No product-code changes are planned.
 
 ## Verification
 

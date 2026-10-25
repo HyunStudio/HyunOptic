@@ -1,0 +1,66 @@
+{
+  "created_utc": "2026-10-25T05:28:54.679271+00:00",
+  "user_authorization": "Two additional training seeds to assess stability; same split and settings.",
+  "code_commit": "0a0a0d760e608f4fe7e9660afd4a86c112a23ddb",
+  "baseline_run_id": "seg-20261025-014501-8d7c01ba",
+  "baseline_weights_sha256": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff",
+  "training_seeds": [
+    43,
+    44
+  ],
+  "baseline_training_seed": 42,
+  "split_seed": 42,
+  "fixed_config_except_training_seed": {
+    "architecture": {
+      "name": "unet_small_v1",
+      "in_channels": 3,
+      "n_classes": 3,
+      "base_channels": 16,
+      "depth": 4
+    },
+    "image_size": 384,
+    "epochs": 40,
+    "batch_size": 4,
+    "optimizer": {
+      "name": "AdamW",
+      "lr": 0.001,
+      "weight_decay": 0.0001
+    },
+    "scheduler": "CosineAnnealingLR(T_max=epochs), stepped per epoch",
+    "loss": "cross-entropy + mean soft Dice over disc (rim ∪ cup), rim and cup",
+    "augmentations": [
+      "horizontal flip p=0.5 (image and mask)",
+      "rotation ±10°, scale 0.9–1.1, translation ±5% (image bilinear, mask nearest, black fill)",
+      "brightness ×0.9–1.1 and contrast ×0.9–1.1 (image only)"
+    ],
+    "seed": 42,
+    "split_seed": 42,
+    "device": "cuda",
+    "selection_rule": "highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, post-processed predictions vs expert 1"
+  },
+  "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+  "split_manifest_sha256": "f5aaf86fd2004eefa85b7adbdc798b919c27c9ddaceae71687197cf855a205e9",
+  "source_file_sha256": {
+    "src/hyunoptic/seg/train.py": "1a3cf71d9ae34a332019e0d96b88bb0a2e4af7e1f9a773ed86fbdb92eb5eb5d9",
+    "src/hyunoptic/seg/evaluate.py": "4800de0240c9dadcdd1bf18259fb276a281630cfbf56f1f8d340bf52f19f1a23",
+    "src/hyunoptic/seg/inference.py": "fcce89ed70f3b4c1c3df0b447e6032f2494a843acbc070137147f9dbc5187ce9",
+    "src/hyunoptic/seg/preprocess.py": "c36a8e4be2114ff651f562ecbe04fe4e4a81a9e4940c52dc39657b4e9b9cb382",
+    "src/hyunoptic/seg/model.py": "f598f8bd5c5da2edead75ae042e9f68680c63af03f398d4189dc35d0e0314594",
+    "src/hyunoptic/seg/data.py": "f8d013f127e3571fac8008c90b012750d6586e6008361ed27882b45fe132968d",
+    "src/hyunoptic/chaksu.py": "8c0f50af23ed5a9e77ae17d3e0b49650cb58d81cee8e34bbd3137142473198a6"
+  },
+  "selection": "For each run, highest validation mean disc/cup Dice; both checkpoints frozen before follow-up evaluation. No holdout/external-based seed selection.",
+  "evaluation": "One internal evaluation and one Chaksu external evaluation for each frozen new bundle. All follow-up analyses exploratory; no reuse of baseline inference.",
+  "summary": "Show all three runs, mean, sample SD (ddof=1), min/max of run-level metrics; not patient confidence intervals or independent cohorts.",
+  "failure_handling": "Retain source annotation errors, invalid predictions and each metric denominator; no source mask repairs.",
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "torch": "2.13.0+cu126",
+    "numpy": "2.5.4",
+    "cuda_runtime": "12.6",
+    "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+    "omp_threads": 4,
+    "mkl_threads": 4
+  },
+  "reproducibility_limit": "CUDA nll_loss2d warns of missing deterministic implementation; fixed seeds do not establish bitwise reproducibility."
+}

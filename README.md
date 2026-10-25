@@ -33,6 +33,8 @@ Implements the [PyTorch segmentation design](docs/superpowers/specs/2026-10-25-p
 - App: a **Model Inference** page (image-only prediction from a verified local bundle, expert comparison in a separate panel that is off by default, provenance, and guarded export) and a read-only **Model Experiment** page (training curves and evaluator reports). The sidebar now groups Measurements, Model (experimental) and Research reports, and the existing QC pages are badged as a separate study.
 - CI uses synthetic fixtures (CPU). **Actual real-data baseline:** 40 epochs on PAPILA, selected epoch 38; expert-1 holdout Disc/Cup Dice 0.9140/0.6821 (98 images), vCDR MAE 0.0777 (96 images). Exploratory Chákṣu Disc/Cup Dice 0.8154/0.5595 (311 of 336 images), vCDR MAE 0.1904 (309 images). See [full results, failures, sources and reproducibility](docs/experiments/2026-10-25-real-data-baseline/README.md). This is not CT, 3-D or clinical work.
 
+**Fixed-split seed follow-up:** seeds 42/43/44 give mean ± sample SD expert-1 Cup Dice of 0.6949 ± 0.0171 internally and 0.5698 ± 0.0089 externally. External vCDR MAE spans 0.1904–0.2553 and model geometry failures span 1–16; stable Dice alone does not establish stable measurement behavior. [All runs, denominators, failures and reproducibility](docs/experiments/2026-10-25-seed-stability/README.md).
+
 Commands and the design-to-code map: [runbook §8](docs/V10_RUNBOOK.md#8-experimental-pytorch-segmentation).
 
 ## v1.1.0 — research workspace app

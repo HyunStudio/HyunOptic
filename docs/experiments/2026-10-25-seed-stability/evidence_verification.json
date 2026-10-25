@@ -1,0 +1,59 @@
+{
+  "created_utc": "2026-10-25T05:54:14.445457+00:00",
+  "checks": [
+    {
+      "seed": 42,
+      "dataset": "internal",
+      "run_id": "seg-20261025-014501-8d7c01ba",
+      "n_images": 98,
+      "n_failed": 2,
+      "all_aggregate_means_medians_counts_recomputed": true
+    },
+    {
+      "seed": 42,
+      "dataset": "external",
+      "run_id": "seg-20261025-014501-8d7c01ba",
+      "n_images": 336,
+      "n_failed": 27,
+      "all_aggregate_means_medians_counts_recomputed": true
+    },
+    {
+      "seed": 43,
+      "dataset": "internal",
+      "run_id": "seg-20261025-053553-c5282e43",
+      "n_images": 98,
+      "n_failed": 6,
+      "all_aggregate_means_medians_counts_recomputed": true
+    },
+    {
+      "seed": 43,
+      "dataset": "external",
+      "run_id": "seg-20261025-053553-c5282e43",
+      "n_images": 336,
+      "n_failed": 41,
+      "all_aggregate_means_medians_counts_recomputed": true
+    },
+    {
+      "seed": 44,
+      "dataset": "internal",
+      "run_id": "seg-20261025-054239-e0929581",
+      "n_images": 98,
+      "n_failed": 2,
+      "all_aggregate_means_medians_counts_recomputed": true
+    },
+    {
+      "seed": 44,
+      "dataset": "external",
+      "run_id": "seg-20261025-054239-e0929581",
+      "n_images": 336,
+      "n_failed": 26,
+      "all_aggregate_means_medians_counts_recomputed": true
+    }
+  ],
+  "same_source_and_patient_split_all_three_runs": true,
+  "configs_identical_except_training_seed": true,
+  "reference_failure_case_sets_identical_across_seeds": true,
+  "n_external_reference_failures": 25,
+  "baseline_unchanged": true,
+  "note": "Arithmetic/provenance verification, not independent scientific certification. Private case rows are not published."
+}
