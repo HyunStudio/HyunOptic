@@ -1,0 +1,164 @@
+[
+  {
+    "seed": 42,
+    "camera": "bosch",
+    "n": 41,
+    "model_failures": 0,
+    "model_error_messages": {},
+    "vcdr_n": 31,
+    "vcdr_mae": 0.2118150539023711,
+    "reference_vcdr_mean": 0.4935794358204181,
+    "disc_dice_mean_among_vcdr_measurable": 0.7414618310643383,
+    "cup_dice_mean_among_vcdr_measurable": 0.4375689096322349
+  },
+  {
+    "seed": 42,
+    "camera": "forus",
+    "n": 31,
+    "model_failures": 0,
+    "model_error_messages": {},
+    "vcdr_n": 29,
+    "vcdr_mae": 0.24371842027923518,
+    "reference_vcdr_mean": 0.4832952633598615,
+    "disc_dice_mean_among_vcdr_measurable": 0.9107810866924384,
+    "cup_dice_mean_among_vcdr_measurable": 0.5959985777354535
+  },
+  {
+    "seed": 42,
+    "camera": "remidio",
+    "n": 264,
+    "model_failures": 2,
+    "model_error_messages": {
+      "Predicted cup is empty": 2
+    },
+    "vcdr_n": 249,
+    "vcdr_mae": 0.18157571094921607,
+    "reference_vcdr_mean": 0.516896759412266,
+    "disc_dice_mean_among_vcdr_measurable": 0.813928132712765,
+    "cup_dice_mean_among_vcdr_measurable": 0.5749140343856178
+  },
+  {
+    "seed": 42,
+    "camera": "internal",
+    "n": 98,
+    "model_failures": 2,
+    "model_error_messages": {
+      "Predicted cup is empty": 2
+    },
+    "vcdr_n": 96,
+    "vcdr_mae": 0.07765167141112078,
+    "reference_vcdr_mean": 0.38263372589158173,
+    "disc_dice_mean_among_vcdr_measurable": 0.9256146557883049,
+    "cup_dice_mean_among_vcdr_measurable": 0.6963580090449711
+  },
+  {
+    "seed": 43,
+    "camera": "bosch",
+    "n": 41,
+    "model_failures": 3,
+    "model_error_messages": {
+      "Predicted cup is empty": 3
+    },
+    "vcdr_n": 28,
+    "vcdr_mae": 0.22480660924488452,
+    "reference_vcdr_mean": 0.49719293770973955,
+    "disc_dice_mean_among_vcdr_measurable": 0.7932893525038901,
+    "cup_dice_mean_among_vcdr_measurable": 0.3940506709778184
+  },
+  {
+    "seed": 43,
+    "camera": "forus",
+    "n": 31,
+    "model_failures": 2,
+    "model_error_messages": {
+      "Predicted cup is empty": 2
+    },
+    "vcdr_n": 27,
+    "vcdr_mae": 0.2136398960224501,
+    "reference_vcdr_mean": 0.49337419177690833,
+    "disc_dice_mean_among_vcdr_measurable": 0.8889105813906114,
+    "cup_dice_mean_among_vcdr_measurable": 0.6876010807294755
+  },
+  {
+    "seed": 43,
+    "camera": "remidio",
+    "n": 264,
+    "model_failures": 11,
+    "model_error_messages": {
+      "Predicted cup is empty": 11
+    },
+    "vcdr_n": 240,
+    "vcdr_mae": 0.263556726013194,
+    "reference_vcdr_mean": 0.5215879153343331,
+    "disc_dice_mean_among_vcdr_measurable": 0.8943906419677413,
+    "cup_dice_mean_among_vcdr_measurable": 0.6216082545209515
+  },
+  {
+    "seed": 43,
+    "camera": "internal",
+    "n": 98,
+    "model_failures": 6,
+    "model_error_messages": {
+      "Predicted disc is empty": 3,
+      "Predicted cup is empty": 3
+    },
+    "vcdr_n": 92,
+    "vcdr_mae": 0.07277515557903254,
+    "reference_vcdr_mean": 0.3777202918158496,
+    "disc_dice_mean_among_vcdr_measurable": 0.935506971403614,
+    "cup_dice_mean_among_vcdr_measurable": 0.7331619653799336
+  },
+  {
+    "seed": 44,
+    "camera": "bosch",
+    "n": 41,
+    "model_failures": 0,
+    "model_error_messages": {},
+    "vcdr_n": 31,
+    "vcdr_mae": 0.2531650299655784,
+    "reference_vcdr_mean": 0.4935794358204181,
+    "disc_dice_mean_among_vcdr_measurable": 0.8766345205438659,
+    "cup_dice_mean_among_vcdr_measurable": 0.525716883347251
+  },
+  {
+    "seed": 44,
+    "camera": "forus",
+    "n": 31,
+    "model_failures": 0,
+    "model_error_messages": {},
+    "vcdr_n": 29,
+    "vcdr_mae": 0.15025838891079776,
+    "reference_vcdr_mean": 0.4832952633598615,
+    "disc_dice_mean_among_vcdr_measurable": 0.9343764572308197,
+    "cup_dice_mean_among_vcdr_measurable": 0.7202982028961706
+  },
+  {
+    "seed": 44,
+    "camera": "remidio",
+    "n": 264,
+    "model_failures": 1,
+    "model_error_messages": {
+      "Predicted cup is empty": 1
+    },
+    "vcdr_n": 250,
+    "vcdr_mae": 0.23660742602580223,
+    "reference_vcdr_mean": 0.5157545637623578,
+    "disc_dice_mean_among_vcdr_measurable": 0.8425170269378509,
+    "cup_dice_mean_among_vcdr_measurable": 0.5665462477900346
+  },
+  {
+    "seed": 44,
+    "camera": "internal",
+    "n": 98,
+    "model_failures": 2,
+    "model_error_messages": {
+      "Predicted cup is empty": 1,
+      "Predicted disc is empty": 1
+    },
+    "vcdr_n": 96,
+    "vcdr_mae": 0.0713528138758218,
+    "reference_vcdr_mean": 0.38263372589158173,
+    "disc_dice_mean_among_vcdr_measurable": 0.925915442114866,
+    "cup_dice_mean_among_vcdr_measurable": 0.7292635917178205
+  }
+]

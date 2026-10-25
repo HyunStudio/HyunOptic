@@ -20,6 +20,7 @@
 
 - [x] Add failing tests for deterministic bounded photometric transforms, preserved black pixels/targets/main RNG, default backward compatibility, invalid policy rejection and config/CLI policy provenance.
 - [x] Implement optional policy, run targeted tests then full suite, and independently review the implementation. Preserve all existing bundles/results.
-- [ ] Save a timestamped protocol before the one real run; train once, freeze/hash checkpoint, then evaluate once internally/externally.
-- [ ] Independently recompute aggregate and paired/penalized metrics; render plots; verify public hashes, privacy and reproduction instructions.
-- [ ] Publish the complete result, including failures/tradeoffs, and merge only after review/CI pass.
+- [x] Save a timestamped protocol before the one real run; train once, freeze/hash checkpoint, then evaluate once internally/externally.
+- [x] Independently recompute aggregate and paired/penalized metrics; render plots; verify public hashes, privacy and reproduction instructions.
+- [x] Prepare the complete result, including failures/tradeoffs; final independent evidence review passed.
+- Integration gate: publish the follow-up PR and merge only after its CI passes.

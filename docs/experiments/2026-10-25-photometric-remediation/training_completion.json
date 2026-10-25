@@ -1,0 +1,8 @@
+{
+  "completed_utc": "2026-10-25T06:23:40.948823+00:00",
+  "bundle_folder": "models\\papila_camera_robust_seed43_20261025",
+  "run_id": "seg-20261025-062335-1430f6c9",
+  "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+  "best_epoch": 38,
+  "validation_score": 0.8362121134282489
+}

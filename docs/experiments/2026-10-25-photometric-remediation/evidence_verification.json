@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "model": "baseline_seed43",
+      "dataset": "internal",
+      "n_images": 98,
+      "aggregate_means_medians_counts_recomputed": true,
+      "n_failed": 6
+    },
+    {
+      "model": "baseline_seed43",
+      "dataset": "external",
+      "n_images": 336,
+      "aggregate_means_medians_counts_recomputed": true,
+      "n_failed": 41
+    },
+    {
+      "model": "camera_robust_seed43",
+      "dataset": "internal",
+      "n_images": 98,
+      "aggregate_means_medians_counts_recomputed": true,
+      "n_failed": 2
+    },
+    {
+      "model": "camera_robust_seed43",
+      "dataset": "external",
+      "n_images": 336,
+      "aggregate_means_medians_counts_recomputed": true,
+      "n_failed": 44
+    }
+  ],
+  "same_source_patient_split_and_training_seed": true,
+  "configs_differ_only_in_photometric_policy": true,
+  "reference_failure_sets_identical": true,
+  "all_original_three_seed_bundles_unchanged": true,
+  "checkpoint_frozen_before_evaluation": true,
+  "note": "Local arithmetic/provenance checks, not independent scientific certification. Private rows are excluded."
+}
