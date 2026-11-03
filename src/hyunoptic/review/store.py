@@ -13,6 +13,8 @@ from uuid import UUID, uuid4
 import numpy as np
 from PIL import Image
 
+from ..measure import measure_masks
+
 from . import inputs as input_tools
 from .inputs import sha256
 from .priority import priority
@@ -281,10 +283,24 @@ class ReviewStore:
             record.setdefault('measurement', None)
             record.setdefault('errors', [])
             record.setdefault('preprocessing', {})
+            if not isinstance(record['errors'], list) or any(not isinstance(e, str) for e in record['errors']):
+                raise ValueError('Prediction errors must be a list of strings')
+            # Labels are the persisted evidence. Never trust adapter-supplied
+            # ratios or carry a success measurement beside a failed prediction.
+            record['measurement'] = None
+            record['measurement_source'] = 'unavailable'
             if labels is not None:
                 array = np.asarray(labels)
                 if array.ndim != 2 or array.shape != (case['height'], case['width']) or not np.isin(array, [0, 1, 2]).all():
                     raise ValueError('Prediction must be a class map at original resolution')
+                if record['status'] == 'ok':
+                    try:
+                        record['measurement'] = measure_masks(array >= 1, array == 2).to_dict()
+                    except ValueError as exc:
+                        record['status'] = 'invalid_geometry'
+                        record['errors'] = [*record['errors'], f'Stored label geometry invalid: {exc}']
+                    else:
+                        record['measurement_source'] = 'recomputed_from_saved_labels_v1'
                 import io
                 stream = io.BytesIO()
                 Image.fromarray(array.astype(np.uint8)).save(stream, format='PNG')

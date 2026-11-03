@@ -36,3 +36,7 @@ Frozen university evidence verification passed for 25 files and both preserved r
 Model disagreement ranking has not undergone a new independent dataset evaluation. No error-detection recall or user-time benefit is claimed. The queue can miss cases where both models agree incorrectly. The existing model transfer studies remain prior evidence with their original denominators and limitations.
 
 Application accessibility features are present, but a formal accessibility audit and a study involving visually impaired users have not been completed. No public demonstration video or Devpost submission is implied by passing software tests.
+
+## Subsequent issue remediation — 2026-11-03
+
+ReviewStore now derives new successful predictions' measurements from the stored class map, downgrades empty masks, withholds failed measurements and validates error metadata. Ten regression checks failed before the correction and pass afterward. The final expanded suite passed **284 tests, 2 existing CUDA warnings, 323.06 seconds**. Existing frozen study results were not rewritten. See the [issue remediation report](../experiments/2026-11-03-issue-remediation/README.md) for the separately isolated DDU/CalDiff patches and their limited, nonclinical checks.

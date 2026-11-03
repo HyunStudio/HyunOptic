@@ -1,0 +1,127 @@
+{
+  "source_commit": "f597744c65df4ff51615ace5e86e82ffefe1cd0f",
+  "source_sha256": "db553202fc79251cfed91e4505302db00cf6161a2669dee882907972d5f2a3b9",
+  "tested_sha256": "cf7cae07ede2a2dfcb4faca86ea133669e2dc3fe87ed481ce159c20e789f8f39",
+  "python": "3.12.10",
+  "torch": "2.13.0+cu126",
+  "device": "cpu",
+  "passed": 17,
+  "total": 17,
+  "results": [
+    {
+      "name": "torch.float32_zero_finite",
+      "passed": true,
+      "detail": {
+        "jitter": 3.5762786865234375e-07,
+        "log_prob_min": 19.50884437561035,
+        "log_prob_max": 19.50884437561035
+      }
+    },
+    {
+      "name": "torch.float32_rank_deficient_finite",
+      "passed": true,
+      "detail": {
+        "jitter": 5.960464761756157e-07,
+        "log_prob_min": 1.7835912704467773,
+        "log_prob_max": 10.783589363098145
+      }
+    },
+    {
+      "name": "torch.float32_large_rank_deficient_finite",
+      "passed": true,
+      "detail": {
+        "jitter": 59604650164224.0,
+        "log_prob_min": -67.2005844116211,
+        "log_prob_max": -58.200584411621094
+      }
+    },
+    {
+      "name": "torch.float32_fullrank_closed_form",
+      "passed": true,
+      "detail": {
+        "jitter": 0.0,
+        "max_cov_error": 1.1920928955078125e-07
+      }
+    },
+    {
+      "name": "torch.float64_zero_finite",
+      "passed": true,
+      "detail": {
+        "jitter": 6.661338147750939e-16,
+        "log_prob_min": 49.660746051059554,
+        "log_prob_max": 49.660746051059554
+      }
+    },
+    {
+      "name": "torch.float64_rank_deficient_finite",
+      "passed": true,
+      "detail": {
+        "jitter": 1.1102230246251565e-15,
+        "log_prob_min": 21.832177356595466,
+        "log_prob_max": 30.832177356595466
+      }
+    },
+    {
+      "name": "torch.float64_large_rank_deficient_finite",
+      "passed": true,
+      "detail": {
+        "jitter": 111022.30246251565,
+        "log_prob_min": -47.287961080581354,
+        "log_prob_max": -38.287961080581354
+      }
+    },
+    {
+      "name": "torch.float64_fullrank_closed_form",
+      "passed": true,
+      "detail": {
+        "jitter": 0.0,
+        "max_cov_error": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "missing_class",
+      "passed": true,
+      "detail": "class 1 must contain at least two samples"
+    },
+    {
+      "name": "singleton_class",
+      "passed": true,
+      "detail": "class 1 must contain at least two samples"
+    },
+    {
+      "name": "nonfinite_nan",
+      "passed": true,
+      "detail": "embeddings must contain only finite values"
+    },
+    {
+      "name": "nonfinite_inf",
+      "passed": true,
+      "detail": "embeddings must contain only finite values"
+    },
+    {
+      "name": "nonfinite_-inf",
+      "passed": true,
+      "detail": "embeddings must contain only finite values"
+    },
+    {
+      "name": "label_outside_range",
+      "passed": true,
+      "detail": "labels must be in [0, num_classes)"
+    },
+    {
+      "name": "noninteger_labels",
+      "passed": true,
+      "detail": "labels must be a matching one-dimensional integer tensor on the embeddings device"
+    },
+    {
+      "name": "wrong_shape",
+      "passed": true,
+      "detail": "embeddings must be a two-dimensional tensor"
+    },
+    {
+      "name": "bounded_jitter_exhaustion",
+      "passed": true,
+      "detail": "Unable to fit positive-definite class covariances after 1 attempts; jitter bounded by 0.01 (relative limit 0.01)"
+    }
+  ]
+}
