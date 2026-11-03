@@ -1,0 +1,153 @@
+{
+  "protocol_sha256": "e739bfb1d1575570593a5f6de126c3d91cf499d3dccd5c4218f9c0c4ed6ea17a",
+  "n_original_images": 4,
+  "n_patients": 4,
+  "n_transformed_cases": 16,
+  "n_model_predictions": 32,
+  "cpu_seconds": 77.34,
+  "low_disagreement_large_primary_error_cases": 0,
+  "conditions": {
+    "original": [
+      {
+        "model_index": 0,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7559204606547606,
+        "mean_cup_dice": 0.6460856535479375,
+        "n_vcdr": 4,
+        "vcdr_mae": 0.17868906683746313,
+        "geometry_failures": 0,
+        "execution_failures": 0
+      },
+      {
+        "model_index": 1,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7561729938615303,
+        "mean_cup_dice": 0.6231422487789314,
+        "n_vcdr": 4,
+        "vcdr_mae": 0.21332744145519852,
+        "geometry_failures": 0,
+        "execution_failures": 0
+      }
+    ],
+    "brightness_0.6": [
+      {
+        "model_index": 0,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7206505820114408,
+        "mean_cup_dice": 0.6238913954401604,
+        "n_vcdr": 3,
+        "vcdr_mae": 0.053364437733943476,
+        "geometry_failures": 1,
+        "execution_failures": 0
+      },
+      {
+        "model_index": 1,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7346078346975773,
+        "mean_cup_dice": 0.6093545538686691,
+        "n_vcdr": 3,
+        "vcdr_mae": 0.05450654058168508,
+        "geometry_failures": 1,
+        "execution_failures": 0
+      }
+    ],
+    "contrast_0.6": [
+      {
+        "model_index": 0,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7239810270734452,
+        "mean_cup_dice": 0.6487747217858493,
+        "n_vcdr": 3,
+        "vcdr_mae": 0.0566225144384451,
+        "geometry_failures": 1,
+        "execution_failures": 0
+      },
+      {
+        "model_index": 1,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7468626114451693,
+        "mean_cup_dice": 0.6245756513307669,
+        "n_vcdr": 3,
+        "vcdr_mae": 0.06250239655691772,
+        "geometry_failures": 1,
+        "execution_failures": 0
+      }
+    ],
+    "blur_radius_2": [
+      {
+        "model_index": 0,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7562732504451349,
+        "mean_cup_dice": 0.6446428113986669,
+        "n_vcdr": 4,
+        "vcdr_mae": 0.17868906683746313,
+        "geometry_failures": 0,
+        "execution_failures": 0
+      },
+      {
+        "model_index": 1,
+        "n_cases": 4,
+        "n_dice": 4,
+        "mean_disc_dice": 0.7566496760082553,
+        "mean_cup_dice": 0.6246550011904911,
+        "n_vcdr": 4,
+        "vcdr_mae": 0.2045127935720741,
+        "geometry_failures": 0,
+        "execution_failures": 0
+      }
+    ]
+  },
+  "limitation": "Tiny exploratory reuse of previously evaluated holdout; no efficacy or independent validation claim",
+  "export_verified": true,
+  "posthoc_paired_vcdr": {
+    "brightness_0.6": [
+      {
+        "model_index": 0,
+        "n_common": 3,
+        "original_vcdr_mae": 0.04318682071819441,
+        "condition_vcdr_mae": 0.053364437733943476
+      },
+      {
+        "model_index": 1,
+        "n_common": 3,
+        "original_vcdr_mae": 0.057675981415193124,
+        "condition_vcdr_mae": 0.05450654058168508
+      }
+    ],
+    "contrast_0.6": [
+      {
+        "model_index": 0,
+        "n_common": 3,
+        "original_vcdr_mae": 0.04318682071819441,
+        "condition_vcdr_mae": 0.0566225144384451
+      },
+      {
+        "model_index": 1,
+        "n_common": 3,
+        "original_vcdr_mae": 0.057675981415193124,
+        "condition_vcdr_mae": 0.06250239655691772
+      }
+    ],
+    "blur_radius_2": [
+      {
+        "model_index": 0,
+        "n_common": 4,
+        "original_vcdr_mae": 0.17868906683746313,
+        "condition_vcdr_mae": 0.17868906683746313
+      },
+      {
+        "model_index": 1,
+        "n_common": 4,
+        "original_vcdr_mae": 0.21332744145519852,
+        "condition_vcdr_mae": 0.2045127935720741
+      }
+    ]
+  }
+}
