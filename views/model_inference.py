@@ -7,7 +7,7 @@ from html import escape
 from pathlib import Path
 
 import streamlit as st
-from PIL import Image
+from hyunoptic.ui.input_image import load_input_image
 
 from hyunoptic.measure import dice, measure_masks
 from hyunoptic.seg import RESEARCH_THRESHOLD, torch_available
@@ -82,7 +82,7 @@ with left:
                                       key="mi_upload")
             if upload is not None:
                 try:
-                    image = Image.open(upload).convert("RGB")
+                    image = load_input_image(upload)
                     case_id = Path(upload.name).stem
                 except (OSError, ValueError) as exc:
                     st.error(f"Cannot open image: {exc}")
@@ -108,7 +108,7 @@ from hyunoptic.ui.model_ui import crop_box, draw_prediction, image_sha256, predi
 
 with st.spinner("Running image-only inference…"):
     try:
-        pred = predict(str(bundle.folder), bundle.weights_sha256, image_sha256(image), image)
+        pred = predict(str(bundle.folder), bundle.identity, image_sha256(image), image)
     except (BundleError, ValueError, RuntimeError, OSError) as exc:
         pred = None
         error = str(exc)

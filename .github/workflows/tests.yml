@@ -39,6 +39,7 @@ jobs:
       - run: hyunoptic-report --help
       - run: hyunoptic-demo-data --help
       - run: hyunoptic-seg --help
+      - run: python -m hyunoptic.review.export --help
       - run: pytest -q
   ml:
     name: PyTorch segmentation (CPU, synthetic data only)

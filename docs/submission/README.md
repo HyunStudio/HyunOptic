@@ -1,0 +1,47 @@
+# HyunOptic — local AI prediction review
+
+Research software for inspecting optic disc/cup predictions, recording review decisions and exporting traceable evidence. A measurable result is not necessarily an anatomically correct result. This project is not a diagnostic or patient-care tool.
+
+## Run the submitted code
+
+Python 3.10+; Python 3.12 recommended. No hosted account or API key is needed. Downloading Python dependencies requires internet; inference and review data remain on the local computer.
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -e ".[ui,dev,ml]"
+python -m pytest -q
+streamlit run app.py
+```
+
+Open **Model Inference** to configure the models directory, then **Review Queue**. Two distinct verified local model bundles are required for a new review session. Their preparation and access restrictions are in [MODEL_AND_DATA_ACCESS.md](MODEL_AND_DATA_ACCESS.md). Without models, existing review records remain inspectable and the page shows an honest creation gate.
+
+## Main task
+
+1. Choose the primary and comparison model, identify modality, select local images and confirm local retention. Input supports RGB/grayscale PNG/JPEG/single-frame TIFF. The new queue limits each session to 500 images and 2GB total input, with 30MB/file and 25MP/image checks. Unsupported/failed cases remain visible.
+2. Process a bounded step (default five images). Repeat the step to continue. Processing is synchronous on CPU; it is not a background service. Stop between steps. After a process interruption, use **Recover interrupted cases**, then continue.
+3. Inspect the full image and model overlays. Priority shows execution failures, invalid measurements, and model disagreement. It is not calibrated confidence, disease risk, or a proven error detector.
+4. Save **unreviewed**, **reviewed**, or **held**. A held result needs a reason. Other reasons need a private note. Review completion does not certify correctness. A stale tab cannot overwrite a newer decision.
+5. Build the evidence ZIP, verify it and download it. Default export omits original images, masks, names, paths and private notes. Statuses, model provenance, measurements, reasons and hashes are retained. Hashes are not a guarantee of anonymity.
+6. Explicit deletion removes the session's retained inputs, artifacts and review history. Export files already downloaded elsewhere cannot be recalled.
+
+The local review database and copied inputs are under `.hyunoptic/review/` by default, or `HYUNOPTIC_WORKSPACE/review/`. Do not share this directory. It is not encrypted by the application. Use a trusted local account and device appropriate for your data permissions.
+
+Verify a downloaded package independently:
+
+```powershell
+python -m hyunoptic.review.export path/to/evidence.zip
+```
+
+## Evidence and scope
+
+- [Baseline and contribution boundary](BASELINE.md)
+- [Actual development dates](EVENT_CHANGES.md)
+- [AI use and human verification](AI_DISCLOSURE.md)
+- [Model and data access](MODEL_AND_DATA_ACCESS.md)
+- [Validation record and limits](VALIDATION.md)
+- [Three-minute demo script](DEMO.md)
+- [Final publication checklist](CHECKLIST.md)
+- [Prior real-data study results](../experiments/2026-10-25-university-transfer/README.md)
+
+There is no new independent clinical study or review-efficiency result in this release. Existing transfer failures motivate the workflow but do not validate its ranking. Reference annotations do not enter prediction or priority. No hosted app or public video is claimed unless an actual link is added after publication.

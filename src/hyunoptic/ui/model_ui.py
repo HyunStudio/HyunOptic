@@ -11,24 +11,24 @@ from PIL import Image, ImageDraw
 
 from ..seg.bundle import SPLIT, Bundle
 from ..viz import draw_contour, mask_outline
-from .theme import EXPERT_COLORS, MODEL_CUP, MODEL_DISC
+from .theme import EXPERT_COLORS, HIGH_CONTRAST, MODEL_CUP, MODEL_DISC
 
 
 @st.cache_resource(show_spinner=False, max_entries=3)
-def predictor(folder: str, weights_sha256: str):
-    """One loaded model per verified weights hash (the hash is part of the cache key)."""
+def predictor(folder: str, bundle_identity: str):
+    """One loaded model per verified full bundle identity."""
     from ..seg.bundle import verify_bundle
     from ..seg.inference import Predictor
     bundle = verify_bundle(folder)
-    if bundle.weights_sha256 != weights_sha256:
+    if bundle.identity != bundle_identity:
         raise ValueError("Bundle changed while loading")
     return Predictor(bundle)
 
 
 @st.cache_data(show_spinner=False, max_entries=32)
-def predict(folder: str, weights_sha256: str, image_sha256: str, _image: Image.Image):
-    """In-memory cache keyed by image-content hash + model hash; nothing is written to disk."""
-    return predictor(folder, weights_sha256).predict(_image)
+def predict(folder: str, bundle_identity: str, image_sha256: str, _image: Image.Image):
+    """In-memory cache keyed by image-content hash + full bundle identity; nothing is written to disk."""
+    return predictor(folder, bundle_identity).predict(_image)
 
 
 def image_sha256(image: Image.Image) -> str:
@@ -49,7 +49,8 @@ def split_role(bundle: Bundle, image_id: str) -> str | None:
 
 def draw_prediction(image: Image.Image, disc: np.ndarray | None, cup: np.ndarray | None, *,
                     show_disc: bool, show_cup: bool, experts: list[tuple[int, object]] = (),
-                    thickness: int = 2) -> tuple[Image.Image, list[tuple[str, str, str]]]:
+                    thickness: int = 2, high_contrast: bool = False,
+                    dashed_cup: bool = True) -> tuple[Image.Image, list[tuple[str, str, str]]]:
     """Model: disc solid / cup dashed. Experts (optional, separate panel): dotted in their colours."""
     out = image.convert("RGB").copy()
     draw = ImageDraw.Draw(out)
@@ -67,8 +68,10 @@ def draw_prediction(image: Image.Image, disc: np.ndarray | None, cup: np.ndarray
         if show_cup:
             draw_contour(draw, reader.cup_xy, color=color, width=width, style="dotted")
             legend.append((f"{reader.label} cup", color, "dotted"))
-    for name, mask, color, style, on in (("Model disc", disc, MODEL_DISC, "solid", show_disc),
-                                         ("Model cup", cup, MODEL_CUP, "dashed", show_cup)):
+    disc_color, cup_color = ((HIGH_CONTRAST["disc"], HIGH_CONTRAST["cup"]) if high_contrast
+                             else (MODEL_DISC, MODEL_CUP))
+    for name, mask, color, style, on in (("Model disc", disc, disc_color, "solid", show_disc),
+                                         ("Model cup", cup, cup_color, "dashed" if dashed_cup else "solid", show_cup)):
         if on and mask is not None and mask.any():
             draw_contour(draw, mask_outline(mask), color=color, width=width, style=style)
             legend.append((name, color, style))
