@@ -1,0 +1,64 @@
+{
+  "paper": "Deep Deterministic Uncertainty: A New Simple Baseline (CVPR2023), related to 2021 segmentation workshop",
+  "upstream": "https://github.com/omegafragger/DDU",
+  "commit": "f597744c65df4ff51615ace5e86e82ffefe1cd0f",
+  "python": "3.12.10",
+  "torch": "2.13.0+cu126",
+  "seed": 20261103,
+  "device": "cpu",
+  "isolated_dependencies": {
+    "tqdm": "4.67.1"
+  },
+  "initial_import_failure": "ModuleNotFoundError: No module named tqdm; installed isolated --target dependency only",
+  "execution": "Unmodified author functions on controlled tensors and random-weight network; no trained model or real dataset accuracy",
+  "source_hashes": {
+    "utils\\gmm_utils.py": "db553202fc79251cfed91e4505302db00cf6161a2669dee882907972d5f2a3b9",
+    "net\\resnet.py": "99ef8a77a95ad210c4e2bb6d602b3039089aea40d45860f06744fd4520b4ea10",
+    "metrics\\uncertainty_confidence.py": "67dd2d4a6deb3dcc57a5a216c16ea1489237e4b008ae12ef95d70ac2284fa59b"
+  },
+  "tests": [
+    {
+      "name": "author_gda_full_rank_and_analytic_density",
+      "status": "passed",
+      "seconds": 2.394,
+      "detail": {
+        "jitter": 0.0,
+        "analytic_max_absolute_error": 2.8421709430404007e-13,
+        "controlled_class_means_correct": 3,
+        "synthetic_ood_density_lower": true,
+        "not_a_dataset_benchmark": true
+      }
+    },
+    {
+      "name": "author_spectral_resnet18_forward_repeat",
+      "status": "passed",
+      "seconds": 0.7263,
+      "detail": {
+        "logits_shape": [
+          2,
+          10
+        ],
+        "features_shape": [
+          2,
+          512
+        ],
+        "random_weights": true
+      }
+    },
+    {
+      "name": "author_entropy_and_mutual_information",
+      "status": "passed",
+      "seconds": 0.005,
+      "detail": {
+        "uniform_entropy": 2.3025848865509033,
+        "identical_model_mi_max_abs": 0.0
+      }
+    },
+    {
+      "name": "author_singular_covariance_jitter_current_runtime",
+      "status": "failed",
+      "seconds": 0.0157,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    }
+  ]
+}
