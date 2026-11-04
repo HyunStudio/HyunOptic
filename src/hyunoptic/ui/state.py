@@ -172,21 +172,14 @@ def shell() -> None:
     text_size = st.session_state.get("pref_text_size", "Standard")
     inject_theme(text_size)
     papila, chaksu = datasets()
-    brand, search, chips, mode, prefs = st.columns([2.5, 2.4, 2.9, 1.45, 0.5], vertical_alignment="center")
-    with brand:
-        html(f'<div class="hz-brand">{LOGO}<div><b>HyunOptic</b><small>Ophthalmic Research Workspace</small>'
-             f"</div></div>")
+    html(f'<div class="hz-header"><div class="hz-brand">{LOGO}<div><b>HyunOptic</b>'
+         '<small>Ophthalmic Research Workspace</small></div></div>'
+         '<div class="hz-header-status">' + _dataset_chip(papila) + _dataset_chip(chaksu)
+         + _chip("on", "Research Mode", "Not for clinical use", "mode") + '</div></div>')
+    search, prefs = st.columns([8, 1], vertical_alignment="center")
     with search:
         st.text_input("Search", key="hz_search", placeholder="Search image or patient ID",
                       label_visibility="collapsed", on_change=_search)
-    with chips:
-        c1, c2 = st.columns(2)
-        with c1:
-            html(_dataset_chip(papila))
-        with c2:
-            html(_dataset_chip(chaksu))
-    with mode:
-        html(_chip("on", "Research Mode", "Not for clinical use", "mode"))
     with prefs:
         with st.popover("", icon=":material/settings:", help="Display & accessibility"):
             st.select_slider("Text size", options=["Standard", "Large", "Extra large"], key="pref_text_size")

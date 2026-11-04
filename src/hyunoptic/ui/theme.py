@@ -50,20 +50,24 @@ div[data-testid="stVerticalBlockBorderWrapper"]:has(> div > div > [data-testid="
 [data-testid="stVerticalBlockBorderWrapper"]{background:var(--hz-surface);border-color:var(--hz-line)!important;border-radius:14px}
 h1,h2,h3{color:var(--hz-ink);letter-spacing:-.01em}
 .hz-top{display:flex;align-items:center;gap:.9rem}
-.hz-brand{display:flex;align-items:center;gap:.6rem;white-space:nowrap}
+.hz-header{display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;align-items:center;margin-bottom:.65rem}
+.hz-header-status{display:flex;flex-wrap:wrap;gap:.5rem;min-width:0;flex:1;justify-content:flex-end}
+.hz-header-status .hz-chip{flex:1 1 10rem;min-width:0;max-width:100%}
+.hz-brand{display:flex;align-items:center;gap:.6rem;min-width:0;white-space:normal}
 .hz-brand b{font-size:1.65rem;color:#0A2540;line-height:1}
 .hz-brand small{display:block;color:var(--hz-ink-2);font-size:.9rem;margin-top:.15rem}
 .hz-chip{display:flex;align-items:center;gap:.55rem;border:1px solid var(--hz-line);background:var(--hz-surface);
 border-radius:12px;padding:.45rem .8rem;min-height:3.1rem}
 .hz-chip b{display:block;font-size:.92rem;color:var(--hz-ink);font-weight:600;line-height:1.2}
-.hz-chip small{display:block;font-size:.78rem;color:var(--hz-muted);line-height:1.2;white-space:nowrap}
+.hz-chip small{display:block;font-size:.78rem;color:var(--hz-muted);line-height:1.2;white-space:normal;overflow-wrap:anywhere}
 .hz-dot{width:.7rem;height:.7rem;border-radius:50%;flex:none;background:#A7B3C2}
 .hz-dot.on{background:#16A34A}.hz-dot.warn{background:#D97706}.hz-dot.bad{background:#DC2626}
 .hz-chip.mode{background:var(--hz-soft);border-color:#CFE0F5}
 .hz-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:.4rem 1rem;margin:.2rem 0 .9rem}
-.hz-title h1{font-size:2rem;margin:0;padding:0;font-weight:700}
+.hz-title h1{min-width:0;overflow-wrap:anywhere;font-size:2rem;margin:0;padding:0;font-weight:700}
 .hz-title p{margin:0;color:var(--hz-ink-2)}
-.hz-badges{margin-left:auto;display:flex;gap:.4rem}
+.hz-badges{margin-left:auto;display:flex;flex-wrap:wrap;gap:.4rem;min-width:0}
+.hz-badge{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 .hz-kpi{display:flex;gap:.9rem;align-items:flex-start;background:var(--hz-surface);border:1px solid var(--hz-line);
 border-radius:14px;padding:1rem 1.1rem;height:100%;min-height:7.2rem}
 .hz-kpi .ic{flex:none;width:3rem;height:3rem;border-radius:12px;background:var(--hz-soft);color:var(--hz-primary-2);
