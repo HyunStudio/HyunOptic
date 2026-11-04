@@ -22,18 +22,21 @@ def sha256(data: bytes) -> str:
 def decode_image(data: bytes) -> Image.Image:
     if len(data) > MAX_FILE_BYTES:
         raise ValueError('Input exceeds 30 MB')
-    with warnings.catch_warnings():
-        warnings.simplefilter('error', Image.DecompressionBombWarning)
-        with Image.open(io.BytesIO(data)) as image:
-            if image.format not in {'PNG', 'JPEG', 'TIFF'}:
-                raise ValueError('Only PNG, JPEG and single-frame TIFF are supported')
-            if getattr(image, 'n_frames', 1) != 1:
-                raise ValueError('Multi-frame images are unsupported')
-            if image.width * image.height > MAX_PIXELS:
-                raise ValueError('Input exceeds 25 megapixels')
-            if image.mode not in {'RGB', 'L'}:
-                raise ValueError('Only RGB and grayscale L images are supported')
-            return ImageOps.exif_transpose(image).convert('RGB').copy()
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter('error', Image.DecompressionBombWarning)
+            with Image.open(io.BytesIO(data)) as image:
+                if image.format not in {'PNG', 'JPEG', 'TIFF'}:
+                    raise ValueError('Only PNG, JPEG and single-frame TIFF are supported')
+                if getattr(image, 'n_frames', 1) != 1:
+                    raise ValueError('Multi-frame images are unsupported')
+                if image.width * image.height > MAX_PIXELS:
+                    raise ValueError('Input exceeds 25 megapixels')
+                if image.mode not in {'RGB', 'L'}:
+                    raise ValueError('Only RGB and grayscale L images are supported')
+                return ImageOps.exif_transpose(image).convert('RGB').copy()
+    except OSError as exc:
+        raise ValueError('Image data cannot be decoded. Use a complete PNG, JPEG or single-frame TIFF image.') from exc
 
 
 def inspect_input(data: bytes) -> dict:

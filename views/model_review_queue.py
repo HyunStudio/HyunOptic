@@ -1,20 +1,21 @@
 """Persistent, local-only research review; review completion is not an accuracy certificate."""
 from __future__ import annotations
 
+import io
 import subprocess
 import sqlite3
 from pathlib import Path
 
 import numpy as np
 import streamlit as st
-from PIL import Image, ImageOps
+from PIL import Image
 
 from hyunoptic.review.store import ReviewStore
 from hyunoptic.review.runner import run_next
 from hyunoptic.review.validation import order_cases
-from hyunoptic.review.inputs import MAX_FILE_BYTES
+from hyunoptic.review.inputs import MAX_FILE_BYTES,decode_image,sha256
 from hyunoptic.review.export import export_session, verify_export
-from hyunoptic.seg.bundle import BundleError, file_sha256, find_bundles, verify_bundle
+from hyunoptic.seg.bundle import BundleError, find_bundles, verify_bundle
 from hyunoptic.ui.components import badge, note, page_title
 from hyunoptic.ui.model_ui import draw_prediction
 from hyunoptic.ui.state import workspace
@@ -121,14 +122,17 @@ visible = [r for r in rows if review_filter == 'All' or
 if order == 'Review priority':
     visible = order_cases(visible)
 st.dataframe([{'Case': r['id'], 'Processing': r['status'], 'Review': r.get('review_state'),
-               'Reason': '; '.join(r['priority'].get('reasons', [])),
+               'Reason': ('unsupported_input' if r['status']=='error' and not r.get('pixel_sha256')
+                          else '; '.join(r['priority'].get('reasons', []))),
                'Disagreement': r['priority'].get('score')} for r in visible], hide_index=True)
 
 if visible:
     selected = st.selectbox('Inspect case', [r['id'] for r in visible], key=f'rq_case_{sid}_{review_filter}')
     case = next(r for r in visible if r['id'] == selected)
     if case.get('error'):
-        st.error(case['error'])
+        st.error(case['error'] if case.get('pixel_sha256') else
+                 'Unsupported input. Use a complete RGB or grayscale PNG, JPEG or single-frame TIFF. '
+                 'This failed case remains recorded.')
         if st.button('Retry failed case', key=f"rq_retry_{case['id']}"):
             try:
                 store.retry(case['id'])
@@ -140,16 +144,21 @@ if visible:
     try:
         if case.get('integrity_error'):
             raise ValueError('Input or prediction integrity failed. Source previews and derived results are withheld.')
-        with Image.open(case['input_path']) as opened:
-            image = ImageOps.exif_transpose(opened).convert('RGB')
+        if not case.get('pixel_sha256'):
+            raise ValueError('This input cannot be decoded. No source or model preview is available.')
+        source_data=Path(case['input_path']).read_bytes()
+        if sha256(source_data)!=case['original_sha256']:
+            raise ValueError('Input artifact changed. Restore the evidence or create a new session.')
+        image=decode_image(source_data)
         st.image(image, caption='Source image · local copy', width='stretch')
         for index, pred in enumerate(case.get('predictions', [])):
             st.write(f"Model {index + 1}: {pred.get('run_id', '')} · {pred['status']}")
             labels_path = pred.get('labels_path')
             if labels_path:
-                if file_sha256(Path(labels_path)) != pred['labels_sha256']:
+                label_data=Path(labels_path).read_bytes()
+                if sha256(label_data) != pred['labels_sha256']:
                     raise ValueError('Prediction artifact changed. Do not use this result; create a new session.')
-                with Image.open(labels_path) as mask:
+                with Image.open(io.BytesIO(label_data)) as mask:
                     labels = np.asarray(mask)
                 overlay, _ = draw_prediction(image, labels >= 1, labels == 2, show_disc=True, show_cup=True,
                                               thickness=st.session_state.get('pref_thickness', 2),
@@ -160,7 +169,10 @@ if visible:
                 st.write({'Predicted vCDR': pred['measurement'].get('vertical_cdr')})
             else:
                 st.caption('No valid measurement. ' + '; '.join(pred.get('errors', [])))
-    except (OSError, ValueError) as exc:
+    except OSError:
+        st.warning('Cannot display this case: a local evidence file is unavailable or unreadable. '
+                   'Restore the evidence or create a new session.')
+    except ValueError as exc:
         st.error(f'Cannot display this case: {exc}')
     states = ['unreviewed', 'reviewed', 'held']
     reason_options = ['wrong_location', 'boundary_mismatch', 'image_quality', 'unsupported_modality', 'uncertain', 'other']
