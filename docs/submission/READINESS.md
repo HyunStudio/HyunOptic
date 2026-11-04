@@ -1,5 +1,8 @@
 # Readiness decision — 2026-11-04
 
+**Latest software audit (2026-11-04):** [Git/distribution and lifecycle audit](../experiments/2026-11-04-submission-code-audit/README.md) — 404 tests passed in the development environment and 404 against a non-editable wheel in a new CPU-only environment. Four reproduced defects were corrected with 14 regression cases. Default two-seed/80-epoch synthetic preparation, installed-package processing, held-state reload, ZIP verification and managed deletion passed. These are software checks; earlier browser and real-data evidence retains its original scope.
+
+
 **Local software, public demonstration and reviewable entry materials are prepared. Actual Devpost submission and personal final review remain pending.** The product provides traceable research review; it does not establish clinical utility, ranking benefit or a predicted contest score.
 
 The [official rules](https://global-ai-builders-challenge.devpost.com/rules), checked November 4, start the event **November 21, 2026, 00:00 PST (17:00 KST)** and close submissions **November 28, 15:00 PST (November 29, 08:00 KST)**. Existing projects require accurate disclosure of their genuine event-period additions. All current work is pre-event.

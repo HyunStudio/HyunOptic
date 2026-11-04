@@ -1,0 +1,180 @@
+{
+  "baseline_commit": "35ee360b9edbca97b52b88b04a1e674783fcf909",
+  "development_environment_suite": {
+    "passed": 404,
+    "warnings": 4,
+    "seconds": 272.77,
+    "log_sha256": "0a011abc27695a028787738dad9611b551511f27ecc45456a69e8abf6551ff3c"
+  },
+  "isolated_installed_wheel_suite": {
+    "passed": 404,
+    "warnings": 2,
+    "seconds": 238.95,
+    "log_sha256": "4e31b35e5289f17a53fb403c10ee62da5ea9814b967a6813a30ead164ef4f62c"
+  },
+  "regression_cases_added": 14,
+  "base_only_wheel": {
+    "installed_version": "1.2.0",
+    "torch_present": false,
+    "streamlit_present": false,
+    "entrypoints": [
+      {
+        "command": "hyunoptic",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-chaksu-audit",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-demo-data",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-download",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-evidence",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-external",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-inventory",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-pipeline",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-reader-check",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-report",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-reproduce",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-seg",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-source-check",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-study",
+        "returncode": 0,
+        "usage": true
+      },
+      {
+        "command": "hyunoptic-verify-sources",
+        "returncode": 0,
+        "usage": true
+      }
+    ],
+    "synthetic_cli_report_version": "0.2.0",
+    "baseline_provenance_defect": true
+  },
+  "candidate_wheel": {
+    "filename": "hyunoptic-1.2.0-py3-none-any.whl",
+    "bytes": 176423,
+    "sha256": "278ed8ba7ca0a76b576f16e5bf3033e5154d8e6cfc3f39f0ff852f6d8045858a",
+    "source_modules_compared": 71,
+    "source_module_comparison": "LF-normalized bytes; all modules equal candidate source",
+    "non_editable_site_packages_import_verified": true,
+    "corrected_cli_outside_source_directory_version": "1.2.0"
+  },
+  "dependency_check": "No broken requirements found",
+  "fresh_cpu_demo_and_api": {
+    "wheel_import_from_site_packages": true,
+    "cpu_only": true,
+    "versions": {
+      "hyunoptic": "1.2.0",
+      "torch": "2.15.0+cpu",
+      "streamlit": "1.66.1",
+      "numpy": "2.5.4",
+      "Pillow": "12.3.0",
+      "pytest": "9.2.0"
+    },
+    "demo": {
+      "default_epochs": 80,
+      "seeds": [
+        42,
+        43
+      ],
+      "synthetic_patients": 10,
+      "models_verified": 2,
+      "state": "ready"
+    },
+    "api_e2e": {
+      "inputs": 7,
+      "completed": 4,
+      "input_errors": 3,
+      "predictions": 8,
+      "held_uncertain_survives_store_reload": true,
+      "export_payload_count": 6,
+      "export_sha256": "5a5211f6a3eb1b154e4ec32530db43540a177e30e46b486028296936ec9cf3a8",
+      "managed_export_removed_after_deletion": true
+    },
+    "scope": "Fresh CPU-installed wheel and source preparation script; synthetic mechanics only, no browser or real-data performance claim."
+  },
+  "normalized_source_sha256": {
+    "src/hyunoptic/cli.py": "f36476bffcfefb0f5b6149312839242fd9f11bbba1bb8ffe36b10a753d614771",
+    "src/hyunoptic/review/export.py": "6a4761a1c3c00d33d70beb1083eb4dddcd00f6b8805bb834a6b0e3e76baf2488",
+    "src/hyunoptic/review/inputs.py": "b91f7d21198553cf05194918cc3622e05c46088a8540ec8a9a6798f6fffc7266",
+    "src/hyunoptic/review/store.py": "484839d0715c6df886c9885244612bbc65e17e46f95b4ba388c851bd4588f3d9",
+    "src/hyunoptic/seg/evaluate.py": "b0e886e3e402e850ef53cf7e19ea555a8139e9fcf8b12e2fc5aed181040c055b",
+    "tests/test_evaluation_reader_isolation.py": "dad9190264d031d7828e53ca8e3e7792d3c4f31e93d0090d5b7bcca176f99d73",
+    "tests/test_review_runner_export.py": "1d8f7f463fcd07d8ed821921bedecc3e1774b35f62eda9b063f27f212dad1db9",
+    "tests/test_submission_distribution_regressions.py": "f8ddb3b18b1707fa9427027aac1189dd5898b23907b6a92ec28b3ee66ab0e0e7"
+  },
+  "preserved_evidence_checks": {
+    "experiment_payloads": 135,
+    "experiment_manifests": 8,
+    "university_payloads": 25,
+    "frozen_university_runners": 2,
+    "submission_media_payloads": 30
+  },
+  "decoder_postfix_probe": {
+    "inputs": 4500,
+    "formats": [
+      "PNG",
+      "JPEG",
+      "TIFF"
+    ],
+    "unexpected_exception_classes": 0,
+    "known_exceptions": {
+      "PNG_ValueError": 1359,
+      "JPEG_ValueError": 784,
+      "TIFF_ValueError": 821,
+      "TIFF_DecompressionBombWarning": 13,
+      "TIFF_DecompressionBombError": 21
+    },
+    "scope": "Bounded deterministic synthetic mutations; some altered inputs remain decodable. No exhaustive parser/security claim."
+  },
+  "clinical_performance_claim": false,
+  "browser_repeated_in_this_audit": false,
+  "warning_scope": "Development: two existing CUDA warnings and two intentional malformed-TIFF warnings; isolated CPU suite: intentional malformed-TIFF warnings."
+}

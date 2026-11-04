@@ -411,6 +411,12 @@ class ReviewStore:
             self._save_case(db, case)
             self._event(db, case, 'review_changed', old_state=old, new_state={k:case[k] for k in old})
 
+    def publish_export(self, session_id, temporary, target):
+        """Serialize publication with deletion, including across store instances."""
+        with self._db(write=True) as db:
+            self._session(db, session_id)
+            os.replace(temporary, target)
+
     def delete_session(self, session_id):
         with self._db(write=True) as db:
             self._session(db, session_id)

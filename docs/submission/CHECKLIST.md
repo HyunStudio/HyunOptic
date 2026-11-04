@@ -1,5 +1,8 @@
 # Final publication checklist
 
+**Latest software audit (2026-11-04):** [Git/distribution and lifecycle audit](../experiments/2026-11-04-submission-code-audit/README.md) — 404 tests passed in the development environment and 404 against a non-editable wheel in a new CPU-only environment. Four reproduced defects were corrected with 14 regression cases. Default two-seed/80-epoch synthetic preparation, installed-package processing, held-state reload, ZIP verification and managed deletion passed. These are software checks; earlier browser and real-data evidence retains its original scope.
+
+
 The prepared software and public media are not a completed Devpost submission. [Readiness and official timing](READINESS.md).
 
 ## Completed preparation

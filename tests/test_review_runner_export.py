@@ -29,6 +29,7 @@ class MemoryStore:
     def cases(self, sid): return [self.data]
     def events(self, sid): return self.history
     def snapshot(self, sid): return copy.deepcopy({'session':self.session(sid), 'cases':self.cases(sid), 'events':self.events(sid)})
+    def publish_export(self, sid, temporary, target): temporary.replace(target)
     def claim(self, cid): self.data['status']='processing'
     def record_prediction(self, cid, identity, prediction, labels):
         self.data['predictions'].append(dict(prediction, model_identity=identity))

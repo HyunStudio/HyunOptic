@@ -35,7 +35,7 @@ def decode_image(data: bytes) -> Image.Image:
                 if image.mode not in {'RGB', 'L'}:
                     raise ValueError('Only RGB and grayscale L images are supported')
                 return ImageOps.exif_transpose(image).convert('RGB').copy()
-    except OSError as exc:
+    except (OSError, SyntaxError, TypeError) as exc:
         raise ValueError('Image data cannot be decoded. Use a complete PNG, JPEG or single-frame TIFF image.') from exc
 
 

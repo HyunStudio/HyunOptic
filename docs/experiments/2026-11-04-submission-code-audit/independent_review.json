@@ -1,0 +1,7 @@
+{
+  "outcome": "approved; no actionable defects found",
+  "scope": "Working source diff and new regression tests; export/delete SQLite writer lock, malformed decoder normalization, shared version and synthetic/partial labels. Read-only independent agent review.",
+  "targeted_passed": 22,
+  "targeted_warnings": 2,
+  "limits": "Agent review is fallible, not human clinical review. Root independently ran full suites and wheel/demo/API checks. Explicit external export copies retain their existing lifecycle."
+}

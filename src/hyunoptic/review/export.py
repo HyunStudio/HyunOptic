@@ -135,7 +135,7 @@ def export_session(store, session_id: str, target: Path) -> Path:
                 info.external_attr = (stat.S_IFREG | 0o600) << 16
                 archive.writestr(info, data)
         verify_export(Path(temporary))
-        os.replace(temporary, target)
+        store.publish_export(session_id, Path(temporary), target)
     finally:
         Path(temporary).unlink(missing_ok=True)
     return target

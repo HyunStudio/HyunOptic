@@ -169,8 +169,9 @@ def evaluate_holdout(bundle: Bundle, papila_root: str | Path, *, exploratory_rer
             progress(k, len(cases))
     inventory = inspect_papila(root)
     ok = [r for r in rows if r["status"] == "ok"]
-    report = _header(bundle, "internal_papila_holdout", exploratory_rerun or bundle.partial, reason or (
-        "Bundle trained on partial or synthetic data" if bundle.partial else ""))
+    exploratory_data = bundle.synthetic or bundle.partial
+    report = _header(bundle, "internal_papila_holdout", exploratory_rerun or exploratory_data, reason or (
+        "Bundle trained on partial or synthetic data" if exploratory_data else ""))
     report.update({
         "dataset": "PAPILA", "split": "holdout", "split_manifest_sha256": model["training"]["split_manifest_sha256"],
         "source_content_sha256": model["training"]["source_content_sha256"],
