@@ -1,0 +1,134 @@
+1
+00:00:00,000 --> 00:00:04,809
+A measurable cup to disc ratio can still come from the wrong structure.
+
+2
+00:00:04,809 --> 00:00:12,462
+HyunOptic joins two model outputs, unresolved decisions, and evidence
+export in one local research session.
+
+3
+00:00:12,462 --> 00:00:18,410
+This demonstration uses synthetic images and two small models trained on
+the CPU.
+
+4
+00:00:18,410 --> 00:00:24,309
+These are actual application captures, with edited timing and synthetic
+narration.
+
+5
+00:00:24,309 --> 00:00:29,752
+The public preparation command has already trained both models for
+eighty epochs.
+
+6
+00:00:29,752 --> 00:00:35,416
+Seed forty three is the primary model; seed forty two is the comparison.
+
+7
+00:00:35,416 --> 00:00:41,709
+I import four synthetic images and one deliberately unreadable file
+through the real file chooser.
+
+8
+00:00:41,709 --> 00:00:46,209
+Local retention is confirmed before I create the session.
+
+9
+00:00:46,209 --> 00:00:50,943
+Processing runs in a bounded step and saves each completed input.
+
+10
+00:00:50,943 --> 00:00:56,741
+The result is four completed images, eight predictions, and one retained
+input error.
+
+11
+00:00:56,741 --> 00:01:03,199
+Unreadable data receives a terminal explanation, without a retry that
+cannot repair the file.
+
+12
+00:01:03,199 --> 00:01:07,998
+The source and both model overlays share the same image coordinates.
+
+13
+00:01:07,998 --> 00:01:12,498
+Model identities remain attached to their outputs.
+
+14
+00:01:12,498 --> 00:01:19,041
+The boundaries and predicted ratios differ; disagreement is not a
+calibrated confidence score.
+
+15
+00:01:19,041 --> 00:01:23,541
+Both models can agree and still be wrong.
+
+16
+00:01:23,541 --> 00:01:28,041
+I mark the first case held and choose the reason uncertain.
+
+17
+00:01:28,041 --> 00:01:34,224
+Save and next stores that decision, then opens the next unreviewed case
+in the current order.
+
+18
+00:01:34,224 --> 00:01:40,308
+After a full browser reload, reopening the original case restores held
+and uncertain.
+
+19
+00:01:40,308 --> 00:01:46,371
+Keyboard Tab navigation reaches the review controls, and Enter saves
+without a mouse.
+
+20
+00:01:46,371 --> 00:01:50,980
+The same workflow offers a full size panel on narrow screens.
+
+21
+00:01:50,980 --> 00:01:55,518
+A real three hundred ninety pixel check found a compressed header.
+
+22
+00:01:55,518 --> 00:02:00,112
+The updated layout moves readable status cards below the brand.
+
+23
+00:02:00,112 --> 00:02:05,271
+These checks do not constitute a complete accessibility certification.
+
+24
+00:02:05,271 --> 00:02:09,771
+I build the evidence package and download that verified ZIP.
+
+25
+00:02:09,771 --> 00:02:14,859
+A separate checker accepts its six payloads and confirms the held
+decision.
+
+26
+00:02:14,859 --> 00:02:22,103
+Original images, masks, filenames, paths, and private notes are
+excluded.
+
+27
+00:02:22,103 --> 00:02:27,501
+Hashes establish consistency, not anonymity or scientific truth.
+
+28
+00:02:27,501 --> 00:02:34,814
+The repository provides a synthetic setup, reproducible checks, and
+research evidence with explicit limits.
+
+29
+00:02:34,814 --> 00:02:41,587
+All changes shown were prepared before the hackathon; later event work
+must be disclosed separately.
+
+30
+00:02:41,587 --> 00:02:47,371
+HyunOptic is research software, not a diagnostic or patient care tool.

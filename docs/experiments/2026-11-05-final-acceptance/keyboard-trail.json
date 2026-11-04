@@ -1,0 +1,68 @@
+[
+  {
+    "label": null,
+    "role": null,
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "label": "Fullscreen: Source image · local copy",
+    "role": null,
+    "tag": "BUTTON",
+    "text": ""
+  },
+  {
+    "label": "Fullscreen: Primary prediction · research only",
+    "role": null,
+    "tag": "BUTTON",
+    "text": ""
+  },
+  {
+    "label": "Fullscreen: Comparison prediction · research only",
+    "role": null,
+    "tag": "BUTTON",
+    "text": ""
+  },
+  {
+    "label": null,
+    "role": null,
+    "tag": "BUTTON",
+    "text": "Refresh review record"
+  },
+  {
+    "label": "Review record (not correctness certification)",
+    "role": "combobox",
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "label": "uncertain",
+    "role": null,
+    "tag": "SPAN",
+    "text": "uncertain"
+  },
+  {
+    "label": "Reasons (required for held)",
+    "role": "combobox",
+    "tag": "INPUT",
+    "text": ""
+  },
+  {
+    "label": "Clear all",
+    "role": null,
+    "tag": "BUTTON",
+    "text": ""
+  },
+  {
+    "label": "Private local note (excluded from exports)",
+    "role": null,
+    "tag": "TEXTAREA",
+    "text": ""
+  },
+  {
+    "label": null,
+    "role": null,
+    "tag": "BUTTON",
+    "text": "Save review record"
+  }
+]

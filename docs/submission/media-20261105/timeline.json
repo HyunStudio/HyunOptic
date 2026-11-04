@@ -1,0 +1,305 @@
+{
+  "duration_seconds": 167.37092970521542,
+  "cues": [
+    {
+      "title": "Inspect the evidence behind a measurement",
+      "text": "A measurable cup to disc ratio can still come from the wrong structure.",
+      "capture": "19-desktop-current.png",
+      "start": 0,
+      "end": 4.8087074829931975,
+      "spoken_seconds": 4.508707482993198,
+      "duration": 4.8087074829931975,
+      "source_sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    },
+    {
+      "title": "Inspect the evidence behind a measurement",
+      "text": "HyunOptic joins two model outputs, unresolved decisions, and evidence export in one local research session.",
+      "capture": "19-desktop-current.png",
+      "start": 4.8087074829931975,
+      "end": 12.461768707482992,
+      "spoken_seconds": 7.353061224489796,
+      "duration": 7.653061224489796,
+      "source_sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    },
+    {
+      "title": "Inspect the evidence behind a measurement",
+      "text": "This demonstration uses synthetic images and two small models trained on the CPU.",
+      "capture": "19-desktop-current.png",
+      "start": 12.461768707482992,
+      "end": 18.410204081632653,
+      "spoken_seconds": 5.64843537414966,
+      "duration": 5.94843537414966,
+      "source_sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    },
+    {
+      "title": "Inspect the evidence behind a measurement",
+      "text": "These are actual application captures, with edited timing and synthetic narration.",
+      "capture": "19-desktop-current.png",
+      "start": 18.410204081632653,
+      "end": 24.308662131519274,
+      "spoken_seconds": 5.598458049886621,
+      "duration": 5.898458049886621,
+      "source_sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    },
+    {
+      "title": "Create a local review session",
+      "text": "The public preparation command has already trained both models for eighty epochs.",
+      "capture": "04-import-and-retention.png",
+      "start": 24.308662131519274,
+      "end": 29.752108843537414,
+      "spoken_seconds": 5.14344671201814,
+      "duration": 5.44344671201814,
+      "source_sha256": "a363d45fc1f7b29af12e35dd9220da936ab6b9014084dbc1cf2210ca40b51d31"
+    },
+    {
+      "title": "Create a local review session",
+      "text": "Seed forty three is the primary model; seed forty two is the comparison.",
+      "capture": "04-import-and-retention.png",
+      "start": 29.752108843537414,
+      "end": 35.41569160997732,
+      "spoken_seconds": 5.363582766439909,
+      "duration": 5.663582766439909,
+      "source_sha256": "a363d45fc1f7b29af12e35dd9220da936ab6b9014084dbc1cf2210ca40b51d31"
+    },
+    {
+      "title": "Create a local review session",
+      "text": "I import four synthetic images and one deliberately unreadable file through the real file chooser.",
+      "capture": "04-import-and-retention.png",
+      "start": 35.41569160997732,
+      "end": 41.70893424036281,
+      "spoken_seconds": 5.993242630385487,
+      "duration": 6.293242630385487,
+      "source_sha256": "a363d45fc1f7b29af12e35dd9220da936ab6b9014084dbc1cf2210ca40b51d31"
+    },
+    {
+      "title": "Create a local review session",
+      "text": "Local retention is confirmed before I create the session.",
+      "capture": "05-session-created.png",
+      "start": 41.70893424036281,
+      "end": 46.20893424036281,
+      "spoken_seconds": 3.7737868480725623,
+      "duration": 4.5,
+      "source_sha256": "5d5ab6d6897bfa93b9bbc1e3ee4c3dfe2e84d222959cc9ecefad6ce4011533cb"
+    },
+    {
+      "title": "Preserve completed work and failed inputs",
+      "text": "Processing runs in a bounded step and saves each completed input.",
+      "capture": "06-processed.png",
+      "start": 46.20893424036281,
+      "end": 50.94253968253968,
+      "spoken_seconds": 4.433605442176871,
+      "duration": 4.733605442176871,
+      "source_sha256": "b9983887b4e3dc77bbbda935165eb4bb2eb67d2d2648584afabe1e713dd2bbb0"
+    },
+    {
+      "title": "Preserve completed work and failed inputs",
+      "text": "The result is four completed images, eight predictions, and one retained input error.",
+      "capture": "06-processed.png",
+      "start": 50.94253968253968,
+      "end": 56.7409977324263,
+      "spoken_seconds": 5.498458049886621,
+      "duration": 5.798458049886621,
+      "source_sha256": "b9983887b4e3dc77bbbda935165eb4bb2eb67d2d2648584afabe1e713dd2bbb0"
+    },
+    {
+      "title": "Preserve completed work and failed inputs",
+      "text": "Unreadable data receives a terminal explanation, without a retry that cannot repair the file.",
+      "capture": "13-unsupported-terminal.png",
+      "start": 56.7409977324263,
+      "end": 63.19927437641723,
+      "spoken_seconds": 6.15827664399093,
+      "duration": 6.45827664399093,
+      "source_sha256": "74a410309e21fd978899ae0201fb2ac11b89b9882b06c7b12247141a51a9c0d5"
+    },
+    {
+      "title": "Compare source and identified model outputs",
+      "text": "The source and both model overlays share the same image coordinates.",
+      "capture": "07-aligned-comparison.png",
+      "start": 63.19927437641723,
+      "end": 67.99791383219954,
+      "spoken_seconds": 4.498639455782313,
+      "duration": 4.798639455782313,
+      "source_sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    {
+      "title": "Compare source and identified model outputs",
+      "text": "Model identities remain attached to their outputs.",
+      "capture": "07-aligned-comparison.png",
+      "start": 67.99791383219954,
+      "end": 72.49791383219954,
+      "spoken_seconds": 3.5887074829931973,
+      "duration": 4.5,
+      "source_sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    {
+      "title": "Compare source and identified model outputs",
+      "text": "The boundaries and predicted ratios differ; disagreement is not a calibrated confidence score.",
+      "capture": "07-aligned-comparison.png",
+      "start": 72.49791383219954,
+      "end": 79.04104308390022,
+      "spoken_seconds": 6.2431292517006804,
+      "duration": 6.54312925170068,
+      "source_sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    {
+      "title": "Compare source and identified model outputs",
+      "text": "Both models can agree and still be wrong.",
+      "capture": "07-aligned-comparison.png",
+      "start": 79.04104308390022,
+      "end": 83.54104308390022,
+      "spoken_seconds": 2.9689795918367348,
+      "duration": 4.5,
+      "source_sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    {
+      "title": "Keep an unresolved decision and resume",
+      "text": "I mark the first case held and choose the reason uncertain.",
+      "capture": "08-held-before-save.png",
+      "start": 83.54104308390022,
+      "end": 88.04104308390022,
+      "spoken_seconds": 3.868662131519274,
+      "duration": 4.5,
+      "source_sha256": "b968911fd4dcc50d39a5a1a5b1fc2bc0fac8489048315e72ef7a2b42d60cb972"
+    },
+    {
+      "title": "Keep an unresolved decision and resume",
+      "text": "Save and next stores that decision, then opens the next unreviewed case in the current order.",
+      "capture": "09-save-next.png",
+      "start": 88.04104308390022,
+      "end": 94.22421768707483,
+      "spoken_seconds": 5.883174603174603,
+      "duration": 6.183174603174603,
+      "source_sha256": "3132177ca32525edcd65f808aa5f9c1ee906e9840b9b804067a600805d43fb72"
+    },
+    {
+      "title": "Keep an unresolved decision and resume",
+      "text": "After a full browser reload, reopening the original case restores held and uncertain.",
+      "capture": "11-reload-held.png",
+      "start": 94.22421768707483,
+      "end": 100.30757369614513,
+      "spoken_seconds": 5.783356009070295,
+      "duration": 6.083356009070295,
+      "source_sha256": "10fa27de6578b11fc6422f00be511fcbf58be4abd7d1f5ef24ddbbf6765dfac7"
+    },
+    {
+      "title": "Keep an unresolved decision and resume",
+      "text": "Keyboard Tab navigation reaches the review controls, and Enter saves without a mouse.",
+      "capture": "12-keyboard-focus.png",
+      "start": 100.30757369614513,
+      "end": 106.37111111111112,
+      "spoken_seconds": 5.763537414965986,
+      "duration": 6.063537414965986,
+      "source_sha256": "b2f326a4fdcf42569a05bd342a66cbee2a0976ab0c83c4eeb3699d449c6a0868"
+    },
+    {
+      "title": "Inspect the narrow-screen workflow",
+      "text": "The same workflow offers a full size panel on narrow screens.",
+      "capture": "18-phone-fullsize.png",
+      "start": 106.37111111111112,
+      "end": 110.97981859410432,
+      "spoken_seconds": 4.3087074829931975,
+      "duration": 4.608707482993197,
+      "source_sha256": "56e6134d5ccce86510c1263a241bf486de0857cb11566865e7295b1ad1cd5d26"
+    },
+    {
+      "title": "Inspect the narrow-screen workflow",
+      "text": "A real three hundred ninety pixel check found a compressed header.",
+      "capture": "03-narrow-fixed.png",
+      "start": 110.97981859410432,
+      "end": 115.51845804988663,
+      "spoken_seconds": 4.238639455782313,
+      "duration": 4.538639455782313,
+      "source_sha256": "f5cec03077c2ab66684d6286830d7fb55c29b866c1e331b3e0fe3d6eae371d19"
+    },
+    {
+      "title": "Inspect the narrow-screen workflow",
+      "text": "The updated layout moves readable status cards below the brand.",
+      "capture": "03-narrow-fixed.png",
+      "start": 115.51845804988663,
+      "end": 120.1120634920635,
+      "spoken_seconds": 4.293605442176871,
+      "duration": 4.59360544217687,
+      "source_sha256": "f5cec03077c2ab66684d6286830d7fb55c29b866c1e331b3e0fe3d6eae371d19"
+    },
+    {
+      "title": "Inspect the narrow-screen workflow",
+      "text": "These checks do not constitute a complete accessibility certification.",
+      "capture": "18-phone-fullsize.png",
+      "start": 120.1120634920635,
+      "end": 125.27056689342405,
+      "spoken_seconds": 4.858503401360545,
+      "duration": 5.158503401360544,
+      "source_sha256": "56e6134d5ccce86510c1263a241bf486de0857cb11566865e7295b1ad1cd5d26"
+    },
+    {
+      "title": "Download and independently verify evidence",
+      "text": "I build the evidence package and download that verified ZIP.",
+      "capture": "14-export-ready.png",
+      "start": 125.27056689342405,
+      "end": 129.77056689342405,
+      "spoken_seconds": 3.99859410430839,
+      "duration": 4.5,
+      "source_sha256": "f28090b47fa662d1ee6ba74a344e263189f6d9c74f845cb30bc9d0868b825032"
+    },
+    {
+      "title": "Download and independently verify evidence",
+      "text": "A separate checker accepts its six payloads and confirms the held decision.",
+      "capture": "verifier-result.png",
+      "start": 129.77056689342405,
+      "end": 134.8591836734694,
+      "spoken_seconds": 4.788616780045351,
+      "duration": 5.088616780045351,
+      "source_sha256": "8511b2ef7bde122dc3280f31088efb1e8d41b1f3f2752175113fa3a28d11f3e5"
+    },
+    {
+      "title": "Download and independently verify evidence",
+      "text": "Original images, masks, filenames, paths, and private notes are excluded.",
+      "capture": "verifier-result.png",
+      "start": 134.8591836734694,
+      "end": 142.10267573696146,
+      "spoken_seconds": 6.943492063492063,
+      "duration": 7.243492063492063,
+      "source_sha256": "8511b2ef7bde122dc3280f31088efb1e8d41b1f3f2752175113fa3a28d11f3e5"
+    },
+    {
+      "title": "Download and independently verify evidence",
+      "text": "Hashes establish consistency, not anonymity or scientific truth.",
+      "capture": "verifier-result.png",
+      "start": 142.10267573696146,
+      "end": 147.50140589569162,
+      "spoken_seconds": 5.098730158730159,
+      "duration": 5.398730158730158,
+      "source_sha256": "8511b2ef7bde122dc3280f31088efb1e8d41b1f3f2752175113fa3a28d11f3e5"
+    },
+    {
+      "title": "Reproduce the workflow within its limits",
+      "text": "The repository provides a synthetic setup, reproducible checks, and research evidence with explicit limits.",
+      "capture": "19-desktop-current.png",
+      "start": 147.50140589569162,
+      "end": 154.81437641723358,
+      "spoken_seconds": 7.01297052154195,
+      "duration": 7.31297052154195,
+      "source_sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    },
+    {
+      "title": "Reproduce the workflow within its limits",
+      "text": "All changes shown were prepared before the hackathon; later event work must be disclosed separately.",
+      "capture": "19-desktop-current.png",
+      "start": 154.81437641723358,
+      "end": 161.58748299319728,
+      "spoken_seconds": 6.473106575963719,
+      "duration": 6.773106575963719,
+      "source_sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    },
+    {
+      "title": "Reproduce the workflow within its limits",
+      "text": "HyunOptic is research software, not a diagnostic or patient care tool.",
+      "capture": "07-aligned-comparison.png",
+      "start": 161.58748299319728,
+      "end": 167.37092970521542,
+      "spoken_seconds": 5.48344671201814,
+      "duration": 5.78344671201814,
+      "source_sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    }
+  ]
+}

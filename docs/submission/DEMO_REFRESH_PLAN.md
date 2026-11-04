@@ -1,12 +1,14 @@
 # Current-version demonstration refresh plan
 
-**Preparation only — no new capture, render or upload is claimed by this document.** Target: 3:30, within the [official rules' 2–4 minute requirement](https://global-ai-builders-challenge.devpost.com/rules), checked 2026-11-04. The new usability source must finish verification before it is described as demonstrated. [Software receipts and open visual acceptance](../experiments/2026-11-04-review-usability/README.md).
+**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. Native 200% zoom, new YouTube publication confirmation, personal final review and actual Devpost entry remain pending.
+
+**Historical November 4 plan.** The November 5 local render and actual browser acceptance are linked above; the remaining text preserves the original plan, not a current execution status. Target: 3:30, within the [official rules' 2–4 minute requirement](https://global-ai-builders-challenge.devpost.com/rules), checked 2026-11-04. The new usability source must finish verification before it is described as demonstrated. [Software receipts and open visual acceptance](../experiments/2026-11-04-review-usability/README.md).
 
 ## Version and capture contract
 
 The historical [public 3:38 video](https://youtu.be/xbs47mX0d5g) and all files under `docs/submission/media/` remain preserved. Its [validation](media/validation.json) identifies application source `491d6f39f162ed048c9015cc2ac83f9e636e6999`; its [publication record](VIDEO_PUBLICATION.md) records later source/media integration. Neither identifies the new usability source. Older footage may be linked as historical context but must not stand in for the new UI.
 
-Before new capture, record the exact tested source commit and whether any source changes remain uncommitted. If capture precedes a source commit, retain the base commit, exact source diff and SHA-256 of that diff, then map the final committed source to it; a branch name alone is insufficient. Show the source commit (and any dirty-source disclosure) on the opening card and include a full permalink in the final description. **Current capture source: pending.** Never fill this field from the historical video's metadata.
+Before new capture, record the exact tested source commit and whether any source changes remain uncommitted. If capture precedes a source commit, retain the base commit, exact source diff and SHA-256 of that diff, then map the final committed source to it; a branch name alone is insufficient. Show the source commit (and any dirty-source disclosure) on the opening card and include a full permalink in the final description. **Historical planning field: capture source was pending on November 4.** The completed November 5 capture basis is ea4e768 (5c9 baseline plus the preserved exact CSS patch). Never fill this field from the historical video's metadata.
 
 Use an isolated synthetic workspace and the public preparation command. Keep the actual generated bundle digests, input digests, environment, app launch command and timestamps in a new capture record. Show seed-to-slot mapping from the real session rather than assuming which seed is primary. No patient images, private notes, private bundles or local usernames should appear. Preparation/training may be done before recording and must be identified as such.
 
@@ -40,6 +42,6 @@ For a produced refresh, retain the capture index, action/outcome log, source ide
 
 Publish only the file that was actually rendered and inspected. If a new upload is performed, separately record its URL, public playback/subtitle/embed observations and actual source version; do not imply that the historical URL changed. Keep historical links and media available with their original scope.
 
-## Current attempt status
+## Historical November 4 attempt status
 
 The current application opened, but file-chooser automation timed out and Chrome fallback stopped when the automation could not safely establish the Windows browser URL. No current-version end-to-end capture or refreshed video was produced. The completed code/software tests do not fill this media acceptance item. See the linked audit for actual scope.

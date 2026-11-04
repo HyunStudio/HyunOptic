@@ -1,0 +1,95 @@
+{
+  "kind": "actual browser captures; verifier card separately generated",
+  "captures": [
+    {
+      "file": "03-narrow-fixed.png",
+      "description": "Actual 390px view after responsive CSS patch and app restart",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "f5cec03077c2ab66684d6286830d7fb55c29b866c1e331b3e0fe3d6eae371d19"
+    },
+    {
+      "file": "04-import-and-retention.png",
+      "description": "Five actual file-chooser-selected synthetic inputs; retention consent checked before creation",
+      "utc": "2026-11-04T21:32:19.000Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "a363d45fc1f7b29af12e35dd9220da936ab6b9014084dbc1cf2210ca40b51d31"
+    },
+    {
+      "file": "05-session-created.png",
+      "description": "Actual browser-created session before inference",
+      "utc": "2026-11-04T21:32:31.963Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "5d5ab6d6897bfa93b9bbc1e3ee4c3dfe2e84d222959cc9ecefad6ce4011533cb"
+    },
+    {
+      "file": "06-processed.png",
+      "description": "Actual processing completed four inputs; one unreadable input retained",
+      "utc": "2026-11-04T21:32:54.423Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "b9983887b4e3dc77bbbda935165eb4bb2eb67d2d2648584afabe1e713dd2bbb0"
+    },
+    {
+      "file": "07-aligned-comparison.png",
+      "description": "Actual source and two identified model overlays shown in aligned columns",
+      "utc": "2026-11-04T21:33:15.403Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    {
+      "file": "08-held-before-save.png",
+      "description": "Actual held/uncertain selection before save-and-next",
+      "utc": "2026-11-04T21:33:58.578Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "b968911fd4dcc50d39a5a1a5b1fc2bc0fac8489048315e72ef7a2b42d60cb972"
+    },
+    {
+      "file": "09-save-next.png",
+      "description": "Save-and-next completed; next unreviewed case under current priority order selected",
+      "utc": "2026-11-04T21:34:09.202Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "3132177ca32525edcd65f808aa5f9c1ee906e9840b9b804067a600805d43fb72"
+    },
+    {
+      "file": "11-reload-held.png",
+      "description": "After full browser reload, original case reopens with held and uncertain retained",
+      "utc": "2026-11-04T21:34:28.826Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "10fa27de6578b11fc6422f00be511fcbf58be4abd7d1f5ef24ddbbf6765dfac7"
+    },
+    {
+      "file": "12-keyboard-focus.png",
+      "description": "Tab navigation reaches review fields and visible Save control focus",
+      "utc": "2026-11-04T21:35:28.661Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "b2f326a4fdcf42569a05bd342a66cbee2a0976ab0c83c4eeb3699d449c6a0868"
+    },
+    {
+      "file": "13-unsupported-terminal.png",
+      "description": "Unreadable input has one terminal explanation, no retry and no review form",
+      "utc": "2026-11-04T21:35:44.205Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "74a410309e21fd978899ae0201fb2ac11b89b9882b06c7b12247141a51a9c0d5"
+    },
+    {
+      "file": "14-export-ready.png",
+      "description": "Actual current-session export built and independently verifiable download control visible",
+      "utc": "2026-11-04T21:36:26.241Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "f28090b47fa662d1ee6ba74a344e263189f6d9c74f845cb30bc9d0868b825032"
+    },
+    {
+      "file": "18-phone-fullsize.png",
+      "description": "390px full-size primary-model view retains identity and measurement limits",
+      "utc": "2026-11-04T21:38:11.361Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "56e6134d5ccce86510c1263a241bf486de0857cb11566865e7295b1ad1cd5d26"
+    },
+    {
+      "file": "19-desktop-current.png",
+      "description": "Current desktop header and actual completed-session context",
+      "utc": "2026-11-04T21:43:31.021Z",
+      "url": "http://127.0.0.1:8516/model_review_queue",
+      "sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    }
+  ]
+}

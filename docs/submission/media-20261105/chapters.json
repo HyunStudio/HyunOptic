@@ -1,0 +1,104 @@
+[
+  {
+    "title": "Inspect the evidence behind a measurement",
+    "captures": [
+      "19-desktop-current.png"
+    ],
+    "cues": [
+      "A measurable cup to disc ratio can still come from the wrong structure.",
+      "HyunOptic joins two model outputs, unresolved decisions, and evidence export in one local research session.",
+      "This demonstration uses synthetic images and two small models trained on the CPU.",
+      "These are actual application captures, with edited timing and synthetic narration."
+    ]
+  },
+  {
+    "title": "Create a local review session",
+    "captures": [
+      "04-import-and-retention.png",
+      "05-session-created.png"
+    ],
+    "cues": [
+      "The public preparation command has already trained both models for eighty epochs.",
+      "Seed forty three is the primary model; seed forty two is the comparison.",
+      "I import four synthetic images and one deliberately unreadable file through the real file chooser.",
+      "Local retention is confirmed before I create the session."
+    ]
+  },
+  {
+    "title": "Preserve completed work and failed inputs",
+    "captures": [
+      "06-processed.png",
+      "13-unsupported-terminal.png"
+    ],
+    "cues": [
+      "Processing runs in a bounded step and saves each completed input.",
+      "The result is four completed images, eight predictions, and one retained input error.",
+      "Unreadable data receives a terminal explanation, without a retry that cannot repair the file."
+    ]
+  },
+  {
+    "title": "Compare source and identified model outputs",
+    "captures": [
+      "07-aligned-comparison.png"
+    ],
+    "cues": [
+      "The source and both model overlays share the same image coordinates.",
+      "Model identities remain attached to their outputs.",
+      "The boundaries and predicted ratios differ; disagreement is not a calibrated confidence score.",
+      "Both models can agree and still be wrong."
+    ]
+  },
+  {
+    "title": "Keep an unresolved decision and resume",
+    "captures": [
+      "08-held-before-save.png",
+      "09-save-next.png",
+      "11-reload-held.png",
+      "12-keyboard-focus.png"
+    ],
+    "cues": [
+      "I mark the first case held and choose the reason uncertain.",
+      "Save and next stores that decision, then opens the next unreviewed case in the current order.",
+      "After a full browser reload, reopening the original case restores held and uncertain.",
+      "Keyboard Tab navigation reaches the review controls, and Enter saves without a mouse."
+    ]
+  },
+  {
+    "title": "Inspect the narrow-screen workflow",
+    "captures": [
+      "03-narrow-fixed.png",
+      "18-phone-fullsize.png"
+    ],
+    "cues": [
+      "The same workflow offers a full size panel on narrow screens.",
+      "A real three hundred ninety pixel check found a compressed header.",
+      "The updated layout moves readable status cards below the brand.",
+      "These checks do not constitute a complete accessibility certification."
+    ]
+  },
+  {
+    "title": "Download and independently verify evidence",
+    "captures": [
+      "14-export-ready.png",
+      "verifier-result.png"
+    ],
+    "cues": [
+      "I build the evidence package and download that verified ZIP.",
+      "A separate checker accepts its six payloads and confirms the held decision.",
+      "Original images, masks, filenames, paths, and private notes are excluded.",
+      "Hashes establish consistency, not anonymity or scientific truth."
+    ]
+  },
+  {
+    "title": "Reproduce the workflow within its limits",
+    "captures": [
+      "19-desktop-current.png",
+      "07-aligned-comparison.png"
+    ],
+    "cues": [
+      "The repository provides a synthetic setup, reproducible checks, and research evidence with explicit limits.",
+      "All changes shown were prepared before the hackathon; later event work must be disclosed separately.",
+      "HyunOptic is research software, not a diagnostic or patient care tool."
+    ]
+  }
+]

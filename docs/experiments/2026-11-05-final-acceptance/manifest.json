@@ -1,0 +1,48 @@
+{
+  "files": {
+    "capture-source.diff": {
+      "bytes": 803,
+      "sha256": "196d9816e38d34d563b8eb6c94fd8be8f0c3d71ba5609754e318877e46309899"
+    },
+    "captures/01-narrow-before.png": {
+      "bytes": 42449,
+      "sha256": "4872c8277edd15970725592385cb6a379d5f776f9738582db840e1474dad87f6"
+    },
+    "captures/03-narrow-fixed.png": {
+      "bytes": 44412,
+      "sha256": "f5cec03077c2ab66684d6286830d7fb55c29b866c1e331b3e0fe3d6eae371d19"
+    },
+    "captures/07-aligned-comparison.png": {
+      "bytes": 82561,
+      "sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    "captures/12-keyboard-focus.png": {
+      "bytes": 60137,
+      "sha256": "b2f326a4fdcf42569a05bd342a66cbee2a0976ab0c83c4eeb3699d449c6a0868"
+    },
+    "captures/18-phone-fullsize.png": {
+      "bytes": 38015,
+      "sha256": "56e6134d5ccce86510c1263a241bf486de0857cb11566865e7295b1ad1cd5d26"
+    },
+    "keyboard-trail.json": {
+      "bytes": 1212,
+      "sha256": "714b8cf9731e439fddc671ab3a1195eb33e2e86431f187414cbbfd9624a4fc21"
+    },
+    "layout-checks.json": {
+      "bytes": 3200,
+      "sha256": "8076eef4c65aed03d08eafe9e04e24d231418b4f47ef3eb16be5823b661ca74b"
+    },
+    "unsupported-check.json": {
+      "bytes": 60,
+      "sha256": "1378bf41a0e5689337dc30c059114bc84b49abd32090ccc31996601a08ee7f6c"
+    },
+    "verification.json": {
+      "bytes": 8011,
+      "sha256": "f5f7d1b4da895df83a7deb073ee50ca526b264fe78ac73450f9ddcdaf2184c86"
+    },
+    "workflow-receipt.json": {
+      "bytes": 608,
+      "sha256": "387914dfa3a6fd096c712d43862844c742576db1507b206a72fe4ec8d0d0d1c3"
+    }
+  }
+}

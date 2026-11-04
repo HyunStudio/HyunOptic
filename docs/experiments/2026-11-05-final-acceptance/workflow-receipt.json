@@ -1,0 +1,20 @@
+{
+  "valid": true,
+  "payloads": 6,
+  "bytes": 5304,
+  "sha256": "0461aa10b61efd421022f63ab51b7379df79ee82230b5b05c97122c3fd947af2",
+  "cases": 5,
+  "complete": 4,
+  "input_errors": 1,
+  "predictions": 8,
+  "held_uncertain": 1,
+  "held_revision": 2,
+  "software_version": "1.2.0",
+  "creation_git_head": "5c9f698bd97c3707d2e4b9052c0e7870e3815916",
+  "actual_browser_import": true,
+  "actual_browser_processing": true,
+  "save_next_then_keyboard_save": true,
+  "full_reload_then_reopen_preserves_held": true,
+  "actual_download_independently_verified": true,
+  "filename_excluded": true
+}

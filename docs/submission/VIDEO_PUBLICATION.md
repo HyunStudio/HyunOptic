@@ -1,5 +1,7 @@
 # Public YouTube demonstration — 2026-11-04
 
+**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. Native 200% zoom, new YouTube publication confirmation, personal final review and actual Devpost entry remain pending.
+
 **Video:** https://youtu.be/xbs47mX0d5g
 
 **Title:** HyunOptic | Traceable review of ophthalmic AI predictions
