@@ -1,5 +1,8 @@
 # Rubric-to-evidence map
 
+**Latest software audit (2026-11-04):** [Git/distribution and lifecycle audit](../experiments/2026-11-04-submission-code-audit/README.md) — 404 tests passed in the development environment and 404 against a non-editable wheel in a new CPU-only environment. Four reproduced defects were corrected with 14 regression cases. Default two-seed/80-epoch synthetic preparation, installed-package processing, held-state reload, ZIP verification and managed deletion passed. These are software checks; earlier browser and real-data evidence retains its original scope.
+
+
 Checked against the [official rubric](https://global-ai-builders-challenge.devpost.com/resources) on 2026-11-04. This maps all 25 checkpoints to available evidence and honest limits; it assigns no score. Judges normally use the video and description; installing the app and an outside tester are optional. Required entry materials are tracked in the [checklist](CHECKLIST.md).
 
 | Checkpoint | Evidence and supported interpretation | Limit / remaining action |

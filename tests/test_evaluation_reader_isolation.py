@@ -19,7 +19,7 @@ from hyunoptic.demo_data import make_chaksu
 
 def bundle(tmp_path):
     return SimpleNamespace(folder=tmp_path / "bundle", run_id="isolated", weights_sha256="a" * 64,
-                           partial=False, manifest={"data_status": "real", "training": {
+                           synthetic=False, partial=False, manifest={"data_status": "real", "training": {
                                "source_content_sha256": "source", "split_manifest_sha256": "split"}})
 
 
@@ -158,3 +158,37 @@ def test_holdout_bad_second_reader_keeps_first_reader_and_prediction(tmp_path, m
     assert "expert2" not in row and "expert2" in row["reference_errors"]
     assert report["n_failed"] == 0 and report["reference_failures_by_reader"]["expert2"] == 1
     assert report["versus_expert1"]["cup_dice"]["n"] == 1
+
+
+@pytest.mark.parametrize("synthetic,partial", [(True, False), (False, True), (True, True), (False, False)])
+@pytest.mark.parametrize("rerun", [False, True])
+def test_holdout_report_labels_data_status_and_remains_readable(tmp_path, monkeypatch, synthetic, partial, rerun):
+    from hyunoptic.demo_data import make_papila
+    from hyunoptic.seg.data import build_split_manifest
+    from hyunoptic.seg.report import validate_report
+
+    root = make_papila(tmp_path / "P", patients=10, size=(80, 80))
+    split = build_split_manifest(root)
+    b = bundle(tmp_path)
+    b.synthetic, b.partial = synthetic, partial
+    b.manifest["data_status"] = {"synthetic": synthetic, "partial": partial}
+    b.manifest["training"].update(source_content_sha256=evaluate.papila_content_sha256(root),
+                                   split_manifest_sha256=split["sha256"])
+    b.folder.mkdir()
+    (b.folder / evaluate.SPLIT).write_text(json.dumps(split), encoding="utf-8")
+    install_predictor(monkeypatch)
+    evaluate.evaluate_holdout(b, root)
+    if rerun:
+        folder = evaluate.evaluate_holdout(b, root, exploratory_rerun=True)
+    else:
+        folder = b.folder / "evaluation" / "papila_holdout"
+    report = json.loads((folder / "model_eval_aggregate.json").read_text(encoding="utf-8"))
+
+    assert report["exploratory"] is (synthetic or partial or rerun)
+    assert validate_report(report, bundle=b) is report
+    if rerun:
+        assert report["exploratory_reason"] == "Repeat evaluation of an already inspected holdout"
+    elif synthetic or partial:
+        assert "partial or synthetic" in report["exploratory_reason"]
+    else:
+        assert report["exploratory_reason"] == ""

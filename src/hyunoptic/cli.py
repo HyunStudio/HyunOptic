@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from . import __version__
 from .batch import audit_papila, write_audit
 from .measure import compare_readers
 from .papila import discover_cases, load_contours, load_image
@@ -47,7 +48,7 @@ def main(argv: list[str] | None = None) -> int:
         d1, c1 = load_contours(case, "exp1")
         d2, c2 = load_contours(case, "exp2")
         result = {
-            "project": "HyunOptic", "version": "0.2.0", "status": "research-only",
+            "project": "HyunOptic", "version": __version__, "status": "research-only",
             "image_id": case.image_id, "patient_id": case.patient_id, "eye": case.eye,
             "image_size": list(image.size),
             "candidate_only_sensitivity": analyze_vertical_sensitivity(d1, c1, cfg).to_dict(),

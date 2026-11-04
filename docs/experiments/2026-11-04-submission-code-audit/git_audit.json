@@ -1,0 +1,277 @@
+{
+  "main": "35ee360b9edbca97b52b88b04a1e674783fcf909",
+  "heads": [
+    {
+      "ref": "refs/heads/claude/trusting-lamport-n8dmnm",
+      "sha": "3ce602f6187e37656b029ce0a2170a80080ea759",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/camera-robust-photometric",
+      "sha": "24ddeb5a9b30641ad5a1a47d831c0d16088f2641",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/chaksu-macos-metadata",
+      "sha": "f423de717c05c6658ccda65ddeb6228e4bc63f8f",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/full-real-validation-20261104",
+      "sha": "b588b83deae5ab7862a28449001e552fea97ee39",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/literature-100-audit-20261104",
+      "sha": "c5f560a71fdc7a89b93fb49894bc70c2bcf72635",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/publish-real-data-baseline",
+      "sha": "99bc635053cd72b2ffc59e20a015e64fd9c296c3",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/seed-stability-experiment",
+      "sha": "89046dad1a3bde99a826d7e95f6d847e296454d2",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/submission-code-audit-20261104",
+      "sha": "35ee360b9edbca97b52b88b04a1e674783fcf909",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/submission-final-polish-20261104",
+      "sha": "9f3430809e4ca1c0c944277aa77ebcd67fa9a1f1",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/codex/submission-review-workflow",
+      "sha": "b264e644135df6d7ccd9826ace41ef43a0f70703",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/docs/university-transfer-evidence-20261025",
+      "sha": "4bff75bf4724a61c353782cf7ca4eaf6e8327ae7",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/heads/main",
+      "sha": "35ee360b9edbca97b52b88b04a1e674783fcf909",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/HEAD",
+      "sha": "35ee360b9edbca97b52b88b04a1e674783fcf909",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/claude/trusting-lamport-n8dmnm",
+      "sha": "3ce602f6187e37656b029ce0a2170a80080ea759",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/camera-robust-photometric",
+      "sha": "24ddeb5a9b30641ad5a1a47d831c0d16088f2641",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/chaksu-macos-metadata",
+      "sha": "f423de717c05c6658ccda65ddeb6228e4bc63f8f",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/full-real-validation-20261104",
+      "sha": "b588b83deae5ab7862a28449001e552fea97ee39",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/literature-100-audit-20261104",
+      "sha": "c5f560a71fdc7a89b93fb49894bc70c2bcf72635",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/publish-real-data-baseline",
+      "sha": "99bc635053cd72b2ffc59e20a015e64fd9c296c3",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/seed-stability-experiment",
+      "sha": "89046dad1a3bde99a826d7e95f6d847e296454d2",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/submission-final-polish-20261104",
+      "sha": "9f3430809e4ca1c0c944277aa77ebcd67fa9a1f1",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/codex/submission-review-workflow",
+      "sha": "b264e644135df6d7ccd9826ace41ef43a0f70703",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/docs/university-transfer-evidence-20261025",
+      "sha": "4bff75bf4724a61c353782cf7ca4eaf6e8327ae7",
+      "ancestor_main": true
+    },
+    {
+      "ref": "refs/remotes/origin/main",
+      "sha": "35ee360b9edbca97b52b88b04a1e674783fcf909",
+      "ancestor_main": true
+    }
+  ],
+  "live_remote": [
+    "3ce602f6187e37656b029ce0a2170a80080ea759\trefs/heads/claude/trusting-lamport-n8dmnm",
+    "24ddeb5a9b30641ad5a1a47d831c0d16088f2641\trefs/heads/codex/camera-robust-photometric",
+    "f423de717c05c6658ccda65ddeb6228e4bc63f8f\trefs/heads/codex/chaksu-macos-metadata",
+    "b588b83deae5ab7862a28449001e552fea97ee39\trefs/heads/codex/full-real-validation-20261104",
+    "c5f560a71fdc7a89b93fb49894bc70c2bcf72635\trefs/heads/codex/literature-100-audit-20261104",
+    "99bc635053cd72b2ffc59e20a015e64fd9c296c3\trefs/heads/codex/publish-real-data-baseline",
+    "89046dad1a3bde99a826d7e95f6d847e296454d2\trefs/heads/codex/seed-stability-experiment",
+    "9f3430809e4ca1c0c944277aa77ebcd67fa9a1f1\trefs/heads/codex/submission-final-polish-20261104",
+    "b264e644135df6d7ccd9826ace41ef43a0f70703\trefs/heads/codex/submission-review-workflow",
+    "4bff75bf4724a61c353782cf7ca4eaf6e8327ae7\trefs/heads/docs/university-transfer-evidence-20261025",
+    "35ee360b9edbca97b52b88b04a1e674783fcf909\trefs/heads/main"
+  ],
+  "unmerged_commits": [],
+  "tracked_file_count": 484,
+  "largest_tracked": [
+    {
+      "path": "docs/submission/media/hyunoptic-demo.mp4",
+      "bytes": 4526702
+    },
+    {
+      "path": "docs/experiments/2026-11-04-full-real-validation/papila/summary.json",
+      "bytes": 408295
+    },
+    {
+      "path": "docs/experiments/2026-11-04-full-real-validation/chaksu/technical_event_posthoc_public_safe.json",
+      "bytes": 406969
+    },
+    {
+      "path": "docs/images/app_overview.png",
+      "bytes": 366669
+    },
+    {
+      "path": "docs/experiments/2026-11-04-literature-100/papers.json",
+      "bytes": 243432
+    },
+    {
+      "path": "docs/experiments/2026-11-04-full-real-validation/chaksu/aggregate_public_safe.json",
+      "bytes": 192655
+    },
+    {
+      "path": "docs/experiments/2026-10-25-seed-stability/training_seed_curves.png",
+      "bytes": 182585
+    },
+    {
+      "path": "docs/images/app_external_validation.png",
+      "bytes": 180015
+    },
+    {
+      "path": "docs/experiments/2026-11-04-reader-review-validation/review_budget.png",
+      "bytes": 176071
+    },
+    {
+      "path": "docs/experiments/2026-11-04-literature-100/papers.csv",
+      "bytes": 152322
+    },
+    {
+      "path": "docs/experiments/2026-11-04-literature-100/stress_failures.png",
+      "bytes": 136093
+    },
+    {
+      "path": "docs/experiments/2026-11-04-final-submission-polish/domain-limits.jpg",
+      "bytes": 127789
+    },
+    {
+      "path": "docs/experiments/2026-10-25-real-data-baseline/training_curves.png",
+      "bytes": 116548
+    },
+    {
+      "path": "docs/experiments/2026-10-25-university-transfer/fairseg_results.png",
+      "bytes": 116186
+    },
+    {
+      "path": "docs/experiments/2026-11-04-literature-100/stress_summary.json",
+      "bytes": 106295
+    },
+    {
+      "path": "docs/experiments/2026-10-25-photometric-remediation/training_comparison.png",
+      "bytes": 103971
+    },
+    {
+      "path": "docs/experiments/2026-11-04-final-submission-polish/final-review.jpg",
+      "bytes": 100814
+    },
+    {
+      "path": "docs/experiments/2026-11-04-full-real-validation/papila_robustness.png",
+      "bytes": 100079
+    },
+    {
+      "path": "docs/experiments/2026-10-25-seed-stability/seed_performance.png",
+      "bytes": 85903
+    },
+    {
+      "path": "docs/experiments/2026-10-25-real-data-baseline/performance.png",
+      "bytes": 77339
+    },
+    {
+      "path": "docs/experiments/2026-10-25-photometric-remediation/performance_comparison.png",
+      "bytes": 74941
+    },
+    {
+      "path": "docs/submission/media/captures/007-case-list-open.jpg",
+      "bytes": 73587
+    },
+    {
+      "path": "docs/experiments/2026-11-04-full-real-validation/rimone_transfer.png",
+      "bytes": 72261
+    },
+    {
+      "path": "docs/submission/media/captures/016-reopen-session.jpg",
+      "bytes": 69604
+    },
+    {
+      "path": "docs/submission/media/captures/000-create-form.jpg",
+      "bytes": 66714
+    }
+  ],
+  "history_sensitive_extensions": [
+    "5681edfdcb5a4fbd67c08d7c326990533d02feb0 docs/submission/media/synthetic-browser-evidence.zip"
+  ],
+  "tracked_sensitive_names": [],
+  "untracked_unignored": [],
+  "synthetic_evidence_archive_entries": [
+    {
+      "path": "cases.csv",
+      "size": 1184
+    },
+    {
+      "path": "events.jsonl",
+      "size": 6678
+    },
+    {
+      "path": "manifest.json",
+      "size": 748
+    },
+    {
+      "path": "predictions.csv",
+      "size": 2905
+    },
+    {
+      "path": "reviews.csv",
+      "size": 586
+    },
+    {
+      "path": "session.json",
+      "size": 965
+    },
+    {
+      "path": "summary.html",
+      "size": 853
+    }
+  ]
+}
