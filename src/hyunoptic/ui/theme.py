@@ -142,6 +142,12 @@ table.hz-table tr.hl td{background:#F2F7FE}
 .stButton button,.stDownloadButton button{border-radius:10px}
 :focus-visible{outline:3px solid #0B5CAD!important;outline-offset:2px}
 @media (max-width: 900px){.hz-title h1{font-size:1.6rem}.hz-badges{margin-left:0}}
+@media (max-width: 900px){
+.hz-header{align-items:flex-start}
+.hz-header-status{flex-basis:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,7rem),1fr));justify-content:stretch}
+.hz-header-status .hz-chip{padding:.45rem .5rem;gap:.35rem}
+.hz-header-status .hz-chip small{overflow-wrap:normal;word-break:normal}
+}
 </style>
 """
 
