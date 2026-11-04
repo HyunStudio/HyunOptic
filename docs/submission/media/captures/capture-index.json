@@ -1,0 +1,107 @@
+[
+  {
+    "file": "000-create-form.jpg",
+    "label": "create-form",
+    "captured_utc": "2026-11-04T05:13:33.047Z"
+  },
+  {
+    "file": "001-inputs-consent.jpg",
+    "label": "inputs-consent",
+    "captured_utc": "2026-11-04T05:13:38.915Z"
+  },
+  {
+    "file": "002-create-action.jpg",
+    "label": "create-action",
+    "captured_utc": "2026-11-04T05:13:42.596Z"
+  },
+  {
+    "file": "003-pending.jpg",
+    "label": "pending",
+    "captured_utc": "2026-11-04T05:13:46.404Z"
+  },
+  {
+    "file": "004-processing-click.jpg",
+    "label": "processing-click",
+    "captured_utc": "2026-11-04T05:13:50.937Z"
+  },
+  {
+    "file": "005-processing-state.jpg",
+    "label": "processing-state",
+    "captured_utc": "2026-11-04T05:13:54.113Z"
+  },
+  {
+    "file": "006-completed-error-visible.jpg",
+    "label": "completed-error-visible",
+    "captured_utc": "2026-11-04T05:13:57.602Z"
+  },
+  {
+    "file": "007-case-list-open.jpg",
+    "label": "case-list-open",
+    "captured_utc": "2026-11-04T05:13:57.977Z"
+  },
+  {
+    "file": "008-comparison-loaded.jpg",
+    "label": "comparison-loaded",
+    "captured_utc": "2026-11-04T05:14:08.308Z"
+  },
+  {
+    "file": "009-source-full.jpg",
+    "label": "source-full",
+    "captured_utc": "2026-11-04T05:14:08.767Z"
+  },
+  {
+    "file": "010-model-one-full.jpg",
+    "label": "model-one-full",
+    "captured_utc": "2026-11-04T05:14:15.386Z"
+  },
+  {
+    "file": "011-model-two-full.jpg",
+    "label": "model-two-full",
+    "captured_utc": "2026-11-04T05:14:16.094Z"
+  },
+  {
+    "file": "012-review-options.jpg",
+    "label": "review-options",
+    "captured_utc": "2026-11-04T05:14:20.800Z"
+  },
+  {
+    "file": "013-reason-options.jpg",
+    "label": "reason-options",
+    "captured_utc": "2026-11-04T05:14:26.663Z"
+  },
+  {
+    "file": "014-held-before-save.jpg",
+    "label": "held-before-save",
+    "captured_utc": "2026-11-04T05:14:31.987Z"
+  },
+  {
+    "file": "015-held-saved.jpg",
+    "label": "held-saved",
+    "captured_utc": "2026-11-04T05:14:32.548Z"
+  },
+  {
+    "file": "016-reopen-session.jpg",
+    "label": "reopen-session",
+    "captured_utc": "2026-11-04T05:14:52.800Z"
+  },
+  {
+    "file": "017-held-after-reload.jpg",
+    "label": "held-after-reload",
+    "captured_utc": "2026-11-04T05:15:05.440Z"
+  },
+  {
+    "file": "018-export-open.jpg",
+    "label": "export-open",
+    "captured_utc": "2026-11-04T05:15:06.101Z"
+  },
+  {
+    "file": "019-verified-download-ready.jpg",
+    "label": "verified-download-ready",
+    "captured_utc": "2026-11-04T05:15:15.395Z"
+  },
+  {
+    "file": "020-downloaded.jpg",
+    "label": "downloaded",
+    "captured_utc": "2026-11-04T05:15:16.429Z"
+  }
+]

@@ -1,0 +1,1569 @@
+{
+  "n_images": 98,
+  "n_patients": 49,
+  "averaging": "Outer means are image-weighted; bootstrap intervals include their separate equal-patient weighted point estimate.",
+  "models": [
+    {
+      "run_id": "seg-20261025-053553-c5282e43",
+      "identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153",
+      "readers": {
+        "exp1": {
+          "disc_dice": {
+            "n_images": 98,
+            "mean": 0.8935646908359672,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.8935646908359672,
+              "lower_95_percentile": 0.831089244586057,
+              "upper_95_percentile": 0.9412850982339415,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "cup_dice": {
+            "n_images": 98,
+            "mean": 0.6882744981117744,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.6882744981117747,
+              "lower_95_percentile": 0.6154931439368467,
+              "upper_95_percentile": 0.750149076906034,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "abs_vcdr_error": {
+            "n_images": 92,
+            "mean": 0.07277515557903254,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 92,
+              "n_patients": 48,
+              "patient_weighted_mean": 0.0789936392160324,
+              "lower_95_percentile": 0.0560522175244842,
+              "upper_95_percentile": 0.10773667851293091,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          }
+        },
+        "exp2": {
+          "disc_dice": {
+            "n_images": 98,
+            "mean": 0.8715883600432783,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.8715883600432783,
+              "lower_95_percentile": 0.8121853194366543,
+              "upper_95_percentile": 0.9188717220014774,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "cup_dice": {
+            "n_images": 98,
+            "mean": 0.673676914130182,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.6736769141301819,
+              "lower_95_percentile": 0.6003129260422877,
+              "upper_95_percentile": 0.7353323755539922,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "abs_vcdr_error": {
+            "n_images": 92,
+            "mean": 0.07573104199864336,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 92,
+              "n_patients": 48,
+              "patient_weighted_mean": 0.08189003625897645,
+              "lower_95_percentile": 0.05685208346326554,
+              "upper_95_percentile": 0.11498997923271052,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          }
+        }
+      },
+      "prediction_status_counts": {
+        "ok": 92,
+        "invalid_geometry": 6,
+        "error": 0
+      },
+      "paired_reader_change_exp2_minus_exp1": {
+        "disc_dice": {
+          "n_images": 98,
+          "mean": -0.021976330792688868,
+          "patient_cluster_interval": {
+            "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+            "n_eyes": 98,
+            "n_patients": 49,
+            "patient_weighted_mean": -0.021976330792688875,
+            "lower_95_percentile": -0.03135805898954974,
+            "upper_95_percentile": -0.013148387059822965,
+            "bootstrap_draws": 2000,
+            "seed": 20261104,
+            "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+          }
+        },
+        "cup_dice": {
+          "n_images": 98,
+          "mean": -0.014597583981592627,
+          "patient_cluster_interval": {
+            "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+            "n_eyes": 98,
+            "n_patients": 49,
+            "patient_weighted_mean": -0.014597583981592627,
+            "lower_95_percentile": -0.03049079524231207,
+            "upper_95_percentile": 0.0025783956742235488,
+            "bootstrap_draws": 2000,
+            "seed": 20261104,
+            "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+          }
+        },
+        "abs_vcdr_error": {
+          "n_images": 92,
+          "mean": 0.00295588641961082,
+          "patient_cluster_interval": {
+            "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+            "n_eyes": 92,
+            "n_patients": 48,
+            "patient_weighted_mean": 0.0028963970429440595,
+            "lower_95_percentile": -0.0073263734163274705,
+            "upper_95_percentile": 0.012727010750236167,
+            "bootstrap_draws": 2000,
+            "seed": 20261104,
+            "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+          }
+        }
+      }
+    },
+    {
+      "run_id": "seg-20261025-062335-1430f6c9",
+      "identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3",
+      "readers": {
+        "exp1": {
+          "disc_dice": {
+            "n_images": 98,
+            "mean": 0.9154338875624617,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.9154338875624616,
+              "lower_95_percentile": 0.8830341580446398,
+              "upper_95_percentile": 0.9414197294089625,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "cup_dice": {
+            "n_images": 98,
+            "mean": 0.6938983926439033,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.6938983926439033,
+              "lower_95_percentile": 0.6311770642178591,
+              "upper_95_percentile": 0.7500332625895006,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "abs_vcdr_error": {
+            "n_images": 96,
+            "mean": 0.0820144508441256,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 96,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.08323611016779753,
+              "lower_95_percentile": 0.06358965746542902,
+              "upper_95_percentile": 0.10823252169156915,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          }
+        },
+        "exp2": {
+          "disc_dice": {
+            "n_images": 98,
+            "mean": 0.8947562288172577,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.8947562288172577,
+              "lower_95_percentile": 0.8633391771655777,
+              "upper_95_percentile": 0.9202616341720542,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "cup_dice": {
+            "n_images": 98,
+            "mean": 0.675747617040793,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 98,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.675747617040793,
+              "lower_95_percentile": 0.6070832621557537,
+              "upper_95_percentile": 0.7351304037262161,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          },
+          "abs_vcdr_error": {
+            "n_images": 96,
+            "mean": 0.0831909275283504,
+            "patient_cluster_interval": {
+              "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+              "n_eyes": 96,
+              "n_patients": 49,
+              "patient_weighted_mean": 0.08416512739380326,
+              "lower_95_percentile": 0.06434843520169892,
+              "upper_95_percentile": 0.10876457298540008,
+              "bootstrap_draws": 2000,
+              "seed": 20261104,
+              "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+            }
+          }
+        }
+      },
+      "prediction_status_counts": {
+        "ok": 96,
+        "invalid_geometry": 2,
+        "error": 0
+      },
+      "paired_reader_change_exp2_minus_exp1": {
+        "disc_dice": {
+          "n_images": 98,
+          "mean": -0.020677658745203824,
+          "patient_cluster_interval": {
+            "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+            "n_eyes": 98,
+            "n_patients": 49,
+            "patient_weighted_mean": -0.020677658745203824,
+            "lower_95_percentile": -0.03020709984052391,
+            "upper_95_percentile": -0.012075117401189082,
+            "bootstrap_draws": 2000,
+            "seed": 20261104,
+            "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+          }
+        },
+        "cup_dice": {
+          "n_images": 98,
+          "mean": -0.018150775603110274,
+          "patient_cluster_interval": {
+            "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+            "n_eyes": 98,
+            "n_patients": 49,
+            "patient_weighted_mean": -0.018150775603110274,
+            "lower_95_percentile": -0.03565986052552758,
+            "upper_95_percentile": -0.0013779323762069307,
+            "bootstrap_draws": 2000,
+            "seed": 20261104,
+            "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+          }
+        },
+        "abs_vcdr_error": {
+          "n_images": 96,
+          "mean": 0.00117647668422481,
+          "patient_cluster_interval": {
+            "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+            "n_eyes": 96,
+            "n_patients": 49,
+            "patient_weighted_mean": 0.0009290172260057515,
+            "lower_95_percentile": -0.007796858709261655,
+            "upper_95_percentile": 0.009605654683390155,
+            "bootstrap_draws": 2000,
+            "seed": 20261104,
+            "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+          }
+        }
+      }
+    }
+  ],
+  "reader_context": {
+    "exp1": {
+      "n_available": 98,
+      "n_failed": 0,
+      "n_with_geometry_warnings": 0
+    },
+    "exp2": {
+      "n_available": 98,
+      "n_failed": 0,
+      "n_with_geometry_warnings": 0
+    },
+    "disc_dice": {
+      "n_images": 98,
+      "mean": 0.9316587885054811,
+      "patient_cluster_interval": {
+        "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+        "n_eyes": 98,
+        "n_patients": 49,
+        "patient_weighted_mean": 0.931658788505481,
+        "lower_95_percentile": 0.9218501626446506,
+        "upper_95_percentile": 0.9401884864004677,
+        "bootstrap_draws": 2000,
+        "seed": 20261104,
+        "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+      }
+    },
+    "cup_dice": {
+      "n_images": 98,
+      "mean": 0.8219766542451603,
+      "patient_cluster_interval": {
+        "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+        "n_eyes": 98,
+        "n_patients": 49,
+        "patient_weighted_mean": 0.8219766542451601,
+        "lower_95_percentile": 0.7981260161122727,
+        "upper_95_percentile": 0.8443508484591595,
+        "bootstrap_draws": 2000,
+        "seed": 20261104,
+        "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+      }
+    },
+    "abs_vcdr_difference": {
+      "n_images": 98,
+      "mean": 0.036905057927988316,
+      "patient_cluster_interval": {
+        "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+        "n_eyes": 98,
+        "n_patients": 49,
+        "patient_weighted_mean": 0.03690505792798832,
+        "lower_95_percentile": 0.03126697413306976,
+        "upper_95_percentile": 0.04242990205729385,
+        "bootstrap_draws": 2000,
+        "seed": 20261104,
+        "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+      }
+    }
+  },
+  "review_budgets": {
+    "exp1": {
+      "0.4": {
+        "full_queue": [
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 98,
+            "n_positive": 16,
+            "detected": 0,
+            "missed": 16,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.16326530612244897,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 88,
+            "n_positive": 16,
+            "detected": 8,
+            "missed": 8,
+            "precision": 0.8,
+            "recall": 0.5,
+            "remaining_error_fraction": 0.09090909090909091,
+            "random_expected_detected": 1.6326530612244898,
+            "random_expected_recall": 0.10204081632653061
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 20,
+            "reviewed_outcome_available": 20,
+            "remaining_outcome_available": 78,
+            "n_positive": 16,
+            "detected": 10,
+            "missed": 6,
+            "precision": 0.5,
+            "recall": 0.625,
+            "remaining_error_fraction": 0.07692307692307693,
+            "random_expected_detected": 3.2653061224489797,
+            "random_expected_recall": 0.20408163265306123
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 49,
+            "reviewed_outcome_available": 49,
+            "remaining_outcome_available": 49,
+            "n_positive": 16,
+            "detected": 15,
+            "missed": 1,
+            "precision": 0.30612244897959184,
+            "recall": 0.9375,
+            "remaining_error_fraction": 0.02040816326530612,
+            "random_expected_detected": 8.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 98,
+            "reviewed_outcome_available": 98,
+            "remaining_outcome_available": 0,
+            "n_positive": 16,
+            "detected": 16,
+            "missed": 0,
+            "precision": 0.16326530612244897,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 16.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "both_models_geometry_ok": [
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 92,
+            "n_positive": 10,
+            "detected": 0,
+            "missed": 10,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.10869565217391304,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 82,
+            "n_positive": 10,
+            "detected": 3,
+            "missed": 7,
+            "precision": 0.3,
+            "recall": 0.3,
+            "remaining_error_fraction": 0.08536585365853659,
+            "random_expected_detected": 1.0869565217391304,
+            "random_expected_recall": 0.10869565217391304
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 19,
+            "reviewed_outcome_available": 19,
+            "remaining_outcome_available": 73,
+            "n_positive": 10,
+            "detected": 5,
+            "missed": 5,
+            "precision": 0.2631578947368421,
+            "recall": 0.5,
+            "remaining_error_fraction": 0.0684931506849315,
+            "random_expected_detected": 2.0652173913043477,
+            "random_expected_recall": 0.20652173913043478
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 46,
+            "reviewed_outcome_available": 46,
+            "remaining_outcome_available": 46,
+            "n_positive": 10,
+            "detected": 9,
+            "missed": 1,
+            "precision": 0.1956521739130435,
+            "recall": 0.9,
+            "remaining_error_fraction": 0.021739130434782608,
+            "random_expected_detected": 5.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 92,
+            "reviewed_outcome_available": 92,
+            "remaining_outcome_available": 0,
+            "n_positive": 10,
+            "detected": 10,
+            "missed": 0,
+            "precision": 0.10869565217391304,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 10.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "low_disagreement_large_error": {
+          "n_cases": 51,
+          "n_positive": 1
+        }
+      },
+      "0.5": {
+        "full_queue": [
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 98,
+            "n_positive": 18,
+            "detected": 0,
+            "missed": 18,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.1836734693877551,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 88,
+            "n_positive": 18,
+            "detected": 9,
+            "missed": 9,
+            "precision": 0.9,
+            "recall": 0.5,
+            "remaining_error_fraction": 0.10227272727272728,
+            "random_expected_detected": 1.836734693877551,
+            "random_expected_recall": 0.10204081632653061
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 20,
+            "reviewed_outcome_available": 20,
+            "remaining_outcome_available": 78,
+            "n_positive": 18,
+            "detected": 12,
+            "missed": 6,
+            "precision": 0.6,
+            "recall": 0.6666666666666666,
+            "remaining_error_fraction": 0.07692307692307693,
+            "random_expected_detected": 3.673469387755102,
+            "random_expected_recall": 0.20408163265306123
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 49,
+            "reviewed_outcome_available": 49,
+            "remaining_outcome_available": 49,
+            "n_positive": 18,
+            "detected": 17,
+            "missed": 1,
+            "precision": 0.3469387755102041,
+            "recall": 0.9444444444444444,
+            "remaining_error_fraction": 0.02040816326530612,
+            "random_expected_detected": 9.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 98,
+            "reviewed_outcome_available": 98,
+            "remaining_outcome_available": 0,
+            "n_positive": 18,
+            "detected": 18,
+            "missed": 0,
+            "precision": 0.1836734693877551,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 18.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "both_models_geometry_ok": [
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 92,
+            "n_positive": 12,
+            "detected": 0,
+            "missed": 12,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.13043478260869565,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 82,
+            "n_positive": 12,
+            "detected": 5,
+            "missed": 7,
+            "precision": 0.5,
+            "recall": 0.4166666666666667,
+            "remaining_error_fraction": 0.08536585365853659,
+            "random_expected_detected": 1.3043478260869565,
+            "random_expected_recall": 0.10869565217391304
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 19,
+            "reviewed_outcome_available": 19,
+            "remaining_outcome_available": 73,
+            "n_positive": 12,
+            "detected": 7,
+            "missed": 5,
+            "precision": 0.3684210526315789,
+            "recall": 0.5833333333333334,
+            "remaining_error_fraction": 0.0684931506849315,
+            "random_expected_detected": 2.4782608695652173,
+            "random_expected_recall": 0.20652173913043478
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 46,
+            "reviewed_outcome_available": 46,
+            "remaining_outcome_available": 46,
+            "n_positive": 12,
+            "detected": 11,
+            "missed": 1,
+            "precision": 0.2391304347826087,
+            "recall": 0.9166666666666666,
+            "remaining_error_fraction": 0.021739130434782608,
+            "random_expected_detected": 6.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 92,
+            "reviewed_outcome_available": 92,
+            "remaining_outcome_available": 0,
+            "n_positive": 12,
+            "detected": 12,
+            "missed": 0,
+            "precision": 0.13043478260869565,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 12.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "low_disagreement_large_error": {
+          "n_cases": 51,
+          "n_positive": 1
+        }
+      },
+      "0.6": {
+        "full_queue": [
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 98,
+            "n_positive": 22,
+            "detected": 0,
+            "missed": 22,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.22448979591836735,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 88,
+            "n_positive": 22,
+            "detected": 9,
+            "missed": 13,
+            "precision": 0.9,
+            "recall": 0.4090909090909091,
+            "remaining_error_fraction": 0.14772727272727273,
+            "random_expected_detected": 2.2448979591836733,
+            "random_expected_recall": 0.10204081632653061
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 20,
+            "reviewed_outcome_available": 20,
+            "remaining_outcome_available": 78,
+            "n_positive": 22,
+            "detected": 14,
+            "missed": 8,
+            "precision": 0.7,
+            "recall": 0.6363636363636364,
+            "remaining_error_fraction": 0.10256410256410256,
+            "random_expected_detected": 4.489795918367347,
+            "random_expected_recall": 0.20408163265306123
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 49,
+            "reviewed_outcome_available": 49,
+            "remaining_outcome_available": 49,
+            "n_positive": 22,
+            "detected": 19,
+            "missed": 3,
+            "precision": 0.3877551020408163,
+            "recall": 0.8636363636363636,
+            "remaining_error_fraction": 0.061224489795918366,
+            "random_expected_detected": 11.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 98,
+            "reviewed_outcome_available": 98,
+            "remaining_outcome_available": 0,
+            "n_positive": 22,
+            "detected": 22,
+            "missed": 0,
+            "precision": 0.22448979591836735,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 22.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "both_models_geometry_ok": [
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 92,
+            "n_positive": 16,
+            "detected": 0,
+            "missed": 16,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.17391304347826086,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 82,
+            "n_positive": 16,
+            "detected": 7,
+            "missed": 9,
+            "precision": 0.7,
+            "recall": 0.4375,
+            "remaining_error_fraction": 0.10975609756097561,
+            "random_expected_detected": 1.7391304347826086,
+            "random_expected_recall": 0.10869565217391304
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 19,
+            "reviewed_outcome_available": 19,
+            "remaining_outcome_available": 73,
+            "n_positive": 16,
+            "detected": 9,
+            "missed": 7,
+            "precision": 0.47368421052631576,
+            "recall": 0.5625,
+            "remaining_error_fraction": 0.0958904109589041,
+            "random_expected_detected": 3.3043478260869565,
+            "random_expected_recall": 0.20652173913043478
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 46,
+            "reviewed_outcome_available": 46,
+            "remaining_outcome_available": 46,
+            "n_positive": 16,
+            "detected": 13,
+            "missed": 3,
+            "precision": 0.2826086956521739,
+            "recall": 0.8125,
+            "remaining_error_fraction": 0.06521739130434782,
+            "random_expected_detected": 8.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 92,
+            "reviewed_outcome_available": 92,
+            "remaining_outcome_available": 0,
+            "n_positive": 16,
+            "detected": 16,
+            "missed": 0,
+            "precision": 0.17391304347826086,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 16.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "low_disagreement_large_error": {
+          "n_cases": 51,
+          "n_positive": 3
+        }
+      }
+    },
+    "exp2": {
+      "0.4": {
+        "full_queue": [
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 98,
+            "n_positive": 16,
+            "detected": 0,
+            "missed": 16,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.16326530612244897,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 88,
+            "n_positive": 16,
+            "detected": 8,
+            "missed": 8,
+            "precision": 0.8,
+            "recall": 0.5,
+            "remaining_error_fraction": 0.09090909090909091,
+            "random_expected_detected": 1.6326530612244898,
+            "random_expected_recall": 0.10204081632653061
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 20,
+            "reviewed_outcome_available": 20,
+            "remaining_outcome_available": 78,
+            "n_positive": 16,
+            "detected": 10,
+            "missed": 6,
+            "precision": 0.5,
+            "recall": 0.625,
+            "remaining_error_fraction": 0.07692307692307693,
+            "random_expected_detected": 3.2653061224489797,
+            "random_expected_recall": 0.20408163265306123
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 49,
+            "reviewed_outcome_available": 49,
+            "remaining_outcome_available": 49,
+            "n_positive": 16,
+            "detected": 15,
+            "missed": 1,
+            "precision": 0.30612244897959184,
+            "recall": 0.9375,
+            "remaining_error_fraction": 0.02040816326530612,
+            "random_expected_detected": 8.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 98,
+            "reviewed_outcome_available": 98,
+            "remaining_outcome_available": 0,
+            "n_positive": 16,
+            "detected": 16,
+            "missed": 0,
+            "precision": 0.16326530612244897,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 16.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "both_models_geometry_ok": [
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 92,
+            "n_positive": 10,
+            "detected": 0,
+            "missed": 10,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.10869565217391304,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 82,
+            "n_positive": 10,
+            "detected": 3,
+            "missed": 7,
+            "precision": 0.3,
+            "recall": 0.3,
+            "remaining_error_fraction": 0.08536585365853659,
+            "random_expected_detected": 1.0869565217391304,
+            "random_expected_recall": 0.10869565217391304
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 19,
+            "reviewed_outcome_available": 19,
+            "remaining_outcome_available": 73,
+            "n_positive": 10,
+            "detected": 5,
+            "missed": 5,
+            "precision": 0.2631578947368421,
+            "recall": 0.5,
+            "remaining_error_fraction": 0.0684931506849315,
+            "random_expected_detected": 2.0652173913043477,
+            "random_expected_recall": 0.20652173913043478
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 46,
+            "reviewed_outcome_available": 46,
+            "remaining_outcome_available": 46,
+            "n_positive": 10,
+            "detected": 9,
+            "missed": 1,
+            "precision": 0.1956521739130435,
+            "recall": 0.9,
+            "remaining_error_fraction": 0.021739130434782608,
+            "random_expected_detected": 5.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 92,
+            "reviewed_outcome_available": 92,
+            "remaining_outcome_available": 0,
+            "n_positive": 10,
+            "detected": 10,
+            "missed": 0,
+            "precision": 0.10869565217391304,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 10.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "low_disagreement_large_error": {
+          "n_cases": 51,
+          "n_positive": 1
+        }
+      },
+      "0.5": {
+        "full_queue": [
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 98,
+            "n_positive": 19,
+            "detected": 0,
+            "missed": 19,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.19387755102040816,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 88,
+            "n_positive": 19,
+            "detected": 9,
+            "missed": 10,
+            "precision": 0.9,
+            "recall": 0.47368421052631576,
+            "remaining_error_fraction": 0.11363636363636363,
+            "random_expected_detected": 1.9387755102040816,
+            "random_expected_recall": 0.10204081632653061
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 20,
+            "reviewed_outcome_available": 20,
+            "remaining_outcome_available": 78,
+            "n_positive": 19,
+            "detected": 12,
+            "missed": 7,
+            "precision": 0.6,
+            "recall": 0.631578947368421,
+            "remaining_error_fraction": 0.08974358974358974,
+            "random_expected_detected": 3.877551020408163,
+            "random_expected_recall": 0.20408163265306123
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 49,
+            "reviewed_outcome_available": 49,
+            "remaining_outcome_available": 49,
+            "n_positive": 19,
+            "detected": 17,
+            "missed": 2,
+            "precision": 0.3469387755102041,
+            "recall": 0.8947368421052632,
+            "remaining_error_fraction": 0.04081632653061224,
+            "random_expected_detected": 9.5,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 98,
+            "reviewed_outcome_available": 98,
+            "remaining_outcome_available": 0,
+            "n_positive": 19,
+            "detected": 19,
+            "missed": 0,
+            "precision": 0.19387755102040816,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 19.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "both_models_geometry_ok": [
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 92,
+            "n_positive": 13,
+            "detected": 0,
+            "missed": 13,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.14130434782608695,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 82,
+            "n_positive": 13,
+            "detected": 5,
+            "missed": 8,
+            "precision": 0.5,
+            "recall": 0.38461538461538464,
+            "remaining_error_fraction": 0.0975609756097561,
+            "random_expected_detected": 1.4130434782608696,
+            "random_expected_recall": 0.10869565217391304
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 19,
+            "reviewed_outcome_available": 19,
+            "remaining_outcome_available": 73,
+            "n_positive": 13,
+            "detected": 7,
+            "missed": 6,
+            "precision": 0.3684210526315789,
+            "recall": 0.5384615384615384,
+            "remaining_error_fraction": 0.0821917808219178,
+            "random_expected_detected": 2.6847826086956523,
+            "random_expected_recall": 0.20652173913043478
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 46,
+            "reviewed_outcome_available": 46,
+            "remaining_outcome_available": 46,
+            "n_positive": 13,
+            "detected": 11,
+            "missed": 2,
+            "precision": 0.2391304347826087,
+            "recall": 0.8461538461538461,
+            "remaining_error_fraction": 0.043478260869565216,
+            "random_expected_detected": 6.5,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 92,
+            "reviewed_outcome_available": 92,
+            "remaining_outcome_available": 0,
+            "n_positive": 13,
+            "detected": 13,
+            "missed": 0,
+            "precision": 0.14130434782608695,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 13.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "low_disagreement_large_error": {
+          "n_cases": 51,
+          "n_positive": 2
+        }
+      },
+      "0.6": {
+        "full_queue": [
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 98,
+            "n_positive": 24,
+            "detected": 0,
+            "missed": 24,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.24489795918367346,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 88,
+            "n_positive": 24,
+            "detected": 10,
+            "missed": 14,
+            "precision": 1.0,
+            "recall": 0.4166666666666667,
+            "remaining_error_fraction": 0.1590909090909091,
+            "random_expected_detected": 2.4489795918367347,
+            "random_expected_recall": 0.10204081632653061
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 20,
+            "reviewed_outcome_available": 20,
+            "remaining_outcome_available": 78,
+            "n_positive": 24,
+            "detected": 13,
+            "missed": 11,
+            "precision": 0.65,
+            "recall": 0.5416666666666666,
+            "remaining_error_fraction": 0.14102564102564102,
+            "random_expected_detected": 4.8979591836734695,
+            "random_expected_recall": 0.20408163265306123
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 49,
+            "reviewed_outcome_available": 49,
+            "remaining_outcome_available": 49,
+            "n_positive": 24,
+            "detected": 21,
+            "missed": 3,
+            "precision": 0.42857142857142855,
+            "recall": 0.875,
+            "remaining_error_fraction": 0.061224489795918366,
+            "random_expected_detected": 12.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 98,
+            "n_outcome_available": 98,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 98,
+            "reviewed_outcome_available": 98,
+            "remaining_outcome_available": 0,
+            "n_positive": 24,
+            "detected": 24,
+            "missed": 0,
+            "precision": 0.24489795918367346,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 24.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "both_models_geometry_ok": [
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.0,
+            "cases_reviewed": 0,
+            "reviewed_outcome_available": 0,
+            "remaining_outcome_available": 92,
+            "n_positive": 18,
+            "detected": 0,
+            "missed": 18,
+            "precision": null,
+            "recall": 0.0,
+            "remaining_error_fraction": 0.1956521739130435,
+            "random_expected_detected": 0.0,
+            "random_expected_recall": 0.0
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.1,
+            "cases_reviewed": 10,
+            "reviewed_outcome_available": 10,
+            "remaining_outcome_available": 82,
+            "n_positive": 18,
+            "detected": 6,
+            "missed": 12,
+            "precision": 0.6,
+            "recall": 0.3333333333333333,
+            "remaining_error_fraction": 0.14634146341463414,
+            "random_expected_detected": 1.9565217391304348,
+            "random_expected_recall": 0.10869565217391304
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.2,
+            "cases_reviewed": 19,
+            "reviewed_outcome_available": 19,
+            "remaining_outcome_available": 73,
+            "n_positive": 18,
+            "detected": 9,
+            "missed": 9,
+            "precision": 0.47368421052631576,
+            "recall": 0.5,
+            "remaining_error_fraction": 0.1232876712328767,
+            "random_expected_detected": 3.717391304347826,
+            "random_expected_recall": 0.20652173913043478
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 0.5,
+            "cases_reviewed": 46,
+            "reviewed_outcome_available": 46,
+            "remaining_outcome_available": 46,
+            "n_positive": 18,
+            "detected": 15,
+            "missed": 3,
+            "precision": 0.32608695652173914,
+            "recall": 0.8333333333333334,
+            "remaining_error_fraction": 0.06521739130434782,
+            "random_expected_detected": 9.0,
+            "random_expected_recall": 0.5
+          },
+          {
+            "n_cases": 92,
+            "n_outcome_available": 92,
+            "n_outcome_missing": 0,
+            "review_fraction": 1.0,
+            "cases_reviewed": 92,
+            "reviewed_outcome_available": 92,
+            "remaining_outcome_available": 0,
+            "n_positive": 18,
+            "detected": 18,
+            "missed": 0,
+            "precision": 0.1956521739130435,
+            "recall": 1.0,
+            "remaining_error_fraction": null,
+            "random_expected_detected": 18.0,
+            "random_expected_recall": 1.0
+          }
+        ],
+        "low_disagreement_large_error": {
+          "n_cases": 51,
+          "n_positive": 3
+        }
+      }
+    }
+  },
+  "paired_models": {
+    "exp1": {
+      "disc_dice": {
+        "n_common_images": 98,
+        "mean_photo_minus_baseline": 0.021869196726494403,
+        "patient_cluster_interval": {
+          "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+          "n_eyes": 98,
+          "n_patients": 49,
+          "patient_weighted_mean": 0.021869196726494403,
+          "lower_95_percentile": -0.0017779312917128207,
+          "upper_95_percentile": 0.05427651785769939,
+          "bootstrap_draws": 2000,
+          "seed": 20261104,
+          "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+        }
+      },
+      "cup_dice": {
+        "n_common_images": 98,
+        "mean_photo_minus_baseline": 0.005623894532128602,
+        "patient_cluster_interval": {
+          "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+          "n_eyes": 98,
+          "n_patients": 49,
+          "patient_weighted_mean": 0.005623894532128601,
+          "lower_95_percentile": -0.017801701680044378,
+          "upper_95_percentile": 0.03014398126680124,
+          "bootstrap_draws": 2000,
+          "seed": 20261104,
+          "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+        }
+      },
+      "abs_vcdr_error": {
+        "n_common_images": 92,
+        "mean_photo_minus_baseline": 0.004790167514332333,
+        "patient_cluster_interval": {
+          "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+          "n_eyes": 92,
+          "n_patients": 48,
+          "patient_weighted_mean": 0.0055024101008082455,
+          "lower_95_percentile": -0.002790205854105878,
+          "upper_95_percentile": 0.01435419785362175,
+          "bootstrap_draws": 2000,
+          "seed": 20261104,
+          "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+        }
+      }
+    },
+    "exp2": {
+      "disc_dice": {
+        "n_common_images": 98,
+        "mean_photo_minus_baseline": 0.02316786877397945,
+        "patient_cluster_interval": {
+          "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+          "n_eyes": 98,
+          "n_patients": 49,
+          "patient_weighted_mean": 0.02316786877397945,
+          "lower_95_percentile": -0.0005116790172746349,
+          "upper_95_percentile": 0.05622120013648455,
+          "bootstrap_draws": 2000,
+          "seed": 20261104,
+          "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+        }
+      },
+      "cup_dice": {
+        "n_common_images": 98,
+        "mean_photo_minus_baseline": 0.0020707029106109514,
+        "patient_cluster_interval": {
+          "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+          "n_eyes": 98,
+          "n_patients": 49,
+          "patient_weighted_mean": 0.00207070291061095,
+          "lower_95_percentile": -0.020157874887435794,
+          "upper_95_percentile": 0.027333502323722135,
+          "bootstrap_draws": 2000,
+          "seed": 20261104,
+          "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+        }
+      },
+      "abs_vcdr_error": {
+        "n_common_images": 92,
+        "mean_photo_minus_baseline": 0.004661484669642455,
+        "patient_cluster_interval": {
+          "method": "equal_patient_weight_cluster_percentile_bootstrap_v1",
+          "n_eyes": 92,
+          "n_patients": 48,
+          "patient_weighted_mean": 0.005379089041313778,
+          "lower_95_percentile": -0.0022903377079437097,
+          "upper_95_percentile": 0.01398268094361036,
+          "bootstrap_draws": 2000,
+          "seed": 20261104,
+          "interpretation": "Dataset-level patient-weighted mean interval; not individual-patient diagnostic uncertainty."
+        }
+      }
+    }
+  },
+  "disc_dice_per_image_model_preference_flips_by_reader": {
+    "n_available": 98,
+    "n_flips": 28
+  },
+  "cup_dice_per_image_model_preference_flips_by_reader": {
+    "n_available": 98,
+    "n_flips": 23
+  },
+  "protocol_sha256": "3e9ac6ec795ea650b3a9634116f5af900967f627baff9ab373a9ff17c6ce2f9d",
+  "n_model_predictions": 196,
+  "export_verified": true,
+  "inference_seconds_logged_approx": 171.1,
+  "recovery": "Initial aggregate write failed on NumPy int64; recomputed from preserved rows and reverified artifacts. No new inference.",
+  "limitations": [
+    "Previously evaluated holdout; exploratory reuse,not independent confirmation.",
+    "Image review units and patient-cluster intervals answer different questions.",
+    "Reader annotations are references,not disease truth.",
+    "Disagreement is not calibrated uncertainty or observed review-time benefit."
+  ]
+}

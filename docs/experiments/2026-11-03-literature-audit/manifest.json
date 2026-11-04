@@ -1,0 +1,21 @@
+{
+  "schema": "hyunoptic-literature-audit-v1",
+  "files": {
+    "README.md": {
+      "sha256": "6f9a8b0c0d6ce82aebbaf5125ac98dec419ee93a3563708ba141d60890107645",
+      "bytes": 11235
+    },
+    "stress_pilot.py": {
+      "sha256": "37a427472142991822b27a5a9b1ecbdfb2b5f498db547ba82b6d33014ae23086",
+      "bytes": 8356
+    },
+    "protocol.json": {
+      "sha256": "e739bfb1d1575570593a5f6de126c3d91cf499d3dccd5c4218f9c0c4ed6ea17a",
+      "bytes": 1466
+    },
+    "summary.json": {
+      "sha256": "f5068c7286e7e787626657933cce1328ee274b8b5ba5f051320cd2ace33e56b7",
+      "bytes": 4240
+    }
+  }
+}

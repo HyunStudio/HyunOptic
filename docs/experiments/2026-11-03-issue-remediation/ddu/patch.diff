@@ -1,0 +1,104 @@
+--- a/utils/gmm_utils.py
++++ b/utils/gmm_utils.py
+@@ -1,10 +1,6 @@
+ import torch
+ from torch import nn
+ from tqdm import tqdm
+-
+-DOUBLE_INFO = torch.finfo(torch.double)
+-JITTERS = [0, DOUBLE_INFO.tiny] + [10 ** exp for exp in range(-308, 0, 1)]
+-
+ 
+ def centered_cov_torch(x):
+     n = x.shape[0]
+@@ -82,28 +78,69 @@
+     return log_probs_B_Y
+ 
+ 
+-def gmm_fit(embeddings, labels, num_classes):
+-    with torch.no_grad():
+-        classwise_mean_features = torch.stack([torch.mean(embeddings[labels == c], dim=0) for c in range(num_classes)])
+-        classwise_cov_features = torch.stack(
+-            [centered_cov_torch(embeddings[labels == c] - classwise_mean_features[c]) for c in range(num_classes)]
+-        )
++def gmm_fit(embeddings, labels, num_classes, *, max_attempts=10, max_jitter_relative=1e-2):
++    """Fit the author's unbiased class covariances, regularizing only if needed.
++
++    Returns the model and the absolute diagonal jitter used for every class.
++    The first attempt uses zero jitter; remaining attempts are bounded and use
++    dtype-aware increments scaled by the largest class covariance diagonal.
++    """
++    import math
++
++    if not isinstance(embeddings, torch.Tensor) or embeddings.ndim != 2:
++        raise ValueError("embeddings must be a two-dimensional tensor")
++    if embeddings.dtype not in (torch.float32, torch.float64) or embeddings.shape[1] == 0:
++        raise ValueError("embeddings must have positive feature dimension and float32/float64 dtype")
++    if not torch.isfinite(embeddings).all():
++        raise ValueError("embeddings must contain only finite values")
++    if not isinstance(num_classes, int) or isinstance(num_classes, bool) or num_classes < 1:
++        raise ValueError("num_classes must be a positive integer")
++    if (not isinstance(labels, torch.Tensor) or labels.ndim != 1
++            or labels.shape[0] != embeddings.shape[0] or labels.device != embeddings.device
++            or labels.dtype not in (torch.int8, torch.int16, torch.int32, torch.int64, torch.uint8)):
++        raise ValueError("labels must be a matching one-dimensional integer tensor on the embeddings device")
++    if ((labels < 0) | (labels >= num_classes)).any():
++        raise ValueError("labels must be in [0, num_classes)")
++    if not isinstance(max_attempts, int) or isinstance(max_attempts, bool) or not 1 <= max_attempts <= 32:
++        raise ValueError("max_attempts must be an integer in [1, 32]")
++    if not isinstance(max_jitter_relative, (float, int)) or not math.isfinite(max_jitter_relative) or not 0 < max_jitter_relative <= 1:
++        raise ValueError("max_jitter_relative must be finite and in (0, 1]")
+ 
+     with torch.no_grad():
+-        for jitter_eps in JITTERS:
+-            try:
+-                jitter = jitter_eps * torch.eye(
+-                    classwise_cov_features.shape[1], device=classwise_cov_features.device,
+-                ).unsqueeze(0)
++        classes = [embeddings[labels == c] for c in range(num_classes)]
++        for c, features in enumerate(classes):
++            if features.shape[0] < 2:
++                raise ValueError(f"class {c} must contain at least two samples")
++        classwise_mean_features = torch.stack([features.mean(dim=0) for features in classes])
++        classwise_cov_features = torch.stack([
++            centered_cov_torch(features - classwise_mean_features[c])
++            for c, features in enumerate(classes)
++        ])
++        if not torch.isfinite(classwise_mean_features).all() or not torch.isfinite(classwise_cov_features).all():
++            raise ValueError("computed means and covariances must be finite; rescale embeddings")
++
++        dimension = embeddings.shape[1]
++        # A unit floor also makes all-zero covariance safe to invert in float32.
++        scale = max(1.0, classwise_cov_features.diagonal(dim1=-2, dim2=-1).abs().max().item())
++        minimum = torch.finfo(embeddings.dtype).eps * scale * dimension
++        maximum = float(max_jitter_relative) * scale
++        if minimum > maximum:
++            raise ValueError("max_jitter_relative is below the dtype/dimension jitter floor")
++        identity = torch.eye(dimension, dtype=embeddings.dtype, device=embeddings.device)
++        jitter_eps = 0.0
++        for attempt in range(max_attempts):
++            covariance = classwise_cov_features + jitter_eps * identity
++            # Status codes avoid dependence on version-specific exception strings.
++            factor, info = torch.linalg.cholesky_ex(covariance, check_errors=False)
++            if (info == 0).all() and torch.isfinite(factor).all():
+                 gmm = torch.distributions.MultivariateNormal(
+-                    loc=classwise_mean_features, covariance_matrix=(classwise_cov_features + jitter),
++                    loc=classwise_mean_features, scale_tril=factor,
+                 )
+-            except RuntimeError as e:
+-                if "cholesky" in str(e):
+-                    continue
+-            except ValueError as e:
+-                if "The parameter covariance_matrix has invalid values" in str(e):
+-                    continue
+-            break
+-
+-    return gmm, jitter_eps
++                return gmm, jitter_eps
++            if jitter_eps >= maximum:
++                break
++            jitter_eps = min(maximum, minimum if attempt == 0 else jitter_eps * 10.0)
++        raise RuntimeError(
++            f"Unable to fit positive-definite class covariances after {attempt + 1} attempts; "
++            f"jitter bounded by {maximum:g} (relative limit {max_jitter_relative:g})"
++        )

@@ -1,0 +1,71 @@
+{
+  "paper": "Give me (un)certainty (Hoebel et al. ML4H2019)",
+  "source": "https://arxiv.org/pdf/1911.06357",
+  "classification": "independent_formula_unit_tests_and_random_weight_dropout_only",
+  "original_SPIE2020_status": "Full text download redirect loop; author checkpoints and code not verified; not reproduced",
+  "python": "3.12.10",
+  "torch": "2.13.0+cu126",
+  "seed": 20261103,
+  "checks": [
+    {
+      "name": "identical_correct_vs_identical_wrong_blindspot",
+      "status": "PASS",
+      "detail": {
+        "same_uncertainty_for_correct_and_systematically_wrong": true,
+        "correct_reference_dice": 1.0,
+        "wrong_reference_dice": 0.0,
+        "metrics": {
+          "printed_cv": 0.0,
+          "mean_pairwise_dice": 1.0,
+          "pair_count": 45,
+          "mean_labelled_entropy": 0.04872862966817305
+        }
+      }
+    },
+    {
+      "name": "varying_boundary_variance_and_pairwise_dice",
+      "status": "PASS",
+      "detail": {
+        "printed_cv": 2.224685138539043,
+        "mean_pairwise_dice": 0.8988552188552187,
+        "pair_count": 45,
+        "mean_labelled_entropy": 0.05681326838893517
+      }
+    },
+    {
+      "name": "empty_labelled_volume_explicit_undefined",
+      "status": "PASS",
+      "detail": {
+        "result": {
+          "printed_cv": 0.0,
+          "mean_pairwise_dice": null,
+          "pair_count": 0,
+          "mean_labelled_entropy": null
+        },
+        "undefined_empty_aggregates_reported_not_filled_with_success": true
+      }
+    },
+    {
+      "name": "toy_3d_mc_dropout_N10_actual_execution",
+      "status": "PASS",
+      "detail": {
+        "random_untrained_model": true,
+        "output_shape": [
+          10,
+          1,
+          1,
+          8,
+          16,
+          16
+        ],
+        "metrics": {
+          "printed_cv": 340.53141852286046,
+          "mean_pairwise_dice": 0.2587607056229747,
+          "pair_count": 42,
+          "mean_labelled_entropy": 0.3327167266008082
+        }
+      }
+    }
+  ],
+  "implementation_choices": "population variance as printed in paper; binary threshold >=0.5; empty Dice/labelled aggregate -> null"
+}

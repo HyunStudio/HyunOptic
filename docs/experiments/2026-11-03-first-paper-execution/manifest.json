@@ -1,0 +1,43 @@
+{
+  "schema": "hyunoptic-paper-execution-audit-v1",
+  "checks_passed": 16,
+  "checks_failed": 5,
+  "files": {
+    "caldiff_results.json": {
+      "sha256": "5b0e34484df74cb0790025d2505bace9810514b1d9b6f9a820137641aeaf45d5",
+      "bytes": 6609
+    },
+    "harnesses/execute_formula_checks.py": {
+      "sha256": "e07f9f73998513e7832c7c6334c5f1c0f711ced6ee20430978c658900d1683a2",
+      "bytes": 6329
+    },
+    "harnesses/run_checks.py": {
+      "sha256": "4b3367409c1c812b76cb90d3d675919fa812ed0f1ef408f27d78b77acfb3c21c",
+      "bytes": 6685
+    },
+    "harnesses/run_hoebel_formula.py": {
+      "sha256": "3b778c10bba7a8ea3687cbef9719979745acbaa7cd2efc1ca6cbed30e708a2a2",
+      "bytes": 3978
+    },
+    "harnesses/run_oxford_probe.py": {
+      "sha256": "75afb832eb35be0e0051b07cfebba8e6a05239283fc0f22021bad327e6d668e4",
+      "bytes": 4269
+    },
+    "hoebel_results.json": {
+      "sha256": "67287c83fad8d84ec95a3437e2b9a1a6273c7c801317c7017ab93c4d7b541332",
+      "bytes": 2209
+    },
+    "oxford_results.json": {
+      "sha256": "1dfd7d9d8e416fa4aa02aa81a44dbd086bf8358b05c3d206a423a00f8b8523b8",
+      "bytes": 2176
+    },
+    "README.md": {
+      "sha256": "69d48e23fefcb88b101295caa67651bb71ce334212a229e6bbadd71d08cb90e1",
+      "bytes": 8024
+    },
+    "umct_results.json": {
+      "sha256": "d1a426626163f18233faa47116688167db116882ee65e457aa2d5a8c6547df7c",
+      "bytes": 2617
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "source_commit": "f597744c65df4ff51615ace5e86e82ffefe1cd0f",
+  "source_sha256": "db553202fc79251cfed91e4505302db00cf6161a2669dee882907972d5f2a3b9",
+  "tested_sha256": "db553202fc79251cfed91e4505302db00cf6161a2669dee882907972d5f2a3b9",
+  "python": "3.12.10",
+  "torch": "2.13.0+cu126",
+  "device": "cpu",
+  "passed": 2,
+  "total": 17,
+  "results": [
+    {
+      "name": "torch.float32_zero_finite",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "torch.float32_rank_deficient_finite",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "torch.float32_large_rank_deficient_finite",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "torch.float32_fullrank_closed_form",
+      "passed": true,
+      "detail": {
+        "jitter": 0,
+        "max_cov_error": 0.0
+      }
+    },
+    {
+      "name": "torch.float64_zero_finite",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "torch.float64_rank_deficient_finite",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "torch.float64_large_rank_deficient_finite",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "torch.float64_fullrank_closed_form",
+      "passed": true,
+      "detail": {
+        "jitter": 0,
+        "max_cov_error": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "missing_class",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "singleton_class",
+      "passed": false,
+      "error": "ZeroDivisionError: division by zero"
+    },
+    {
+      "name": "nonfinite_nan",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "nonfinite_inf",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "nonfinite_-inf",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "label_outside_range",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "noninteger_labels",
+      "passed": false,
+      "error": "UnboundLocalError: cannot access local variable 'gmm' where it is not associated with a value"
+    },
+    {
+      "name": "wrong_shape",
+      "passed": false,
+      "error": "IndexError: The shape of the mask [4] at index 0 does not match the shape of the indexed tensor [8] at index 0"
+    },
+    {
+      "name": "bounded_jitter_exhaustion",
+      "passed": false,
+      "error": "TypeError: gmm_fit() got an unexpected keyword argument 'max_attempts'"
+    }
+  ]
+}

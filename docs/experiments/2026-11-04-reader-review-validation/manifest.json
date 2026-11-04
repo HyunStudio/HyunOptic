@@ -1,0 +1,46 @@
+{
+  ".gitattributes": {
+    "bytes": 72,
+    "sha256": "308a40fa1d89ae5ea4390b4c9b46a0108b09f171f07898f25d451fa0c69c4e9f"
+  },
+  "external_reanalysis.json": {
+    "bytes": 4942,
+    "sha256": "ebc0518d982ded593b116d7099e69711d9316e5414526be539f226b716879008"
+  },
+  "mask_verification.json": {
+    "bytes": 376,
+    "sha256": "37402df76004663a1b93f68cb4f34e6c3ad452a9050ca9faba936a76dbc588ca"
+  },
+  "plot_results.py": {
+    "bytes": 2512,
+    "sha256": "a5cc5434b65ec9ffef4d9cd01f80a5234da78dc0842e845db004c46c14c54391"
+  },
+  "protocol.json": {
+    "bytes": 3208,
+    "sha256": "3e9ac6ec795ea650b3a9634116f5af900967f627baff9ab373a9ff17c6ce2f9d"
+  },
+  "README.md": {
+    "bytes": 13236,
+    "sha256": "d926d6c24b8550443ab6417b31e94705ffb8db75b066e8cee694cf71421c0a06"
+  },
+  "reanalyse_external.py": {
+    "bytes": 4784,
+    "sha256": "845d7ffcfec39b052c46609a25635004cddcd92a297eee241ea0e9395d6bbd5a"
+  },
+  "review_budget.png": {
+    "bytes": 176071,
+    "sha256": "01ed1a97901baaf0e8bed078aa5e2b1b5726d6c8332a53f63b634f140459481f"
+  },
+  "run_validation.py": {
+    "bytes": 18469,
+    "sha256": "4cf7b33c97163750696d1d9727c71a5155d03e4f05cbe1d3ed254c217322a825"
+  },
+  "summary.json": {
+    "bytes": 58706,
+    "sha256": "ae959031374cd63f0c4fefe2f82f1a990461baa6978f6000e327fef9653722b5"
+  },
+  "verify_masks.py": {
+    "bytes": 4772,
+    "sha256": "2fcb525735c58a9e82d8b6272728ef3b310997452222f09d7d35df0c900471b4"
+  }
+}

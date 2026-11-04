@@ -18,6 +18,7 @@ pages = {
     ],
     "Model (experimental)": [
         st.Page("views/model_inference.py", title="Model Inference", icon=":material/neurology:"),
+        st.Page("views/model_review_queue.py", title="Review Queue", icon=":material/checklist:"),
     ],
     "Research reports": [
         st.Page("views/reliability.py", title="Reliability (QC)", icon=":material/bar_chart:"),

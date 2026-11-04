@@ -1,0 +1,50 @@
+{
+  "conditions": {
+    "blur_radius_2": {
+      "gaussian_blur_radius_px": 2
+    },
+    "brightness_0.6": {
+      "brightness": 0.6
+    },
+    "contrast_0.6": {
+      "contrast": 0.6
+    },
+    "original": {}
+  },
+  "independent_test": false,
+  "metrics": [
+    "disc Dice all returned masks",
+    "cup Dice all returned masks",
+    "vCDR MAE on measurable pairs",
+    "geometry failures",
+    "execution failures",
+    "model disagreement descriptive only"
+  ],
+  "models": [
+    {
+      "data_status": {
+        "partial": false,
+        "synthetic": false
+      },
+      "identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153",
+      "run_id": "seg-20261025-053553-c5282e43",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747"
+    },
+    {
+      "data_status": {
+        "partial": false,
+        "synthetic": false
+      },
+      "identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3",
+      "run_id": "seg-20261025-062335-1430f6c9",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4"
+    }
+  ],
+  "n_original_images": 4,
+  "n_patients": 4,
+  "no_training": true,
+  "reference": "expert1 original-resolution masks, read only after predictions",
+  "reference_geometry": "unchanged by photometric transforms",
+  "schema": "hyunoptic-stress-pilot-v1",
+  "selection": "first lexicographic holdout image per patient; first four patients"
+}

@@ -1,0 +1,97 @@
+{
+  "classification": "independent_formula_unit_checks_only_not_author_execution_or_accuracy",
+  "seed": 20261103,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "torch": "2.13.0+cu126",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "device": "cpu",
+  "cuda_available": true,
+  "checks": [
+    {
+      "name": "inverse_view_alignment",
+      "status": "PASS",
+      "seconds": 0.003895499976351857,
+      "details": {
+        "shape": [
+          1,
+          1,
+          2,
+          3,
+          5
+        ],
+        "permutations": 3,
+        "flip_and_rotation_roundtrips": true
+      }
+    },
+    {
+      "name": "eq5_eq6_analytical",
+      "status": "PASS",
+      "seconds": 0.01803300017490983,
+      "details": {
+        "K": 10,
+        "volume_uncertainty": [
+          0.006000000000009914,
+          0.023999999999999688,
+          0.09600000000000417
+        ],
+        "exclude_view0_weights": [
+          0.800000000000009,
+          0.19999999999999096
+        ],
+        "fused_foreground": 0.4799999999999964,
+        "self_view_excluded": true
+      }
+    },
+    {
+      "name": "zero_variance_singularity",
+      "status": "PASS",
+      "seconds": 0.001256000017747283,
+      "details": {
+        "literal_reciprocal_nonfinite": true,
+        "guarded_weights": [
+          0.5,
+          0.5
+        ],
+        "guard_is_independent_implementation_choice": true
+      }
+    },
+    {
+      "name": "eq1_eq2_eq4_eq9_backward",
+      "status": "PASS",
+      "seconds": 0.08278140006586909,
+      "details": {
+        "sup": 1.3122351306071354,
+        "cot": 0.4982364681064992,
+        "total_before": 1.4118824242284351,
+        "total_after_gradient_step": 1.4118190475481203,
+        "gradient_norms": [
+          0.04704214341114963,
+          0.046678436340869794,
+          0.044111525434398
+        ],
+        "lambda_cot": 0.2
+      }
+    },
+    {
+      "name": "toy_3d_dropout_forward",
+      "status": "PASS",
+      "seconds": 0.019627199973911047,
+      "details": {
+        "shape": [
+          10,
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "train_mc_volume_uncertainty": 0.5001022426642956,
+        "eval_repeat_equal": true,
+        "random_toy_weights": true
+      }
+    }
+  ],
+  "total_seconds": 0.25872349995188415,
+  "script_sha256": "e07f9f73998513e7832c7c6334c5f1c0f711ced6ee20430978c658900d1683a2",
+  "paper_sha256": "07f7bbea0f6c5824efa15aa983ba542adc3c9f866e7820395b41300a24f66ce6"
+}

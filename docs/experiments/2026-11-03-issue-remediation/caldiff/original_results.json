@@ -1,0 +1,93 @@
+{
+  "label": "original",
+  "seed": 20261103,
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "torch": "2.13.0+cu126",
+  "numpy": "2.5.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cuda": "12.6",
+  "gpu": "NVIDIA GeForce RTX 3070 Laptop GPU",
+  "original_commit": "8b29be39e26eaf606a190a85cd1bbb90d93740bc",
+  "hashes": {
+    "guided_diffusion\\distribution.py": "85faf25b9ea905e86b99e6b21867a2c52000e6e80799675bc9a571c2b5e9ea24",
+    "guided_diffusion\\dist_util.py": "6650f932c1e369a1459df9481e30a8e6d5a1b5ca18075653e8041e98b1f6a0ae",
+    "guided_diffusion\\fp16_util.py": "cdb8afa996afc4b20dff8f78af210781d694b12e43feb9b149f53b12ebc8e621",
+    "guided_diffusion\\gaussian_diffusion.py": "cb6abb165433090077ca193142aa470ae91e14ed87d0b4aa382002bd5002dacf",
+    "guided_diffusion\\lidcloader.py": "4180f2854810f9ef79ae4536cf8f42b871c5ca26ffffa9eaf8bc48f977bb50d8",
+    "guided_diffusion\\logger.py": "008876d2641bc60d71f27e97091d68385d90f59733f496180e31b5b5dcc8d6d6",
+    "guided_diffusion\\losses.py": "d68907bd868784d5fb9b0556337f6f3517d641626ecf57b2c8e7792c62eedca5",
+    "guided_diffusion\\msloader.py": "16ba03cf3f52e3833319cf60f5b460913d1949cd7cbf969027e8717f9d01dd44",
+    "guided_diffusion\\nn.py": "d305e0b0a61b482b3d247103c5c121965e50d960104c8e4f555b0eb1df474f13",
+    "guided_diffusion\\resample.py": "591aa48bd17f0f0d41ca30f3f3fe2c1899241d39bed20fe0459a01b5643271da",
+    "guided_diffusion\\respace.py": "2e80a310da657cabeeccbc438fa9b5440e4e168d3d6ffd060bbe141081523535",
+    "guided_diffusion\\script_util.py": "d3e21a7a018a251da1fce57253e64bd278e3cb3eead39066f4b1389646149e58",
+    "guided_diffusion\\train_util.py": "391fb1c7e64590e99457c023c6043d4bba5deef97e03211bde7fa461d9e17412",
+    "guided_diffusion\\unet.py": "6b213b4a8d47e8d83d213732b3f373fa0bedb0d31bcfe53bf5405e88e0955c06",
+    "guided_diffusion\\utils.py": "36128e7cb6555b9fba689c013cb8ab536e45afab536ac1c1f2db6bdaa7b4d226",
+    "guided_diffusion\\__init__.py": "195b9e15f2a19621d71a52dc6ddaa1ff068699176700a6312978d50ee4c888cc",
+    "scripts\\segmentation_sample.py": "8e80fc9ccb080be584ba5e6c1507be9ee8cda70c8f8751257491d70feb091b50",
+    "scripts\\segmentation_train.py": "b9713c356a692edc9831dc194c49c8fa7842f5efe598a3afa3d2535b36aac7e4"
+  },
+  "checks": [
+    {
+      "name": "native_import_without_adapter",
+      "status": "FAIL",
+      "error": "ModuleNotFoundError(\"No module named 'torchvision'\")"
+    },
+    {
+      "name": "cpu_encoder_optimizer_update",
+      "status": "FAIL",
+      "error": "RuntimeError('Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same or input should be a MKLDNN tensor and weight is a dense tensor')"
+    },
+    {
+      "name": "cpu_encoder_state_roundtrip",
+      "status": "FAIL",
+      "error": "RuntimeError('Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same or input should be a MKLDNN tensor and weight is a dense tensor')"
+    },
+    {
+      "name": "cpu_factory_loss_input",
+      "status": "FAIL",
+      "error": "RuntimeError('Given groups=1, weight of size [32, 1, 3, 3], expected input[2, 2, 32, 32] to have 1 channels, but got 2 channels instead')"
+    },
+    {
+      "name": "cpu_factory_loss_arithmetic",
+      "status": "FAIL",
+      "error": "RuntimeError('Given groups=1, weight of size [32, 1, 3, 3], expected input[2, 2, 32, 32] to have 1 channels, but got 2 channels instead')"
+    },
+    {
+      "name": "cpu_factory_loss_backward",
+      "status": "FAIL",
+      "error": "RuntimeError('Given groups=1, weight of size [32, 1, 3, 3], expected input[2, 2, 32, 32] to have 1 channels, but got 2 channels instead')"
+    },
+    {
+      "name": "cuda_encoder_optimizer_update",
+      "status": "FAIL",
+      "error": "AssertionError('encoder weight has gradient but optimizer did not update it')"
+    },
+    {
+      "name": "cuda_encoder_state_roundtrip",
+      "status": "FAIL",
+      "error": "AssertionError('encoder weights omitted from state_dict')"
+    },
+    {
+      "name": "cuda_factory_loss_input",
+      "status": "FAIL",
+      "error": "RuntimeError('Given groups=1, weight of size [32, 1, 3, 3], expected input[2, 2, 32, 32] to have 1 channels, but got 2 channels instead')"
+    },
+    {
+      "name": "cuda_factory_loss_arithmetic",
+      "status": "FAIL",
+      "error": "RuntimeError('Given groups=1, weight of size [32, 1, 3, 3], expected input[2, 2, 32, 32] to have 1 channels, but got 2 channels instead')"
+    },
+    {
+      "name": "cuda_factory_loss_backward",
+      "status": "FAIL",
+      "error": "RuntimeError('Given groups=1, weight of size [32, 1, 3, 3], expected input[2, 2, 32, 32] to have 1 channels, but got 2 channels instead')"
+    }
+  ],
+  "adapter_removed_unused_imports": [
+    "from torchvision.utils import save_image",
+    "from .train_util import visualize",
+    "from torchvision import transforms"
+  ]
+}

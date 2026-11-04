@@ -21,6 +21,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Verify frozen university experiment evidence
         run: python docs/experiments/2026-10-25-university-transfer/scripts/verify_public_evidence.py
+      - name: Verify all subsequent experiment evidence
+        run: python scripts/verify_experiment_evidence.py
+      - name: Verify submission video and supporting payloads
+        run: python -c "from pathlib import Path; from scripts.verify_experiment_evidence import verify_folder; print('Verified submission payloads:', verify_folder(Path('docs/submission/media')))"
       - run: python -m pip install -e '.[ui,dev]'
       - run: python -m compileall -q app.py views src
       - run: hyunoptic-study --help
@@ -39,6 +43,7 @@ jobs:
       - run: hyunoptic-report --help
       - run: hyunoptic-demo-data --help
       - run: hyunoptic-seg --help
+      - run: python -m hyunoptic.review.export --help
       - run: pytest -q
   ml:
     name: PyTorch segmentation (CPU, synthetic data only)
@@ -51,4 +56,4 @@ jobs:
       - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
       - run: python -m pip install -e '.[ui,dev]'
       - run: hyunoptic-seg train --help
-      - run: pytest -q tests/test_seg_contract.py tests/test_seg_torch.py tests/test_seg_photometric.py
+      - run: pytest -q tests/test_seg_contract.py tests/test_seg_torch.py tests/test_seg_photometric.py tests/test_submission_demo.py

@@ -1,0 +1,56 @@
+{
+  "schema": "hyunoptic-issue-remediation-v1",
+  "product_tests_passed": 284,
+  "ddu_checks_passed": 17,
+  "caldiff_checks_passed": 11,
+  "files": {
+    "caldiff/apply_private_patch.py": {
+      "sha256": "abe144dde0f59cbf44b1fe4777b07c70f7d80e3e59bbdde54e1ae4868d68271c",
+      "bytes": 2707
+    },
+    "caldiff/original_results.json": {
+      "sha256": "b11e5280a5a81cc4deec07fe0e78da38d45fc8a3392db6f1392db97dfc4a27a0",
+      "bytes": 5009
+    },
+    "caldiff/patched.patch": {
+      "sha256": "8608fdbd01258b447609ffe388b36fb8fd495a67d9459ae13e3368c0877fecca",
+      "bytes": 3140
+    },
+    "caldiff/patched_results.json": {
+      "sha256": "ee9ce57bbcbdab565e8fbe44fadc59d1513ea54b637c8982e3f0dbaa5e55ef1e",
+      "bytes": 6146
+    },
+    "caldiff/run_regressions.py": {
+      "sha256": "5da55b8554fbf0c198955d19ef64b129676cfb521e100b3146a0b9297fb72f91",
+      "bytes": 8041
+    },
+    "caldiff/verify_artifacts.py": {
+      "sha256": "b2711f3fd2b8660f27be2d45c91df54fcb4c29a916b55fffa23532f9fc2fe141",
+      "bytes": 1939
+    },
+    "ddu/build_patch.py": {
+      "sha256": "720c1d21cfa7c6709f8eb6272c44ccb1b68daeec5f4ec6b72d2bef59a167122a",
+      "bytes": 4906
+    },
+    "ddu/original_results.json": {
+      "sha256": "04d0fce54bf0b8fed4cc8795442cd0a4a4d62e283b61f13d17b258f0f6d4caf4",
+      "bytes": 3558
+    },
+    "ddu/patch.diff": {
+      "sha256": "025f55120ed598b72a427ddd73b8c1d8a7e93c94aa1020475934eb1ea7a08848",
+      "bytes": 5684
+    },
+    "ddu/results.json": {
+      "sha256": "edb185a3d38b9b8c8d91e87a1b15127fd1a0d650e1f408f3e6d2361d40c67331",
+      "bytes": 3557
+    },
+    "ddu/run_checks.py": {
+      "sha256": "27829b34482c593ce13b2d08e94671c40f84fef5f457229326f7c178fc589be0",
+      "bytes": 5126
+    },
+    "README.md": {
+      "sha256": "53ed011869c4cf2f9407e8ce366a0c0a2971c2c3086554fd5a7d889029e6780c",
+      "bytes": 6892
+    }
+  }
+}

@@ -2,11 +2,14 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import zipfile
 from html import escape
 from pathlib import Path
 
 import streamlit as st
 
+from ..seg.bundle import file_sha256
 from .. import __version__
 from .components import html
 from .icons import LOGO
@@ -18,11 +21,30 @@ from .workspace import (DatasetStatus, RunData, Workspace, chaksu_status, find_r
 REPO_URL = "https://github.com/HyunStudio/HyunOptic"
 
 
-def _mtime(path: str) -> float:
+def _mtime(path: str) -> str:
+    """Recursive source inventory for nested edits and atomic replacements.
+
+    Hashes small annotation files and ZIP central-directory checksums, without
+    rereading all fundus pixels or a multi-GB archive on every rerun. Selected
+    PAPILA pixels receive an additional content key in case_data/case_thumb.
+    """
+    if not path:
+        return ""
     try:
-        return Path(path).expanduser().stat().st_mtime if path else 0.0
-    except OSError:
-        return 0.0
+        root = Path(path).expanduser().resolve(strict=True)
+        paths = sorted(p for p in root.rglob("*") if p.is_file()) if root.is_dir() else [root]
+        records = []
+        for item in paths:
+            stat = item.stat()
+            records.append((str(item.relative_to(root)) if root.is_dir() else item.name,
+                            stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns,
+                            file_sha256(item) if item.suffix.lower() in {".txt", ".json", ".csv"} else None))
+        if root.is_file() and root.suffix.lower() == ".zip":
+            with zipfile.ZipFile(root) as archive:
+                records.extend((entry.filename, entry.file_size, entry.CRC) for entry in archive.infolist())
+        return hashlib.sha256(json.dumps([str(root), records]).encode()).hexdigest()
+    except (OSError, zipfile.BadZipFile):
+        return "unavailable"
 
 
 def workspace() -> Workspace:
@@ -38,12 +60,12 @@ def save_workspace(ws: Workspace) -> None:
 
 
 @st.cache_data(show_spinner=False)
-def _papila(root: str, stamp: float) -> DatasetStatus:
+def _papila(root: str, stamp: str) -> DatasetStatus:
     return papila_status(root)
 
 
 @st.cache_data(show_spinner=False)
-def _chaksu(archive: str, stamp: float) -> DatasetStatus:
+def _chaksu(archive: str, stamp: str) -> DatasetStatus:
     return chaksu_status(archive)
 
 
@@ -58,19 +80,37 @@ def dataset_location(name: str) -> str:
 
 
 @st.cache_data(show_spinner=False)
-def cases(dataset: str, location: str, stamp: float) -> list[CaseRef]:
+def cases(dataset: str, location: str, stamp: str) -> list[CaseRef]:
     return list_cases(dataset, location)
 
 
+def _case_identity(ref: CaseRef, location: str) -> str:
+    if ref.dataset != "PAPILA":
+        return ""  # ZIP member CRCs are included in the public source stamp.
+    from ..papila import discover_cases
+    case = next(c for c in discover_cases(location) if c.image_id == ref.case_id)
+    paths = [case.image_path] + [case.contour_path(structure, reader)
+                               for reader in ("exp1", "exp2") for structure in ("disc", "cup")]
+    return hashlib.sha256("".join(file_sha256(path) for path in paths).encode()).hexdigest()
+
+
 @st.cache_data(show_spinner=False, max_entries=24)
-def case_data(ref: CaseRef, location: str, stamp: float):
+def _case_data(ref: CaseRef, location: str, stamp: str, content_identity: str):
     return load_case(ref, location)
 
 
+def case_data(ref: CaseRef, location: str, stamp: str):
+    return _case_data(ref, location, stamp, _case_identity(ref, location))
+
+
 @st.cache_data(show_spinner=False, max_entries=200)
-def case_thumb(ref: CaseRef, location: str, stamp: float):
+def _case_thumb(ref: CaseRef, location: str, stamp: str, content_identity: str):
     image, _ = load_case(ref, location)
     return thumbnail(image)
+
+
+def case_thumb(ref: CaseRef, location: str, stamp: str):
+    return _case_thumb(ref, location, stamp, _case_identity(ref, location))
 
 
 def available_datasets() -> list[str]:

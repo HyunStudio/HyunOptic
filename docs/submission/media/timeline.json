@@ -1,0 +1,261 @@
+{
+  "duration_seconds": 217.507256,
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "The problem: a number can hide a wrong prediction",
+      "start": 0,
+      "duration": 16.556236,
+      "narration": "HyunOptic is a local research workspace for reviewing ophthalmic AI predictions. A model can produce a measurable cup to disc ratio while locating the wrong structure. The task here is to inspect that evidence, preserve unresolved decisions, and export a traceable record.",
+      "captures": [
+        "000-create-form.jpg"
+      ],
+      "spoken_seconds": 15.556236
+    },
+    {
+      "chapter": 2,
+      "title": "Start with two verified local models",
+      "start": 16.556236,
+      "duration": 17.811338,
+      "narration": "This demonstration uses only synthetic images and two real CPU trained PyTorch models. Seed forty three is the primary model, and seed forty two is the comparison. The public preparation command creates both models and an isolated workspace without private research weights or an API key.",
+      "captures": [
+        "000-create-form.jpg",
+        "001-inputs-consent.jpg"
+      ],
+      "spoken_seconds": 16.811338
+    },
+    {
+      "chapter": 3,
+      "title": "Create a session and retain failed inputs",
+      "start": 34.367574,
+      "duration": 16.591111,
+      "narration": "I select four synthetic images and one intentionally unreadable input, then confirm local retention. The session copies images to this computer. The application allows thirty megabytes per file. The unreadable case stays visible instead of disappearing from the total.",
+      "captures": [
+        "002-create-action.jpg",
+        "003-pending.jpg"
+      ],
+      "spoken_seconds": 15.591111
+    },
+    {
+      "chapter": 4,
+      "title": "Run a bounded processing step",
+      "start": 50.958685,
+      "duration": 18.165896,
+      "narration": "Clicking Process next images runs actual image only inference with verified model bundles. The completed session contains four processed images, eight model predictions, and one input error. Processing is synchronous and bounded. This edited sequence is not a real time speed benchmark.",
+      "captures": [
+        "004-processing-click.jpg",
+        "005-processing-state.jpg",
+        "006-completed-error-visible.jpg"
+      ],
+      "spoken_seconds": 17.165896
+    },
+    {
+      "chapter": 5,
+      "title": "Inspect the full source image",
+      "start": 69.12458,
+      "duration": 15.876054,
+      "narration": "The queue orders execution failures, invalid measurements, and model disagreement for inspection. Opening a completed case shows the complete source image. Full context matters because a plausible measurement alone does not establish that the model found the correct anatomy.",
+      "captures": [
+        "007-case-list-open.jpg",
+        "008-comparison-loaded.jpg",
+        "009-source-full.jpg"
+      ],
+      "spoken_seconds": 14.876054
+    },
+    {
+      "chapter": 6,
+      "title": "Compare actual model overlays",
+      "start": 85.000635,
+      "duration": 17.271202,
+      "narration": "These are the two actual model overlays on the same synthetic image. Both predictions produce measurements, but the boundaries differ. Disagreement is a descriptive ordering signal, not calibrated confidence or diagnostic risk. Both models can also agree on a wrong structure.",
+      "captures": [
+        "010-model-one-full.jpg",
+        "011-model-two-full.jpg"
+      ],
+      "spoken_seconds": 16.271202
+    },
+    {
+      "chapter": 7,
+      "title": "Record an unresolved decision",
+      "start": 102.271837,
+      "duration": 17.656463,
+      "narration": "The review state can remain unreviewed, become reviewed, or be held. Here I select held and the reason uncertain, then save. A held decision requires a reason. The software record does not certify anatomical correctness, clinical approval, or independent human review.",
+      "captures": [
+        "012-review-options.jpg",
+        "013-reason-options.jpg",
+        "014-held-before-save.jpg",
+        "015-held-saved.jpg"
+      ],
+      "spoken_seconds": 16.656463
+    },
+    {
+      "chapter": 8,
+      "title": "Reopen without losing the decision",
+      "start": 119.928299,
+      "duration": 17.646077,
+      "narration": "After reloading the browser, I reopen the stored session and the same case. Held and uncertain remain recorded. Revision checks prevent a stale tab from silently replacing a newer decision. The application also supports recovery of unfinished processing while retaining completed results.",
+      "captures": [
+        "016-reopen-session.jpg",
+        "017-held-after-reload.jpg"
+      ],
+      "spoken_seconds": 16.646077
+    },
+    {
+      "chapter": 9,
+      "title": "Export evidence with explicit privacy limits",
+      "start": 137.574376,
+      "duration": 20.22068,
+      "narration": "I build the evidence ZIP and download the verified package. A separate command line check accepted all six payloads. Default exports exclude original images, masks, filenames, local paths and private notes. Hashes do not guarantee anonymity, and the local database is not encrypted by the application.",
+      "captures": [
+        "018-export-open.jpg",
+        "019-verified-download-ready.jpg",
+        "020-downloaded.jpg"
+      ],
+      "spoken_seconds": 19.22068
+    },
+    {
+      "chapter": 10,
+      "title": "Check repeatability and failure behavior",
+      "start": 157.795057,
+      "duration": 19.120454,
+      "narration": "Separate execution checks matched repeated prediction digests and preserved two hundred predictions after a controlled interruption of one hundred repeated synthetic cases. A changed copied model bundle failed without erasing prior decisions. Repeated cases are not independent patients, and this was not an operating system crash.",
+      "captures": [
+        "006-completed-error-visible.jpg",
+        "017-held-after-reload.jpg"
+      ],
+      "spoken_seconds": 18.120454
+    },
+    {
+      "chapter": 11,
+      "title": "Software evidence is separate from clinical evidence",
+      "start": 176.91551,
+      "duration": 20.125805,
+      "narration": "The local suite passed three hundred twenty six tests. Linux, Windows, and actual PyTorch CPU training checks also passed in continuous integration. Earlier real data transfer failures motivate this workflow. Synthetic execution does not establish clinical accuracy, ranking efficiency, or measured time savings.",
+      "captures": [
+        "010-model-one-full.jpg",
+        "011-model-two-full.jpg"
+      ],
+      "spoken_seconds": 19.125805
+    },
+    {
+      "chapter": 12,
+      "title": "Reproduce the workflow and inspect its limits",
+      "start": 197.041315,
+      "duration": 20.465941,
+      "narration": "The repository includes source, setup instructions, aggregate research results and AI disclosures. All work shown was prepared before the hackathon. This is an AI operated demonstration with synthetic narration and edited screenshot timing. HyunOptic remains research only and must not guide diagnosis or patient care.",
+      "captures": [
+        "000-create-form.jpg",
+        "017-held-after-reload.jpg",
+        "019-verified-download-ready.jpg"
+      ],
+      "spoken_seconds": 19.465941
+    }
+  ],
+  "capture_provenance": [
+    {
+      "file": "000-create-form.jpg",
+      "label": "create-form",
+      "captured_utc": "2026-11-04T05:13:33.047Z"
+    },
+    {
+      "file": "001-inputs-consent.jpg",
+      "label": "inputs-consent",
+      "captured_utc": "2026-11-04T05:13:38.915Z"
+    },
+    {
+      "file": "002-create-action.jpg",
+      "label": "create-action",
+      "captured_utc": "2026-11-04T05:13:42.596Z"
+    },
+    {
+      "file": "003-pending.jpg",
+      "label": "pending",
+      "captured_utc": "2026-11-04T05:13:46.404Z"
+    },
+    {
+      "file": "004-processing-click.jpg",
+      "label": "processing-click",
+      "captured_utc": "2026-11-04T05:13:50.937Z"
+    },
+    {
+      "file": "005-processing-state.jpg",
+      "label": "processing-state",
+      "captured_utc": "2026-11-04T05:13:54.113Z"
+    },
+    {
+      "file": "006-completed-error-visible.jpg",
+      "label": "completed-error-visible",
+      "captured_utc": "2026-11-04T05:13:57.602Z"
+    },
+    {
+      "file": "007-case-list-open.jpg",
+      "label": "case-list-open",
+      "captured_utc": "2026-11-04T05:13:57.977Z"
+    },
+    {
+      "file": "008-comparison-loaded.jpg",
+      "label": "comparison-loaded",
+      "captured_utc": "2026-11-04T05:14:08.308Z"
+    },
+    {
+      "file": "009-source-full.jpg",
+      "label": "source-full",
+      "captured_utc": "2026-11-04T05:14:08.767Z"
+    },
+    {
+      "file": "010-model-one-full.jpg",
+      "label": "model-one-full",
+      "captured_utc": "2026-11-04T05:14:15.386Z"
+    },
+    {
+      "file": "011-model-two-full.jpg",
+      "label": "model-two-full",
+      "captured_utc": "2026-11-04T05:14:16.094Z"
+    },
+    {
+      "file": "012-review-options.jpg",
+      "label": "review-options",
+      "captured_utc": "2026-11-04T05:14:20.800Z"
+    },
+    {
+      "file": "013-reason-options.jpg",
+      "label": "reason-options",
+      "captured_utc": "2026-11-04T05:14:26.663Z"
+    },
+    {
+      "file": "014-held-before-save.jpg",
+      "label": "held-before-save",
+      "captured_utc": "2026-11-04T05:14:31.987Z"
+    },
+    {
+      "file": "015-held-saved.jpg",
+      "label": "held-saved",
+      "captured_utc": "2026-11-04T05:14:32.548Z"
+    },
+    {
+      "file": "016-reopen-session.jpg",
+      "label": "reopen-session",
+      "captured_utc": "2026-11-04T05:14:52.800Z"
+    },
+    {
+      "file": "017-held-after-reload.jpg",
+      "label": "held-after-reload",
+      "captured_utc": "2026-11-04T05:15:05.440Z"
+    },
+    {
+      "file": "018-export-open.jpg",
+      "label": "export-open",
+      "captured_utc": "2026-11-04T05:15:06.101Z"
+    },
+    {
+      "file": "019-verified-download-ready.jpg",
+      "label": "verified-download-ready",
+      "captured_utc": "2026-11-04T05:15:15.395Z"
+    },
+    {
+      "file": "020-downloaded.jpg",
+      "label": "downloaded",
+      "captured_utc": "2026-11-04T05:15:16.429Z"
+    }
+  ]
+}
