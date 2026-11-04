@@ -1,0 +1,212 @@
+{
+  "created_utc_before_inference": "2026-11-04T07:30:50.935106+00:00",
+  "dataset": "Chaksu published Test",
+  "n_images": 336,
+  "n_models": 2,
+  "expected_new_prediction_attempts": 672,
+  "reference_readers": [
+    "expert 1",
+    "expert 2",
+    "expert 3",
+    "expert 4",
+    "expert 5"
+  ],
+  "seed": 20261104,
+  "torch_threads": 2,
+  "torch_interop_threads": 1,
+  "device": "CPU; unchanged production Predictor",
+  "inference": "load_test_case(readers=()); no reference bytes read until all 672 attempts and queue saved",
+  "reference_policy": "Each expert scored independently; strict original resolution, nonempty binary zero background, cup containment; no repair; failed readers remain unknown.",
+  "metrics": "Explicit original-resolution pixel Dice and inclusive vertical spans; event abs vCDR error > 0.10; queue event either model exceeds threshold, unknown if neither known positive and any unknown.",
+  "queue": "Actual app priority(), order_cases() on all 336; stable camera/stem input order ties; evaluate_budget() 10%,20%,50%, missing outcomes None.",
+  "uncertainty": "2000 image-IID bootstrap means, paired image-IID bootstrap model deltas, Wilson event intervals; descriptive sensitivity only, incomplete patient linkage violates independence; no patient bootstrap or population/clinical guarantee.",
+  "data_reuse": "Exploratory rerun: October 2026 model evaluation and candidate QC inspected Chaksu Test; earlier evaluation had only expert1/2 metrics and whole-case reference failures. Same frozen models and same images are reused. No untouched external confirmation, author benchmark replication, or clinical validation claim.",
+  "models": [
+    {
+      "name": "papila_real_seed43_20261025",
+      "identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153",
+      "manifest": {
+        "schema": "hyunoptic.seg_bundle/v1",
+        "run_id": "seg-20261025-053553-c5282e43",
+        "created_utc": "2026-10-25T05:35:53+00:00",
+        "software_version": "1.2.0",
+        "git_commit": "0a0a0d760e608f4fe7e9660afd4a86c112a23ddb",
+        "runtime": {
+          "python": "3.12.10",
+          "torch": "2.13.0+cu126",
+          "numpy": "2.5.4",
+          "device": "cuda",
+          "training_seconds": 367.7
+        },
+        "architecture": {
+          "name": "unet_small_v1",
+          "in_channels": 3,
+          "n_classes": 3,
+          "base_channels": 16,
+          "depth": 4
+        },
+        "preprocessing": {
+          "method": "letterbox_v1",
+          "image_size": 384,
+          "mean": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "std": [
+            0.25,
+            0.25,
+            0.25
+          ],
+          "image_interpolation": "bilinear",
+          "mask_interpolation": "nearest"
+        },
+        "postprocessing": "largest_disc_component_v1 (largest 4-connected disc, cup inside it)",
+        "training": {
+          "dataset": "PAPILA",
+          "reader": "exp1",
+          "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+          "source_inventory_fingerprint": "718b11ecbdb23a2085b4b1ec7790013051fe2e67d19b7ccfbb5f3208e5413f43",
+          "split_manifest_sha256": "f5aaf86fd2004eefa85b7adbdc798b919c27c9ddaceae71687197cf855a205e9",
+          "split_seed": 42,
+          "n_images": {
+            "development": 292,
+            "validation": 98,
+            "holdout": 98
+          },
+          "n_patients": {
+            "development": 146,
+            "validation": 49,
+            "holdout": 49
+          },
+          "class_balance_development": {
+            "background": 0.9738993419722698,
+            "disc_rim": 0.02201917581543712,
+            "cup": 0.004081482212293094
+          },
+          "selection_rule": "highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, post-processed predictions vs expert 1",
+          "best_epoch": 37,
+          "best_validation_score": 0.8450044222014427,
+          "epochs": 40,
+          "holdout_used_in_training_or_selection": false,
+          "expert2_used": false
+        },
+        "data_status": {
+          "synthetic": false,
+          "partial": false,
+          "inventory_complete": true,
+          "n_images_discovered": 488
+        },
+        "permitted_use": "Research only. Not for clinical use, diagnosis or patient care. Local use only.",
+        "files": {
+          "weights.pt": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+          "config.json": "d0262eaf8a340131db65e6d55a9d876a79336bb2fae2ed3cbb247d0b7e73b4e1",
+          "split_manifest.json": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+          "history.json": "dd2717bb0513e19c8640309db62a8b55f219e098165360f67db9af8fcdb6f6e3"
+        }
+      }
+    },
+    {
+      "name": "papila_camera_robust_seed43_20261025",
+      "identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3",
+      "manifest": {
+        "schema": "hyunoptic.seg_bundle/v1",
+        "run_id": "seg-20261025-062335-1430f6c9",
+        "created_utc": "2026-10-25T06:23:35+00:00",
+        "software_version": "1.2.0",
+        "git_commit": "e9f4d3a4d1aed524173169decd498224e11c4dd6",
+        "runtime": {
+          "python": "3.12.10",
+          "torch": "2.13.0+cu126",
+          "numpy": "2.5.4",
+          "device": "cuda",
+          "training_seconds": 436.1
+        },
+        "architecture": {
+          "name": "unet_small_v1",
+          "in_channels": 3,
+          "n_classes": 3,
+          "base_channels": 16,
+          "depth": 4
+        },
+        "preprocessing": {
+          "method": "letterbox_v1",
+          "image_size": 384,
+          "mean": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "std": [
+            0.25,
+            0.25,
+            0.25
+          ],
+          "image_interpolation": "bilinear",
+          "mask_interpolation": "nearest"
+        },
+        "postprocessing": "largest_disc_component_v1 (largest 4-connected disc, cup inside it)",
+        "training": {
+          "dataset": "PAPILA",
+          "reader": "exp1",
+          "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+          "source_inventory_fingerprint": "718b11ecbdb23a2085b4b1ec7790013051fe2e67d19b7ccfbb5f3208e5413f43",
+          "split_manifest_sha256": "f5aaf86fd2004eefa85b7adbdc798b919c27c9ddaceae71687197cf855a205e9",
+          "split_seed": 42,
+          "n_images": {
+            "development": 292,
+            "validation": 98,
+            "holdout": 98
+          },
+          "n_patients": {
+            "development": 146,
+            "validation": 49,
+            "holdout": 49
+          },
+          "class_balance_development": {
+            "background": 0.9738993419722698,
+            "disc_rim": 0.02201917581543712,
+            "cup": 0.004081482212293094
+          },
+          "selection_rule": "highest validation mean of per-image (disc Dice + cup Dice)/2 at model resolution, post-processed predictions vs expert 1",
+          "best_epoch": 38,
+          "best_validation_score": 0.8362121134282489,
+          "epochs": 40,
+          "holdout_used_in_training_or_selection": false,
+          "expert2_used": false
+        },
+        "data_status": {
+          "synthetic": false,
+          "partial": false,
+          "inventory_complete": true,
+          "n_images_discovered": 488
+        },
+        "permitted_use": "Research only. Not for clinical use, diagnosis or patient care. Local use only.",
+        "files": {
+          "weights.pt": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+          "config.json": "cc4d2cdd32e52973853df453c55e067395c52eb92b40c2fdf6c4d8e35e36a531",
+          "split_manifest.json": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+          "history.json": "3e1b28733b28c7d57812fee2ea0c46f312dd97dbf0ba7bff05c7e7b43b274beb"
+        }
+      }
+    }
+  ],
+  "archive_sha256": "90e89ad01bfb0c4c238ba22a4a46ab46b5849e2fc9253c7bda09509f6ca259fa",
+  "source_sha256": {
+    "src/hyunoptic/chaksu.py": "8c0f50af23ed5a9e77ae17d3e0b49650cb58d81cee8e34bbd3137142473198a6",
+    "src/hyunoptic/seg/inference.py": "cf0ff5ff602ea1e480f7424dafc23f1b05ea518e1d276c0c5ec2eb3b363ba62a",
+    "src/hyunoptic/seg/preprocess.py": "c36a8e4be2114ff651f562ecbe04fe4e4a81a9e4940c52dc39657b4e9b9cb382",
+    "src/hyunoptic/seg/model.py": "f598f8bd5c5da2edead75ae042e9f68680c63af03f398d4189dc35d0e0314594",
+    "src/hyunoptic/measure.py": "6526ba808bf1afb7a14ada28b0ba855380477b0e3be53dcf57309a3a7e616604",
+    "src/hyunoptic/review/priority.py": "41e28791d5b694f2981a9dfd3f827462cb2ccd73bea4bf816b044ff4509c8071",
+    "src/hyunoptic/review/validation.py": "be246b451733772cde58a82f01bb8104a55c9cf4c980f42d9d76b84278207a16"
+  },
+  "harness_sha256": "d44c0a86109e63d12300193127b987d64f4784888f74d598585775a1103bad3c",
+  "git_head": "9cd674e3ee54d903410a24071f6a4de99fb38cdf",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "torch": "2.13.0+cu126",
+  "numpy": "2.5.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "redaction": "Raw archive layout omitted; this is not the byte-identical private original protocol.",
+  "original_protocol_sha256": "2fb54e95e72b596efbfcaf7df3aca81919b61a9c27bda764fbe287d564bd35f9"
+}

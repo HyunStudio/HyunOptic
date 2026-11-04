@@ -1,0 +1,19 @@
+{
+  "n_selected_images": 174,
+  "n_shape_binary_nonempty_reference_failures": 0,
+  "n_raw_reference_cup_outside_disc_images": 1,
+  "n_raw_reference_cup_outside_disc_pixels": 46,
+  "reference_repair": false,
+  "reference": "Official supplied original-resolution binary PNG;255foreground,0background.",
+  "coordinate_check": {
+    "n_images": 3,
+    "n_png_txt_pairs": 6,
+    "n_txt_contour_points_per_mask": 16,
+    "n_centers_on_255": 6,
+    "n_four_corner_sets_all_zero": 6,
+    "max_official_contour_point_distance_to_corresponding_png_boundary_px": 1.0,
+    "convention": "Official x/y integer minus1; no transpose/inversion.",
+    "limit": "Coordinate consistency only, not full interpolation/rasterization equivalence. Optional full official converter not run because scikit-image unavailable."
+  },
+  "visual_qa": "Private first3lexicographic-image montage inspected locally: aligned plausible official GT contours; tiny/misplaced fragments or empty model predictions. No image assets or IDs included in public bundle."
+}

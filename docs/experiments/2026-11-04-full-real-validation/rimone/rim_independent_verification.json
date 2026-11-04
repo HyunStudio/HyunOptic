@@ -1,0 +1,67 @@
+{
+  "schema": "hyunoptic-independent-rim-artifact-audit/v1",
+  "passed": true,
+  "verifier_sha256": "109b081fd3ea74d7ca0cfd76fad75228ade1170c0fee1de85148ff9894586a42",
+  "unique_images": 174,
+  "unique_image_model_pairs": 348,
+  "total_actual_inferences": 696,
+  "saved_masks_verified": 348,
+  "first_vs_second_differences_at_1e12": {
+    "prediction_status": 0,
+    "prediction_errors": 0,
+    "reference_status": 0,
+    "disc_dice": 0,
+    "cup_dice": 0,
+    "vcdr_abs_error": 0
+  },
+  "first_vs_second_exact_numeric_differences": 0,
+  "reference_coordinate_checks": {
+    "png_txt_pairs": 348,
+    "centers_on_255_foreground": 348,
+    "four_corners_all_background": 348,
+    "contour_points_checked": 5568
+  },
+  "max_TXT_point_to_PNG_boundary_distance_px": 1.0,
+  "mean_TXT_point_to_PNG_boundary_distance_px": 0.375,
+  "models": [
+    {
+      "model": "papila_real_seed43_20261025",
+      "n_images": 174,
+      "status_counts": {
+        "invalid_geometry": 160,
+        "ok": 14
+      },
+      "disc_dice_mean": 0.012226423748742464,
+      "cup_dice_mean": 0.0018260932386955475,
+      "vcdr_measurable": 14,
+      "vcdr_mae": 0.21852758258469712
+    },
+    {
+      "model": "papila_camera_robust_seed43_20261025",
+      "n_images": 174,
+      "status_counts": {
+        "ok": 42,
+        "invalid_geometry": 132
+      },
+      "disc_dice_mean": 0.01838035082128234,
+      "cup_dice_mean": 0.006450434820324607,
+      "vcdr_measurable": 42,
+      "vcdr_mae": 0.23722003858903243
+    }
+  ],
+  "image_only_priority_counts": {
+    "invalid_geometry": 172,
+    "disagreement": 2
+  },
+  "all_queue_threshold_events_saturated": true,
+  "no_detection_advantage_over_random": true,
+  "protocol_sha256": "c1fea8f2c3f66388a77d52d22df55e5c850df7c6059e4b0a7761535990c78c4c",
+  "limitations": [
+    "No first-pass label PNGs were retained: exact first/second pixel identity cannot be verified; statuses/errors/metrics can.",
+    "Supplemental protocol followed first-pass outcome inspection and is exploratory artifact replication, not independent confirmation.",
+    "Dataset supplies square optic-nerve-head crops; no reference-derived crop was created by this evaluation.",
+    "174 images do not imply 174 independent patients. Repeating inference does not add images or subjects.",
+    "PNG/TXT point and foreground checks do not establish full official interpolation/rasterization equivalence.",
+    "Saturated research events cannot support event discrimination, specificity, AUROC or clinical triage benefit."
+  ]
+}

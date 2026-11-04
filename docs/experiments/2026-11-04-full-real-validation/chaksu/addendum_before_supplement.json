@@ -1,0 +1,7 @@
+{
+  "created_utc": "2026-11-04T07:34:42.598468+00:00",
+  "decision_before_reference_outcomes": "Report Dice for all returned masks including invalid geometry as leading descriptive result; original status-ok conditional Dice stays separately labeled. vCDR status-invalid remains unknown. This is a timestamped analysis addendum, not an originally predeclared primary endpoint.",
+  "reason": "Invalid-geometry labels are still returned masks; excluding them from Dice would select successful predictions.",
+  "original_harness_sha256": "d44c0a86109e63d12300193127b987d64f4784888f74d598585775a1103bad3c",
+  "supplement_harness_sha256": "6a2334d696e1cd1a461f501eb2ca02fa3a7eba332cb37047ffc35f9eac66f975"
+}

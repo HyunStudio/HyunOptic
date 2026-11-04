@@ -1,0 +1,22 @@
+{
+  "schema": "hyunoptic-full-real-execution-accounting/v1",
+  "source_image_records": {
+    "PAPILA_reused": 98,
+    "Chaksu_reused": 336,
+    "RIM_ONE_DL_new_to_project": 174
+  },
+  "total_source_image_records": 608,
+  "actual_inference_calls": {
+    "PAPILA": 2548,
+    "Chaksu": 672,
+    "RIM_ONE_DL_first_and_repeat": 696
+  },
+  "total_actual_inference_calls": 3916,
+  "unique_image_condition_model_records": 3568,
+  "RIM_repeat_calls_do_not_add_subjects": 348,
+  "known_patient_count_only_for_PAPILA": 49,
+  "cross_dataset_patient_linkage_verified": false,
+  "unique_record_scope": "Within this audit only; PAPILA and Chaksu images/models were previously evaluated.",
+  "original_paper_benchmark_reproductions": 0,
+  "clinical_validation": false
+}

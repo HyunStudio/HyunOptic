@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import zipfile
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -88,6 +89,12 @@ def _failure_categories(rows: list[dict]) -> dict:
     return cats
 
 
+def _reference_failures(rows: list[dict], readers: tuple[str, ...]) -> dict:
+    """Reference failures do not change the image-only prediction status."""
+    return {reader: sum(reader in r.get("reference_errors", {}) for r in rows)
+            for reader in readers}
+
+
 def _write(folder: Path, report: dict, rows: list[dict]) -> None:
     folder.mkdir(parents=True, exist_ok=False)
     (folder / "model_eval_aggregate.json").write_text(
@@ -140,17 +147,23 @@ def evaluate_holdout(bundle: Bundle, papila_root: str | Path, *, exploratory_rer
                 row["predicted_vcdr"] = pred.measurement["vertical_cdr"]
             refs = {}
             for reader in ("exp1", "exp2"):     # references are read only AFTER prediction
-                d, c = load_contours(case, reader)
-                refs[reader] = (polygon_mask(d, image.size), polygon_mask(c, image.size))
-            if pred.labels is not None:
-                row["expert1"] = _reference_metrics(pred, *refs["exp1"])
-                row["expert2"] = _reference_metrics(pred, *refs["exp2"])
-            m1, m2 = measure_masks(*refs["exp1"]), measure_masks(*refs["exp2"])
-            row["expert1_vs_expert2"] = {"disc_dice": dice(refs["exp1"][0], refs["exp2"][0]),
-                                         "cup_dice": dice(refs["exp1"][1], refs["exp2"][1]),
-                                         "abs_vcdr_difference": abs(m1.vertical_cdr - m2.vertical_cdr)}
+                key = reader.replace("exp", "expert")
+                try:
+                    d, c = load_contours(case, reader)
+                    masks = (polygon_mask(d, image.size), polygon_mask(c, image.size))
+                    measure_masks(*masks)  # validate this reference independently of model output
+                    if pred.labels is not None:
+                        row[key] = _reference_metrics(pred, *masks)
+                    refs[reader] = masks
+                except (OSError, ValueError) as exc:
+                    row.setdefault("reference_errors", {})[key] = str(exc)
+            if len(refs) == 2:
+                m1, m2 = measure_masks(*refs["exp1"]), measure_masks(*refs["exp2"])
+                row["expert1_vs_expert2"] = {"disc_dice": dice(refs["exp1"][0], refs["exp2"][0]),
+                                             "cup_dice": dice(refs["exp1"][1], refs["exp2"][1]),
+                                             "abs_vcdr_difference": abs(m1.vertical_cdr - m2.vertical_cdr)}
         except (OSError, ValueError) as exc:
-            row.update(status="error", failure_category="load_or_geometry_error", errors=[str(exc)])
+            row.update(status="error", failure_category="image_load_or_prediction_error", errors=[str(exc)])
         rows.append(row)
         if progress is not None:
             progress(k, len(cases))
@@ -164,6 +177,8 @@ def evaluate_holdout(bundle: Bundle, papila_root: str | Path, *, exploratory_rer
         "source_inventory_complete": inventory["matches_full_published_shape"],
         "n_images": len(rows), "n_patients": len({r["patient_id"] for r in rows}),
         "n_evaluable": len(ok), "n_failed": len(rows) - len(ok), "failure_categories": _failure_categories(rows),
+        "count_semantics": "n_evaluable/n_failed describe prediction status; reference metric availability is reported separately.",
+        "reference_failures_by_reader": _reference_failures(rows, ("expert1", "expert2")),
         "primary_reference": "expert 1 (training reader)",
         "versus_expert1": _summarise(rows, "expert1", patients=True),
         "versus_expert2_sensitivity": _summarise(rows, "expert2", patients=True),
@@ -187,23 +202,30 @@ def evaluate_holdout(bundle: Bundle, papila_root: str | Path, *, exploratory_rer
 def evaluate_chaksu(bundle: Bundle, test_zip: str | Path, *, progress=None) -> Path:
     """Exploratory external analysis on the (previously inspected) Chákṣu Test set."""
     target = bundle.folder / "evaluation" / f"chaksu_exploratory_{datetime.now(timezone.utc):%Y%m%d_%H%M%S}"
-    cases, layout = scan_test_archive(test_zip)
+    cases, layout = scan_test_archive(test_zip, require_complete=False)
     predictor = Predictor(bundle)
     rows = []
     with zipfile.ZipFile(test_zip) as zf:
         for k, case in enumerate(cases, 1):
             row = {"case_id": case.case_id, "camera": case.camera}
             try:
-                image, masks = load_test_case(zf, case, readers=EXPERTS)
+                image, _ = load_test_case(zf, case, readers=())
                 pred = predictor.predict(image)
                 row["status"] = pred.status
                 if pred.status != "ok":
                     row.update(failure_category=pred.status, errors=pred.errors)
-                if pred.labels is not None:
-                    row["expert1"] = _reference_metrics(pred, masks[("expert 1", "disc")], masks[("expert 1", "cup")])
-                    row["expert2"] = _reference_metrics(pred, masks[("expert 2", "disc")], masks[("expert 2", "cup")])
-            except (OSError, ValueError, KeyError) as exc:
-                row.update(status="error", failure_category="load_or_geometry_error", errors=[str(exc)])
+                for reader in EXPERTS:
+                    key = reader.replace(" ", "")
+                    try:
+                        _, masks = load_test_case(zf, case, readers=(reader,))
+                        ref = (masks[(reader, "disc")], masks[(reader, "cup")])
+                        measure_masks(*ref)
+                        if pred.labels is not None:
+                            row[key] = _reference_metrics(pred, *ref)
+                    except (OSError, ValueError, KeyError, zipfile.BadZipFile, zlib.error) as exc:
+                        row.setdefault("reference_errors", {})[key] = str(exc)
+            except (OSError, ValueError, KeyError, zipfile.BadZipFile, zlib.error) as exc:
+                row.update(status="error", failure_category="image_load_or_prediction_error", errors=[str(exc)])
             rows.append(row)
             if progress is not None:
                 progress(k, len(cases))
@@ -216,9 +238,13 @@ def evaluate_chaksu(bundle: Bundle, test_zip: str | Path, *, progress=None) -> P
         "published_layout_matched": layout["matches_published_test_file_layout"],
         "n_images": len(rows), "n_evaluable": len(ok), "n_failed": len(rows) - len(ok),
         "failure_categories": _failure_categories(rows),
+        "count_semantics": "n_evaluable/n_failed describe prediction status; each expert has a separate metric denominator and reference-failure count.",
+        "reference_failures_by_reader": _reference_failures(rows, tuple(r.replace(" ", "") for r in EXPERTS)),
         "patient_linkage": "Not identifiable for most images; no patient-level intervals are computed.",
         "versus_expert1": _summarise(rows, "expert1", patients=False),
         "versus_expert2_sensitivity": _summarise(rows, "expert2", patients=False),
+        "versus_all_experts": {r.replace(" ", ""): _summarise(rows, r.replace(" ", ""), patients=False)
+                               for r in EXPERTS},
         "by_camera": {cam: _summarise([r for r in rows if r["camera"] == cam], "expert1", patients=False)
                       for cam in sorted({r["camera"] for r in rows})},
         "limitations": [

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "scope": "Copied public RIM verifier and sibling arithmetic helper actually reexecuted against preserved private original artifacts; no inference or original-output replacement.",
+  "verifier_sha256": "109b081fd3ea74d7ca0cfd76fad75228ade1170c0fee1de85148ff9894586a42",
+  "sibling_helper_sha256": "71ed4699515b9635447d78803cccdcd2675883d08ffef8e8badef3ecd753144a",
+  "fresh_output_sha256": "7872c1d45a8a4bd66431cb945f67858d147538b41edf84d27811d2a63544b188",
+  "saved_masks_verified": 348
+}

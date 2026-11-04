@@ -1,0 +1,79 @@
+{
+  "created_utc": "2026-11-04T07:56:13.515791+00:00",
+  "repo_head": "9cd674e3ee54d903410a24071f6a4de99fb38cdf",
+  "destination_relative_to_repo": "reports/full_validation_20261104/new_external",
+  "files": [
+    {
+      "name": "download_official.py",
+      "bytes": 1913,
+      "sha256": "cb29e869c8c555ffbdd029b89b3d4371ba51dfce80e9835a32219a2a0905f2ba"
+    },
+    {
+      "name": "download_confirm.py",
+      "bytes": 1089,
+      "sha256": "6e20c9cf9ef8a6c4c23083fc69e33c8dcbaaa9d32943eb6fe0eec77ddf245d90"
+    },
+    {
+      "name": "evaluate_rimone.py",
+      "bytes": 9886,
+      "sha256": "2c82f6abb0e7557e073e52bec8421aa07074f129296638879e0431b5e2b2e27b"
+    },
+    {
+      "name": "audit_references.py",
+      "bytes": 1186,
+      "sha256": "290f47d74f2957bc5c85abea38ab74ce2c4cc58a41b87dc8f1216c1a0e0805ff"
+    },
+    {
+      "name": "check_png_txt_coordinates.py",
+      "bytes": 2820,
+      "sha256": "18339a1fd4149dc7e1dc26b7a9f639a0903572eedb8d648d6be63a84cacbe921"
+    },
+    {
+      "name": "verify_numeric.py",
+      "bytes": 2540,
+      "sha256": "f40a9a98daf8dc2fef091997332346250546b99d1f02b96f9f408ae65024db47"
+    },
+    {
+      "name": "supplemental_run.py",
+      "bytes": 10604,
+      "sha256": "e8b166dbf128fabe030a4df1426cbc732b84d4797827b041066a9c971935e291"
+    },
+    {
+      "name": "final_verify_saved_masks.py",
+      "bytes": 4413,
+      "sha256": "7e37efd77802e93c8a8d0b11f8914ec4ce2e5eba65b2524135bcf528a7a8068d"
+    },
+    {
+      "name": "make_private_montage.py",
+      "bytes": 2382,
+      "sha256": "cb1537c2c527e088f1c4c85fb65b67d9ab712aad7f50549de319f843e63f1877"
+    },
+    {
+      "name": "build_report.py",
+      "bytes": 6823,
+      "sha256": "f0d6aacb8e1b78483921bd2f3770ae33809e5743b18abce3bf6bab02645b5b71"
+    },
+    {
+      "name": "build_supplement_report.py",
+      "bytes": 5181,
+      "sha256": "e6d8c2b74bd191276b79866028c82efcf91f213b5ebedf15545eb5c48c5fd8eb"
+    },
+    {
+      "name": "finalize_report.py",
+      "bytes": 5465,
+      "sha256": "50862fc3ce78f042f1e132ef33084b2342138397723961c482d576729b01e2b5"
+    }
+  ],
+  "preserve_source_bytes": "Copy with read_bytes/write_bytes or equivalent byte-for-byte copy; do not normalize encoding/newlines. evaluate_rimone.py and supplemental_run.py are already frozen by their respective protocols.",
+  "private_exclusions": [
+    "archives",
+    "all supplied images/masks/TXT contours",
+    "input_manifest.json",
+    "*_individual.jsonl",
+    "all per-model predictions.json and label PNGs",
+    "priorities_before_gt.json",
+    "private_png_txt_coordinate_check.json",
+    "private_visual_qa_first3.png",
+    "official_* archived source/README/LICENSE/PDF copies"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "hyunoptic-original-crossrun-verification/v1",
+  "passed": true,
+  "counts": {
+    "predictions_compared": 196,
+    "status_differences": 0,
+    "measurement_differences": 0,
+    "error_list_differences": 0,
+    "mask_presence_differences": 0,
+    "mask_pairs_compared": 196,
+    "mask_shape_or_dtype_differences": 0,
+    "pixel_mask_differences": 0,
+    "different_pixels": 0,
+    "png_byte_hash_differences": 0,
+    "metric_reader_availability_differences": 0,
+    "metric_values_compared": 1176,
+    "metric_value_differences": 0
+  },
+  "max_absolute_metric_difference": {
+    "disc_dice": 0.0,
+    "cup_dice": 0.0,
+    "abs_vcdr_error": 0.0
+  },
+  "metric_tolerance": 0,
+  "current_protocol_sha256": "e12506aecb9c0894af3e103532e62b69284b5003bfcf301a695b89ec804833b1",
+  "prior_protocol_sha256": "3e9ac6ec795ea650b3a9634116f5af900967f627baff9ab373a9ff17c6ce2f9d",
+  "verifier_sha256": "584636193a280d7c0b989c505f4fc3c1806fc349797c369a9d45097878d9a9ff",
+  "cohort_images": 98,
+  "models": 2,
+  "scope": "All saved original-only predictions compared directly with earlier saved reader-review predictions; no new inference or reference annotation access.",
+  "png_hash_note": "Encoded-byte differences are reported separately; pixel equality determines mask reproducibility."
+}

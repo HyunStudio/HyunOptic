@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "scope": "Full 3284 saved Dice-row aggregate arithmetic, plus first 10 lexicographic cases EACH of 3 cameras: 30-case stratified original-pixel QA. QA selection is not a performance estimator; all inference remains the separate complete 336-image run.",
+  "aggregate_rows": 3284,
+  "aggregate_summary_cells": 120,
+  "n_numeric_and_identity_checks": 3172,
+  "pixel_qa": {
+    "prediction_masks": 60,
+    "reference_rasters": 300,
+    "valid_reader_references": 143,
+    "pixel_dice_model_reader_rows": 286,
+    "cases": 30,
+    "failed_reader_references": 7
+  },
+  "independent_product_imports": false,
+  "inference_performed": false,
+  "reference_failures": "Retained as unavailable, never zero Dice or zero error.",
+  "limitations": [
+    "Full 3284 raw-pixel model-reader Dice recomputation was not performed by this reviewer.",
+    "Image-IID intervals are descriptive; patient linkage is incomplete."
+  ]
+}

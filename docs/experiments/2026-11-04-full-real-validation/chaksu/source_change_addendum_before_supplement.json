@@ -1,0 +1,5 @@
+{
+  "created_utc": "2026-11-04T07:38:45.126005+00:00",
+  "reason": "Parent production fix changed chaksu.py after original module imported; preserve original protocol hash and explicitly record current source mismatch rather than fail or rewrite. Supplement will verify unchanged inference/measure/model artifacts and identical default strict 336 IDs.",
+  "supplement_harness_sha256": "47326d361b3e233c48d1e7bb4e44d0a13694aabdd15d6291add64a42dc74fec1"
+}

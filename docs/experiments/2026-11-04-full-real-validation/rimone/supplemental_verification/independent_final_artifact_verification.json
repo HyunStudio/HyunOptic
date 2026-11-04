@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "n_saved_pngs_hashed_shape_checked_and_scored": 348,
+  "n_unique_images": 174,
+  "n_unique_image_model_pairs": 348,
+  "total_actual_inferences_across_passes": 696,
+  "first_pass_score_status_discrepancies": 0,
+  "all_supplement_scores_independently_recomputed_from_saved_pngs": true,
+  "all_priority_groups_and_disagreement_scores_independently_verified": true,
+  "all_predictions_saved_and_priorities_frozen_before_gt_scoring": true,
+  "research_event_saturated_all_thresholds": true,
+  "no_incremental_queue_detection_over_random": true,
+  "private_artifacts_remain_ignored": true,
+  "limits": "Independent artifact arithmetic and consistency audit; same frozen inference implementation was used twice. No first-pass masks exist, so exact pixelwise identity between first and supplemental passes cannot be checked; first-pass metrics/statuses/errors match."
+}

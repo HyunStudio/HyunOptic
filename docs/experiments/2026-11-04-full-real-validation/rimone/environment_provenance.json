@@ -1,0 +1,14 @@
+{
+  "recorded_utc": "2026-11-04T07:50:34.504844+00:00",
+  "repo_head": "9cd674e3ee54d903410a24071f6a4de99fb38cdf",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "torch": "2.13.0+cu126",
+    "numpy": "2.5.4",
+    "Pillow": "12.3.0",
+    "scipy": "1.18.1",
+    "requests": "2.34.2"
+  },
+  "file_ownership": "Only data/new_external_20261104 and reports/full_validation_20261104/new_external written by this task; both are ignored by existing .gitignore. No production source, models, branch/index/commits modified."
+}

@@ -1,0 +1,415 @@
+{
+  "completed_utc": "2026-11-04T07:53:08.247527+00:00",
+  "n_images": 174,
+  "unique_image_model_pairs": 348,
+  "first_pass_actual_inferences": 348,
+  "supplement_actual_inferences": 348,
+  "total_actual_inferences": 696,
+  "n_saved_original_resolution_label_pngs": 348,
+  "n_comparison_discrepancies": 0,
+  "models": [
+    {
+      "model": "papila_real_seed43_20261025",
+      "n_images": 174,
+      "status_counts": {
+        "invalid_geometry": 160,
+        "ok": 14
+      },
+      "disc_dice_mean": 0.012226423748742464,
+      "cup_dice_mean": 0.0018260932386955475,
+      "vcdr_measurable": 14,
+      "vcdr_mae": 0.21852758258469712
+    },
+    {
+      "model": "papila_camera_robust_seed43_20261025",
+      "n_images": 174,
+      "status_counts": {
+        "ok": 42,
+        "invalid_geometry": 132
+      },
+      "disc_dice_mean": 0.01838035082128234,
+      "cup_dice_mean": 0.006450434820324607,
+      "vcdr_measurable": 42,
+      "vcdr_mae": 0.23722003858903243
+    }
+  ],
+  "image_only_priority_counts": {
+    "invalid_geometry": 172,
+    "disagreement": 2
+  },
+  "research_queue_evaluation": [
+    {
+      "subgroup": "all174",
+      "n_images": 174,
+      "threshold": 0.4,
+      "priority_counts": {
+        "invalid_geometry": 172,
+        "disagreement": 2
+      },
+      "budgets": [
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.1,
+          "cases_reviewed": 18,
+          "reviewed_outcome_available": 18,
+          "remaining_outcome_available": 156,
+          "n_positive": 174,
+          "detected": 18,
+          "missed": 156,
+          "precision": 1.0,
+          "recall": 0.10344827586206896,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 18.0,
+          "random_expected_recall": 0.10344827586206896
+        },
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.2,
+          "cases_reviewed": 35,
+          "reviewed_outcome_available": 35,
+          "remaining_outcome_available": 139,
+          "n_positive": 174,
+          "detected": 35,
+          "missed": 139,
+          "precision": 1.0,
+          "recall": 0.20114942528735633,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 35.0,
+          "random_expected_recall": 0.20114942528735633
+        },
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.5,
+          "cases_reviewed": 87,
+          "reviewed_outcome_available": 87,
+          "remaining_outcome_available": 87,
+          "n_positive": 174,
+          "detected": 87,
+          "missed": 87,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 87.0,
+          "random_expected_recall": 0.5
+        }
+      ]
+    },
+    {
+      "subgroup": "all174",
+      "n_images": 174,
+      "threshold": 0.5,
+      "priority_counts": {
+        "invalid_geometry": 172,
+        "disagreement": 2
+      },
+      "budgets": [
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.1,
+          "cases_reviewed": 18,
+          "reviewed_outcome_available": 18,
+          "remaining_outcome_available": 156,
+          "n_positive": 174,
+          "detected": 18,
+          "missed": 156,
+          "precision": 1.0,
+          "recall": 0.10344827586206896,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 18.0,
+          "random_expected_recall": 0.10344827586206896
+        },
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.2,
+          "cases_reviewed": 35,
+          "reviewed_outcome_available": 35,
+          "remaining_outcome_available": 139,
+          "n_positive": 174,
+          "detected": 35,
+          "missed": 139,
+          "precision": 1.0,
+          "recall": 0.20114942528735633,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 35.0,
+          "random_expected_recall": 0.20114942528735633
+        },
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.5,
+          "cases_reviewed": 87,
+          "reviewed_outcome_available": 87,
+          "remaining_outcome_available": 87,
+          "n_positive": 174,
+          "detected": 87,
+          "missed": 87,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 87.0,
+          "random_expected_recall": 0.5
+        }
+      ]
+    },
+    {
+      "subgroup": "all174",
+      "n_images": 174,
+      "threshold": 0.6,
+      "priority_counts": {
+        "invalid_geometry": 172,
+        "disagreement": 2
+      },
+      "budgets": [
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.1,
+          "cases_reviewed": 18,
+          "reviewed_outcome_available": 18,
+          "remaining_outcome_available": 156,
+          "n_positive": 174,
+          "detected": 18,
+          "missed": 156,
+          "precision": 1.0,
+          "recall": 0.10344827586206896,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 18.0,
+          "random_expected_recall": 0.10344827586206896
+        },
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.2,
+          "cases_reviewed": 35,
+          "reviewed_outcome_available": 35,
+          "remaining_outcome_available": 139,
+          "n_positive": 174,
+          "detected": 35,
+          "missed": 139,
+          "precision": 1.0,
+          "recall": 0.20114942528735633,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 35.0,
+          "random_expected_recall": 0.20114942528735633
+        },
+        {
+          "n_cases": 174,
+          "n_outcome_available": 174,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.5,
+          "cases_reviewed": 87,
+          "reviewed_outcome_available": 87,
+          "remaining_outcome_available": 87,
+          "n_positive": 174,
+          "detected": 87,
+          "missed": 87,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 87.0,
+          "random_expected_recall": 0.5
+        }
+      ]
+    },
+    {
+      "subgroup": "both_models_ok",
+      "n_images": 2,
+      "threshold": 0.4,
+      "priority_counts": {
+        "disagreement": 2
+      },
+      "budgets": [
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.1,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        },
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.2,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        },
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.5,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        }
+      ]
+    },
+    {
+      "subgroup": "both_models_ok",
+      "n_images": 2,
+      "threshold": 0.5,
+      "priority_counts": {
+        "disagreement": 2
+      },
+      "budgets": [
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.1,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        },
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.2,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        },
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.5,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        }
+      ]
+    },
+    {
+      "subgroup": "both_models_ok",
+      "n_images": 2,
+      "threshold": 0.6,
+      "priority_counts": {
+        "disagreement": 2
+      },
+      "budgets": [
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.1,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        },
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.2,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        },
+        {
+          "n_cases": 2,
+          "n_outcome_available": 2,
+          "n_outcome_missing": 0,
+          "review_fraction": 0.5,
+          "cases_reviewed": 1,
+          "reviewed_outcome_available": 1,
+          "remaining_outcome_available": 1,
+          "n_positive": 2,
+          "detected": 1,
+          "missed": 1,
+          "precision": 1.0,
+          "recall": 0.5,
+          "remaining_error_fraction": 1.0,
+          "random_expected_detected": 1.0,
+          "random_expected_recall": 0.5
+        }
+      ]
+    }
+  ],
+  "protocol_sha256": "c1fea8f2c3f66388a77d52d22df55e5c850df7c6059e4b0a7761535990c78c4c",
+  "priorities_frozen_before_gt_scoring": true,
+  "patient_linkage": "Unknown authoritative linkage;174images,not174verifiedindependentpatients",
+  "interpretation": "Exploratory artifact verification and technical segmentation queue stress test; replication is not additional unique data or clinical evidence. First-pass outputs unchanged."
+}

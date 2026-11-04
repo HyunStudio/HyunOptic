@@ -1,0 +1,22 @@
+{
+  "schema": "hyunoptic-independent-verification-issues/v1",
+  "issues": [
+    {
+      "kind": "independent_verifier_input_parser_bug",
+      "first_log": "full_verify.log",
+      "first_log_sha256": "242d6bb474efb53a399be5752d39f6162f077fc9ad3d914e92260925bcb41dca",
+      "failure": "KeyError: splits before saved-mask metric verification began",
+      "cause": "Independent verifier expected raw split body but saved split_manifest.json is an envelope with manifest and sha256 keys.",
+      "fix": "Read envelope.manifest and independently verify canonical JSON body SHA256 against envelope.sha256 before checking holdout membership.",
+      "modified_scope": "Independent verify_full.py only; no source inference harness, product source, protocol, prediction, reference or aggregate artifact changed.",
+      "rerun_log": "full_verify_after_parser_fix.log",
+      "initial_rerun_log": "full_verify_rerun1.log",
+      "classification": "Verifier parser correction; not an observed product defect or artifact discrepancy.",
+      "rerun_exit_code": 0,
+      "rerun_result": "passed all 2548 prediction artifacts, 52 aggregates, 312 bootstrap comparisons and 234 queue budgets",
+      "rerun_log_sha256": "3b1972db814d30437c747e2393182cd2c045b22edc7314cb0b603e8fe83f06eb",
+      "final_verifier_sha256": "71ed4699515b9635447d78803cccdcd2675883d08ffef8e8badef3ecd753144a",
+      "artifact_discrepancies_after_parser_fix": 0
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "hyunoptic-full-real-software-verification/v1",
+  "baseline_commit": "9cd674e3ee54d903410a24071f6a4de99fb38cdf",
+  "suite": {
+    "passed": 388,
+    "warnings": 2,
+    "seconds": 646.75,
+    "warning_scope": "Existing PyTorch CUDA nondeterministic nll_loss2d kernel; not a new failure or bitwise reproducibility guarantee.",
+    "log_sha256": "20354d43aaf3d311c9758bd17c9a4df9794e33035eae3c0fcd44814c7f8dc5ef"
+  },
+  "new_regression_cases": 8,
+  "defect_classes": [
+    "Reference failure prevented/overwrote image prediction and other readers",
+    "Missing-reference image omitted from external model denominator",
+    "Reference/image ZIP CRC corruption aborted the complete evaluator"
+  ],
+  "source_sha256": {
+    "src/hyunoptic/chaksu.py": "5e7b691c051c7500f2a2a20a94d2ea829188ac73fcefb9865b5bd44c35ea7651",
+    "src/hyunoptic/seg/evaluate.py": "5d5a27c4b213fe3834546329ff3964010df212a3f8883c90832a1845ac0e4a4e",
+    "tests/test_evaluation_reader_isolation.py": "90c391b514a152de1c0b67f80e37744887b6bd1a985da54aca86192986ee6fcf",
+    ".github/workflows/tests.yml": "92fb5bda300d07240242d68e3db100800b427c6a5950d05be5bcb19015a4e4d3"
+  },
+  "clinical_performance_claim": false
+}

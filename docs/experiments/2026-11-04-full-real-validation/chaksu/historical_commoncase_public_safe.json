@@ -1,0 +1,168 @@
+{
+  "created_utc": "2026-11-04T08:11:35.794001+00:00",
+  "posthoc_descriptive": true,
+  "purpose": "Compare historical versus freshly inferred metrics only on legacy311 images where all five references passed. No new inference or substitution of old outputs.",
+  "limits": "Legacy25 reference-blocked images had no model inference; old16/19 prediction failures among311 cannot be compared directly with new18/20 among336 as worsening. Old masks were not preserved, so label-level identity cannot be tested. Thread count changed from historical4 to current2; equality was not assumed.",
+  "models": {
+    "papila_real_seed43_20261025": {
+      "legacy_private_file_sha256": "5d0f59b230809ff9bbe7ebca7cfda53339366915b7273ad282e5df3ca7c6b298",
+      "n_legacy_images": 336,
+      "n_legacy_reference_blocked_without_inference": 25,
+      "n_comparable_images": 311,
+      "legacy_status_counts_on_common311": {
+        "ok": 295,
+        "invalid_geometry": 16
+      },
+      "new_status_counts_on_common311": {
+        "ok": 295,
+        "invalid_geometry": 16
+      },
+      "new_status_counts_on_previously_blocked25": {
+        "ok": 23,
+        "invalid_geometry": 2
+      },
+      "status_transitions": [
+        {
+          "old": "ok",
+          "new": "ok",
+          "n": 295
+        },
+        {
+          "old": "invalid_geometry",
+          "new": "invalid_geometry",
+          "n": 16
+        }
+      ],
+      "metrics": {
+        "expert 1/disc_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 1/cup_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 1/reference_vcdr": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 1/abs_vcdr_error": {
+          "n_compared": 295,
+          "n_exact_equal": 295,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/disc_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/cup_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/reference_vcdr": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/abs_vcdr_error": {
+          "n_compared": 295,
+          "n_exact_equal": 295,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        }
+      }
+    },
+    "papila_camera_robust_seed43_20261025": {
+      "legacy_private_file_sha256": "68953e2638bae0b09c82e2e0dcdab671c053dc6eff41443d21c0e37085f60e0e",
+      "n_legacy_images": 336,
+      "n_legacy_reference_blocked_without_inference": 25,
+      "n_comparable_images": 311,
+      "legacy_status_counts_on_common311": {
+        "ok": 292,
+        "invalid_geometry": 19
+      },
+      "new_status_counts_on_common311": {
+        "ok": 292,
+        "invalid_geometry": 19
+      },
+      "new_status_counts_on_previously_blocked25": {
+        "ok": 24,
+        "invalid_geometry": 1
+      },
+      "status_transitions": [
+        {
+          "old": "ok",
+          "new": "ok",
+          "n": 292
+        },
+        {
+          "old": "invalid_geometry",
+          "new": "invalid_geometry",
+          "n": 19
+        }
+      ],
+      "metrics": {
+        "expert 1/disc_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 1/cup_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 1/reference_vcdr": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 1/abs_vcdr_error": {
+          "n_compared": 292,
+          "n_exact_equal": 292,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/disc_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/cup_dice": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/reference_vcdr": {
+          "n_compared": 311,
+          "n_exact_equal": 311,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        },
+        "expert 2/abs_vcdr_error": {
+          "n_compared": 292,
+          "n_exact_equal": 292,
+          "n_nonzero_difference": 0,
+          "max_absolute_difference": 0.0
+        }
+      }
+    }
+  }
+}

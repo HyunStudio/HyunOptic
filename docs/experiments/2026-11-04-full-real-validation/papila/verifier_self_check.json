@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "scope": "Verifier self-checks only, synthetic non-dataset arrays; full saved-artifact verification remains pending",
+  "bootstrap_cases": 2,
+  "budget_cases": 5,
+  "known_rectangle_geometry_and_dice": true
+}
