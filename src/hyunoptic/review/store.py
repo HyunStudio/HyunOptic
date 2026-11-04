@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from contextlib import contextmanager
 from datetime import datetime, timezone
+import io
 import json
 import os
 from pathlib import Path
@@ -20,7 +21,8 @@ from .inputs import sha256
 from .priority import priority
 
 SCHEMA_VERSION = 1
-PROTOCOL = {'version': 1, 'ranking': 'invalid_geometry_then_max_disc_cup_disagreement',
+PROTOCOL = {'version': 2, 'ranking': 'error_then_invalid_geometry_then_max_disc_cup_disagreement',
+            'tie_break': 'input_ordinal_ascending',
             'input': 'RGB_L_exif_original_resolution', 'reference': 'none'}
 REVIEW_REASONS = {'wrong_location', 'boundary_mismatch', 'image_quality',
                   'unsupported_modality', 'uncertain', 'other'}
@@ -184,9 +186,10 @@ class ReviewStore:
         for prediction in predictions:
             if prediction.get('labels_path'):
                 path = Path(prediction['labels_path'])
-                if sha256(path.read_bytes()) != prediction['labels_sha256']:
+                data = path.read_bytes()
+                if sha256(data) != prediction['labels_sha256']:
                     raise ValueError('Prediction artifact hash mismatch')
-                with Image.open(path) as image:
+                with Image.open(io.BytesIO(data)) as image:
                     labels = np.asarray(image)
                 if labels.shape != (case.get('height'), case.get('width')) or labels.ndim != 2 or not np.isin(labels, [0, 1, 2]).all():
                     raise ValueError('Prediction artifact geometry mismatch')
@@ -200,6 +203,8 @@ class ReviewStore:
             self._verify_input(case)
             self._verify_predictions(case, predictions)
             result['priority'] = priority(predictions)
+            if 'artifact_integrity_error' in result['priority'].get('reasons', []):
+                raise ValueError('Prediction artifact changed during priority verification')
         except (OSError, ValueError) as exc:
             result.update(status='error', error=f'Evidence integrity error: {exc}', prediction_set_hash=None,
                           review_state='unreviewed', reasons=[], note='', predictions=[], integrity_error=True)

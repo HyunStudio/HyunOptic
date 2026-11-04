@@ -1,0 +1,169 @@
+{
+  "schema": "hyunoptic.external-reader-reanalysis/v1",
+  "dataset": "Chaksu Test",
+  "new_inference": false,
+  "n_original_records": 336,
+  "patient_linkage_available": false,
+  "source_private_file_sha256": [
+    "5d0f59b230809ff9bbe7ebca7cfda53339366915b7273ad282e5df3ca7c6b298",
+    "68953e2638bae0b09c82e2e0dcdab671c053dc6eff41443d21c0e37085f60e0e"
+  ],
+  "models": [
+    {
+      "bundle_folder": "papila_real_seed43_20261025",
+      "readers": {
+        "expert1": {
+          "disc_dice": {
+            "n_images": 311,
+            "mean": 0.8693435317683033
+          },
+          "cup_dice": {
+            "n_images": 311,
+            "mean": 0.5748701898781451
+          },
+          "abs_vcdr_error": {
+            "n_images": 295,
+            "mean": 0.25531008981230335
+          }
+        },
+        "expert2": {
+          "disc_dice": {
+            "n_images": 311,
+            "mean": 0.8458305717205837
+          },
+          "cup_dice": {
+            "n_images": 311,
+            "mean": 0.5646285551709341
+          },
+          "abs_vcdr_error": {
+            "n_images": 295,
+            "mean": 0.235620697885428
+          }
+        }
+      },
+      "n_reference_load_failures": 25,
+      "n_model_geometry_failures": 16,
+      "paired_reader_change_exp2_minus_exp1": {
+        "disc_dice": {
+          "n_common_images": 311,
+          "mean": -0.023512960047719564
+        },
+        "cup_dice": {
+          "n_common_images": 311,
+          "mean": -0.010241634707210902
+        },
+        "abs_vcdr_error": {
+          "n_common_images": 295,
+          "mean": -0.019689391926875396
+        }
+      }
+    },
+    {
+      "bundle_folder": "papila_camera_robust_seed43_20261025",
+      "readers": {
+        "expert1": {
+          "disc_dice": {
+            "n_images": 311,
+            "mean": 0.8484407076193233
+          },
+          "cup_dice": {
+            "n_images": 311,
+            "mean": 0.59153720855847
+          },
+          "abs_vcdr_error": {
+            "n_images": 292,
+            "mean": 0.1152759209496269
+          }
+        },
+        "expert2": {
+          "disc_dice": {
+            "n_images": 311,
+            "mean": 0.8393564009053844
+          },
+          "cup_dice": {
+            "n_images": 311,
+            "mean": 0.567207263201124
+          },
+          "abs_vcdr_error": {
+            "n_images": 292,
+            "mean": 0.11437798624355111
+          }
+        }
+      },
+      "n_reference_load_failures": 25,
+      "n_model_geometry_failures": 19,
+      "paired_reader_change_exp2_minus_exp1": {
+        "disc_dice": {
+          "n_common_images": 311,
+          "mean": -0.009084306713938844
+        },
+        "cup_dice": {
+          "n_common_images": 311,
+          "mean": -0.02432994535734602
+        },
+        "abs_vcdr_error": {
+          "n_common_images": 292,
+          "mean": -0.0008979347060757707
+        }
+      }
+    }
+  ],
+  "paired_models": {
+    "expert1": {
+      "disc_dice": {
+        "n_common_images": 311,
+        "baseline_mean": 0.8693435317683033,
+        "photo_mean": 0.8484407076193233,
+        "mean_photo_minus_baseline": -0.020902824148980002
+      },
+      "cup_dice": {
+        "n_common_images": 311,
+        "baseline_mean": 0.5748701898781451,
+        "photo_mean": 0.59153720855847,
+        "mean_photo_minus_baseline": 0.01666701868032495
+      },
+      "abs_vcdr_error": {
+        "n_common_images": 284,
+        "baseline_mean": 0.25525747229868156,
+        "photo_mean": 0.11670226361416251,
+        "mean_photo_minus_baseline": -0.13855520868451907
+      }
+    },
+    "expert2": {
+      "disc_dice": {
+        "n_common_images": 311,
+        "baseline_mean": 0.8458305717205837,
+        "photo_mean": 0.8393564009053844,
+        "mean_photo_minus_baseline": -0.006474170815199287
+      },
+      "cup_dice": {
+        "n_common_images": 311,
+        "baseline_mean": 0.5646285551709341,
+        "photo_mean": 0.567207263201124,
+        "mean_photo_minus_baseline": 0.00257870803018983
+      },
+      "abs_vcdr_error": {
+        "n_common_images": 284,
+        "baseline_mean": 0.23695877485203945,
+        "photo_mean": 0.11476760525692616,
+        "mean_photo_minus_baseline": -0.12219116959511327
+      }
+    }
+  },
+  "preference_flips": {
+    "disc_dice": {
+      "n_available": 311,
+      "n_flips": 49
+    },
+    "cup_dice": {
+      "n_available": 311,
+      "n_flips": 40
+    }
+  },
+  "limitations": [
+    "Preserved October 25 model evaluation rows, not November 4 predictions.",
+    "No preserved label masks for the same review-queue evaluation; not recomputed from vCDR.",
+    "25 reference-loading failures stay separate from model geometry failures.",
+    "No patient-level uncertainty intervals because external patient linkage is unavailable."
+  ]
+}

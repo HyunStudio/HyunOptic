@@ -10,6 +10,36 @@ def test_queue_empty_state_is_honest_and_local(tmp_path, monkeypatch):
     assert 'Research' in text
 
 
+def test_priority_ties_follow_input_order_not_random_case_uuid(tmp_path, monkeypatch):
+    """Identical predictions must have the same queue order across imported sessions."""
+    import io
+    from uuid import UUID
+    import numpy as np
+    from PIL import Image
+    import hyunoptic.review.store as module
+    image = io.BytesIO()
+    Image.new('RGB',(16,16),'red').save(image,format='PNG')
+    store = module.ReviewStore(tmp_path / '.hyunoptic' / 'review')
+    models = [dict(folder=str(i),identity=str(i),run_id=str(i),weights_sha256=str(i)) for i in range(2)]
+    identifiers = (UUID(int=i) for i in range(1000, 0, -1))
+    with monkeypatch.context() as context:
+        context.setattr(module,'uuid4',lambda:next(identifiers))
+        sid = store.create_session([('first.png',image.getvalue()),('second.png',image.getvalue())],models)
+    labels = np.zeros((16,16),np.uint8)
+    labels[2:14,2:14]=1
+    labels[5:10,5:10]=2
+    rows=store.cases(sid)
+    for row in rows:
+        token=store.claim(row['id'])
+        for m in models:
+            store.record_prediction(row['id'],m['identity'],dict(status='ok'),labels,claim_token=token)
+        store.finish(row['id'],claim_token=token)
+    app=_page(monkeypatch,tmp_path,'model_review_queue',models_dir=str(tmp_path/'missing'))
+    assert not app.exception
+    selected=next(x for x in app.selectbox if x.label=='Inspect case')
+    assert selected.options == [r['id'] for r in rows]
+
+
 def _seed_session(tmp_path):
     import io
     import numpy as np

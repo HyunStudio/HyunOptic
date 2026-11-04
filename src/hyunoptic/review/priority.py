@@ -1,6 +1,7 @@
 """Deterministic image-only model disagreement; no reference annotations."""
 from __future__ import annotations
 
+import io
 from pathlib import Path
 
 import numpy as np
@@ -23,7 +24,7 @@ def priority(predictions: list[dict]) -> dict:
             data = Path(prediction['labels_path']).read_bytes()
             if sha256(data) != prediction['labels_sha256']:
                 raise ValueError('Mask hash mismatch')
-            with Image.open(Path(prediction['labels_path'])) as image:
+            with Image.open(io.BytesIO(data)) as image:
                 labels = np.array(image)
             if labels.ndim != 2 or not np.isin(labels, [0, 1, 2]).all():
                 raise ValueError('Invalid label map')
@@ -40,5 +41,5 @@ def priority(predictions: list[dict]) -> dict:
         disagreements.append(1 - 2 * np.count_nonzero(a & b) / (np.count_nonzero(a) + np.count_nonzero(b)))
     values = [(p.get('measurement') or {}).get('vertical_cdr') for p in predictions]
     delta = abs(values[0] - values[1]) if all(isinstance(v, (int, float)) for v in values) else None
-    return {**result, 'group': 'disagreement', 'score': max(disagreements),
+    return {**result, 'group': 'disagreement', 'score': float(max(disagreements)),
             'reasons': ['model_mask_disagreement'], 'vcdr_delta': delta}

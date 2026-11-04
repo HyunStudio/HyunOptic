@@ -1,0 +1,9 @@
+{
+  "valid": true,
+  "n_images": 98,
+  "n_mask_hashes_verified": 196,
+  "n_metric_comparisons": 1456,
+  "max_absolute_difference": 0.0,
+  "method": "Independent boolean pixel sums and occupied-row spans; references rasterized with shared polygon convention; no model inference",
+  "protocol_sha256": "3e9ac6ec795ea650b3a9634116f5af900967f627baff9ab373a9ff17c6ce2f9d"
+}

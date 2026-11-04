@@ -11,6 +11,7 @@ from PIL import Image, ImageOps
 
 from hyunoptic.review.store import ReviewStore
 from hyunoptic.review.runner import run_next
+from hyunoptic.review.validation import order_cases
 from hyunoptic.review.export import export_session, verify_export
 from hyunoptic.seg.bundle import BundleError, file_sha256, find_bundles, verify_bundle
 from hyunoptic.ui.components import badge, note, page_title
@@ -114,9 +115,7 @@ visible = [r for r in rows if review_filter == 'All' or
            (review_filter == 'Held' and r.get('review_state') == 'held') or
            (review_filter == 'Processing errors' and r['status'] == 'error')]
 if order == 'Review priority':
-    groups = {'error': 0, 'invalid_geometry': 1, 'disagreement': 2, 'pending': 3}
-    visible.sort(key=lambda r: (groups.get(r['priority']['group'], 3),
-                               -(r['priority'].get('score') or 0), r['id']))
+    visible = order_cases(visible)
 st.dataframe([{'Case': r['id'], 'Processing': r['status'], 'Review': r.get('review_state'),
                'Reason': '; '.join(r['priority'].get('reasons', [])),
                'Disagreement': r['priority'].get('score')} for r in visible], hide_index=True)

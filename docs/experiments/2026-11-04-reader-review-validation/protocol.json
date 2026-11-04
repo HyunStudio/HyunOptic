@@ -1,0 +1,80 @@
+{
+  "schema": "hyunoptic.reader-review-validation/v1",
+  "date": "2026-11-04",
+  "base_commit": "05040ba599ae3a1395d20115d2060170df6cbadd",
+  "exploratory_reuse": true,
+  "no_training": true,
+  "independent_confirmation": false,
+  "dataset": "PAPILA frozen holdout",
+  "n_images": 98,
+  "n_patients": 49,
+  "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+  "split_sha256": "f5aaf86fd2004eefa85b7adbdc798b919c27c9ddaceae71687197cf855a205e9",
+  "models": [
+    {
+      "identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153",
+      "run_id": "seg-20261025-053553-c5282e43",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+      "data_status": {
+        "synthetic": false,
+        "partial": false
+      }
+    },
+    {
+      "identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3",
+      "run_id": "seg-20261025-062335-1430f6c9",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+      "data_status": {
+        "synthetic": false,
+        "partial": false
+      }
+    }
+  ],
+  "references": [
+    "exp1 training reader",
+    "exp2 sensitivity reader"
+  ],
+  "prediction": "CPU image-only, original resolution, no transforms; torch threads=4",
+  "reading_order": "Save all 196 predictions before reading expert contours",
+  "research_event": "baseline prediction failure OR min(disc Dice,cup Dice)<0.5 against specified reader",
+  "threshold_sensitivity": [
+    0.4,
+    0.6
+  ],
+  "review_fractions": [
+    0,
+    0.1,
+    0.2,
+    0.5,
+    1
+  ],
+  "budget": "ceil(fraction*all cases)",
+  "queue": "execution error,invalid geometry,descending max(1-discDice,1-cupDice) between models; input ordinal ties",
+  "random": "exact uniform fixed-size random selection expected count = k*n_positive/n_all",
+  "secondary": "Both-model-geometry-ok subset; same priority ordering, budget recalculated on subset",
+  "missing_reference": "unavailable outcome, never negative; explicitly counted, budget includes it",
+  "intervals": "2000 patient-cluster bootstrap draws, seed 20261104; equal patient weighting",
+  "intended_success": "descriptive only; no tuned threshold, superiority or generalization gate",
+  "sources": [
+    {
+      "title": "The hidden value of uncertainty in medical segmentation",
+      "url": "https://doi.org/10.3389/fimag.2026.1965816",
+      "use": "inspiration for reader sensitivity,not algorithm reproduction"
+    },
+    {
+      "title": "TRIPOD+AI",
+      "url": "https://doi.org/10.1136/bmj-2023-078378",
+      "use": "applicable transparency principles,not full diagnostic-model checklist certification"
+    },
+    {
+      "title": "DECIDE-AI",
+      "url": "https://doi.org/10.1136/bmj-2022-070904",
+      "use": "separating offline checks from future human/clinical evaluation"
+    },
+    {
+      "title": "NASSS-CAT",
+      "url": "https://www.phc.ox.ac.uk/research/groups-and-centres/interdisciplinary-research-in-health-sciences/enasss-cat",
+      "use": "implementation limitations,not computational model testing"
+    }
+  ]
+}
