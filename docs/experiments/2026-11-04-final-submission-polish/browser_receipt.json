@@ -1,0 +1,18 @@
+{
+  "synthetic": true,
+  "actual_browser": true,
+  "new_inference_predictions": 8,
+  "n_inputs": 5,
+  "n_complete": 4,
+  "n_input_errors": 1,
+  "held_after_full_reload": 1,
+  "held_reason": "uncertain",
+  "color_fundus_roi_warning_visible": true,
+  "real_data_evidence_visible": true,
+  "accuracy_unverified_labels_visible": true,
+  "downloaded_zip_sha256": "94ccaf037854565ac7ae0262f3a9dc3d55ddb077e53b1775afbad18718ee66c2",
+  "downloaded_zip_verified": true,
+  "session_created_via": "API in isolated synthetic workspace before browser actions",
+  "browser_actions": "Process actual models, select case, save held/uncertain, reload, build and download verified ZIP",
+  "scope": "New UI smoke, not new medical performance or a fresh installation"
+}

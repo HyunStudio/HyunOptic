@@ -51,6 +51,8 @@ with st.expander('Create a review session', expanded=not store.sessions()):
             primary = st.selectbox('Primary model', options, format_func=label)
             comparison = st.selectbox('Comparison model', options, index=1, format_func=label)
             modality = st.selectbox('Input modality', ['color_fundus', 'slo', 'oct', 'unknown'])
+            st.caption('Color fundus does not establish compatibility: cropped optic-disc (ROI) inputs '
+                       'and other imaging domains require separate evaluation.')
             uploads = st.file_uploader('Local images (PNG, JPEG, single-frame TIFF)',
                                       type=['png', 'jpg', 'jpeg', 'tif', 'tiff'], accept_multiple_files=True,
                                       max_upload_size=MAX_FILE_BYTES // (1024 * 1024))
@@ -85,8 +87,19 @@ if st.session_state.get('rq_session') not in ids:
     st.session_state['rq_session'] = ids[0]
 sid = st.selectbox('Review session', ids, key='rq_session')
 session = store.session(sid)
-if session.get('modality', 'color_fundus') != 'color_fundus':
-    st.warning('Unsupported modality · exploratory execution only. Transfer accuracy has not been established.')
+declared_modality = session.get('modality', 'color_fundus')
+domain_prefix = '' if declared_modality == 'color_fundus' else f'Declared modality {declared_modality}: exploratory only. '
+st.warning(domain_prefix + 'Domain limits: cropped optic-disc (ROI), SLO and OCT inputs have no established '
+           'reliable transfer here. File integrity and nonempty geometry do not establish segmentation accuracy. '
+           'Inspect the full source and overlays; hold unresolved results.')
+with st.expander('Known model limits and real-data evidence'):
+    st.markdown('In the published RIM-ONE DL cropped-ROI experiment, two frozen PAPILA-trained research '
+                'models returned invalid geometry on **160/174** and **132/174** images. All-image Cup Dice '
+                'was **0.0018** and **0.0065**. This evidence concerns those research bundles, not a validation '
+                'of every model that can be loaded. The app does not automatically recognize an input domain.')
+    st.markdown('[Methods, denominators and limitations]('
+                'https://github.com/HyunStudio/HyunOptic/blob/main/docs/experiments/'
+                '2026-11-04-full-real-validation/README.md)')
 st.caption('Models: ' + ' vs '.join(m['run_id'] for m in session['models']))
 if any(m.get('data_status', {}).get('synthetic') for m in session['models']):
     st.warning('Synthetic-data model: demonstrates mechanics only, not real-data model performance.')
@@ -152,7 +165,10 @@ if visible:
         image=decode_image(source_data)
         st.image(image, caption='Source image · local copy', width='stretch')
         for index, pred in enumerate(case.get('predictions', [])):
-            st.write(f"Model {index + 1}: {pred.get('run_id', '')} · {pred['status']}")
+            status_label = {'ok': 'Measurable geometry · accuracy unverified',
+                            'invalid_geometry': 'Measurement unavailable',
+                            'error': 'Prediction failed'}.get(pred['status'], pred['status'])
+            st.write(f"Model {index + 1}: {pred.get('run_id', '')} · {status_label}")
             labels_path = pred.get('labels_path')
             if labels_path:
                 label_data=Path(labels_path).read_bytes()

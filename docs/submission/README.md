@@ -30,7 +30,7 @@ Open **Model Inference** to configure the models directory, then **Review Queue*
 
 1. Choose the primary and comparison model, identify modality, select local images and confirm local retention. Input supports RGB/grayscale PNG/JPEG/single-frame TIFF. The new queue limits each session to 500 images and 2GB total input, with 30MB/file and 25MP/image checks. Unsupported/failed cases remain visible.
 2. Process a bounded step (default five images). Repeat the step to continue. Processing is synchronous on CPU; it is not a background service. Stop between steps. After a process interruption, use **Recover interrupted cases**, then continue.
-3. Inspect the full image and model overlays. Priority shows execution failures, invalid measurements, and model disagreement. It is not calibrated confidence, disease risk, or a proven error detector.
+3. Inspect the full image and model overlays. Bundle identity does not establish accuracy. Cropped optic-nerve-head inputs, other devices and other modalities remain unvalidated even when geometry is measurable. Priority shows execution failures, invalid measurements, and model disagreement. It is not calibrated confidence, disease risk, or a proven error detector.
 4. Save **unreviewed**, **reviewed**, or **held**. A held result needs a reason. Other reasons need a private note. Review completion does not certify correctness. A stale tab cannot overwrite a newer decision.
 5. Build the evidence ZIP, verify it and download it. Default export omits original images, masks, names, paths and private notes. Statuses, model provenance, measurements, reasons and hashes are retained. Hashes are not a guarantee of anonymity.
 6. Explicit deletion removes the session's retained inputs, artifacts and review history. Export files already downloaded elsewhere cannot be recalled.
@@ -49,6 +49,8 @@ python -m hyunoptic.review.export path/to/evidence.zip
 - [Devpost description draft](DEVPOST_DRAFT.md)
 - [Rubric-to-evidence map](RUBRIC_EVIDENCE.md)
 - [November 4 actual browser and cold-source audit](../experiments/2026-11-04-submission-readiness/README.md)
+- [Final source/domain-guidance and browser verification: 390 tests](../experiments/2026-11-04-final-submission-polish/README.md)
+- [Full November 4 real-data audit: 3,916 calls and severe cropped-ROI transfer failure](../experiments/2026-11-04-full-real-validation/README.md)
 - [Baseline and contribution boundary](BASELINE.md)
 - [Actual development dates](EVENT_CHANGES.md)
 - [AI use and human verification](AI_DISCLOSURE.md)
@@ -58,4 +60,4 @@ python -m hyunoptic.review.export path/to/evidence.zip
 - [Final publication checklist](CHECKLIST.md)
 - [Prior real-data study results](../experiments/2026-10-25-university-transfer/README.md)
 
-There is no new independent clinical study or review-efficiency result in this release. Existing transfer failures motivate the workflow but do not validate its ranking. Reference annotations do not enter prediction or priority. No hosted app or public video is claimed unless an actual link is added after publication.
+There is no new independent clinical study or review-efficiency result in this release. Existing transfer failures motivate the workflow but do not validate its ranking. Reference annotations do not enter prediction or priority. The public video is available above and identifies its earlier source version. No hosted app is provided or required for routine judging. The RIM-ONE DL queue endpoint equalled random expectation.
