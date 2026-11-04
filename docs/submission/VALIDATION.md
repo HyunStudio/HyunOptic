@@ -1,6 +1,6 @@
 # Validation record — 2026-11-03
 
-**Latest software audit (2026-11-04):** [Git/distribution and lifecycle audit](../experiments/2026-11-04-submission-code-audit/README.md) — 404 tests passed in the development environment and 404 against a non-editable wheel in a new CPU-only environment. Four reproduced defects were corrected with 14 regression cases. Default two-seed/80-epoch synthetic preparation, installed-package processing, held-state reload, ZIP verification and managed deletion passed. These are software checks; earlier browser and real-data evidence retains its original scope.
+**Current software verification:** [Usability and provenance audit](../experiments/2026-11-04-review-usability/README.md) — final installed-wheel CPU suite: **442 passed**, plus 80 final targeted checks in development. Safe deletion consent, terminal input handling, case navigation, source provenance and recorded-metadata listing are implemented. **Current browser/responsive/zoom/keyboard acceptance and refreshed video remain incomplete after browser control stopped.** Automated checks do not replace those items.
 
 
 The new feature is research software. These checks establish workflow behavior; they do not establish clinical reliability, transfer accuracy or reduced review time.

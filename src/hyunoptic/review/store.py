@@ -15,6 +15,7 @@ import numpy as np
 from PIL import Image
 
 from ..measure import measure_masks
+from .. import __version__
 
 from . import inputs as input_tools
 from .inputs import sha256
@@ -132,7 +133,7 @@ class ReviewStore:
             raise ValueError('Unknown input modality')
         sid = str(uuid4())
         session = dict(id=sid, schema_version=SCHEMA_VERSION, created_utc=_now(), software_commit=software_commit,
-                       modality=modality, input_modality=modality, models=models,
+                       modality=modality, input_modality=modality, models=models, software_version=__version__,
                        protocol=PROTOCOL, protocol_hash=sha256(_json(PROTOCOL).encode()), status='active')
         try:
             with self._db(write=True) as db:
@@ -181,8 +182,10 @@ class ReviewStore:
         data = self._path(case['input_path']).read_bytes()
         if sha256(data) != case['original_sha256']:
             raise ValueError('Input artifact hash mismatch')
+        return data
 
     def _verify_predictions(self, case, predictions):
+        snapshots = []
         for prediction in predictions:
             if prediction.get('labels_path'):
                 path = Path(prediction['labels_path'])
@@ -193,18 +196,33 @@ class ReviewStore:
                     labels = np.asarray(image)
                 if labels.shape != (case.get('height'), case.get('width')) or labels.ndim != 2 or not np.isin(labels, [0, 1, 2]).all():
                     raise ValueError('Prediction artifact geometry mismatch')
+                snapshots.append((data, labels))
             elif prediction['status'] != 'error':
                 raise ValueError('Missing prediction artifact')
+            else:
+                snapshots.append((None, None))
+        return snapshots
 
-    def _public_case(self, db, case, session):
+    def _public_case(self, db, case, session, *, include_bytes=False):
         predictions = self._predictions(db, case, session)
         result = dict(case, input_path=self._path(case['input_path']), predictions=predictions)
         try:
-            self._verify_input(case)
-            self._verify_predictions(case, predictions)
-            result['priority'] = priority(predictions)
+            source = self._verify_input(case)
+            snapshots = self._verify_predictions(case, predictions)
+            result['priority'] = priority(predictions, verified_masks=[s[1] for s in snapshots]) if include_bytes and snapshots is not None else priority(predictions)
             if 'artifact_integrity_error' in result['priority'].get('reasons', []):
                 raise ValueError('Prediction artifact changed during priority verification')
+            if include_bytes:
+                # Legacy verification wrappers may discard return values. Reverify
+                # rather than attaching bytes that have not passed the checks.
+                if source is None:
+                    source = self._verify_input(case)
+                if snapshots is None:
+                    snapshots = self._verify_predictions(case, predictions)
+                if source is None or snapshots is None:
+                    raise ValueError('Verification did not return evidence snapshots')
+                result['source_bytes'] = source
+                result['predictions'] = [dict(p, labels_bytes=s[0]) for p, s in zip(predictions, snapshots)]
         except (OSError, ValueError) as exc:
             result.update(status='error', error=f'Evidence integrity error: {exc}', prediction_set_hash=None,
                           review_state='unreviewed', reasons=[], note='', predictions=[], integrity_error=True)
@@ -212,6 +230,37 @@ class ReviewStore:
         if result['status'] == 'error':
             result['priority'] = dict(group='error', score=None, reasons=[result['error'] or 'execution_error'], vcdr_delta=None)
         return result
+
+    def list_case_metadata(self, session_id):
+        """Return recorded state and ranking, without accessing evidence paths.
+
+        Recorded rankings are bound to the stored prediction set and protocol;
+        neither they nor processing/review status imply a fresh integrity check.
+        """
+        with self._db() as db:
+            session = self._session(db, session_id)
+            rows = [json.loads(row[0]) for row in db.execute('SELECT data FROM cases WHERE session_id=?', (session_id,))]
+            results = []
+            for case in sorted(rows, key=lambda c: c['ordinal']):
+                result = {k: v for k, v in case.items() if k not in {'input_path', 'recorded_priority'}}
+                recorded = case.get('recorded_priority') or {}
+                bound = (recorded.get('protocol_hash') == session['protocol_hash']
+                         and recorded.get('prediction_set_hash') == case.get('prediction_set_hash')
+                         and bool(recorded.get('priority')))
+                result['priority'] = recorded['priority'] if bound else dict(group='pending', score=None, reasons=['priority_unverified'], vcdr_delta=None)
+                result['priority_verification'] = 'recorded' if bound else 'unverified'
+                result['evidence_verification'] = 'not_checked'
+                results.append(result)
+            return results
+
+    def verified_case(self, session_id, case_id):
+        """Verify one session member and return the exact source/mask bytes checked."""
+        with self._db() as db:
+            session = self._session(db, session_id)
+            case = self._case(db, case_id)
+            if case['session_id'] != session_id:
+                raise ValueError('Case does not belong to this session')
+            return self._public_case(db, case, session, include_bytes=True)
 
     def _cases(self, db, sid, session):
         rows = [json.loads(row[0]) for row in db.execute('SELECT data FROM cases WHERE session_id=?', (sid,))]
@@ -258,6 +307,7 @@ class ReviewStore:
         return token
 
     def _invalidate(self, db, case):
+        case.pop('recorded_priority', None)
         if case['prediction_set_hash'] or case['review_state'] != 'unreviewed':
             self._event(db, case, 'evidence_invalidated', old_state=case['review_state'], new_state='unreviewed')
             case.update(review_state='unreviewed', reasons=[], note='', revision=case['revision'] + 1)
@@ -327,9 +377,10 @@ class ReviewStore:
             self._check_claim(case, claim_token)
             session = self._session(db, case['session_id'])
             predictions = self._predictions(db, case, session)
+            snapshots = None
             try:
                 self._verify_input(case)
-                self._verify_predictions(case, predictions)
+                snapshots = self._verify_predictions(case, predictions)
             except (OSError, ValueError) as exc:
                 error = error or str(exc)
             failures = [str(e) for p in predictions if p['status'] == 'error' for e in p.get('errors', [])]
@@ -340,6 +391,9 @@ class ReviewStore:
                 identity = dict(pixel_sha256=case['pixel_sha256'], models=[m['identity'] for m in session['models']],
                                 protocol_hash=session['protocol_hash'], predictions=[{k:v for k,v in p.items() if k not in {'labels_path', 'attempt_id', 'created_utc'}} for p in predictions])
                 case.update(status='complete', error=None, prediction_set_hash=sha256(_json(identity).encode()))
+            ranking = (dict(group='error', score=None, reasons=[case['error'] or 'execution_error'], vcdr_delta=None)
+                       if case['status'] == 'error' else priority(predictions, verified_masks=[s[1] for s in snapshots]) if snapshots is not None else priority(predictions))
+            case['recorded_priority'] = dict(priority=ranking, prediction_set_hash=case['prediction_set_hash'], protocol_hash=session['protocol_hash'])
             case['claim_token'] = None
             self._save_case(db, case)
             self._event(db, case, 'finished', status=case['status'], error=case['error'])
@@ -350,6 +404,7 @@ class ReviewStore:
             for row in db.execute('SELECT data FROM cases WHERE session_id=?', (session_id,)).fetchall():
                 case = json.loads(row[0])
                 if case['status'] == 'processing':
+                    self._invalidate(db, case)
                     case.update(status='pending', error='Interrupted; continue to retry unfinished case', claim_token=None)
                     self._save_case(db, case)
                     self._event(db, case, 'interrupted')

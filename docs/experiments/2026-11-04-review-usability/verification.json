@@ -1,0 +1,85 @@
+{
+  "application_source_commit": "a888e5391c01b2e0ca47e5718bcc4c82f4191577",
+  "baseline_commit": "870109d1a9566cd7d153eddb901cef963c4507d0",
+  "design_commit": "71a869fabb699fe2d6432821c71f1187d591b306",
+  "final_installed_cpu_full_suite": {
+    "passed": 442,
+    "warnings": 2,
+    "seconds": 682.09,
+    "log_sha256": "92fae1842ca3f7178df6c338a1139893abbc6567d019e06ef332536af9ee208a"
+  },
+  "final_development_boundary_suite": {
+    "passed": 80,
+    "warnings": 0,
+    "seconds": 209.74,
+    "log_sha256": "210d39618b0e28f306dcee5e98b463e6b646d8fe6c89ac04aedef5d077cb81cc"
+  },
+  "preceding_phase_full_suites": {
+    "scope": "Usability implementation before two additive software-version session/export regressions; not the final complete source",
+    "development_cuda": {
+      "passed": 440,
+      "warnings": 4,
+      "seconds": 478.65,
+      "log_sha256": "cff7d1f9c2ca4c708c1d1289a46b8026a60111c566c561653afb0f9bcbe6a99a"
+    },
+    "installed_cpu": {
+      "passed": 440,
+      "warnings": 2,
+      "seconds": 512.58,
+      "log_sha256": "158dcc69e79d03230858ed84207055ae1dd8f98d0d6e808555087ccd758d5f3a"
+    }
+  },
+  "new_regression_cases_vs_404_baseline": 38,
+  "targeted_ui_before_version_addition": {
+    "passed": 22,
+    "warnings": 0,
+    "seconds": 47.15,
+    "log_sha256": "8141afc969d857f6809f541d2d9a62b277d205ef200ef49df00312590cdd3cc5"
+  },
+  "normalized_source_sha256": {
+    "scripts/benchmark_review_metadata.py": "236bcfcfb911f339da0933d377ca2e94bfe73117bab9e6bcaa58fe8df1914e9a",
+    "src/hyunoptic/pipeline.py": "9c65fdd6c41f37bea192da8dcbd0186a918e5867eb8eee6a2eabe711c3611939",
+    "src/hyunoptic/provenance.py": "01e171672d22c762330d5cdc99b800b8585100076209521250efd49bc4ab1074",
+    "src/hyunoptic/repro.py": "ad1eda4fa2ffd2e233b45c80bb96b3b1d9ef4f69d5874286e9a382d437139488",
+    "src/hyunoptic/review/export.py": "b9a404095c7080d85899ce4bd48a50450ddc6302bdcee3a0e745af483cada6cb",
+    "src/hyunoptic/review/priority.py": "0698ed1db7ff7e944a3b0ec23500ec474f405da00e1acbf71f527552a06ded23",
+    "src/hyunoptic/review/store.py": "c651af8fd50e7a81618ff84e34f88301560abcaf30e93b30c31b8e40344a1706",
+    "src/hyunoptic/ui/state.py": "9d0d29d34ef48597587202e000ab443403b4ce8ec762a178822909877dc6f3d0",
+    "src/hyunoptic/ui/theme.py": "525f64bbcfc4d837d7c25c5e0c64ceab355b4a728f9b68db914fc532ac42fbbb",
+    "tests/test_review_metadata.py": "e169196b6f01bff49c0b7791ee52fcf6647bbd6ea4f27c19e61f80b36ef5f0f7",
+    "tests/test_review_queue_ui.py": "39704b7ccfa1842353b29747f7c66e9eba293e04cb60703f0b4d37ecf17ee42c",
+    "tests/test_review_usability_ui.py": "614823e1b5cd5ceb65d938abf18a3146c6afd8d61d8e629228ed17e8ac78146d",
+    "tests/test_source_provenance.py": "db89d4bdc19fbc05cdfd41911f2dd6457c0b0318d8f7b975f7f953f9f59719b7",
+    "views/model_review_queue.py": "09fefe8dba422987fe8299a90b2ad8579fbb2718779928db71d5cb869bd2926a"
+  },
+  "normalization": "CRLF to LF only; staged/committed bytes compared with tested files",
+  "wheel": {
+    "filename": "hyunoptic-1.2.0-py3-none-any.whl",
+    "bytes": 178269,
+    "sha256": "f4ae27f8eefc7619dfabad44ae85b8983697c81704d21b8c88e59c1745a00aca",
+    "python_modules_matching_source": 72,
+    "installation": "Non-editable wheel, previously created isolated Python3.12 environment, include-system-site-packages=false; no new fresh environment claimed for this turn"
+  },
+  "installed_api": {
+    "installed_wheel": true,
+    "cpu_only": true,
+    "source_commit": "unknown",
+    "software_version": "1.2.0",
+    "inputs": 5,
+    "complete": 4,
+    "input_errors": 1,
+    "predictions": 8,
+    "metadata_evidence_status": "not_checked",
+    "selected_verified_byte_snapshots": true,
+    "held_survives_store_reload": true,
+    "zip_payloads": 6,
+    "zip_sha256": "ada9b2530218a93b1d56807d29d3da853d61b71c40daf89872977cada120f724",
+    "private_note_and_filename_excluded": true,
+    "managed_export_removed_after_delete": true,
+    "model_scope": "Reused two real CPU-trained synthetic demo bundles; no retraining or real-patient performance claimed",
+    "browser_used": false
+  },
+  "clinical_performance_claim": false,
+  "browser_end_to_end_completed": false,
+  "warning_scope": "Final CPU: two expected corrupt-TIFF warnings. Earlier development: those plus two existing CUDA nondeterministic-kernel warnings."
+}

@@ -10,8 +10,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -22,6 +20,7 @@ from .external_qc import check_chaksu_archive, save_chaksu_audit
 from .freeze import freeze_papila_model, save_lock
 from .html_report import write_html_report
 from .inventory import inspect_papila, save_inventory
+from .provenance import source_commit
 from .source_holdout import evaluate_source, save_source_evaluation
 from .source_integrity import save_integrity_report, verify_archive
 
@@ -38,13 +37,9 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def _git_commit() -> str | None:
-    try:
-        return subprocess.check_output(
-            ["git", "-C", str(Path(__file__).resolve().parents[2]), "rev-parse", "HEAD"],
-            text=True, stderr=subprocess.DEVNULL, timeout=5).strip()
-    except (OSError, subprocess.SubprocessError):
-        return os.environ.get("GITHUB_SHA")
+def _git_commit() -> str:
+    """Compatibility wrapper for pipeline and model-training manifests."""
+    return source_commit()
 
 
 def run_pipeline(

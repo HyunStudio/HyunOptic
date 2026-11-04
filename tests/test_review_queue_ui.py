@@ -57,7 +57,10 @@ def test_priority_ties_follow_input_order_not_random_case_uuid(tmp_path, monkeyp
     app=_page(monkeypatch,tmp_path,'model_review_queue',models_dir=str(tmp_path/'missing'))
     assert not app.exception
     selected=next(x for x in app.selectbox if x.label=='Inspect case')
-    assert selected.options == [r['id'] for r in rows]
+    assert selected.options == ['Case 001', 'Case 002']
+    assert selected.value == rows[0]['id']
+    selected.select(rows[1]['id']).run()
+    assert selected.value == rows[1]['id']
 
 
 def _seed_session(tmp_path):

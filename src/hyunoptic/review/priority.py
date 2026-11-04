@@ -10,7 +10,8 @@ from PIL import Image
 from .inputs import sha256
 
 
-def priority(predictions: list[dict]) -> dict:
+def priority(predictions: list[dict], *, verified_masks=None) -> dict:
+    """Rank evidence, optionally reusing arrays from the caller's byte verification."""
     result = {'group': 'pending', 'score': None, 'reasons': [], 'vcdr_delta': None}
     if any(p.get('status') == 'error' for p in predictions):
         return {**result, 'group': 'error', 'reasons': ['prediction_error']}
@@ -20,12 +21,15 @@ def priority(predictions: list[dict]) -> dict:
         return result
     masks = []
     try:
-        for prediction in predictions:
-            data = Path(prediction['labels_path']).read_bytes()
-            if sha256(data) != prediction['labels_sha256']:
-                raise ValueError('Mask hash mismatch')
-            with Image.open(io.BytesIO(data)) as image:
-                labels = np.array(image)
+        for index, prediction in enumerate(predictions):
+            if verified_masks is None:
+                data = Path(prediction['labels_path']).read_bytes()
+                if sha256(data) != prediction['labels_sha256']:
+                    raise ValueError('Mask hash mismatch')
+                with Image.open(io.BytesIO(data)) as image:
+                    labels = np.array(image)
+            else:
+                labels = verified_masks[index]
             if labels.ndim != 2 or not np.isin(labels, [0, 1, 2]).all():
                 raise ValueError('Invalid label map')
             masks.append(labels)

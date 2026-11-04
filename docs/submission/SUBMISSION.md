@@ -1,6 +1,6 @@
 # HyunOptic — submission package
 
-**Latest software audit (2026-11-04):** [Git/distribution and lifecycle audit](../experiments/2026-11-04-submission-code-audit/README.md) — 404 tests passed in the development environment and 404 against a non-editable wheel in a new CPU-only environment. Four reproduced defects were corrected with 14 regression cases. Default two-seed/80-epoch synthetic preparation, installed-package processing, held-state reload, ZIP verification and managed deletion passed. These are software checks; earlier browser and real-data evidence retains its original scope.
+**Current software verification:** [Usability and provenance audit](../experiments/2026-11-04-review-usability/README.md) — final installed-wheel CPU suite: **442 passed**, plus 80 final targeted checks in development. Safe deletion consent, terminal input handling, case navigation, source provenance and recorded-metadata listing are implemented. **Current browser/responsive/zoom/keyboard acceptance and refreshed video remain incomplete after browser control stopped.** Automated checks do not replace those items.
 
 
 This is the prepared public package for personal final review. It is not a claim of Devpost submission, event eligibility approval, clinical validation or human acceptance. All work through 2026-11-04 is pre-event.
@@ -22,7 +22,7 @@ This is the prepared public package for personal final review. It is not a claim
 | Gallery image | [Actual synthetic model preview](media/thumbnail.jpg) |
 | Model/data access | [Public synthetic preparation and private research-bundle limitations](MODEL_AND_DATA_ACCESS.md) |
 | AI / development disclosure | [AI contribution](AI_DISCLOSURE.md), [pre-event boundary](EVENT_CHANGES.md), [baseline](BASELINE.md) |
-| Evidence | [Final source/browser verification](../experiments/2026-11-04-final-submission-polish/README.md), [Full real-data audit and material failures](../experiments/2026-11-04-full-real-validation/README.md), [Execution audit](../experiments/2026-11-04-submission-readiness/README.md), [reader/review experiment](../experiments/2026-11-04-reader-review-validation/README.md), [rubric map](RUBRIC_EVIDENCE.md) |
+| Evidence | [Current software checks and open visual acceptance](../experiments/2026-11-04-review-usability/README.md), [Final source/browser verification](../experiments/2026-11-04-final-submission-polish/README.md), [Full real-data audit and material failures](../experiments/2026-11-04-full-real-validation/README.md), [Execution audit](../experiments/2026-11-04-submission-readiness/README.md), [reader/review experiment](../experiments/2026-11-04-reader-review-validation/README.md), [rubric map](RUBRIC_EVIDENCE.md) |
 
 The final repository version should be selected from the merged commit shown in GitHub. Copy its full commit permalink into Devpost when freezing the entry; do not substitute a mutable branch URL for a claimed immutable version. The exact earlier application source used in this demonstration is identified in [media validation](media/validation.json). The video does not claim to depict subsequent evaluator fixes or final domain-guidance wording.
 

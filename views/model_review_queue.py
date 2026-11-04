@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import io
-import subprocess
 import sqlite3
 from pathlib import Path
 
@@ -13,7 +12,8 @@ from PIL import Image
 from hyunoptic.review.store import ReviewStore
 from hyunoptic.review.runner import run_next
 from hyunoptic.review.validation import order_cases
-from hyunoptic.review.inputs import MAX_FILE_BYTES,decode_image,sha256
+from hyunoptic.review.inputs import MAX_FILE_BYTES, decode_image
+from hyunoptic.provenance import source_commit
 from hyunoptic.review.export import export_session, verify_export
 from hyunoptic.seg.bundle import BundleError, find_bundles, verify_bundle
 from hyunoptic.ui.components import badge, note, page_title
@@ -68,8 +68,7 @@ with st.expander('Create a review session', expanded=not store.sessions()):
                                'weights_sha256': b.weights_sha256,
                                'data_status': {'synthetic': b.synthetic, 'partial': b.partial}}
                               for b in (verified[primary], verified[comparison])]
-                    commit = subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True,
-                                            timeout=5).stdout.strip() or 'unknown'
+                    commit = source_commit()
                     session_id = store.create_session([(u.name, u.getvalue()) for u in uploads], models,
                                                       modality=modality, software_commit=commit)
                     st.session_state['rq_session'] = session_id
@@ -87,6 +86,10 @@ if st.session_state.get('rq_session') not in ids:
     st.session_state['rq_session'] = ids[0]
 sid = st.selectbox('Review session', ids, key='rq_session')
 session = store.session(sid)
+# Consent belongs to the active selection, including A -> B -> A transitions.
+if st.session_state.get('rq_delete_session') != sid:
+    st.session_state['rq_delete_confirm'] = False
+    st.session_state['rq_delete_session'] = sid
 declared_modality = session.get('modality', 'color_fundus')
 domain_prefix = '' if declared_modality == 'color_fundus' else f'Declared modality {declared_modality}: exploratory only. '
 st.warning(domain_prefix + 'Domain limits: cropped optic-disc (ROI), SLO and OCT inputs have no established '
@@ -123,9 +126,19 @@ with c2:
         store.recover(sid)
         st.rerun()
 
-rows = store.cases(sid)
+rows = store.list_case_metadata(sid)
 counts = {s: sum(r['status'] == s for r in rows) for s in ['pending', 'processing', 'complete', 'error', 'interrupted']}
 st.write(f"Total {len(rows)} · " + ' · '.join(f'{s} {n}' for s, n in counts.items()))
+st.caption('Queue status and priority are last recorded metadata, not a fresh integrity audit. '
+           'Opening a case checks its evidence; saving and exporting verify evidence again.')
+notice = st.session_state.pop('rq_notice', None)
+if notice:
+    st.success(notice)
+show_names = st.toggle('Show local filenames', value=False,
+                       help='Local display only. Filenames remain excluded from evidence exports.')
+labels = {r['id']: f"Case {r['ordinal'] + 1:03d}" +
+          (f" · {str(r.get('original_name', '')).replace(chr(92), '/').rsplit('/', 1)[-1]}" if show_names else '')
+          for r in rows}
 review_filter = st.selectbox('Show cases', ['All', 'Unreviewed', 'Held', 'Processing errors'])
 order = st.radio('Order', ['Review priority', 'Input order'], horizontal=True)
 visible = [r for r in rows if review_filter == 'All' or
@@ -134,62 +147,92 @@ visible = [r for r in rows if review_filter == 'All' or
            (review_filter == 'Processing errors' and r['status'] == 'error')]
 if order == 'Review priority':
     visible = order_cases(visible)
-st.dataframe([{'Case': r['id'], 'Processing': r['status'], 'Review': r.get('review_state'),
+st.dataframe([{'Case': labels[r['id']], 'Processing': r['status'], 'Review': r.get('review_state'),
                'Reason': ('unsupported_input' if r['status']=='error' and not r.get('pixel_sha256')
                           else '; '.join(r['priority'].get('reasons', []))),
-               'Disagreement': r['priority'].get('score')} for r in visible], hide_index=True)
+               'Disagreement': r['priority'].get('score'),
+               'Evidence': 'Not checked in list'} for r in visible], hide_index=True)
 
 if visible:
-    selected = st.selectbox('Inspect case', [r['id'] for r in visible], key=f'rq_case_{sid}_{review_filter}')
-    case = next(r for r in visible if r['id'] == selected)
+    selection_key = f'rq_case_{sid}_{review_filter}'
+    next_selection = st.session_state.pop('rq_next_selection', None)
+    visible_ids = [r['id'] for r in visible]
+    if next_selection and next_selection['session'] == sid and next_selection['filter'] == review_filter:
+        if next_selection['case'] in visible_ids:
+            st.session_state[selection_key] = next_selection['case']
+    if st.session_state.get(selection_key) not in visible_ids:
+        st.session_state.pop(selection_key, None)
+    selected = st.selectbox('Inspect case', visible_ids, format_func=labels.get, key=selection_key)
+    case = store.verified_case(sid, selected)
+    terminal_input = not case.get('pixel_sha256')
+    integrity_failed = bool(case.get('integrity_error'))
     if case.get('error'):
-        st.error(case['error'] if case.get('pixel_sha256') else
-                 'Unsupported input. Use a complete RGB or grayscale PNG, JPEG or single-frame TIFF. '
-                 'This failed case remains recorded.')
-        if st.button('Retry failed case', key=f"rq_retry_{case['id']}"):
-            try:
-                store.retry(case['id'])
-            except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
-                st.error(f'Cannot retry: {exc}')
+        if terminal_input:
+            st.error('Unsupported input. Use a complete RGB or grayscale PNG, JPEG or single-frame TIFF. '
+                     'This failed case remains recorded. Import a corrected file in a new session.')
+        elif integrity_failed:
+            st.error('Evidence integrity check failed. Previews and review controls are withheld. '
+                     'Restore the original evidence or create a new session.')
+        else:
+            st.error(case['error'])
+            if st.button('Retry failed case', key=f"rq_retry_{case['id']}"):
+                try:
+                    store.retry(case['id'])
+                except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
+                    st.error(f'Cannot retry: {exc}')
+                else:
+                    st.rerun()
+    if not terminal_input and not integrity_failed:
+        st.caption('Full source view is the default. A measurable prediction can still locate the wrong structure.')
+        try:
+            # Render the exact verified byte snapshot, never reopen its file path.
+            image = decode_image(case['source_bytes'])
+            predictions = {p['model_identity']: p for p in case.get('predictions', [])}
+            layout = st.radio('Comparison layout', ['Aligned comparison', 'Full-size view'], horizontal=True)
+
+            def show_source():
+                st.markdown('**Source image**')
+                st.image(image, caption='Source image · local copy', width='stretch')
+
+            def show_model(index):
+                model = session['models'][index]
+                pred = predictions.get(model['identity'])
+                role = 'Primary' if index == 0 else 'Comparison'
+                st.markdown(f"**{role} model**")
+                if pred is None:
+                    st.caption(model['run_id'])
+                    st.info('No prediction recorded for this model.')
+                    return
+                status_label = {'ok': 'Measurable geometry · accuracy unverified',
+                                'invalid_geometry': 'Measurement unavailable',
+                                'error': 'Prediction failed'}.get(pred['status'], pred['status'])
+                if pred.get('labels_bytes'):
+                    with Image.open(io.BytesIO(pred['labels_bytes'])) as mask:
+                        label_map = np.asarray(mask)
+                    overlay, _ = draw_prediction(image, label_map >= 1, label_map == 2,
+                        show_disc=True, show_cup=True,
+                        thickness=st.session_state.get('pref_thickness', 2),
+                        high_contrast=st.session_state.get('pref_high_contrast', False),
+                        dashed_cup=st.session_state.get('pref_dashed_cup', True))
+                    st.image(overlay, caption=f'{role} prediction · research only', width='stretch')
+                st.caption(model['run_id'])
+                st.write(status_label)
+                if pred.get('measurement'):
+                    st.write({'Predicted vCDR': pred['measurement'].get('vertical_cdr')})
+                else:
+                    st.caption('No valid measurement. ' + '; '.join(pred.get('errors', [])))
+
+            if layout == 'Aligned comparison':
+                source_col, primary_col, comparison_col = st.columns(3)
+                with source_col: show_source()
+                with primary_col: show_model(0)
+                with comparison_col: show_model(1)
             else:
-                st.rerun()
-    st.caption('Full source view is the default. A measurable prediction can still locate the wrong structure.')
-    try:
-        if case.get('integrity_error'):
-            raise ValueError('Input or prediction integrity failed. Source previews and derived results are withheld.')
-        if not case.get('pixel_sha256'):
-            raise ValueError('This input cannot be decoded. No source or model preview is available.')
-        source_data=Path(case['input_path']).read_bytes()
-        if sha256(source_data)!=case['original_sha256']:
-            raise ValueError('Input artifact changed. Restore the evidence or create a new session.')
-        image=decode_image(source_data)
-        st.image(image, caption='Source image · local copy', width='stretch')
-        for index, pred in enumerate(case.get('predictions', [])):
-            status_label = {'ok': 'Measurable geometry · accuracy unverified',
-                            'invalid_geometry': 'Measurement unavailable',
-                            'error': 'Prediction failed'}.get(pred['status'], pred['status'])
-            st.write(f"Model {index + 1}: {pred.get('run_id', '')} · {status_label}")
-            labels_path = pred.get('labels_path')
-            if labels_path:
-                label_data=Path(labels_path).read_bytes()
-                if sha256(label_data) != pred['labels_sha256']:
-                    raise ValueError('Prediction artifact changed. Do not use this result; create a new session.')
-                with Image.open(io.BytesIO(label_data)) as mask:
-                    labels = np.asarray(mask)
-                overlay, _ = draw_prediction(image, labels >= 1, labels == 2, show_disc=True, show_cup=True,
-                                              thickness=st.session_state.get('pref_thickness', 2),
-                                              high_contrast=st.session_state.get('pref_high_contrast', False),
-                                              dashed_cup=st.session_state.get('pref_dashed_cup', True))
-                st.image(overlay, caption=f'Model {index + 1} prediction · research only', width='stretch')
-            if pred.get('measurement'):
-                st.write({'Predicted vCDR': pred['measurement'].get('vertical_cdr')})
-            else:
-                st.caption('No valid measurement. ' + '; '.join(pred.get('errors', [])))
-    except OSError:
-        st.warning('Cannot display this case: a local evidence file is unavailable or unreadable. '
-                   'Restore the evidence or create a new session.')
-    except ValueError as exc:
-        st.error(f'Cannot display this case: {exc}')
+                pane = st.radio('Full-size panel', ['Source image', 'Primary model', 'Comparison model'], horizontal=True)
+                if pane == 'Source image': show_source()
+                else: show_model(0 if pane == 'Primary model' else 1)
+        except (OSError, ValueError) as exc:
+            st.warning(f'Cannot display this case: {exc}')
     states = ['unreviewed', 'reviewed', 'held']
     reason_options = ['wrong_location', 'boundary_mismatch', 'image_quality', 'unsupported_modality', 'uncertain', 'other']
     if case.get('prediction_set_hash'):
@@ -209,14 +252,30 @@ if visible:
             reasons = st.multiselect('Reasons (required for held)', reason_options,
                                      default=case.get('reasons', []), key=field_keys[1])
             memo = st.text_area('Private local note (excluded from exports)', value=case.get('note', ''), key=field_keys[2])
-            save = st.form_submit_button('Save review record')
-        if save:
+            save_col, next_col = st.columns(2)
+            with save_col:
+                save = st.form_submit_button('Save review record')
+            with next_col:
+                save_next = st.form_submit_button('Save and next case', type='primary',
+                    help='All/Unreviewed: next unreviewed case. Held: next held case. Advances only after saving.')
+        if save or save_next:
             try:
                 store.decide(case['id'], decision, reasons, memo, displayed_revision)
             except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
                 st.error(f'Review was not saved: {exc}')
             else:
                 st.session_state[f'rq_reset_{cid}'] = True
+                if save_next:
+                    # Use the pre-save visible order, so filtering out this case cannot reset to the top.
+                    later = visible_ids[visible_ids.index(cid) + 1:]
+                    fresh = {r['id']: r for r in store.list_case_metadata(sid)}
+                    wanted_state = 'held' if review_filter == 'Held' else 'unreviewed'
+                    target = next((c for c in later if c in fresh and
+                                   fresh[c].get('review_state') == wanted_state), None)
+                    if target:
+                        st.session_state['rq_next_selection'] = dict(session=sid, filter=review_filter, case=target)
+                    else:
+                        st.session_state['rq_notice'] = 'Saved. No later eligible cases in this view.'
                 st.rerun()
 
 with st.expander('Export and local retention'):
@@ -231,8 +290,15 @@ with st.expander('Export and local retention'):
                                mime='application/zip')
         except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
             st.error(f'Export failed: {exc}')
-    confirm = st.checkbox(f'Delete this session, {len(rows)} input copies, predictions and review records')
+    confirm = st.checkbox(f'Delete this session ({sid[:8]}), {len(rows)} input copies, predictions and review records',
+                          key='rq_delete_confirm')
     if st.button('Delete local session', disabled=not confirm):
-        store.delete_session(sid)
-        st.session_state.pop('rq_session', None)
-        st.rerun()
+        try:
+            store.delete_session(sid)
+        except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
+            st.error(f'Session was not deleted: {exc}')
+        else:
+            st.session_state.pop('rq_session', None)
+            st.session_state.pop('rq_delete_confirm', None)
+            st.session_state.pop('rq_delete_session', None)
+            st.rerun()

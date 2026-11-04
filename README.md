@@ -1,22 +1,8 @@
 # HyunOptic
 
-**Latest software audit (2026-11-04):** [Git/distribution and lifecycle audit](docs/experiments/2026-11-04-submission-code-audit/README.md) — 404 tests passed in the development environment and 404 against a non-editable wheel in a new CPU-only environment. Four reproduced defects were corrected with 14 regression cases. Default two-seed/80-epoch synthetic preparation, installed-package processing, held-state reload, ZIP verification and managed deletion passed. These are software checks; earlier browser and real-data evidence retains its original scope.
+HyunOptic is local research software for inspecting optic disc/cup AI predictions, preserving unresolved review decisions and exporting traceable evidence. The **Review Queue** brings the source image, two model outputs, review state and provenance into one persistent session. The wider workspace supports measurement, dataset integrity and reproducible research reports.
 
-**Quantitative Optic Nerve Measurement & Reliability Validation**
-
-**Contest package prepared (2026-11-04):** [copy-ready materials](docs/submission/SUBMISSION.md) and [final source/browser audit](docs/experiments/2026-11-04-final-submission-polish/README.md). Visible ROI/domain limits and accuracy-unverified geometry labels align the app with the real-data findings. The preceding suite passed 390 tests; an actual synthetic browser recheck preserved held decisions and verified the downloaded evidence ZIP. [Readiness](docs/submission/READINESS.md) distinguishes completed preparation from genuine future event work and actual entry submission.
-
-**Latest real-data audit (2026-11-04):** [Full holdout robustness, five external readers and new hospital-Test data](docs/experiments/2026-11-04-full-real-validation/README.md). Two frozen models generated 3,916 inference calls across 98 PAPILA eyes from 49 patients, 336 Chákṣu images and 174 new RIM-ONE DL images, including a complete artifact-checking repeat. Both models failed severely on the new cropped-ROI domain. Three evaluator defect classes were corrected; 388 integrated tests passed. Patient grouping, data reuse, reference failures and conditional metric denominators remain explicit. Frozen bundles and the default training policy are unchanged.
-
-The preceding [100-paper screening and four-patient corruption pilot](docs/experiments/2026-11-04-literature-100/README.md) remains available with its original scope. Neither audit reproduces 100 author benchmarks or establishes clinical validity.
-
-**Submission package (2026-11-04):** the **Review Queue** provides local two-model image review, persistent held/reviewed decisions, interrupted-work recovery, and privacy-filtered evidence ZIPs with independent integrity verification. Start with the [copy-ready package](docs/submission/SUBMISSION.md), [public YouTube demonstration](https://youtu.be/xbs47mX0d5g), or [isolated synthetic CPU demo setup](docs/submission/README.md). The video uses actual app captures with edited timing, synthetic models/images and disclosed AI narration. These are **pre-event improvements**, not claimed hackathon-period work. Ranking efficiency and clinical benefit have not been established. Personal final checks and the actual Devpost entry remain pending.
-
-**Status: v1.2.0 software release (2026-10-25).** v1.2.0 adds an optional PyTorch optic disc/cup segmentation pipeline to the multi-page research workspace app, which covers dataset integrity, image review, reliability, source-holdout and external-validation results, reports and evidence export. The full research chain — PAPILA inventory, development-only model freeze, patient-disjoint source holdout, Chákṣu Test five-reader preflight, external analysis, evidence gate and HTML report — runs with one command. All code is tested with synthetic data in GitHub Actions; **the separate complete candidate-QC study has not yet been executed**. An actual PyTorch segmentation baseline trained on PAPILA and evaluated on a patient-disjoint holdout plus exploratory Chákṣu data is now recorded in [the real-data experiment report](docs/experiments/2026-10-25-real-data-baseline/README.md). **No PAPILA-wide or clinical validation, diagnostic performance, or novel uncertainty-detection result is claimed.**
-
-> Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.**
-
-HyunOptic is an independent medical imaging research software project intended to explore the **reliability and reproducibility of optic disc/cup measurements**, rather than to produce medical diagnoses.
+> Research/education only. **NOT for clinical use, glaucoma diagnosis, or patient-specific care.** Measurable geometry does not establish anatomical accuracy; two models can agree and both be wrong.
 
 ## Quick start
 
@@ -33,6 +19,19 @@ streamlit run app.py
 With no dataset connected, the workspace shows a **synthetic geometry demo** that uses no patient images.
 
 Windows PowerShell instructions, PAPILA file layout and CLI examples: **[Getting Started](docs/GETTING_STARTED.md)**.
+
+For the full two-model Review Queue demonstration, install `.[ui,dev,ml]` and run `python scripts/prepare_submission_demo.py --output demo_data/submission --launch` in a new output directory. This actually trains two small CPU models on synthetic data. [Isolated setup and review steps](docs/submission/README.md).
+
+## Latest evidence and submission materials
+
+- **Current software checks:** the [usability/provenance audit](docs/experiments/2026-11-04-review-usability/README.md) passed **442 tests against the final installed CPU wheel**, with 80 final targeted development checks. Metadata listing and verified case detail separate navigation from integrity-sensitive actions. **Current browser/responsive acceptance and refreshed video remain incomplete** after browser control stopped; those checks are not implied by software tests. The preceding [404-test distribution audit](docs/experiments/2026-11-04-submission-code-audit/README.md) retains its original scope.
+- **Real-data limits:** the [full November 4 audit](docs/experiments/2026-11-04-full-real-validation/README.md) records 3,916 inference calls across 98 PAPILA eyes/49 patients, 336 Chákṣu images and 174 new RIM-ONE DL images, including perturbations and repeated passes. Both models failed severely on the cropped RIM-ONE DL domain. These are not 3,916 patients, clinical validation or evidence of triage benefit.
+- **Submission:** [prepared fields](docs/submission/SUBMISSION.md), [concise project narrative](docs/submission/DEVPOST_DRAFT.md), [defined manual workflow comparison](docs/submission/WORKFLOW_COMPARISON.md), [rights status](docs/submission/REPOSITORY_RIGHTS.md), and [readiness](docs/submission/READINESS.md). Human task-time savings have not been measured. The [personal worksheet](docs/submission/HUMAN_REVIEW.md) remains uncompleted; actual Devpost submission remains pending.
+- **Demonstration:** the [public historical video](https://youtu.be/xbs47mX0d5g) preserves authentic earlier-version app captures with synthetic data/models, edited timing and AI narration. It does not show subsequent usability changes. A [current-version capture and caption plan](docs/submission/DEMO_REFRESH_PLAN.md) is prepared; a new rendered or published video is not claimed.
+
+All work through November 4 is **pre-event**. [Dated development disclosure](docs/submission/EVENT_CHANGES.md). No open-source software license has been selected.
+
+Earlier evidence remains available: [390-test source/domain-guidance and browser check](docs/experiments/2026-11-04-final-submission-polish/README.md), [326-test synthetic workflow audit](docs/experiments/2026-11-04-submission-readiness/README.md), [100-paper screening/four-patient corruption pilot](docs/experiments/2026-11-04-literature-100/README.md), and [October 25 real-data baseline](docs/experiments/2026-10-25-real-data-baseline/README.md). Each retains its original source version and scope. The separate complete candidate-QC study remains unexecuted; no reproduction of 100 authors' benchmarks or novel uncertainty-detection result is claimed.
 
 ## v1.2.0 — experimental PyTorch optic disc/cup segmentation
 

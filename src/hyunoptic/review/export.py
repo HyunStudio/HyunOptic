@@ -69,6 +69,7 @@ def export_session(store, session_id: str, target: Path) -> Path:
     session, cases, events = snapshot['session'], snapshot['cases'], snapshot['events']
     public_session = _select(session, ('id', 'schema_version', 'created_utc', 'software_commit',
                                       'input_modality', 'modality', 'protocol_hash', 'status'))
+    public_session['software_version'] = session.get('software_version', 'unknown')
     public_session.update(export_schema=SCHEMA, reference_status='no_reference',
                           total_cases=len(cases), research_only=True)
     public_session['models'] = [dict(_select(m, ('identity', 'run_id', 'weights_sha256')),

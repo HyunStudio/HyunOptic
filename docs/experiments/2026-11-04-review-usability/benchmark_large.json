@@ -1,0 +1,194 @@
+{
+  "synthetic": true,
+  "seed": 20261104,
+  "resolution": [
+    1024,
+    768
+  ],
+  "repeats": 3,
+  "environment": {
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "1.26.4",
+    "pillow": "11.3.0"
+  },
+  "sessions": [
+    {
+      "inputs": 20,
+      "source_bytes_each": 2363071,
+      "labels_bytes_each": 4249,
+      "total_evidence_bytes": 47431380,
+      "metadata_list": {
+        "median_seconds": 0.0031711000483483076,
+        "p95_seconds": 0.0051704999059438705,
+        "runs": [
+          {
+            "seconds": 0.0051704999059438705,
+            "artifact_reads": 0,
+            "artifact_bytes_read": 0,
+            "sha256_calls": 0,
+            "bytes_hashed": 0
+          },
+          {
+            "seconds": 0.002974600065499544,
+            "artifact_reads": 0,
+            "artifact_bytes_read": 0,
+            "sha256_calls": 0,
+            "bytes_hashed": 0
+          },
+          {
+            "seconds": 0.0031711000483483076,
+            "artifact_reads": 0,
+            "artifact_bytes_read": 0,
+            "sha256_calls": 0,
+            "bytes_hashed": 0
+          }
+        ]
+      },
+      "strict_list": {
+        "median_seconds": 3.3759081000462174,
+        "p95_seconds": 3.6068309999536723,
+        "runs": [
+          {
+            "seconds": 3.6068309999536723,
+            "artifact_reads": 100,
+            "artifact_bytes_read": 47601340,
+            "sha256_calls": 100,
+            "bytes_hashed": 47601340
+          },
+          {
+            "seconds": 3.3759081000462174,
+            "artifact_reads": 100,
+            "artifact_bytes_read": 47601340,
+            "sha256_calls": 100,
+            "bytes_hashed": 47601340
+          },
+          {
+            "seconds": 2.7654095999896526,
+            "artifact_reads": 100,
+            "artifact_bytes_read": 47601340,
+            "sha256_calls": 100,
+            "bytes_hashed": 47601340
+          }
+        ]
+      },
+      "selected_case": {
+        "median_seconds": 0.08626340003684163,
+        "p95_seconds": 0.08639720012433827,
+        "runs": [
+          {
+            "seconds": 0.085559600032866,
+            "artifact_reads": 3,
+            "artifact_bytes_read": 2371569,
+            "sha256_calls": 3,
+            "bytes_hashed": 2371569
+          },
+          {
+            "seconds": 0.08626340003684163,
+            "artifact_reads": 3,
+            "artifact_bytes_read": 2371569,
+            "sha256_calls": 3,
+            "bytes_hashed": 2371569
+          },
+          {
+            "seconds": 0.08639720012433827,
+            "artifact_reads": 3,
+            "artifact_bytes_read": 2371569,
+            "sha256_calls": 3,
+            "bytes_hashed": 2371569
+          }
+        ]
+      },
+      "metadata_p95_under_half_second": true
+    },
+    {
+      "inputs": 200,
+      "source_bytes_each": 2363071,
+      "labels_bytes_each": 4249,
+      "total_evidence_bytes": 474313800,
+      "metadata_list": {
+        "median_seconds": 0.02498600003309548,
+        "p95_seconds": 0.0655942999292165,
+        "runs": [
+          {
+            "seconds": 0.02498600003309548,
+            "artifact_reads": 0,
+            "artifact_bytes_read": 0,
+            "sha256_calls": 0,
+            "bytes_hashed": 0
+          },
+          {
+            "seconds": 0.0655942999292165,
+            "artifact_reads": 0,
+            "artifact_bytes_read": 0,
+            "sha256_calls": 0,
+            "bytes_hashed": 0
+          },
+          {
+            "seconds": 0.01079230010509491,
+            "artifact_reads": 0,
+            "artifact_bytes_read": 0,
+            "sha256_calls": 0,
+            "bytes_hashed": 0
+          }
+        ]
+      },
+      "strict_list": {
+        "median_seconds": 19.32726570009254,
+        "p95_seconds": 19.763751700054854,
+        "runs": [
+          {
+            "seconds": 19.32726570009254,
+            "artifact_reads": 1000,
+            "artifact_bytes_read": 476013400,
+            "sha256_calls": 1000,
+            "bytes_hashed": 476013400
+          },
+          {
+            "seconds": 18.493410700000823,
+            "artifact_reads": 1000,
+            "artifact_bytes_read": 476013400,
+            "sha256_calls": 1000,
+            "bytes_hashed": 476013400
+          },
+          {
+            "seconds": 19.763751700054854,
+            "artifact_reads": 1000,
+            "artifact_bytes_read": 476013400,
+            "sha256_calls": 1000,
+            "bytes_hashed": 476013400
+          }
+        ]
+      },
+      "selected_case": {
+        "median_seconds": 0.07618069997988641,
+        "p95_seconds": 0.09270819998346269,
+        "runs": [
+          {
+            "seconds": 0.07406120002269745,
+            "artifact_reads": 3,
+            "artifact_bytes_read": 2371569,
+            "sha256_calls": 3,
+            "bytes_hashed": 2371569
+          },
+          {
+            "seconds": 0.09270819998346269,
+            "artifact_reads": 3,
+            "artifact_bytes_read": 2371569,
+            "sha256_calls": 3,
+            "bytes_hashed": 2371569
+          },
+          {
+            "seconds": 0.07618069997988641,
+            "artifact_reads": 3,
+            "artifact_bytes_read": 2371569,
+            "sha256_calls": 3,
+            "bytes_hashed": 2371569
+          }
+        ]
+      },
+      "metadata_p95_under_half_second": true
+    }
+  ],
+  "interpretation": "Synthetic repeated input/masks in distinct case records. Distinct operations: metadata does not verify artifacts. No human-time saving, independent photos or clinical-performance claim. Measured before the additive software-version session/export field; operation algorithms unchanged."
+}

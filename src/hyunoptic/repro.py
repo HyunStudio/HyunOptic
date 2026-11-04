@@ -5,11 +5,10 @@ The report is exploratory and never a statement of clinical effectiveness.
 from __future__ import annotations
 import hashlib
 import json
-import os
 import platform
-import subprocess
 from pathlib import Path
 from .inventory import inspect_papila, save_inventory
+from .provenance import source_commit
 from .research_report import write_research_summary
 from .study import run_study, save_study
 from .uncertainty import PerturbationConfig
@@ -39,16 +38,9 @@ def reproduce(
     )
     save_study(summary, rows, folder / "study.json", folder / "case_metrics.csv")
     study_bytes = (folder / "study.json").read_bytes()
-    try:
-        commit = subprocess.check_output(
-            ["git", "-C", str(Path(__file__).resolve().parents[2]), "rev-parse", "HEAD"],
-            text=True, stderr=subprocess.DEVNULL, timeout=5
-        ).strip()
-    except (OSError, subprocess.SubprocessError):
-        commit = None
     result = {
         "python_runtime": platform.python_version(),
-        "source_code_git_commit_if_available": commit or os.environ.get("GITHUB_SHA"),
+        "source_code_git_commit_if_available": source_commit(),
         "project": "HyunOptic", "version": "0.5.0", "status": "research-only",
         "data_source": "PAPILA provided locally by user",
         "full_published_inventory_shape_match": complete,
