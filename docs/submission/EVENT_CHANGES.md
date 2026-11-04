@@ -14,6 +14,7 @@
 | 2026-11-04 | Clean-wheel distribution audit, malformed-image and export/delete race fixes, version/label corrections, 14 regressions and two 404-test environments | Pre-event software audit |
 | 2026-11-04 | Subsequent review-usability implementation and verification work: session-scoped deletion, source provenance, unsupported-input handling, metadata/detail separation, stable case labels, comparison layout and save-next. Final outcomes belong to the new audit, not the earlier 404-test receipt. | Pre-event development; software verified, visual acceptance open |
 | 2026-11-04 | README/narrative revision using author-provided personal motivation; defined manual workflow comparison; existing-rights record; current-version demo storyboard and draft captions. Historical media preserved; no refreshed render/upload claimed. | Pre-event documentation/media preparation |
+| 2026-11-05 | Actual browser import-to-download acceptance, responsive header correction, keyboard save, independent wheel/media verification, refreshed local 2:47 demonstration | Pre-event; native zoom/public refresh pending |
 | 2026-11-21 17:00 onward | No work recorded yet | Event has not started at document creation |
 
 The event rules permit improvements to existing projects but require clear disclosure of existing work and event additions. [Official rules](https://global-ai-builders-challenge.devpost.com/rules), checked 2026-11-04. Planned submission deadline: 2026-11-29 08:00 KST. Recheck the rules at submission.

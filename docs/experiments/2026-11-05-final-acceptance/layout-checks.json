@@ -1,0 +1,163 @@
+{
+  "narrowBefore": {
+    "brand": {
+      "bottom": 178.390625,
+      "height": 50.84375,
+      "right": 252.9375,
+      "width": 237.9375,
+      "x": 15,
+      "y": 127.546875
+    },
+    "horizontalOverflow": false,
+    "status": {
+      "bottom": 272.9375,
+      "height": 239.9375,
+      "right": 365,
+      "width": 93.3125,
+      "x": 271.6875,
+      "y": 33
+    },
+    "viewport": 390,
+    "statusBelowBrand": false
+  },
+  "narrowFixed": {
+    "brand": {
+      "bottom": 83.84375,
+      "height": 50.84375,
+      "right": 252.9375,
+      "width": 237.9375,
+      "x": 15,
+      "y": 33
+    },
+    "chips": [
+      {
+        "bottom": 171.75,
+        "height": 76.65625,
+        "right": 126.65625,
+        "width": 111.65625,
+        "x": 15,
+        "y": 95.09375
+      },
+      {
+        "bottom": 171.75,
+        "height": 76.65625,
+        "right": 245.828125,
+        "width": 111.671875,
+        "x": 134.15625,
+        "y": 95.09375
+      },
+      {
+        "bottom": 171.75,
+        "height": 76.65625,
+        "right": 364.984375,
+        "width": 111.65625,
+        "x": 253.328125,
+        "y": 95.09375
+      }
+    ],
+    "display": "grid",
+    "horizontalOverflow": false,
+    "status": {
+      "bottom": 171.75,
+      "height": 76.65625,
+      "right": 365,
+      "width": 350,
+      "x": 15,
+      "y": 95.09375
+    },
+    "viewport": 390,
+    "statusBelowBrand": true
+  },
+  "tabletLayout": {
+    "height": 1024,
+    "horizontalOverflow": false,
+    "statusBelowBrand": true,
+    "width": 768
+  },
+  "zoomBaseline": {
+    "dpr": 1,
+    "height": 720,
+    "scale": 1,
+    "width": 1280
+  },
+  "zoomObserved": {
+    "dpr": 1,
+    "height": 720,
+    "scale": 1,
+    "width": 1280
+  },
+  "zoom200ActuallyApplied": false,
+  "keyboardTrail": [
+    {
+      "label": null,
+      "role": null,
+      "tag": "INPUT",
+      "text": ""
+    },
+    {
+      "label": "Fullscreen: Source image · local copy",
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "label": "Fullscreen: Primary prediction · research only",
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "label": "Fullscreen: Comparison prediction · research only",
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "label": null,
+      "role": null,
+      "tag": "BUTTON",
+      "text": "Refresh review record"
+    },
+    {
+      "label": "Review record (not correctness certification)",
+      "role": "combobox",
+      "tag": "INPUT",
+      "text": ""
+    },
+    {
+      "label": "uncertain",
+      "role": null,
+      "tag": "SPAN",
+      "text": "uncertain"
+    },
+    {
+      "label": "Reasons (required for held)",
+      "role": "combobox",
+      "tag": "INPUT",
+      "text": ""
+    },
+    {
+      "label": "Clear all",
+      "role": null,
+      "tag": "BUTTON",
+      "text": ""
+    },
+    {
+      "label": "Private local note (excluded from exports)",
+      "role": null,
+      "tag": "TEXTAREA",
+      "text": ""
+    },
+    {
+      "label": null,
+      "role": null,
+      "tag": "BUTTON",
+      "text": "Save review record"
+    }
+  ],
+  "unsupportedChecks": {
+    "messages": 1,
+    "retryButtons": 0,
+    "reviewForms": 0
+  }
+}

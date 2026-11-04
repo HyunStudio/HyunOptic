@@ -24,7 +24,7 @@ jobs:
       - name: Verify all subsequent experiment evidence
         run: python scripts/verify_experiment_evidence.py
       - name: Verify submission video and supporting payloads
-        run: python -c "from pathlib import Path; from scripts.verify_experiment_evidence import verify_folder; print('Verified submission payloads:', verify_folder(Path('docs/submission/media')))"
+        run: python -c "from pathlib import Path; from scripts.verify_experiment_evidence import verify_folder; print('Verified submission payloads:', sum(verify_folder(p.parent) for p in Path('docs/submission').glob('media*/manifest.json')))"
       - run: python -m pip install -e '.[ui,dev]'
       - run: python -m compileall -q app.py views src
       - run: hyunoptic-study --help

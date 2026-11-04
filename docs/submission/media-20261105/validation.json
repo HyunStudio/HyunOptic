@@ -1,0 +1,23 @@
+{
+  "duration_seconds": 167.37092970521542,
+  "dimensions": [
+    1280,
+    960
+  ],
+  "frames_per_second": 12,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "full_decode_passed": true,
+  "caption_bounds_checked": true,
+  "subtitle_timing": "Measured per-cue TTS audio intervals including deliberate reading pauses; not word-aligned",
+  "voice": "Microsoft Zira Desktop",
+  "continuous_screen_recording": false,
+  "actual_capture_count": 13,
+  "generated_verifier_cards": 1,
+  "source_code_commit": "ea4e76811c931134bc77a7684a1cf21bbc32492a",
+  "source_capture_basis": "5c9f698 plus recorded CSS patch subsequently committed unchanged",
+  "reviewed_by_human": false,
+  "patient_data_included": false,
+  "sha256": "92d50968bbd21119d08243130d3a5e00cd1d47f266373adf4ab742bc90e71010",
+  "bytes": 4331486
+}

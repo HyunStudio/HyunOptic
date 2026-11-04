@@ -1,5 +1,7 @@
 # HyunOptic — local AI prediction review
 
+**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. Native 200% zoom, new YouTube publication confirmation, personal final review and actual Devpost entry remain pending.
+
 Research software for inspecting optic disc/cup predictions, recording review decisions and exporting traceable evidence. A measurable result is not necessarily an anatomically correct result. This project is not a diagnostic or patient-care tool.
 
 **Submission materials:** [copy-ready fields](SUBMISSION.md), [public YouTube video](https://youtu.be/xbs47mX0d5g), [original MP4](media/hyunoptic-demo.mp4), [captions](media/hyunoptic-demo.en.srt), [transcript](media/transcript.md), [publication verification](VIDEO_PUBLICATION.md), and [specific personal review worksheet](HUMAN_REVIEW.md). The video is publicly uploaded; personal final review and the actual Devpost entry remain pending.

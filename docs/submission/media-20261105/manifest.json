@@ -1,0 +1,104 @@
+{
+  "files": {
+    "build_demo.py": {
+      "bytes": 9310,
+      "sha256": "90db017f6f712eb61701088d9478a3bab6a7e81a4e9e08533541333f6eec1589"
+    },
+    "capture-provenance.json": {
+      "bytes": 4428,
+      "sha256": "434a51976fc76e8207835ccc039f7352e14b7a03214b66b8ed7703d6459b9e09"
+    },
+    "captures/03-narrow-fixed.png": {
+      "bytes": 44412,
+      "sha256": "f5cec03077c2ab66684d6286830d7fb55c29b866c1e331b3e0fe3d6eae371d19"
+    },
+    "captures/04-import-and-retention.png": {
+      "bytes": 70626,
+      "sha256": "a363d45fc1f7b29af12e35dd9220da936ab6b9014084dbc1cf2210ca40b51d31"
+    },
+    "captures/05-session-created.png": {
+      "bytes": 72605,
+      "sha256": "5d5ab6d6897bfa93b9bbc1e3ee4c3dfe2e84d222959cc9ecefad6ce4011533cb"
+    },
+    "captures/06-processed.png": {
+      "bytes": 73568,
+      "sha256": "b9983887b4e3dc77bbbda935165eb4bb2eb67d2d2648584afabe1e713dd2bbb0"
+    },
+    "captures/07-aligned-comparison.png": {
+      "bytes": 82561,
+      "sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    "captures/08-held-before-save.png": {
+      "bytes": 58216,
+      "sha256": "b968911fd4dcc50d39a5a1a5b1fc2bc0fac8489048315e72ef7a2b42d60cb972"
+    },
+    "captures/09-save-next.png": {
+      "bytes": 54176,
+      "sha256": "3132177ca32525edcd65f808aa5f9c1ee906e9840b9b804067a600805d43fb72"
+    },
+    "captures/11-reload-held.png": {
+      "bytes": 79608,
+      "sha256": "10fa27de6578b11fc6422f00be511fcbf58be4abd7d1f5ef24ddbbf6765dfac7"
+    },
+    "captures/12-keyboard-focus.png": {
+      "bytes": 60137,
+      "sha256": "b2f326a4fdcf42569a05bd342a66cbee2a0976ab0c83c4eeb3699d449c6a0868"
+    },
+    "captures/13-unsupported-terminal.png": {
+      "bytes": 79422,
+      "sha256": "74a410309e21fd978899ae0201fb2ac11b89b9882b06c7b12247141a51a9c0d5"
+    },
+    "captures/14-export-ready.png": {
+      "bytes": 54971,
+      "sha256": "f28090b47fa662d1ee6ba74a344e263189f6d9c74f845cb30bc9d0868b825032"
+    },
+    "captures/18-phone-fullsize.png": {
+      "bytes": 38015,
+      "sha256": "56e6134d5ccce86510c1263a241bf486de0857cb11566865e7295b1ad1cd5d26"
+    },
+    "captures/19-desktop-current.png": {
+      "bytes": 86345,
+      "sha256": "f8e150cfe0b62e2b1c61352f91eef7d614206c1a42439f0c622c7402c47afcdb"
+    },
+    "captures/verifier-result.png": {
+      "bytes": 59197,
+      "sha256": "8511b2ef7bde122dc3280f31088efb1e8d41b1f3f2752175113fa3a28d11f3e5"
+    },
+    "chapters.json": {
+      "bytes": 4045,
+      "sha256": "e354caef4d3e6f0881a5f3fc4bfc5a6af9cf7a50bb7341fca9c6832e6d623986"
+    },
+    "hyunoptic-current-demo.en.srt": {
+      "bytes": 3450,
+      "sha256": "2f5d18ff3e09065afa42541d332ee44ad14d6ee2b2bbe35a30a1cd4b06ff0c23"
+    },
+    "hyunoptic-current-demo.mp4": {
+      "bytes": 4331486,
+      "sha256": "92d50968bbd21119d08243130d3a5e00cd1d47f266373adf4ab742bc90e71010"
+    },
+    "synthetic-review-evidence.zip": {
+      "bytes": 5304,
+      "sha256": "0461aa10b61efd421022f63ab51b7379df79ee82230b5b05c97122c3fd947af2"
+    },
+    "thumbnail.png": {
+      "bytes": 82561,
+      "sha256": "a35c4e84cf9d01dacc47a4a354682df4476fc201f509b93744889b85f633de11"
+    },
+    "timeline.json": {
+      "bytes": 13592,
+      "sha256": "3a9fe50cd09d37ceccb0efac337a575534b6fe1ca6b0d8403c045852ba5c36e6"
+    },
+    "transcript.md": {
+      "bytes": 2979,
+      "sha256": "4d1e200b8d47cb05f7792fc168eb211d186e9d6e35e4772371a30f9a26a1a1bc"
+    },
+    "validation.json": {
+      "bytes": 830,
+      "sha256": "9a93e3ee03626aa025e87cdb83539a7d41f89564279f9ffa61aea961b15ea0a7"
+    },
+    "workflow-receipt.json": {
+      "bytes": 608,
+      "sha256": "387914dfa3a6fd096c712d43862844c742576db1507b206a72fe4ec8d0d0d1c3"
+    }
+  }
+}

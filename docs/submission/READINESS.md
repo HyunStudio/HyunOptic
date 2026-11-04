@@ -1,9 +1,9 @@
-# Readiness decision — 2026-11-04
+# Readiness decision — 2026-11-05
 
-**Current software verification:** [Usability and provenance audit](../experiments/2026-11-04-review-usability/README.md) — final installed-wheel CPU suite: **442 passed**, plus 80 final targeted checks in development. Safe deletion consent, terminal input handling, case navigation, source provenance and recorded-metadata listing are implemented. **Current browser/responsive/zoom/keyboard acceptance and refreshed video remain incomplete after browser control stopped.** Automated checks do not replace those items.
+**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. Native 200% zoom, new YouTube publication confirmation, personal final review and actual Devpost entry remain pending.
 
 
-**Research-review software is implemented and software-tested. Current-version visual acceptance and media refresh remain open; the existing public demonstration identifies its older source. Actual Devpost submission and personal review remain pending.** The product provides traceable research review; it does not establish clinical utility, ranking benefit or a predicted contest score.
+**Research-review software, actual import-to-download acceptance and refreshed local media are verified. Native 200% zoom and refreshed public hosting remain open; actual Devpost submission and personal review remain pending.** The product provides traceable research review; it does not establish clinical utility, ranking benefit or a predicted contest score.
 
 The [official rules](https://global-ai-builders-challenge.devpost.com/rules), checked November 4, start the event **November 21, 2026, 00:00 PST (17:00 KST)** and close submissions **November 28, 15:00 PST (November 29, 08:00 KST)**. Existing projects require accurate disclosure of their genuine event-period additions. All current work is pre-event.
 
