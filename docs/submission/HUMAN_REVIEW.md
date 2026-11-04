@@ -1,12 +1,24 @@
 # Personal final review worksheet
 
-**Uncompleted worksheet.** This is a concrete review aid, not a declaration that HyunGi Hwang has already performed these checks. Automated tests and AI-agent review cannot substitute for person-specific checking evidence under the rubric.
+**Uncompleted worksheet.** It helps HyunGi Hwang record actual person-specific checking; it does not claim that checking has happened. AI-agent review and automated tests cannot establish the rubric's A4 human action or decision.
 
-| Personal check | Evidence to inspect | Record only the action actually taken |
+A4 is a quality-scoring checkpoint, not an additional eligibility requirement. A blank worksheet does not block technical readiness; it means no completed human-checking evidence is claimed for that checkpoint.
+
+Choose a concrete AI-assisted contribution below, inspect the evidence and record the actual finding plus a supported decision to keep, change or reject it. One specific, truthful check is more useful than a blanket approval. Also inspect the final entry materials before submission.
+
+| Personal check | Evidence to inspect | Record the actual action and decision |
 | --- | --- | --- |
-| AI output and limitations | Play the model-overlay chapters in the [video](media/hyunoptic-demo.mp4). Both models produce measurements while boundaries differ. Read the synthetic/edited/AI-narration disclosure. | Observed issue or uncertainty; wording retained/changed and why. |
-| AI-assisted code correction | Inspect `views/model_review_queue.py` at the final commit and the `tests/test_submission_review_ui.py` path-replacement regressions. Preview decoding should use the same verified byte snapshots. | Specific code/test inspected; any correction requested or acceptance decision actually made. |
-| Claims and study denominators | Read [execution audit](../experiments/2026-11-04-submission-readiness/README.md) and [reader/review results](../experiments/2026-11-04-reader-review-validation/README.md). Distinguish 100 repeated synthetic cases from 98 real-data eyes/49 patients and software tests from clinical evidence. | Any numerical or scope correction; what was compared. |
-| Frozen entry | Read [project description](DEVPOST_DRAFT.md); play supported-host video signed out; check the source commit, contributor information and rights. | Date, actual commit/video URL and final decision. |
+| AI-assisted code correction | Final `views/model_review_queue.py` and `tests/test_submission_review_ui.py` path-replacement regressions: previews must decode the same verified byte snapshot. | Exact commit/test/code inspected; expected versus observed; keep/change/reject and why. |
+| AI-assisted domain wording | Final Review Queue guidance and [full real-data report](../experiments/2026-11-04-full-real-validation/README.md). RIM-ONE DL is color fundus yet cropped-ROI transfer failed; geometry does not certify accuracy. | Actual screen/text inspected; whether it communicates the evidence; any correction or retention decision. |
+| AI-assisted claims and counts | [Description](DEVPOST_DRAFT.md), [workflow audit](../experiments/2026-11-04-submission-readiness/README.md), [full report](../experiments/2026-11-04-full-real-validation/README.md). Distinguish 3,916 calls, 608 source records, 98 PAPILA eyes/49 patients and 100 repeated synthetic cases. | Particular claim compared with its source, discrepancy or agreement, and resulting decision. |
+| Final entry and video | Read [fields](SUBMISSION.md); play the [public video](https://youtu.be/xbs47mX0d5g), including synthetic/edited/AI-narration and earlier-version disclosures. Check final source commit, contributor details and rights. | Date, actual source/video inspected, observed issue or uncertainty, and final decision. |
 
-Do not copy a blanket manuscript approval from another project into this record. A useful entry names the exact result, diff or video segment, explains the decision and records any change. Leave unchecked items pending; do not backdate them or invent a signature.
+## Record after the check
+
+- Person and date: **pending**
+- Specific AI contribution and source/version inspected: **pending**
+- Check performed and expected result: **pending**
+- Observed finding: **pending**
+- Keep/change/reject decision, reason and any resulting change: **pending**
+
+Do not invent a signature, backdate a check or copy approval from another project. The final Devpost embed, eligibility/roster confirmation and actual submission remain separate [checklist](CHECKLIST.md) actions.

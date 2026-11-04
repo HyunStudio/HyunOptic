@@ -1,0 +1,25 @@
+{
+  "schema": "hyunoptic-public-experiment-evidence/v1",
+  "files": {
+    "browser_receipt.json": {
+      "bytes": 768,
+      "sha256": "c9bc80a33d45ab3fb6ad6a5135c06eb5c7850752eab4709c0dbbc71c61888660"
+    },
+    "domain-limits.jpg": {
+      "bytes": 127789,
+      "sha256": "2abb0f947ff9903bf26cd267bbfccbab071f009c13af34eb7c080723fbd2acfb"
+    },
+    "final-review.jpg": {
+      "bytes": 100814,
+      "sha256": "57279e6cc62a13747c444791b1d82b8df786ad872c6986d329d7269685e01d6c"
+    },
+    "independent_review.json": {
+      "bytes": 1749,
+      "sha256": "8bcb861b933749ab4a58d22d790b9bf1c71aad19fb2f7458d8f210505bd1b0b3"
+    },
+    "software_verification.json": {
+      "bytes": 1026,
+      "sha256": "8d162e5daf310aed64c194e2c41bfdeb62b743ddf2fb63d6fdb0d3b72556fc67"
+    }
+  }
+}

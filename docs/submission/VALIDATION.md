@@ -61,3 +61,10 @@ The [expanded real-data audit](../experiments/2026-11-04-full-real-validation/RE
 Three evaluator defect classes were corrected after eight observed failing regression cases: one reader prevented/overwrote independent predictions and other readers, missing references removed original images, and individual ZIP CRC failures aborted evaluation. The final full suite passed **388 tests, two existing CUDA warnings, 646.75 seconds**. CPU PyTorch CI includes the new regression cases. Historical evidence and bundles remain unchanged.
 
 Both models failed severely on the new dataset-supplied optic-nerve-head crops (all-image Cup Dice 0.0018 and 0.0065; invalid geometry 160/174 and 132/174). Conditional vCDR means use 14 versus 42 images; only two are commonly measurable. The technical event was saturated across all 174, so queue detection equalled random expectation. The linked report distinguishes complete artifact checks, a 30-image Chaksu pixel QA subset, full aggregate checks, reused data and post hoc analyses. This is not clinical sufficiency, a new diagnostic-performance result, or reproduction of the 100 papers.
+
+
+## Final submission polish — 2026-11-04
+
+The [final source/browser audit](../experiments/2026-11-04-final-submission-polish/README.md) adds visible ROI limits even for color-fundus inputs and labels measurable geometry as accuracy-unverified. Raw statuses, model/queue logic, stored records and policy are unchanged. Two observed failing UI regressions passed after correction; the targeted suite passed 11 tests in 16.27 seconds. The final full suite passed **390 tests, two existing CUDA warnings, 225.52 seconds**.
+
+A new API-preseeded isolated synthetic session was exercised in the actual browser: four images, eight actual CPU-model predictions, one retained unreadable input, held/uncertain saved across full reload, and a browser-downloaded ZIP independently verified with six payloads. Creation was not repeated through browser uploads in this check. Screenshots and receipt disclose synthetic data and the earlier source-version video remains unchanged. No new medical performance, human approval or Devpost submission is claimed.

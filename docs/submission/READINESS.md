@@ -1,24 +1,26 @@
 # Readiness decision — 2026-11-04
 
-**Software and reviewable submission materials prepared; actual Devpost submission remains pending.** The local workflow is usable with public-source synthetic models and has passed the expanded verification. The final narrated MP4, subtitle/transcript, thumbnail, authentic source captures and copy-ready submission fields are included in the public package. A contest result, rubric score or clinical utility is not established.
+**Local software, public demonstration and reviewable entry materials are prepared. Actual Devpost submission and personal final review remain pending.** The product provides traceable research review; it does not establish clinical utility, ranking benefit or a predicted contest score.
 
-The [official rules](https://global-ai-builders-challenge.devpost.com/rules), checked November 4, specify a start of **November 21, 2026, 00:00 PST (17:00 KST)** and a deadline of **November 28, 15:00 PST (November 29, 08:00 KST)**. Existing projects are permitted with accurate development disclosures. November 3–4 work belongs to the pre-event baseline. At the actual start, preserve the then-current commit and disclose only genuine event-period additions.
+The [official rules](https://global-ai-builders-challenge.devpost.com/rules), checked November 4, start the event **November 21, 2026, 00:00 PST (17:00 KST)** and close submissions **November 28, 15:00 PST (November 29, 08:00 KST)**. Existing projects require accurate disclosure of their genuine event-period additions. All current work is pre-event.
 
-## Completed and demonstrated
+## Completed evidence and artifacts
 
-- Public-source command creates synthetic images, two actual CPU-trained bundles and an isolated workspace. No private research weights or API key is necessary.
-- Actual browser create → predict → compare → hold → refresh → verified ZIP download completed. Four synthetic images produced eight predictions; an unreadable input remained in the denominator.
-- Ordinary/repeat runs, a controlled interrupted 100-case repeated-image run, and a changed-bundle failure retained the expected evidence and decisions.
-- 326 local tests passed, including regressions observed failing before fixes. A local clone used isolated source with installed dependencies reused; no fresh-install claim is made.
-- A final **217.507-second (3:38) narrated/captioned video**, full transcript, SRT, thumbnail, capture provenance and downloadable synthetic evidence ZIP are included. Full video/audio decode and caption bounds passed. Timing is edited, imagery/models synthetic and narration computer-generated; it is not a continuous screen recording.
-- Copy-ready [submission fields](SUBMISSION.md), supported-host publication text and a concrete personal-review worksheet are prepared. Media payloads are SHA256/byte checked in CI.
+- Public-source preparation creates synthetic images, two actually CPU-trained bundles and an isolated workspace without private weights or API keys. [Access and setup](MODEL_AND_DATA_ACCESS.md).
+- Actual browser create → predict → compare → hold → reload → separately verified ZIP download completed. Ordinary/repeat, controlled interrupted 100-case repeated-image processing and changed-bundle checks retained the expected records. The [historical browser audit](../experiments/2026-11-04-submission-readiness/README.md) records 326 tests; it is not the latest suite total or a fresh Windows install.
+- The [later integrated real-data audit](../experiments/2026-11-04-full-real-validation/README.md) passed 388 tests, including eight regressions for three evaluator defects. Its 3,916 calls cover 608 source image records, not independent patients. RIM-ONE DL exposed severe cropped-ROI failure and no queue benefit; all evidence is retained. See [validation](VALIDATION.md) for final-source verification and CI.
+- Final-source verification passed **390 tests**, with two existing CUDA warnings, in 225.52 seconds. Two new domain-guidance regressions were observed failing before correction; targeted verification passed 11 tests. The [fresh browser smoke](../experiments/2026-11-04-final-submission-polish/README.md) used an API-preseeded five-input session and actual synthetic CPU bundles: eight predictions, four completed inputs and one unreadable input, held/uncertain preserved after full reload, and a separately verified six-payload browser ZIP download. Persistent color-fundus/cropped-ROI limits and accuracy-unverified measurement labels were observed. It did not repeat browser session creation or medical-performance evaluation.
+- A public **217.507-second (3:38) narrated/captioned video**, transcript, SRT, thumbnail and authentic source captures are available. [YouTube publication](https://youtu.be/xbs47mX0d5g) and [verification record](VIDEO_PUBLICATION.md). The identified earlier app version, synthetic data/models, edited timing and AI narration are disclosed. Media bytes remain frozen and checked.
+- [Copy-ready fields](SUBMISSION.md), [description](DEVPOST_DRAFT.md), [all-checkpoint rubric evidence](RUBRIC_EVIDENCE.md), [personal worksheet](HUMAN_REVIEW.md) and [checklist](CHECKLIST.md) are prepared.
 
-See [execution evidence and precise review scope](../experiments/2026-11-04-submission-readiness/README.md), [description draft](DEVPOST_DRAFT.md), [rubric map](RUBRIC_EVIDENCE.md), and [checklist](CHECKLIST.md). Remote CI is recorded separately on the PR; do not substitute an older passing run for the final submitted commit.
+No hosted application or outside tester is required for routine judging under the [current rubric](https://global-ai-builders-challenge.devpost.com/resources). They are not outstanding artifact obligations. Judges normally use the video and description; detailed evidence supports those materials.
 
-## Remaining before final submission
+## Actual remaining submission steps
 
-1. **Event boundary:** preserve the actual start version and update the contribution disclosure with real event-period work. All current improvements are pre-event.
-2. **Final entry video field:** supported-host publication is complete at https://youtu.be/xbs47mX0d5g. Public visibility, hosted playback and anonymous oEmbed availability passed; see the [publication record](VIDEO_PUBLICATION.md). Paste the actual URL into Devpost and check the final entry's embed when submitting. No actual Devpost-form check is claimed yet.
-3. **Human check and submission details:** HyunGi Hwang must personally inspect the frozen diff, results, AI decisions and video; record the specific finding/decision actually made. AI-agent review and passing tests alone do not satisfy the rubric's human-checking checkpoint. Confirm roster, eligibility, permissions and final repository/video URLs before the final submission.
+The A4 personal-check record supports quality scoring and is not a separate eligibility gate. Engineering preparation can be complete while that record remains blank; no completed human review is claimed.
 
-Public YouTube upload is complete. No Devpost submission or personal final approval is claimed. Integration and exact merged source/CI state are recorded by the repository and PR. The preparation tag preserves the demonstrated package; preserve the then-current version again at event start.
+1. **At the event start:** preserve the then-current commit/inventory and record genuine subsequent work in [development disclosure](EVENT_CHANGES.md). Current preparation cannot be relabeled event work.
+2. **Personal review:** HyunGi Hwang inspects a specific AI contribution and records the observed result and keep/change/reject decision; checks the final description/video and confirms roster, eligibility and permissions. [Worksheet](HUMAN_REVIEW.md). Automated review cannot invent this person-specific evidence.
+3. **Actual entry:** select the final immutable GitHub version, paste the public video URL and complete roster/disclosures into Devpost, check its actual embed/links and submit before the deadline. Public upload and anonymous oEmbed verification are already complete; no Devpost-form check or submission is claimed.
+
+Remote CI must match the final published source. The preserved media version is historical evidence; it does not claim to depict later evaluator fixes or domain-guidance changes.

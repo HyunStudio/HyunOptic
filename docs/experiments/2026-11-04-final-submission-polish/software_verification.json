@@ -1,0 +1,24 @@
+{
+  "suite": {
+    "passed": 390,
+    "warnings": 2,
+    "seconds": 225.52,
+    "log_sha256": "8aed7f82469351cae1773a35eb72268717cd666f7693944161c065780bd3c0cf"
+  },
+  "new_regressions": 2,
+  "targeted_suite": {
+    "passed": 11,
+    "seconds": 16.27
+  },
+  "base_commit": "8badf9a78934a5949c3427be5ca9ea8a7c3cceed",
+  "tested_working_source_sha256": {
+    "views/model_review_queue.py": "5dc2c5a621208bd3cb53253ee5bd9d2a9353f8cde63504814fe47a7a6606aefb",
+    "tests/test_submission_domain_guidance.py": "d600394db6d2f4aef53153a58853696787b3b2d11dd2441d2dc5f339d5f13f02"
+  },
+  "inference_or_clinical_accuracy_claim": false,
+  "normalized_source_sha256": {
+    "views/model_review_queue.py": "23d9927b76239f21bf2eb8b71dc1a620d8ba787a218a443b945fa441e2326bdf",
+    "tests/test_submission_domain_guidance.py": "d600394db6d2f4aef53153a58853696787b3b2d11dd2441d2dc5f339d5f13f02"
+  },
+  "source_hash_scope": "Tested Windows working bytes; normalized hashes identify the same source with LF line endings."
+}

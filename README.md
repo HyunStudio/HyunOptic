@@ -2,6 +2,8 @@
 
 **Quantitative Optic Nerve Measurement & Reliability Validation**
 
+**Contest package prepared (2026-11-04):** [copy-ready materials](docs/submission/SUBMISSION.md) and [final source/browser audit](docs/experiments/2026-11-04-final-submission-polish/README.md). Visible ROI/domain limits and accuracy-unverified geometry labels align the app with the real-data findings. The final suite passed 390 tests; an actual synthetic browser recheck preserved held decisions and verified the downloaded evidence ZIP. [Readiness](docs/submission/READINESS.md) distinguishes completed preparation from genuine future event work and actual entry submission.
+
 **Latest real-data audit (2026-11-04):** [Full holdout robustness, five external readers and new hospital-Test data](docs/experiments/2026-11-04-full-real-validation/README.md). Two frozen models generated 3,916 inference calls across 98 PAPILA eyes from 49 patients, 336 Chákṣu images and 174 new RIM-ONE DL images, including a complete artifact-checking repeat. Both models failed severely on the new cropped-ROI domain. Three evaluator defect classes were corrected; 388 integrated tests passed. Patient grouping, data reuse, reference failures and conditional metric denominators remain explicit. Frozen bundles and the default training policy are unchanged.
 
 The preceding [100-paper screening and four-patient corruption pilot](docs/experiments/2026-11-04-literature-100/README.md) remains available with its original scope. Neither audit reproduces 100 author benchmarks or establishes clinical validity.
