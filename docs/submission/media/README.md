@@ -1,5 +1,7 @@
 # Prepared demonstration media
 
+[Public YouTube demonstration](https://youtu.be/xbs47mX0d5g) — published on the author-selected Hyun_Studio channel, with English SRT and the prepared thumbnail. [Publication verification](../VIDEO_PUBLICATION.md).
+
 [Play/download MP4](hyunoptic-demo.mp4) · [SRT](hyunoptic-demo.en.srt) · [Transcript](transcript.md) · [Thumbnail](thumbnail.jpg)
 
 Duration 217.507 seconds (3:38); H.264/AAC, 1280×960, 15 fps. Full audio/video decode and caption bounds passed. [Validation](validation.json), [timeline and capture provenance](timeline.json), [SHA256/byte manifest](manifest.json).
@@ -23,4 +25,4 @@ python docs/submission/media/build_video.py --output reports/rebuilt_media --wor
 
 New output/work directories are required. Source captures are preserved under `captures/`; regenerated narration/encoding may vary by operating-system voice and FFmpeg versions. This command regenerates media from authentic saved captures; it does not pretend to rerun the browser or the model experiment.
 
-The public MP4 is ready for review/upload. Devpost's accepted video-host URL is a separate publication step; see [upload instructions](../VIDEO_UPLOAD.md).
+The public MP4 and supported-host YouTube publication are complete. Use https://youtu.be/xbs47mX0d5g in the Devpost video field and check the actual entry before submission; personal final review remains pending.

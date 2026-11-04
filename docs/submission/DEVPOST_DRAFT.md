@@ -36,5 +36,5 @@ All work through November 4 is existing/pre-event work, including this audit. Pr
 
 - Source: https://github.com/HyunStudio/HyunOptic — use the final verified commit/branch link.
 - Setup: [submission README](README.md).
-- Video: [prepared narrated/captioned 3:38 MP4](media/hyunoptic-demo.mp4), with actual application captures, edited timing, synthetic inputs/models and disclosed AI narration. A submitter-selected supported-host URL must still be entered in Devpost; the GitHub MP4 is not that field's supported URL.
+- Video: https://youtu.be/xbs47mX0d5g — publicly published narrated/captioned demonstration with actual application captures, edited timing, synthetic inputs/models and disclosed AI narration. [Original MP4](media/hyunoptic-demo.mp4) and [publication verification](VIDEO_PUBLICATION.md) remain available.
 - Team/eligibility and personal final check: **pending submitter confirmation**.

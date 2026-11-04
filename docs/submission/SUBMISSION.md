@@ -14,6 +14,7 @@ This is the prepared public package for personal final review. It is not a claim
 | Reproducible demo | `python scripts/prepare_submission_demo.py --output demo_data/submission --launch` after installing `.[ui,dev,ml]` |
 | Description | [Complete project description](DEVPOST_DRAFT.md) — paste the body after personal review |
 | MP4 | [Narrated demonstration](media/hyunoptic-demo.mp4) — actual app captures, edited timing, synthetic inputs/models and AI narration |
+| Devpost video URL | https://youtu.be/xbs47mX0d5g — public YouTube upload on Hyun_Studio, 2026-11-04 |
 | Captions / transcript | [English SRT](media/hyunoptic-demo.en.srt), [readable transcript](media/transcript.md) |
 | Gallery image | [Actual synthetic model preview](media/thumbnail.jpg) |
 | Model/data access | [Public synthetic preparation and private research-bundle limitations](MODEL_AND_DATA_ACCESS.md) |
@@ -24,14 +25,14 @@ The final repository version should be selected from the merged commit shown in 
 
 ## Video field: important platform distinction
 
-The MP4 is publicly distributed with the source and can be downloaded and reviewed. **It is not a YouTube/Vimeo URL.** Devpost's video field accepts supported video-host links, so upload this prepared MP4 to the submitter's own supported account, enable public playback/embedding, then paste and test that actual URL. See [ready-to-use video title, description and upload steps](VIDEO_UPLOAD.md). [Devpost's official video instructions](https://help.devpost.com/article/85-uploading-a-demo-video), checked 2026-11-04.
+**The supported-host upload is complete:** https://youtu.be/xbs47mX0d5g. Public visibility, hosted playback, English subtitle publication and anonymous oEmbed availability were checked. Use this YouTube URL for the video field; the repository MP4 remains a downloadable original. See [publication record and verification limits](VIDEO_PUBLICATION.md). [Devpost's official video instructions](https://help.devpost.com/article/85-uploading-a-demo-video), checked 2026-11-04.
 
-No video-host upload, account/channel selection, legal attestation or person-specific review is silently inferred from preparing these files. Use the [short personal review worksheet](HUMAN_REVIEW.md) to record what was actually checked.
+The upload was explicitly authorized by the author and performed on the verified logged-in Hyun_Studio channel. It does not constitute a legal attestation, person-specific research review or Devpost submission. Use the [short personal review worksheet](HUMAN_REVIEW.md) to record what was actually checked.
 
 ## Final gate
 
 1. Open the final video and read the description; record actual personal corrections/decisions, if any.
-2. Upload the prepared MP4 to the chosen supported host and verify its signed-out playback/embedding.
+2. Paste the published YouTube URL into Devpost and verify that the final entry embeds the intended video; public hosting and anonymous oEmbed checks are complete.
 3. At the event start, preserve the then-current source version and inventory. Record genuine event-period contributions separately from the November 3–4 baseline.
 4. Recheck roster, provider permissions, event rules and final source/video links before accepting terms or submitting.
 

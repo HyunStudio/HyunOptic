@@ -17,7 +17,8 @@ The software preparation package is not itself a completed Devpost submission.
 - [x] Copy-ready fields, supported-host upload text, precise personal-review worksheet and SHA256 media manifest prepared.
 - [ ] Preserve the actual event-start version and record only genuine event-period changes.
 - [ ] Submitter personally checks the frozen diff, results, disclosures and demonstration.
-- [ ] Personally review the prepared final video; upload it to the chosen supported host and verify public playback/embedding (GitHub MP4 is not the Devpost video-field URL).
+- [x] Upload to the author-selected YouTube account publicly; publish English SRT/thumbnail/description and verify hosted playback plus anonymous oEmbed availability: https://youtu.be/xbs47mX0d5g.
+- [ ] Submitter personally reviews the final hosted video and verifies it in the actual Devpost entry.
 - [ ] Supply the actual public video URL and final GitHub commit/branch in Devpost.
 - [ ] Confirm eligibility, team roster, data/display permissions and current official rules.
 - [ ] Submit before the official deadline; do not mark submission complete beforehand.

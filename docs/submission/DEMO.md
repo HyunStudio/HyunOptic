@@ -1,5 +1,7 @@
 # Three-minute demonstration script
 
+**Public YouTube version:** https://youtu.be/xbs47mX0d5g. Thumbnail, English timed SRT, description and AI-use disclosure are applied. Public hosted playback and anonymous oEmbed availability were checked; see [publication record](VIDEO_PUBLICATION.md). Any earlier references below to pending upload describe the preparation state before this publication.
+
 **Final prepared video:** [217.507-second narrated/captioned MP4](media/hyunoptic-demo.mp4), [SRT](media/hyunoptic-demo.en.srt), [transcript](media/transcript.md), [source captures and timing](media/timeline.json), [validation](media/validation.json). It supersedes the silent local draft below. Twenty-one authentic browser captures show a new session's actual create/process/compare/hold/reload/reopen/export actions; timing is edited and not continuous footage. The final ZIP downloaded during this run independently verified six payloads. Supported-host upload and personal final review remain pending; [publication text and instructions](VIDEO_UPLOAD.md) are ready.
 
 Record the actual final application. Use synthetic images/models unless you have verified public display rights. Label synthetic fixtures and any time-compressed or precomputed steps throughout. A written script is not an uploaded video.

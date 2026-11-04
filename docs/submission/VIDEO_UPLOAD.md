@@ -1,5 +1,7 @@
 # Final video publication
 
+**Published publicly on 2026-11-04:** https://youtu.be/xbs47mX0d5g on Hyun_Studio. The thumbnail, English SRT and disclosure text were applied. [Publication record and observed verification](VIDEO_PUBLICATION.md). The instructions below remain as a reproduction/reference guide rather than an outstanding upload task.
+
 Prepared files:
 
 - [MP4](media/hyunoptic-demo.mp4), H.264/AAC, 1280×960, narrated and captioned.
@@ -34,4 +36,4 @@ Devpost's [official help](https://help.devpost.com/article/85-uploading-a-demo-v
 4. Open the actual share URL signed out, play the full video and confirm readable captions and sound. Check that Devpost accepts and embeds it.
 5. Enter that exact URL in the final submission and record it alongside the submitted source commit. Do not invent a URL or call the GitHub MP4 a hosted-platform upload.
 
-Public GitHub distribution is prepared independently of the submitter-controlled video account. This file records no account login, upload or legal attestation that has not actually occurred.
+Public GitHub distribution and the author-authorized YouTube upload are both complete. No Devpost submission, personal research approval or other legal attestation is implied.
