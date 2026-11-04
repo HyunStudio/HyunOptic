@@ -1,0 +1,19 @@
+{
+  "duration_seconds": 217.507256,
+  "dimensions": [
+    1280,
+    960
+  ],
+  "frames_per_second": 15,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "full_decode_passed": true,
+  "caption_bounds_checked": true,
+  "actual_source_capture_count": 21,
+  "synthetic_narration_voice": "Microsoft Zira Desktop",
+  "continuous_screen_recording": false,
+  "subtitle_timing": "Approximate word-proportional timings; complete chapter text burned in",
+  "source_code_commit": "491d6f39f162ed048c9015cc2ac83f9e636e6999",
+  "reviewed_by_human": false,
+  "patient_data_included": false
+}

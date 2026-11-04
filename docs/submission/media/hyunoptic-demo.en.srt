@@ -1,0 +1,229 @@
+1
+00:00:00,000 --> 00:00:04,445
+HyunOptic is a local research workspace for reviewing
+ophthalmic AI predictions. A
+
+2
+00:00:04,445 --> 00:00:08,889
+model can produce a measurable cup to disc ratio while
+locating the
+
+3
+00:00:08,889 --> 00:00:13,334
+wrong structure. The task here is to inspect that evidence,
+preserve unresolved
+
+4
+00:00:13,334 --> 00:00:15,556
+decisions, and export a traceable record.
+
+5
+00:00:16,556 --> 00:00:20,942
+This demonstration uses only synthetic images and two real CPU
+trained PyTorch
+
+6
+00:00:20,942 --> 00:00:25,327
+models. Seed forty three is the primary model, and seed forty
+two
+
+7
+00:00:25,327 --> 00:00:29,713
+is the comparison. The public preparation command creates both
+models and an
+
+8
+00:00:29,713 --> 00:00:33,368
+isolated workspace without private research weights or an API
+key.
+
+9
+00:00:34,368 --> 00:00:39,165
+I select four synthetic images and one intentionally
+unreadable input, then confirm
+
+10
+00:00:39,165 --> 00:00:43,962
+local retention. The session copies images to this computer.
+The application allows
+
+11
+00:00:43,962 --> 00:00:48,759
+thirty megabytes per file. The unreadable case stays visible
+instead of disappearing
+
+12
+00:00:48,759 --> 00:00:49,959
+from the total.
+
+13
+00:00:50,959 --> 00:00:55,863
+Clicking Process next images runs actual image only inference
+with verified model
+
+14
+00:00:55,863 --> 00:01:00,768
+bundles. The completed session contains four processed images,
+eight model predictions, and
+
+15
+00:01:00,768 --> 00:01:05,672
+one input error. Processing is synchronous and bounded. This
+edited sequence is
+
+16
+00:01:05,672 --> 00:01:08,125
+not a real time speed benchmark.
+
+17
+00:01:09,125 --> 00:01:13,702
+The queue orders execution failures, invalid measurements, and
+model disagreement for inspection.
+
+18
+00:01:13,702 --> 00:01:18,279
+Opening a completed case shows the complete source image. Full
+context matters
+
+19
+00:01:18,279 --> 00:01:22,856
+because a plausible measurement alone does not establish that
+the model found
+
+20
+00:01:22,856 --> 00:01:24,001
+the correct anatomy.
+
+21
+00:01:25,001 --> 00:01:29,763
+These are the two actual model overlays on the same synthetic
+image.
+
+22
+00:01:29,763 --> 00:01:34,525
+Both predictions produce measurements, but the boundaries
+differ. Disagreement is a descriptive
+
+23
+00:01:34,525 --> 00:01:39,288
+ordering signal, not calibrated confidence or diagnostic risk.
+Both models can also
+
+24
+00:01:39,288 --> 00:01:41,272
+agree on a wrong structure.
+
+25
+00:01:42,272 --> 00:01:47,147
+The review state can remain unreviewed, become reviewed, or be
+held. Here
+
+26
+00:01:47,147 --> 00:01:52,022
+I select held and the reason uncertain, then save. A held
+decision
+
+27
+00:01:52,022 --> 00:01:56,897
+requires a reason. The software record does not certify
+anatomical correctness, clinical
+
+28
+00:01:56,897 --> 00:01:58,928
+approval, or independent human review.
+
+29
+00:01:59,928 --> 00:02:04,684
+After reloading the browser, I reopen the stored session and
+the same
+
+30
+00:02:04,684 --> 00:02:09,440
+case. Held and uncertain remain recorded. Revision checks
+prevent a stale tab
+
+31
+00:02:09,440 --> 00:02:14,196
+from silently replacing a newer decision. The application also
+supports recovery of
+
+32
+00:02:14,196 --> 00:02:16,574
+unfinished processing while retaining completed results.
+
+33
+00:02:17,574 --> 00:02:22,588
+I build the evidence ZIP and download the verified package. A
+separate
+
+34
+00:02:22,588 --> 00:02:27,603
+command line check accepted all six payloads. Default exports
+exclude original images,
+
+35
+00:02:27,603 --> 00:02:32,617
+masks, filenames, local paths and private notes. Hashes do not
+guarantee anonymity,
+
+36
+00:02:32,617 --> 00:02:36,795
+and the local database is not encrypted by the application.
+
+37
+00:02:37,795 --> 00:02:42,522
+Separate execution checks matched repeated prediction digests
+and preserved two hundred predictions
+
+38
+00:02:42,522 --> 00:02:47,249
+after a controlled interruption of one hundred repeated
+synthetic cases. A changed
+
+39
+00:02:47,249 --> 00:02:51,976
+copied model bundle failed without erasing prior decisions.
+Repeated cases are not
+
+40
+00:02:51,976 --> 00:02:55,916
+independent patients, and this was not an operating system
+crash.
+
+41
+00:02:56,916 --> 00:03:02,253
+The local suite passed three hundred twenty six tests. Linux,
+Windows, and
+
+42
+00:03:02,253 --> 00:03:07,590
+actual PyTorch CPU training checks also passed in continuous
+integration. Earlier real
+
+43
+00:03:07,590 --> 00:03:12,928
+data transfer failures motivate this workflow. Synthetic
+execution does not establish clinical
+
+44
+00:03:12,928 --> 00:03:16,041
+accuracy, ranking efficiency, or measured time savings.
+
+45
+00:03:17,041 --> 00:03:22,232
+The repository includes source, setup instructions, aggregate
+research results and AI disclosures.
+
+46
+00:03:22,232 --> 00:03:27,423
+All work shown was prepared before the hackathon. This is an
+AI
+
+47
+00:03:27,423 --> 00:03:32,614
+operated demonstration with synthetic narration and edited
+screenshot timing. HyunOptic remains research
+
+48
+00:03:32,614 --> 00:03:36,507
+only and must not guide diagnosis or patient care.

@@ -12,9 +12,12 @@ The software preparation package is not itself a completed Devpost submission.
 - [x] November 4 actual browser audit, repeated prediction digests and changed-bundle failure.
 - [x] Captioned 180-second local draft from actual app captures, labeled synthetic and edited stills.
 - [x] Submission description and rubric evidence map prepared with limitations.
+- [x] Final 217.507-second narrated/captioned MP4, SRT, transcript, thumbnail and original synthetic captures included in the public package.
+- [x] Final browser run repeated creation, prediction, hold, full browser reload/reopen and independently verified ZIP download.
+- [x] Copy-ready fields, supported-host upload text, precise personal-review worksheet and SHA256 media manifest prepared.
 - [ ] Preserve the actual event-start version and record only genuine event-period changes.
 - [ ] Submitter personally checks the frozen diff, results, disclosures and demonstration.
-- [ ] Select/record and personally review the final actual-use 2–4 minute demo; publish it (local edited-still draft is not a public URL).
+- [ ] Personally review the prepared final video; upload it to the chosen supported host and verify public playback/embedding (GitHub MP4 is not the Devpost video-field URL).
 - [ ] Supply the actual public video URL and final GitHub commit/branch in Devpost.
 - [ ] Confirm eligibility, team roster, data/display permissions and current official rules.
 - [ ] Submit before the official deadline; do not mark submission complete beforehand.

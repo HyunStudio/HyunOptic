@@ -2,6 +2,8 @@
 
 Research software for inspecting optic disc/cup predictions, recording review decisions and exporting traceable evidence. A measurable result is not necessarily an anatomically correct result. This project is not a diagnostic or patient-care tool.
 
+**Prepared submission materials:** [copy-ready fields](SUBMISSION.md), [narrated 3:38 MP4](media/hyunoptic-demo.mp4), [captions](media/hyunoptic-demo.en.srt), [transcript](media/transcript.md), [supported-host upload instructions](VIDEO_UPLOAD.md), and [specific personal review worksheet](HUMAN_REVIEW.md). The MP4 is public repository material; it is not yet a YouTube/Vimeo upload or a completed Devpost entry.
+
 ## Run the submitted code
 
 Python 3.10+; Python 3.12 recommended. No hosted account or API key is needed. Downloading Python dependencies requires internet; inference and review data remain on the local computer.

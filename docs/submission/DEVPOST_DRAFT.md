@@ -1,6 +1,6 @@
 # HyunOptic — traceable review of ophthalmic AI predictions
 
-**Draft for personal review; not a submitted entry.** Replace the final version/video fields with verified public URLs at submission. Proposed individual roster: HyunGi Hwang; submitter must confirm.
+**Prepared description for personal final review; not a submitted entry.** Paste the body after checking it against the final frozen version. Contributor information supplied by the author: HyunGi Hwang, independent researcher and M.S. student in Computer Science at the University of Colorado Boulder. [Copy-ready fields and prepared video](SUBMISSION.md).
 
 ## Inspiration and problem
 
@@ -36,5 +36,5 @@ All work through November 4 is existing/pre-event work, including this audit. Pr
 
 - Source: https://github.com/HyunStudio/HyunOptic — use the final verified commit/branch link.
 - Setup: [submission README](README.md).
-- Video: **pending public URL**; a 180-second captioned edited-still local draft exists, clearly labeled synthetic.
+- Video: [prepared narrated/captioned 3:38 MP4](media/hyunoptic-demo.mp4), with actual application captures, edited timing, synthetic inputs/models and disclosed AI narration. A submitter-selected supported-host URL must still be entered in Devpost; the GitHub MP4 is not that field's supported URL.
 - Team/eligibility and personal final check: **pending submitter confirmation**.
