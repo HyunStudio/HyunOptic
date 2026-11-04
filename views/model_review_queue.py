@@ -12,6 +12,7 @@ from PIL import Image, ImageOps
 from hyunoptic.review.store import ReviewStore
 from hyunoptic.review.runner import run_next
 from hyunoptic.review.validation import order_cases
+from hyunoptic.review.inputs import MAX_FILE_BYTES
 from hyunoptic.review.export import export_session, verify_export
 from hyunoptic.seg.bundle import BundleError, file_sha256, find_bundles, verify_bundle
 from hyunoptic.ui.components import badge, note, page_title
@@ -45,11 +46,14 @@ with st.expander('Create a review session', expanded=not store.sessions()):
     else:
         with st.form('rq_create'):
             options = list(verified)
-            primary = st.selectbox('Primary model', options, format_func=lambda x: verified[x].run_id)
-            comparison = st.selectbox('Comparison model', options, index=1, format_func=lambda x: verified[x].run_id)
+            label = lambda x: f'{Path(x).name} · {verified[x].run_id}'
+            primary = st.selectbox('Primary model', options, format_func=label)
+            comparison = st.selectbox('Comparison model', options, index=1, format_func=label)
             modality = st.selectbox('Input modality', ['color_fundus', 'slo', 'oct', 'unknown'])
             uploads = st.file_uploader('Local images (PNG, JPEG, single-frame TIFF)',
-                                      type=['png', 'jpg', 'jpeg', 'tif', 'tiff'], accept_multiple_files=True)
+                                      type=['png', 'jpg', 'jpeg', 'tif', 'tiff'], accept_multiple_files=True,
+                                      max_upload_size=MAX_FILE_BYTES // (1024 * 1024))
+            st.caption('Up to 500 images per session, 30 MB per file, 2 GB total; single-frame images only.')
             consent = st.checkbox('Keep local input copies for resuming this research session')
             create = st.form_submit_button('Create session', type='primary')
         if create:

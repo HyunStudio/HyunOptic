@@ -1,3 +1,5 @@
+import pytest
+
 from test_seg_contract import _page, _text
 
 
@@ -8,6 +10,24 @@ def test_queue_empty_state_is_honest_and_local(tmp_path, monkeypatch):
     assert 'No review sessions' in text
     assert 'two verified' in text.lower()
     assert 'Research' in text
+
+
+@pytest.mark.parametrize('check',['upload_limit','model_names'])
+def test_creation_form_exposes_model_names_and_actual_upload_limit(tmp_path,monkeypatch,check):
+    from pathlib import Path
+    from types import SimpleNamespace
+    import hyunoptic.seg.bundle as bundles
+    folders=[Path('synthetic_42'),Path('synthetic_43')]
+    # Bundle verification is tested separately; this checks the real rendered form.
+    monkeypatch.setattr(bundles,'find_bundles',lambda _:folders)
+    monkeypatch.setattr(bundles,'verify_bundle',lambda p:SimpleNamespace(run_id='run-'+p.name[-2:]))
+    app=_page(monkeypatch,tmp_path,'model_review_queue')
+    assert not app.exception
+    if check=='upload_limit':
+        assert app.get('file_uploader')[0].proto.max_upload_size_mb==30
+    else:
+        primary=next(x for x in app.selectbox if x.label=='Primary model')
+        assert 'synthetic_42' in primary.options[0] and 'run-42' in primary.options[0]
 
 
 def test_priority_ties_follow_input_order_not_random_case_uuid(tmp_path, monkeypatch):
