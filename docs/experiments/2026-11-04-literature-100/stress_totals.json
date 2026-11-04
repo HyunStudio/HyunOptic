@@ -1,0 +1,14 @@
+[
+  {
+    "model_index": 0,
+    "predictions": 400,
+    "geometry_failures": 99,
+    "measurable": 301
+  },
+  {
+    "model_index": 1,
+    "predictions": 400,
+    "geometry_failures": 70,
+    "measurable": 330
+  }
+]

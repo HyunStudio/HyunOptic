@@ -1,0 +1,109 @@
+{
+  "search_date": "2026-11-04",
+  "logs": [
+    {
+      "category": "optic_segmentation",
+      "query": "TITLE_ABS:(\"optic disc\" AND (\"optic cup\" OR glaucoma) AND segmentation) FIRST_PDATE:[2015-01-01 TO 2026-11-04]",
+      "error": "503 Server Error:  for url: https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22optic+disc%22+AND+%28%22optic+cup%22+OR+glaucoma%29+AND+segmentation%29+FIRST_PDATE%3A%5B2015-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core&sort=RELEVANCE"
+    },
+    {
+      "category": "domain_robustness",
+      "query": "TITLE_ABS:((\"domain adaptation\" OR \"domain generalization\" OR \"domain shift\") AND (\"medical image segmentation\" OR \"optic disc\" OR \"fundus\")) FIRST_PDATE:[2018-01-01 TO 2026-11-04]",
+      "error": "503 Server Error:  for url: https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28%22domain+adaptation%22+OR+%22domain+generalization%22+OR+%22domain+shift%22%29+AND+%28%22medical+image+segmentation%22+OR+%22optic+disc%22+OR+%22fundus%22%29%29+FIRST_PDATE%3A%5B2018-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core&sort=RELEVANCE"
+    },
+    {
+      "category": "annotation_readers",
+      "query": "TITLE_ABS:((\"multiple annotators\" OR \"multi-rater\" OR \"inter-observer\" OR \"inter-rater\" OR \"ambiguous\") AND (\"medical image segmentation\" OR \"optic disc\" OR \"optic cup\")) FIRST_PDATE:[2014-01-01 TO 2026-11-04]",
+      "error": "503 Server Error:  for url: https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28%22multiple+annotators%22+OR+%22multi-rater%22+OR+%22inter-observer%22+OR+%22inter-rater%22+OR+%22ambiguous%22%29+AND+%28%22medical+image+segmentation%22+OR+%22optic+disc%22+OR+%22optic+cup%22%29%29+FIRST_PDATE%3A%5B2014-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core&sort=RELEVANCE"
+    },
+    {
+      "category": "uncertainty_calibration",
+      "query": "TITLE_ABS:((uncertainty OR calibration OR \"out-of-distribution\" OR \"failure detection\" OR \"selective prediction\") AND \"medical image segmentation\") FIRST_PDATE:[2018-01-01 TO 2026-11-04]",
+      "error": "503 Server Error:  for url: https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28uncertainty+OR+calibration+OR+%22out-of-distribution%22+OR+%22failure+detection%22+OR+%22selective+prediction%22%29+AND+%22medical+image+segmentation%22%29+FIRST_PDATE%3A%5B2018-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core&sort=RELEVANCE"
+    },
+    {
+      "category": "evaluation_reporting",
+      "query": "TITLE_ABS:((\"data leakage\" OR reproducibility OR \"evaluation metrics\" OR \"reporting guidelines\" OR \"external validation\") AND (\"medical imaging\" OR \"medical image segmentation\" OR \"artificial intelligence\")) FIRST_PDATE:[2019-01-01 TO 2026-11-04]",
+      "error": "503 Server Error:  for url: https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28%22data+leakage%22+OR+reproducibility+OR+%22evaluation+metrics%22+OR+%22reporting+guidelines%22+OR+%22external+validation%22%29+AND+%28%22medical+imaging%22+OR+%22medical+image+segmentation%22+OR+%22artificial+intelligence%22%29%29+FIRST_PDATE%3A%5B2019-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core&sort=RELEVANCE"
+    },
+    {
+      "category": "optic_segmentation",
+      "query": "TITLE_ABS:(\"optic disc\" AND (\"optic cup\" OR glaucoma) AND segmentation) FIRST_PDATE:[2015-01-01 TO 2026-11-04]",
+      "utc": "2026-11-04T06:46:46.381511+00:00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22optic+disc%22+AND+%28%22optic+cup%22+OR+glaucoma%29+AND+segmentation%29+FIRST_PDATE%3A%5B2015-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core",
+      "status": 200,
+      "hitCount": 212,
+      "returned": 100
+    },
+    {
+      "category": "domain_robustness",
+      "query": "TITLE_ABS:((\"domain adaptation\" OR \"domain generalization\" OR \"domain shift\") AND (\"medical image segmentation\" OR \"optic disc\" OR \"fundus\")) FIRST_PDATE:[2018-01-01 TO 2026-11-04]",
+      "utc": "2026-11-04T06:46:46.204819+00:00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28%22domain+adaptation%22+OR+%22domain+generalization%22+OR+%22domain+shift%22%29+AND+%28%22medical+image+segmentation%22+OR+%22optic+disc%22+OR+%22fundus%22%29%29+FIRST_PDATE%3A%5B2018-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core",
+      "status": 200,
+      "hitCount": 239,
+      "returned": 100
+    },
+    {
+      "category": "annotation_readers",
+      "query": "TITLE_ABS:((\"multiple annotators\" OR \"multi-rater\" OR \"inter-observer\" OR \"inter-rater\" OR \"ambiguous\") AND (\"medical image segmentation\" OR \"optic disc\" OR \"optic cup\")) FIRST_PDATE:[2014-01-01 TO 2026-11-04]",
+      "utc": "2026-11-04T06:46:46.204311+00:00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28%22multiple+annotators%22+OR+%22multi-rater%22+OR+%22inter-observer%22+OR+%22inter-rater%22+OR+%22ambiguous%22%29+AND+%28%22medical+image+segmentation%22+OR+%22optic+disc%22+OR+%22optic+cup%22%29%29+FIRST_PDATE%3A%5B2014-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core",
+      "status": 200,
+      "hitCount": 140,
+      "returned": 100
+    },
+    {
+      "category": "uncertainty_calibration",
+      "query": "TITLE_ABS:((uncertainty OR calibration OR \"out-of-distribution\" OR \"failure detection\" OR \"selective prediction\") AND \"medical image segmentation\") FIRST_PDATE:[2018-01-01 TO 2026-11-04]",
+      "utc": "2026-11-04T06:46:46.131621+00:00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28uncertainty+OR+calibration+OR+%22out-of-distribution%22+OR+%22failure+detection%22+OR+%22selective+prediction%22%29+AND+%22medical+image+segmentation%22%29+FIRST_PDATE%3A%5B2018-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core",
+      "status": 200,
+      "hitCount": 235,
+      "returned": 100
+    },
+    {
+      "category": "evaluation_reporting",
+      "query": "TITLE_ABS:((\"data leakage\" OR reproducibility OR \"evaluation metrics\" OR \"reporting guidelines\" OR \"external validation\") AND (\"medical imaging\" OR \"medical image segmentation\" OR \"artificial intelligence\")) FIRST_PDATE:[2019-01-01 TO 2026-11-04]",
+      "utc": "2026-11-04T06:46:49.996284+00:00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28%22data+leakage%22+OR+reproducibility+OR+%22evaluation+metrics%22+OR+%22reporting+guidelines%22+OR+%22external+validation%22%29+AND+%28%22medical+imaging%22+OR+%22medical+image+segmentation%22+OR+%22artificial+intelligence%22%29%29+FIRST_PDATE%3A%5B2019-01-01+TO+2026-11-04%5D&format=json&pageSize=100&resultType=core",
+      "status": 200,
+      "hitCount": 6951,
+      "returned": 100
+    },
+    {
+      "category": "reporting_targeted",
+      "query": "TITLE:(\"Checklist for Artificial Intelligence\" OR \"Metrics reloaded\" OR \"Metrics matter\" OR \"data leakage\" OR \"metric-related pitfalls\" OR \"Image segmentation evaluation\" OR \"Understanding metric-related pitfalls\") AND (medical OR imaging OR segmentation)",
+      "utc": "2026-11-04T06:47:37.981312+00:00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE%3A%28%22Checklist+for+Artificial+Intelligence%22+OR+%22Metrics+reloaded%22+OR+%22Metrics+matter%22+OR+%22data+leakage%22+OR+%22metric-related+pitfalls%22+OR+%22Image+segmentation+evaluation%22+OR+%22Understanding+metric-related+pitfalls%22%29+AND+%28medical+OR+imaging+OR+segmentation%29&format=json&pageSize=100&resultType=core",
+      "status": 200,
+      "hitCount": 49,
+      "returned": 49
+    },
+    {
+      "category": "annotation_older",
+      "query": "TITLE_ABS:((\"multiple annotators\" OR \"multi-rater\" OR \"inter-observer\" OR \"inter-rater\" OR \"ambiguous\") AND \"medical image segmentation\") FIRST_PDATE:[2014-01-01 TO 2023-12-31]",
+      "utc": "2026-11-04T06:47:37.679139+00:00",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%28%22multiple+annotators%22+OR+%22multi-rater%22+OR+%22inter-observer%22+OR+%22inter-rater%22+OR+%22ambiguous%22%29+AND+%22medical+image+segmentation%22%29+FIRST_PDATE%3A%5B2014-01-01+TO+2023-12-31%5D&format=json&pageSize=100&resultType=core",
+      "status": 200,
+      "hitCount": 38,
+      "returned": 38
+    }
+  ],
+  "failed_attempt_explanation": "Initial requests with sort=RELEVANCE returned503; the same topic queries returned200 after that parameter was removed. Root cause of503not independently established.",
+  "arxiv_direct_reads": [
+    "https://arxiv.org/abs/1903.12261",
+    "https://arxiv.org/abs/1906.02530"
+  ],
+  "selection_limits": "At most100first API hits per query; no exhaustive pagination; purposive selection.",
+  "additional_primary_fulltext_reads": [
+    "https://arxiv.org/html/2208.03016",
+    "https://arxiv.org/html/2212.00601",
+    "https://arxiv.org/html/2406.03323",
+    "https://drliuqi.github.io/files/publications/ConP.pdf",
+    "https://pubs.rsna.org/doi/10.1148/ryai.240300",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11181963/",
+    "https://arxiv.org/html/1903.12261v1",
+    "https://arxiv.org/html/1906.02530v2"
+  ]
+}

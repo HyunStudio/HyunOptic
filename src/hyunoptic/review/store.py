@@ -362,7 +362,10 @@ class ReviewStore:
                     referenced.add(self._path(value))
             directory = self._path(session_id)
             if directory.exists():
-                orphans = [p for p in directory.rglob('*') if p.is_file() and 'quarantine' not in p.parts and (p.suffix == '.tmp' or ('predictions' in p.parts and p.resolve() not in referenced))]
+                orphans = [p for p in directory.rglob('*') if p.is_file()
+                           and 'quarantine' not in p.relative_to(directory).parts
+                           and (p.suffix == '.tmp' or ('predictions' in p.relative_to(directory).parts
+                                                      and p.resolve() not in referenced))]
                 for path in orphans:
                     target = self._path(f'{session_id}/quarantine/{uuid4()}-{path.name}')
                     target.parent.mkdir(parents=True, exist_ok=True)

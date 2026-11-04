@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-04",
+  "count": 100,
+  "unique_doi_or_arxiv": 100,
+  "new_to_scanned_docs": 100,
+  "prior_cited_overlap": 0,
+  "topics": {
+    "optic_segmentation": 35,
+    "domain_robustness": 25,
+    "annotation_readers": 10,
+    "uncertainty_calibration": 20,
+    "reporting_targeted": 8,
+    "general_robustness_foundation": 2
+  },
+  "screen_levels": {
+    "abstract_read": 99,
+    "publisher_summary_and_guideline_passages_read": 1
+  },
+  "abstracts_retrieved": 99,
+  "author_abstract_resource_links": 28,
+  "fulltext_reviews": 0,
+  "author_model_replications": 0,
+  "raw_metadata_location": "reports/literature100_20261104/collection (gitignored)",
+  "selection": "Purposive topic-query selection followed by99originalabstract reads and1originalpublisher summary/guideline read; not a systematic review or quality ranking",
+  "limitations": [
+    "Most DOI landing pages and full texts were not independently accessed. Indexed access labels can conflict; link availability is not license verification.",
+    "Novelty means not detected in scanned repository docs/README by DOI, PMID, or exact normalized title, not worldwide novelty.",
+    "Deduplicated DOI and exact normalized title; only published MED records selected from EuropePMC; no paired preprint counted separately. arXiv1903.12261 supersedes1807.01697, which is not counted.",
+    "100 distinct papers were screened:99original abstracts read and1publisher summary plus guideline sections read(P095, no conventional indexed abstract). Selected fulltext passages read for10records, not100fulltext reviews. No author-model reproduction, dataset download, training job or external validation is implied."
+  ],
+  "fulltext_passage_reads": 10,
+  "test_family_mapping_counts": {
+    "numericintegrity": 47,
+    "photometric/corruption": 46,
+    "annotation": 32,
+    "patientleakage": 41,
+    "humanworkflow": 33,
+    "calibrationlimits": 32,
+    "export/safety": 8
+  },
+  "initial_metadata_access_evidence": {
+    "publisher_link_only; access_not_verified": 66,
+    "repository_fulltext_link_indexed": 27,
+    "free_or_OA_link_indexed": 5,
+    "arxiv_pdf_link_observed; fulltext_not_read": 2
+  }
+}

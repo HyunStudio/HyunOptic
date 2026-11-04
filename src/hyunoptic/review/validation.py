@@ -2,7 +2,8 @@
 from __future__ import annotations
 
 import math
-from numbers import Real
+from decimal import Decimal, ROUND_CEILING
+from numbers import Rational, Real
 
 
 def order_cases(cases: list[dict]) -> list[dict]:
@@ -36,7 +37,13 @@ def evaluate_budget(ordered_outcomes: list[bool | None], *, review_fraction: flo
     if not ordered_outcomes or any(v is not None and type(v) is not bool for v in ordered_outcomes):
         raise ValueError('outcomes must be a nonempty sequence of bool or None')
     n = len(ordered_outcomes)
-    k = math.ceil(n * review_fraction)
+    # Preserve ordinary decimal budgets such as 7% of 100. Binary float
+    # multiplication can otherwise turn exactly seven cases into eight.
+    if isinstance(review_fraction, Rational):
+        numerator, denominator = review_fraction.numerator, review_fraction.denominator
+        k = int((n * numerator + denominator - 1) // denominator)
+    else:
+        k = int((Decimal(str(review_fraction)) * n).to_integral_value(rounding=ROUND_CEILING))
     reviewed = [v for v in ordered_outcomes[:k] if v is not None]
     remaining = [v for v in ordered_outcomes[k:] if v is not None]
     total = sum(v is True for v in ordered_outcomes)

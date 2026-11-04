@@ -1,0 +1,508 @@
+{
+  "date": "2026-11-04",
+  "candidate_pool_hits": 587,
+  "canonical_unique_candidate_keys": 512,
+  "cross_query_duplicate_hits": 75,
+  "prior_cited_excluded": [
+    {
+      "title": "Chákṣu: A glaucoma specific fundus image database.",
+      "doi": "10.1038/s41597-023-01943-4",
+      "pmid": "36737439",
+      "reason": "prior_cited_overlap_excluded",
+      "prior_paths": [
+        "docs\\PROJECT_PLAN_KO.md",
+        "docs\\RESEARCH_PROTOCOL_EN.md",
+        "docs\\V02_UNCERTAINTY_PROTOCOL.md",
+        "docs\\V03_PATIENT_SPLIT_PROTOCOL.md",
+        "docs\\V05_REPRODUCIBLE_REAL_DATA_RUN.md",
+        "docs\\V07_EXTERNAL_VALIDATION_PROTOCOL.md",
+        "docs\\V08_EXTERNAL_INTEGRITY_PROTOCOL.md",
+        "docs\\V09_FIVE_READER_SENSITIVITY_PROTOCOL.md",
+        "docs\\V10_RC2_EVIDENCE_REVIEW.md",
+        "docs\\V10_RELEASE_CANDIDATE_CHECKLIST.md",
+        "docs\\experiments\\2026-10-25-photometric-remediation\\collect_results.py",
+        "docs\\experiments\\2026-10-25-photometric-remediation\\README.md",
+        "docs\\experiments\\2026-10-25-real-data-baseline\\index.html",
+        "docs\\experiments\\2026-10-25-real-data-baseline\\protocol.json",
+        "docs\\experiments\\2026-10-25-real-data-baseline\\README.md",
+        "docs\\experiments\\2026-10-25-real-data-baseline\\REPRODUCE.txt",
+        "docs\\experiments\\2026-10-25-seed-stability\\collect_results.py",
+        "docs\\experiments\\2026-10-25-seed-stability\\README.md",
+        "README.md"
+      ]
+    },
+    {
+      "title": "CalDiff: Calibrating Uncertainty and Accessing Reliability of Diffusion Models for Trustworthy Lesion Segmentation.",
+      "doi": "10.1109/jbhi.2025.3624331",
+      "pmid": "41129433",
+      "reason": "prior_cited_overlap_excluded",
+      "prior_paths": [
+        "docs\\experiments\\2026-11-03-first-paper-execution\\README.md",
+        "docs\\experiments\\2026-11-03-literature-audit\\README.md"
+      ]
+    },
+    {
+      "title": "Metrics reloaded: recommendations for image analysis validation.",
+      "doi": "10.1038/s41592-023-02151-z",
+      "pmid": "38347141",
+      "reason": "prior_cited_overlap_excluded; manual identification via Nature article URL suffix and abbreviated title",
+      "prior_paths": [
+        "docs/experiments/2026-11-03-literature-audit/README.md"
+      ]
+    }
+  ],
+  "included_prior_overlap": 0,
+  "selection_note": "Only100selected bibliography records are included. Other non-selected hits include irrelevant tasks, reviews, preprints/conference abstracts, and lower-priority methods; not all were abstract-read or quality-assessed. Cross-query duplicates are not additional papers.",
+  "duplicate_pool_hits": [
+    {
+      "key": "10.1016/j.media.2023.103028",
+      "title": "Modeling annotator preference and stochastic annotation error for medical image segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1109/jbhi.2022.3153394",
+      "title": "Systematic Clinical Evaluation of a Deep Learning Method for Medical Image Segmentation: Radiosurgery Application.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.cmpb.2023.107849",
+      "title": "Graph- and transformer-guided boundary aware network for medical image segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1007/978-3-031-43898-1_54",
+      "title": "Implicit Anatomical Rendering for Medical Image Segmentation with Stochastic Experts.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.patcog.2023.109400",
+      "title": "Learning from multiple annotators for medical image segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.3389/fnins.2022.946343",
+      "title": "Ensemble learning <i>via</i> supervision augmentation for white matter hyperintensity segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "p1808bfullyautomaticmeningiomasegmentationusingt1weightedcontrastenhancedmrimagesonly",
+      "title": "P18.08.B Fully automatic meningioma segmentation using T1-weighted contrast-enhanced MR images only",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.media.2023.102880",
+      "title": "Ambiguity-selective consistency regularization for mean-teacher semi-supervised medical image segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.compbiomed.2022.106157",
+      "title": "AHU-MultiNet: Adaptive loss balancing based on homoscedastic uncertainty in multi-task medical image segmentation network.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.compmedimag.2023.102323",
+      "title": "Rethinking automatic segmentation of gross target volume from a decoupling perspective.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.media.2022.102530",
+      "title": "Mutual consistency learning for semi-supervised medical image segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.20944/preprints202306.1360.v1",
+      "title": "LegoNet: Alternating Model Blocks for Medical Image Segmentation",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "a121quantifyinginterobservervariabilityinthesegmentationofrectaltumorsinendoscopyimagesanditseffectsondeeplearning",
+      "title": "A121 QUANTIFYING INTER-OBSERVER VARIABILITY IN THE SEGMENTATION OF RECTAL TUMORS IN ENDOSCOPY IMAGES AND ITS EFFECTS ON DEEP LEARNING",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1109/tmi.2021.3098703",
+      "title": "Efficient Medical Image Segmentation Based on Knowledge Distillation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1109/embc48229.2022.9870880",
+      "title": "FcTC-UNet: Fine-grained Combination of Transformer and CNN for Thoracic Organs Segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1109/embc48229.2022.9871824",
+      "title": "Automatic Segmentation of Target Structures for Total Marrow and Lymphoid Irradiation in Bone Marrow Transplantation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.media.2023.102911",
+      "title": "Curriculum label distribution learning for imbalanced medical image segmentation.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1186/s12903-023-03446-5",
+      "title": "Automatic craniomaxillofacial landmarks detection in CT images of individuals with dentomaxillofacial deformities by a two-stage deep learning model.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.21203/rs.3.rs-1078746/v1",
+      "title": "Visualization of Hidden Structure and Shape in Ct Image via Non-Linear Perspective Foreground and Back Ground Projection",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.cmpb.2023.107647",
+      "title": "Joint liver and hepatic lesion segmentation in MRI using a hybrid CNN with transformer layers.",
+      "pool": "raw_annotation_readers",
+      "duplicate_of_pool": "raw_annotation_older"
+    },
+    {
+      "key": "10.1016/j.compbiolchem.2026.109461",
+      "title": "SCOPE-Med: Structure-Preserving and Contour-Oriented Pseudo-Label Reconstruction for mixed-domain semi-supervised medical image segmentation.",
+      "pool": "raw_domain_robustness",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.3390/jimaging12080341",
+      "title": "Uncertainty Quantification in Medical Image Segmentation: A Comprehensive Survey.",
+      "pool": "raw_evaluation_reporting",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.compmedimag.2026.102713",
+      "title": "Differentiable Neural Architecture Search for medical image segmentation: A systematic review and field audit.",
+      "pool": "raw_evaluation_reporting",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1186/s12886-026-05371-x",
+      "title": "Optic disc and cup segmentation using Vision Mamba UNet with enhanced edge-guided attention in fundus images.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.21203/rs.3.rs-10491509/v1",
+      "title": "SWH-SegFormer: A Signal-Preserving Framework for Joint Optic Disc and Cup Segmentation and Reliable Cup-to-Disc Ratio Estimation",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.media.2026.104056",
+      "title": "DDS-UDA: Dual-domain synergy for unsupervised domain adaptation in joint segmentation of optic disc and optic cup.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1167/tvst.15.5.14",
+      "title": "FunduSegmenter: Leveraging the RETFound Foundation Model for Joint Optic Disc and Optic Cup Segmentation in Retinal Fundus Images.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.compbiomed.2025.111384",
+      "title": "Meta-learners for few-shot weakly-supervised optic disc and cup segmentation on fundus images.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1109/jbhi.2024.3406447",
+      "title": "TriLA: Triple-Level Alignment Based Unsupervised Domain Adaptation for Joint Segmentation of Optic Disc and Optic Cup.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.slast.2025.100338",
+      "title": "Self-supervised disc and cup segmentation via non-local deformable convolution and adaptive transformer.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.jbi.2025.104802",
+      "title": "Enhancing generalization of medical image segmentation via game theory-based domain selection.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1364/boe.521778",
+      "title": "Entropy and distance-guided super self-ensembling for optic disc and cup segmentation.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1109/jbhi.2023.3342422",
+      "title": "Unsupervised Domain Adaptation Fundus Image Segmentation via Multi-Scale Adaptive Adversarial Learning.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.compbiomed.2023.107209",
+      "title": "TUNet and domain adaptation based learning for joint optic disc and cup segmentation.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.compbiomed.2024.108639",
+      "title": "SAMCF: Adaptive global style alignment and multi-color spaces fusion for joint optic cup and disc segmentation.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1109/tmi.2024.3394045",
+      "title": "Calibrate the Inter-Observer Segmentation Uncertainty via Diagnosis-First Principle.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/jbhi.2023.3266576",
+      "title": "Reconstruction-Driven Dynamic Refinement Based Unsupervised Domain Adaptation for Joint Optic Disc and Cup Segmentation.",
+      "pool": "raw_optic_segmentation",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1148/ryai.260835",
+      "title": "Checklist for Artificial Intelligence in Medical Imaging (CLAIM): Explanation, Elaboration, and Examples.",
+      "pool": "raw_reporting_targeted",
+      "duplicate_of_pool": "raw_evaluation_reporting"
+    },
+    {
+      "key": "10.1007/s10278-026-02403-2",
+      "title": "Building and Validating a Data-Governance Workflow for Artificial Intelligence-Based Tuberculosis Detection from Chest Radiographs, and Quantifying the Impact of Data Leakage.",
+      "pool": "raw_reporting_targeted",
+      "duplicate_of_pool": "raw_evaluation_reporting"
+    },
+    {
+      "key": "10.64898/2026.10.03.755900",
+      "title": "UniMedSeg: Unified Multi-Modal Medical Image Segmentation via Uncertainty-Guided Encoding and Frequency-Spatial Dual-Prompt Decoding",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.media.2026.104291",
+      "title": "Uncertainty as risk: A plug-and-play evidence-guided framework with error-aligned calibration for medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.3390/jimaging12080341",
+      "title": "Uncertainty Quantification in Medical Image Segmentation: A Comprehensive Survey.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/jbhi.2026.3658836",
+      "title": "DUCore: Dual Uncertainty-Guided Consistency and Regional Contrastive Learning for Semi-Supervised Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1088/2057-1976/aea90e",
+      "title": "Uncertainty-guided decoupled complementary network for binary semi-supervised medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.3390/bioengineering13101163",
+      "title": "Spectral-Distribution Uncertainty Modeling for Robust Cross-Domain Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1007/s11517-026-03673-2",
+      "title": "A unified medical image segmentation evaluation method combining multi-metrics and confidence.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_reporting_targeted"
+    },
+    {
+      "key": "10.3390/jimaging12100481",
+      "title": "Variational Autoencoders for Medical Image Segmentation: A Review.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_evaluation_reporting"
+    },
+    {
+      "key": "10.1109/jbhi.2025.3601025",
+      "title": "DPGNet: A Boundary-Aware Medical Image Segmentation Framework via Uncertainty Perception.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/tmi.2026.3664940",
+      "title": "Harmonizing Generalization and Specialization: Uncertainty-Informed Collaborative Learning for Semi-Supervised Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.compbiolchem.2026.109461",
+      "title": "SCOPE-Med: Structure-Preserving and Contour-Oriented Pseudo-Label Reconstruction for mixed-domain semi-supervised medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.compbiomed.2025.111024",
+      "title": "Calibration and Uncertainty for multiRater Volume Assessment in multiorgan Segmentation (CURVAS) challenge results.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1007/s10278-026-02033-8",
+      "title": "SBEM-UNet: A Semantic Boundary and Contour-Enhanced Framework for Semisupervised Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/jbhi.2026.3690043",
+      "title": "Semi-URF: Progressive Uncertainty-Aware Region Filtering and Fusion for Semi-Supervised Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.compmedimag.2026.102781",
+      "title": "RFD: A Reducing Feature Discrepancy method for unsupervised cross-modality SAM adaptation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.neunet.2026.109293",
+      "title": "Integrating visual and language cues via state space models for medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/tnnls.2025.3620853",
+      "title": "FIESTA: Fourier-Based Semantic Augmentation With Uncertainty Guidance for Enhanced Domain Generalizability in Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1007/s12539-026-00862-3",
+      "title": "Semi-supervised Medical Image Segmentation via Perturbation-Aware Mutual Learning and Edge-Aware Uncertainty Loss for Accurate Anatomical Delineation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.compmedimag.2026.102716",
+      "title": "Fuzzy rough set loss for deep learning-based precise medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/tnnls.2025.3609085",
+      "title": "FEU-Diff: A Diffusion Model With Fuzzy Evidence-Driven Dynamic Uncertainty Fusion for Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1007/s10278-026-02110-y",
+      "title": "DSGH-Net: Medical Image Segmentation via Dual-Statistical Dynamic Context and Graph-Convolutional Heterogeneous Decoder.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.3390/bioengineering13050555",
+      "title": "Medical Image Segmentation Methods: A Decision-Guided Survey Covering 2D/3D CNNs, Transformers, VLMs, SAM-Based Models and Diffusion Approaches.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.media.2026.104112",
+      "title": "GiTNet: A graph-based trajectory-informed network for gaze-supervised medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.media.2025.103812",
+      "title": "CaliDiff: Multi-rater annotation calibrating diffusion probabilistic model towards medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1093/bioinformatics/btag364",
+      "title": "HyperSeg-DG: multi-scale hyper feature context for domain-generalized medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.20944/preprints202603.1153.v1",
+      "title": "Domain Shift-Robust Tumor Segmentation Across Hospitals",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.compmedimag.2025.102670",
+      "title": "Hallucinated domain generalization network with domain-aware dynamic representation for medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1109/tmi.2024.3484166",
+      "title": "Effective Semi-Supervised Medical Image Segmentation With Probabilistic Representations and Prototype Learning.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.cmpb.2025.108755",
+      "title": "CUAMT: A MRI semi-supervised medical image segmentation framework based on contextual information and mixed uncertainty.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/tmi.2026.3693615",
+      "title": "Reinforcement Learning for Unsupervised Domain Adaptation in Spatio-Temporal Echocardiography Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.media.2025.103745",
+      "title": "Learning from certain regions of interest in medical images via probabilistic positive-unlabeled networks.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1016/j.cmpb.2025.109017",
+      "title": "A&lt;sup&gt;3&lt;/sup&gt;-DualUD: Source-free unsupervised domain adaptation via anatomical anchor alignment and dual-path uncertainty denoising for cross-modality medical image segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1109/jbhi.2025.3613497",
+      "title": "IPLC+: SAM-Guided Iterative Pseudo Label Correction for Source-Free Domain Adaptation in Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.3390/e28070764",
+      "title": "A Mathematical Theory of Phase-Consistent Information Bottleneck for Cross-Domain Generalization.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    },
+    {
+      "key": "10.1016/j.artmed.2025.103289",
+      "title": "Multi-annotation agreement and prediction consistency networks: Improving semi-supervised segmentation of medical images with ambiguous boundaries.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_annotation_readers"
+    },
+    {
+      "key": "10.1109/tmi.2024.3523319",
+      "title": "UniAda: Domain Unifying and Adapting Network for Generalizable Medical Image Segmentation.",
+      "pool": "raw_uncertainty_calibration",
+      "duplicate_of_pool": "raw_domain_robustness"
+    }
+  ]
+}

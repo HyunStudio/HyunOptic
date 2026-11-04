@@ -8,6 +8,7 @@
 | 2026-11-04 | Reader sensitivity experiment, review-budget evaluation and evidence integrity fixes | Pre-event research/development |
 | 2026-11-04 | Cold-source synthetic preparation, actual browser audit, preview/upload/error corrections, manifest CI, 326-test verification, local video and submission drafts | Pre-event development/preparation |
 | 2026-11-04 | Final narrated/captioned media published on YouTube; source merged and preparation package tagged; public playback/anonymous embed checks and submission-link updates | Pre-event preparation/publication |
+| 2026-11-04 | 100-paper screening,100-condition own-model audit (800predictions on4reusedpatients), seven boundary corrections and380-test verification | Pre-event research/development |
 | 2026-11-21 17:00 onward | No work recorded yet | Event has not started at document creation |
 
 The event rules permit improvements to existing projects but require clear disclosure of existing work and event additions. [Official rules](https://global-ai-builders-challenge.devpost.com/rules), checked 2026-11-04. Planned submission deadline: 2026-11-29 08:00 KST. Recheck the rules at submission.
