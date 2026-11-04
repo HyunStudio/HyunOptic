@@ -22,4 +22,4 @@ The script deliberately refuses to overwrite an existing MP4. Speech/encoder ver
 
 ## Publication status
 
-Local video, captions, full-decode checks and independent artifact review are complete. A new YouTube upload is pending the action-time confirmation requested for its submission/terms notice. The older public URL remains historical and is not this movie. Native 200% browser zoom acceptance is also still unverified. See the current acceptance audit before claiming submission readiness.
+Local video, captions, full-decode checks and independent artifact review are complete. The [new YouTube upload](https://youtu.be/C5KE1KaHWGI) is public, with English captions and verified playback/anonymous oEmbed. [Publication record](../VIDEO_PUBLICATION_20261105.md). The older public URL remains historical and is not this movie. Native 200% browser zoom acceptance is also still unverified. See the current acceptance audit before claiming submission readiness.

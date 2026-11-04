@@ -1,0 +1,20 @@
+HyunOptic is independent, local research software for comparing optic disc/cup model predictions, preserving unresolved decisions, and exporting traceable evidence.
+
+This 2:47 demonstration shows actual browser execution: file-chooser import, CPU inference with two models, aligned comparison, hold with an uncertain reason, save-and-next, reload, keyboard save, and an independently verified downloaded ZIP. Four synthetic images complete; one deliberately unreadable input remains visible.
+
+Disclosure: 13 actual application screenshots plus one generated verifier summary card; edited timing, not continuous screen recording. Inputs and CPU-trained models are synthetic. AI operated the browser; Microsoft Zira Desktop provides synthesized narration. English captions follow measured per-cue audio intervals. Synthetic execution demonstrates workflow mechanics, not medical accuracy. Research only; not for diagnosis or patient care.
+
+Tested application source:
+https://github.com/HyunStudio/HyunOptic/tree/ea4e76811c931134bc77a7684a1cf21bbc32492a
+Capture basis: baseline 5c9f698 plus the exact responsive CSS patch later committed unchanged as ea4e768. Session creation metadata retains its creation HEAD.
+
+Runnable setup and current evidence:
+https://github.com/HyunStudio/HyunOptic/tree/main/docs/submission
+https://github.com/HyunStudio/HyunOptic/tree/main/docs/experiments/2026-11-05-final-acceptance
+
+Original video, captions, transcript and SHA256 manifest:
+https://github.com/HyunStudio/HyunOptic/tree/main/docs/submission/media-20261105
+
+All work shown was prepared before the event. No person-specific human review, clinical benefit, measured human time saving or contest result is claimed. Native 200% zoom remains unverified; desktop/tablet/phone and review-control keyboard checks have separate receipts.
+
+#HyunOptic #HyunStudio #PyTorch #BiomedicalEngineering #BME #MedicalImaging #ReproducibleResearch

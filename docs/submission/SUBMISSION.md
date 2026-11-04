@@ -1,6 +1,6 @@
 # HyunOptic — submission package
 
-**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. Native 200% zoom, new YouTube publication confirmation, personal final review and actual Devpost entry remain pending.
+**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. [New public video](https://youtu.be/C5KE1KaHWGI) is published with verified English captions and public playback. Native 200% zoom, personal final review and actual Devpost entry remain pending.
 
 
 This is the prepared public package for personal final review. It is not a claim of Devpost submission, event eligibility approval, clinical validation or human acceptance. All work through 2026-11-04 is pre-event.
@@ -17,7 +17,7 @@ This is the prepared public package for personal final review. It is not a claim
 | Reproducible demo | `python scripts/prepare_submission_demo.py --output demo_data/submission --launch` after installing `.[ui,dev,ml]` |
 | Description | [Complete project description](DEVPOST_DRAFT.md) — paste the body after personal review |
 | MP4 | [Current 2:47 demonstration](media-20261105/hyunoptic-current-demo.mp4) — actual app captures, edited timing, synthetic inputs/models and AI narration |
-| Devpost video URL | Current refresh: pending action-time upload confirmation. [Historical public video](https://youtu.be/xbs47mX0d5g) remains available; it depicts older source |
+| Devpost video URL | [Current public demo](https://youtu.be/C5KE1KaHWGI) — Hyun_Studio, November 5; [publication verification](VIDEO_PUBLICATION_20261105.md) |
 | Captions / transcript | [Current English SRT](media-20261105/hyunoptic-current-demo.en.srt), [current transcript](media-20261105/transcript.md) |
 | Gallery image | [Actual current synthetic comparison](media-20261105/thumbnail.png) |
 | Model/data access | [Public synthetic preparation and private research-bundle limitations](MODEL_AND_DATA_ACCESS.md) |
@@ -28,14 +28,14 @@ The final repository version should be selected from the merged commit shown in 
 
 ## Video field: important platform distinction
 
-**Historical supported-host upload (older source) is complete:** [public video](https://youtu.be/xbs47mX0d5g). Public visibility, hosted playback, English subtitle publication and anonymous oEmbed availability were checked. Use the new refresh URL only after its actual publication and playback checks; the historical URL is not the new movie. For the older version, the repository MP4 remains a downloadable original. See [publication record and verification limits](VIDEO_PUBLICATION.md). [Devpost's official video instructions](https://help.devpost.com/article/85-uploading-a-demo-video), checked 2026-11-04.
+**Historical supported-host upload (older source) is complete:** [public video](https://youtu.be/xbs47mX0d5g). Public visibility, hosted playback, English subtitle publication and anonymous oEmbed availability were checked. Use the [verified new refresh URL](https://youtu.be/C5KE1KaHWGI) for the current demonstration; the historical URL is not the new movie. For the older version, the repository MP4 remains a downloadable original. See [publication record and verification limits](VIDEO_PUBLICATION.md). [Devpost's official video instructions](https://help.devpost.com/article/85-uploading-a-demo-video), checked 2026-11-04.
 
 The upload was explicitly authorized by the author and performed on the verified logged-in Hyun_Studio channel. It does not constitute a legal attestation, person-specific research review or Devpost submission. Use the [short personal review worksheet](HUMAN_REVIEW.md) to record what was actually checked.
 
 ## Remaining submission steps
 
 1. Open the final video and read the description; check a specific AI-assisted contribution and record the actual finding and keep/change/reject decision in [personal review](HUMAN_REVIEW.md).
-2. Complete new public-video publication and checks, then paste its exact URL into Devpost and verify that the entry embeds the intended source version.
+2. Paste the [new public video URL](https://youtu.be/C5KE1KaHWGI) into Devpost and verify that the actual entry embeds the intended source version. Public hosting, English captions and anonymous oEmbed checks are complete.
 3. At the event start, preserve the then-current source version and inventory. Record genuine event-period contributions separately from the November 3–5 baseline.
 4. Recheck roster, provider permissions, event rules and final source/video links before accepting terms or submitting.
 

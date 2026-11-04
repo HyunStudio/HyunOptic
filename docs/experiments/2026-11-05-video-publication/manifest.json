@@ -1,0 +1,20 @@
+{
+  "files": {
+    "description.txt": {
+      "bytes": 1919,
+      "sha256": "89c380b2d7261662b9295625f8f26571dcefb22cdc235f2c3270e3bda37c945f"
+    },
+    "oembed.json": {
+      "bytes": 874,
+      "sha256": "0db38120f4e8e89d93c0ef4ef0e851543b3c1981f8788a9a150ac93f1a80cca5"
+    },
+    "playback.json": {
+      "bytes": 807,
+      "sha256": "0671e894130ec611bbe7bb2c4b038a10fc068f456eb828e1564c80bb45690682"
+    },
+    "public-player.png": {
+      "bytes": 73491,
+      "sha256": "aa01316431ba43000d95fa0549cfd3571ef5e546052634eb137fa6dbc27c172c"
+    }
+  }
+}
