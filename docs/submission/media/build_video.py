@@ -115,4 +115,3 @@ validation=dict(duration_seconds=round(position,6),dimensions=[1280,960],frames_
                 reviewed_by_human=False,patient_data_included=False)
 (out/'validation.json').write_text(json.dumps(validation,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(validation,indent=2),flush=True)
-
