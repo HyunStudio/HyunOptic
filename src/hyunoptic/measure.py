@@ -54,11 +54,22 @@ def _spans(mask: np.ndarray) -> tuple[int, int, int]:
     return int(yy.max() - yy.min() + 1), int(xx.max() - xx.min() + 1), int(len(yy))
 
 
+def _finite_boolean_mask(mask: np.ndarray) -> np.ndarray:
+    """Preserve the nonzero-mask convention without turning NaN/Inf into foreground."""
+    try:
+        finite = np.isfinite(mask).all()
+    except TypeError as exc:
+        raise ValueError("Masks must contain finite numeric values") from exc
+    if not finite:
+        raise ValueError("Masks must contain finite numeric values")
+    return mask.astype(bool)
+
+
 def measure_masks(disc: np.ndarray, cup: np.ndarray) -> Measurement:
     """Calculate indices on equally sized masks; never silently repair bad contours."""
     if disc.ndim != 2 or cup.ndim != 2 or disc.shape != cup.shape:
         raise ValueError("disc and cup masks must be equally-sized 2D arrays")
-    disc, cup = disc.astype(bool), cup.astype(bool)
+    disc, cup = _finite_boolean_mask(disc), _finite_boolean_mask(cup)
     dv, dh, da = _spans(disc)
     cv, ch, ca = _spans(cup)
     issues: list[str] = []
@@ -83,7 +94,7 @@ def measure_contours(disc_xy: np.ndarray, cup_xy: np.ndarray, image_size: tuple[
 def dice(mask_a: np.ndarray, mask_b: np.ndarray) -> float:
     if mask_a.shape != mask_b.shape:
         raise ValueError("Mask shapes must match")
-    a, b = mask_a.astype(bool), mask_b.astype(bool)
+    a, b = _finite_boolean_mask(mask_a), _finite_boolean_mask(mask_b)
     union = int(a.sum()) + int(b.sum())
     return float(2 * np.count_nonzero(a & b) / union) if union else 1.0
 

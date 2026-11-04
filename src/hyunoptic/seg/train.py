@@ -20,6 +20,7 @@ from torch.nn import functional as F
 
 from .. import __version__
 from ..inventory import inspect_papila
+from ..measure import dice as mask_dice
 from ..pipeline import _git_commit
 from ..source_fingerprint import papila_content_sha256
 from ..ui.workspace import SYNTHETIC_MARKER
@@ -44,9 +45,8 @@ SELECTION_RULE = ("highest validation mean of per-image (disc Dice + cup Dice)/2
 
 
 def dice(pred: np.ndarray, ref: np.ndarray) -> float:
-    a, b = np.asarray(pred, bool), np.asarray(ref, bool)
-    total = int(a.sum()) + int(b.sum())
-    return 1.0 if total == 0 else float(2 * np.count_nonzero(a & b) / total)
+    """Use the shared metric's shape/finiteness checks before nonzero conversion."""
+    return mask_dice(np.asarray(pred), np.asarray(ref))
 
 
 def _augment(x: torch.Tensor, y: torch.Tensor, gen: torch.Generator, *,

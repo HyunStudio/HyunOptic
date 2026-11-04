@@ -49,7 +49,10 @@ class Predictor:
     def labels_at_model_resolution(self, arrays: np.ndarray) -> np.ndarray:
         """Batch of uint8 N×S×S×3 letterboxed images → N×S×S post-processed class maps."""
         x = torch.from_numpy(np.stack([preprocess.normalise(a) for a in arrays]))
-        raw = self.model(x).argmax(dim=1).numpy().astype(np.uint8)
+        logits = self.model(x)
+        if not torch.isfinite(logits).all():
+            raise ValueError("Model logits must be finite")
+        raw = logits.argmax(dim=1).numpy().astype(np.uint8)
         return np.stack([preprocess.postprocess(r) for r in raw])
 
     def predict(self, image: Image.Image) -> Prediction:

@@ -1,0 +1,41 @@
+{
+  "label": "Post-hoc descriptive denominator check; no additional inference",
+  "n_condition_model_rows": 200,
+  "n_rows_with_smaller_unpaired_mae_but_larger_paired_mae": 52,
+  "definition": "Condition has fewer than4measurements, lower condition MAE than original4case MAE, but higher MAE than original on exactly the common measurable cases.",
+  "example_original": {
+    "condition": "original",
+    "family": "original",
+    "value": null,
+    "model_index": 1,
+    "n_cases": 4,
+    "n_dice": 4,
+    "disc_dice": 0.7561729938615303,
+    "cup_dice": 0.6231422487789314,
+    "geometry_failures": 0,
+    "execution_failures": 0,
+    "n_vcdr": 4,
+    "vcdr_mae": 0.21332744145519852,
+    "n_common_original_vcdr": 4,
+    "paired_original_vcdr_mae": 0.21332744145519852,
+    "paired_condition_vcdr_mae": 0.21332744145519852
+  },
+  "example_condition": {
+    "condition": "brightness_01",
+    "family": "brightness",
+    "value": 0.2,
+    "model_index": 1,
+    "n_cases": 4,
+    "n_dice": 4,
+    "disc_dice": 0.5611507606870504,
+    "cup_dice": 0.38244011417466706,
+    "geometry_failures": 2,
+    "execution_failures": 0,
+    "n_vcdr": 2,
+    "vcdr_mae": 0.07126300799718788,
+    "n_common_original_vcdr": 2,
+    "paired_original_vcdr_mae": 0.027296988389676924,
+    "paired_condition_vcdr_mae": 0.07126300799718788
+  },
+  "limitation": "Correlated variants of4reusedpatients; not independent populations or statistical significance"
+}

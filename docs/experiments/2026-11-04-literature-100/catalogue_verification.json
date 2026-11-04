@@ -1,0 +1,1003 @@
+{
+  "n_papers": 100,
+  "unique_identifiers": true,
+  "unique_normalized_titles": true,
+  "no_future_dates": true,
+  "note": "Independent DOI/title metadata cross-check, not full-text reading or model replication.",
+  "checks": [
+    {
+      "paper_id": "P001",
+      "doi": "10.1177/08953996261439097",
+      "source": "https://api.crossref.org/works/10.1177%2F08953996261439097",
+      "status": "identifier_title_match",
+      "source_title": "Attention based multi-scale edge-aware segmentation and convolutional transformer framework for automated glaucoma detection from fundus images",
+      "title_similarity": 1.0,
+      "source_doi": "10.1177/08953996261439097",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P002",
+      "doi": "10.1186/s12886-026-05371-x",
+      "source": "https://api.crossref.org/works/10.1186%2Fs12886-026-05371-x",
+      "status": "identifier_title_match",
+      "source_title": "Optic disc and cup segmentation using Vision Mamba UNet with enhanced edge-guided attention in fundus images",
+      "title_similarity": 1.0,
+      "source_doi": "10.1186/s12886-026-05371-x",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P003",
+      "doi": "10.1007/s10792-026-04090-y",
+      "source": "https://api.crossref.org/works/10.1007%2Fs10792-026-04090-y",
+      "status": "identifier_title_match",
+      "source_title": "Explainable dual-stage context-aware SwinUNet for accurate optic disc and optic cup segmentation in glaucoma assessment",
+      "title_similarity": 1.0,
+      "source_doi": "10.1007/s10792-026-04090-y",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P004",
+      "doi": "10.1016/j.media.2025.103836",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2025.103836",
+      "status": "identifier_title_match",
+      "source_title": "A saliency detection-inspired method for optic disc and cup segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2025.103836",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P005",
+      "doi": "10.1038/s41598-026-39065-7",
+      "source": "https://api.crossref.org/works/10.1038%2Fs41598-026-39065-7",
+      "status": "identifier_title_match",
+      "source_title": "SwinCup-DiscNet: A fusion transformer framework for glaucoma diagnosis using optic disc and cup features",
+      "title_similarity": 1.0,
+      "source_doi": "10.1038/s41598-026-39065-7",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P006",
+      "doi": "10.1038/s41598-025-23425-w",
+      "source": "https://api.crossref.org/works/10.1038%2Fs41598-025-23425-w",
+      "status": "identifier_title_match",
+      "source_title": "DB-SegNet: optimized framework for glaucoma detection and optic structure segmentation from retinal fundus images",
+      "title_similarity": 1.0,
+      "source_doi": "10.1038/s41598-025-23425-w",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P007",
+      "doi": "10.1016/j.xops.2026.101118",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.xops.2026.101118",
+      "status": "identifier_title_match",
+      "source_title": "Multiscale Attention Unet: An Innovative Approach for Segmentation of Optic Disc and Optic Cup in Early Detection of Retinopathy",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.xops.2026.101118",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P008",
+      "doi": "10.3390/diagnostics16172880",
+      "source": "https://api.crossref.org/works/10.3390%2Fdiagnostics16172880",
+      "status": "identifier_title_match",
+      "source_title": "A Systematic Multi-Dataset, Multi-Seed Evaluation of Preprocessing Strategies for Retinal Optic Disc and Cup Segmentation",
+      "source_doi": "10.3390/diagnostics16172880",
+      "source_type": "journal-article",
+      "title_similarity": 1.0,
+      "initial_access_problem": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "paper_id": "P009",
+      "doi": "10.1167/tvst.15.5.14",
+      "source": "https://api.crossref.org/works/10.1167%2Ftvst.15.5.14",
+      "status": "identifier_title_match",
+      "source_title": "FunduSegmenter: Leveraging the RETFound Foundation Model for Joint Optic Disc and Optic Cup Segmentation in Retinal Fundus Images",
+      "title_similarity": 1.0,
+      "source_doi": "10.1167/tvst.15.5.14",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P010",
+      "doi": "10.1186/s12880-025-01981-x",
+      "source": "https://api.crossref.org/works/10.1186%2Fs12880-025-01981-x",
+      "status": "identifier_title_match",
+      "source_title": "Automated cup-to-disc ratio quantification via color fundus photography for chronic glaucoma screening",
+      "title_similarity": 1.0,
+      "source_doi": "10.1186/s12880-025-01981-x",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P011",
+      "doi": "10.1016/j.compbiomed.2025.111384",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2025.111384",
+      "status": "identifier_title_match",
+      "source_title": "Meta-learners for few-shot weakly-supervised optic disc and cup segmentation on fundus images",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compbiomed.2025.111384",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P012",
+      "doi": "10.3390/biomimetics9100637",
+      "source": "https://api.crossref.org/works/10.3390%2Fbiomimetics9100637",
+      "status": "identifier_title_match",
+      "source_title": "Lightweight Optic Disc and Optic Cup Segmentation Based on MobileNetv3 Convolutional Neural Network",
+      "title_similarity": 1.0,
+      "source_doi": "10.3390/biomimetics9100637",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P013",
+      "doi": "10.1109/jbhi.2024.3406447",
+      "source": "https://api.crossref.org/works/10.1109%2Fjbhi.2024.3406447",
+      "status": "identifier_title_match",
+      "source_title": "TriLA: Triple-Level Alignment Based Unsupervised Domain Adaptation for Joint Segmentation of Optic Disc and Optic Cup",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/jbhi.2024.3406447",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P014",
+      "doi": "10.1016/j.slast.2025.100338",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.slast.2025.100338",
+      "status": "identifier_title_match",
+      "source_title": "Self-supervised disc and cup segmentation via non-local deformable convolution and adaptive transformer",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.slast.2025.100338",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P015",
+      "doi": "10.1016/j.neunet.2025.108509",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.neunet.2025.108509",
+      "status": "identifier_title_match",
+      "source_title": "FDAU-Net: An efficient optic disc segmentation network with flexible wavelet convolution block and selective dual-attention fusion gate",
+      "source_doi": "10.1016/j.neunet.2025.108509",
+      "source_type": "journal-article",
+      "title_similarity": 1.0,
+      "initial_access_problem": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "paper_id": "P016",
+      "doi": "10.3934/mbe.2024225",
+      "source": "https://api.crossref.org/works/10.3934%2Fmbe.2024225",
+      "status": "identifier_title_match",
+      "source_title": "A novel lightweight deep learning approach for simultaneous optic cup and optic disc segmentation in glaucoma detection",
+      "title_similarity": 1.0,
+      "source_doi": "10.3934/mbe.2024225",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P017",
+      "doi": "10.1186/s12886-024-03532-4",
+      "source": "https://api.crossref.org/works/10.1186%2Fs12886-024-03532-4",
+      "status": "identifier_title_match",
+      "source_title": "Research on segmentation model of optic disc and optic cup in fundus",
+      "title_similarity": 1.0,
+      "source_doi": "10.1186/s12886-024-03532-4",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P018",
+      "doi": "10.3390/s23104668",
+      "source": "https://api.crossref.org/works/10.3390%2Fs23104668",
+      "status": "identifier_title_match",
+      "source_title": "Identifying the Edges of the Optic Cup and the Optic Disc in Glaucoma Patients by Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.3390/s23104668",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P019",
+      "doi": "10.3390/s22228748",
+      "source": "https://api.crossref.org/works/10.3390%2Fs22228748",
+      "status": "identifier_title_match",
+      "source_title": "Unsupervised Domain Adaptation with Shape Constraint and Triple Attention for Joint Optic Disc and Cup Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.3390/s22228748",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P020",
+      "doi": "10.1364/boe.521778",
+      "source": "https://api.crossref.org/works/10.1364%2Fboe.521778",
+      "status": "identifier_title_match",
+      "source_title": "Entropy and distance-guided super self-ensembling for optic disc and cup segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1364/boe.521778",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P021",
+      "doi": "10.3390/vision9020032",
+      "source": "https://api.crossref.org/works/10.3390%2Fvision9020032",
+      "status": "identifier_title_match",
+      "source_title": "Cup and Disc Segmentation in Smartphone Handheld Ophthalmoscope Images with a Composite Backbone and Double Decoder Architecture",
+      "title_similarity": 1.0,
+      "source_doi": "10.3390/vision9020032",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P022",
+      "doi": "10.1109/jbhi.2023.3342422",
+      "source": "https://api.crossref.org/works/10.1109%2Fjbhi.2023.3342422",
+      "status": "identifier_title_match",
+      "source_title": "Unsupervised Domain Adaptation Fundus Image Segmentation via Multi-Scale Adaptive Adversarial Learning",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/jbhi.2023.3342422",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P023",
+      "doi": "10.1016/j.compbiomed.2023.107209",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2023.107209",
+      "status": "identifier_title_match",
+      "source_title": "TUNet and domain adaptation based learning for joint optic disc and cup segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compbiomed.2023.107209",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P024",
+      "doi": "10.7717/peerj-cs.1941",
+      "source": "https://api.crossref.org/works/10.7717%2Fpeerj-cs.1941",
+      "status": "identifier_title_match",
+      "source_title": "Optic disc and cup segmentation for glaucoma detection using Attention U-Net incorporating residual mechanism",
+      "title_similarity": 1.0,
+      "source_doi": "10.7717/peerj-cs.1941",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P025",
+      "doi": "10.1016/j.compbiomed.2024.108639",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2024.108639",
+      "status": "identifier_title_match",
+      "source_title": "SAMCF: Adaptive global style alignment and multi-color spaces fusion for joint optic cup and disc segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compbiomed.2024.108639",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P026",
+      "doi": "10.1186/s12886-024-03376-y",
+      "source": "https://api.crossref.org/works/10.1186%2Fs12886-024-03376-y",
+      "status": "identifier_title_match",
+      "source_title": "Self-supervised pre-training for joint optic disc and cup segmentation via attention-aware network",
+      "title_similarity": 1.0,
+      "source_doi": "10.1186/s12886-024-03376-y",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P027",
+      "doi": "10.1016/j.compbiomed.2024.108613",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2024.108613",
+      "status": "identifier_title_match",
+      "source_title": "JOINEDTrans: Prior guided multi-task transformer for joint optic disc/cup segmentation and fovea detection",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compbiomed.2024.108613",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P028",
+      "doi": "10.1016/j.compbiomed.2022.106094",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2022.106094",
+      "status": "identifier_title_match",
+      "source_title": "Joint optic disc and cup segmentation using feature fusion and attention",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compbiomed.2022.106094",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P029",
+      "doi": "10.3233/thc-230310",
+      "source": "https://api.crossref.org/works/10.3233%2Fthc-230310",
+      "status": "identifier_title_match",
+      "source_title": "Multi-dimensional dense attention network for pixel-wise segmentation of optic disc in colour fundus images",
+      "title_similarity": 1.0,
+      "source_doi": "10.3233/thc-230310",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P030",
+      "doi": "10.1186/s12859-022-05058-2",
+      "source": "https://api.crossref.org/works/10.1186%2Fs12859-022-05058-2",
+      "status": "identifier_title_match",
+      "source_title": "RSAP-Net: joint optic disc and cup segmentation with a residual spatial attention path module and MSRCR-PT pre-processing algorithm",
+      "title_similarity": 1.0,
+      "source_doi": "10.1186/s12859-022-05058-2",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P031",
+      "doi": "10.1109/jbhi.2023.3266576",
+      "source": "https://api.crossref.org/works/10.1109%2Fjbhi.2023.3266576",
+      "status": "identifier_title_match",
+      "source_title": "Reconstruction-Driven Dynamic Refinement Based Unsupervised Domain Adaptation for Joint Optic Disc and Cup Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/jbhi.2023.3266576",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P032",
+      "doi": "10.3389/fnhum.2022.1043569",
+      "source": "https://api.crossref.org/works/10.3389%2Ffnhum.2022.1043569",
+      "status": "identifier_title_match",
+      "source_title": "Convolutional autoencoder joint boundary and mask adversarial learning for fundus image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.3389/fnhum.2022.1043569",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P033",
+      "doi": "10.1016/j.compbiomed.2023.106796",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2023.106796",
+      "status": "identifier_title_match",
+      "source_title": "Joint optic disc and cup segmentation based on elliptical-like morphological feature and spatial geometry constraint",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compbiomed.2023.106796",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P034",
+      "doi": "10.1016/j.cmpb.2020.105717",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.cmpb.2020.105717",
+      "status": "identifier_title_match",
+      "source_title": "Optic disc and optic cup segmentation based on anatomy guided cascade network",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.cmpb.2020.105717",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P035",
+      "doi": "10.1186/s12880-020-00528-6",
+      "source": "https://api.crossref.org/works/10.1186%2Fs12880-020-00528-6",
+      "status": "identifier_title_match",
+      "source_title": "Joint optic disc and cup segmentation based on densely connected depthwise separable convolution deep network",
+      "title_similarity": 1.0,
+      "source_doi": "10.1186/s12880-020-00528-6",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P036",
+      "doi": "10.1109/tmi.2025.3596247",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3596247",
+      "status": "identifier_title_match",
+      "source_title": "Collaborative Learning of Augmentation and Disentanglement for Semi-Supervised Domain Generalized Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3596247",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P037",
+      "doi": "10.3390/bioengineering13101163",
+      "source": "https://api.crossref.org/works/10.3390%2Fbioengineering13101163",
+      "status": "identifier_title_match",
+      "source_title": "Spectral-Distribution Uncertainty Modeling for Robust Cross-Domain Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.3390/bioengineering13101163",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P038",
+      "doi": "10.1109/jbhi.2025.3650166",
+      "source": "https://api.crossref.org/works/10.1109%2Fjbhi.2025.3650166",
+      "status": "identifier_title_match",
+      "source_title": "Prior-Guided Selective Parameter Fine-Tuning for Source-Free Domain Adaptive Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/jbhi.2025.3650166",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P039",
+      "doi": "10.1016/j.compmedimag.2025.102670",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compmedimag.2025.102670",
+      "status": "identifier_title_match",
+      "source_title": "Hallucinated domain generalization network with domain-aware dynamic representation for medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compmedimag.2025.102670",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P040",
+      "doi": "10.1109/tbme.2026.3730099",
+      "source": "https://api.crossref.org/works/10.1109%2Ftbme.2026.3730099",
+      "status": "identifier_title_match",
+      "source_title": "Dual-Curriculum and Orthogonal Domain Prototype Learning for Domain Generalization Fundus Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tbme.2026.3730099",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P041",
+      "doi": "10.1016/j.media.2025.103848",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2025.103848",
+      "status": "identifier_title_match",
+      "source_title": "AdverIN: Monotonic adversarial intensity attack for domain generalization in medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2025.103848",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P042",
+      "doi": "10.1016/j.artmed.2026.103512",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.artmed.2026.103512",
+      "status": "identifier_title_match",
+      "source_title": "Segmentation-synthesis co-training for semi-supervised domain generalizable medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.artmed.2026.103512",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P043",
+      "doi": "10.1109/tmi.2025.3564474",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3564474",
+      "status": "identifier_title_match",
+      "source_title": "Domain-Generalized Discrete Diffusion Model for Cross-Domain Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3564474",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P044",
+      "doi": "10.1016/j.neunet.2026.108877",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.neunet.2026.108877",
+      "status": "identifier_title_match",
+      "source_title": "BCMDA: Bidirectional correlation maps domain adaptation for mixed domain semi-supervised medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.neunet.2026.108877",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P045",
+      "doi": "10.1109/tnnls.2025.3590956",
+      "source": "https://api.crossref.org/works/10.1109%2Ftnnls.2025.3590956",
+      "status": "identifier_title_match",
+      "source_title": "Enhancing Domain Generalization in Medical Image Segmentation With Global and Local Prompts",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tnnls.2025.3590956",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P046",
+      "doi": "10.1109/jbhi.2025.3613497",
+      "source": "https://api.crossref.org/works/10.1109%2Fjbhi.2025.3613497",
+      "status": "identifier_title_match",
+      "source_title": "IPLC+: SAM-Guided Iterative Pseudo Label Correction for Source-Free Domain Adaptation in Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/jbhi.2025.3613497",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P047",
+      "doi": "10.1109/tmi.2025.3575162",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3575162",
+      "status": "identifier_title_match",
+      "source_title": "Unleashing the Power of Intermediate Domains for Mixed Domain Semi-Supervised Medical Image Segmentation",
+      "source_doi": "10.1109/tmi.2025.3575162",
+      "source_type": "journal-article",
+      "title_similarity": 1.0,
+      "initial_access_problem": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "paper_id": "P048",
+      "doi": "10.1016/j.media.2024.103440",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2024.103440",
+      "status": "identifier_title_match",
+      "source_title": "Style mixup enhanced disentanglement learning for unsupervised domain adaptation in medical image segmentation",
+      "source_doi": "10.1016/j.media.2024.103440",
+      "source_type": "journal-article",
+      "title_similarity": 1.0,
+      "initial_access_problem": "HTTPError: HTTP Error 429: Too Many Requests"
+    },
+    {
+      "paper_id": "P049",
+      "doi": "10.1109/tmi.2026.3672802",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2026.3672802",
+      "status": "identifier_title_match",
+      "source_title": "Unified and Semantically Grounded Domain Adaptation for Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2026.3672802",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P050",
+      "doi": "10.1109/tmi.2025.3619837",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3619837",
+      "status": "identifier_title_match",
+      "source_title": "Source-Free Active Domain Adaptation via Influential-Points-Guided Progressive Teacher for Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3619837",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P051",
+      "doi": "10.1016/j.jbi.2025.104802",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.jbi.2025.104802",
+      "status": "identifier_title_match",
+      "source_title": "Enhancing generalization of medical image segmentation via game theory-based domain selection",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.jbi.2025.104802",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P052",
+      "doi": "10.1109/tmi.2025.3564765",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3564765",
+      "status": "identifier_title_match",
+      "source_title": "Mamba-Sea: A Mamba-Based Framework With Global-to-Local Sequence Augmentation for Generalizable Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3564765",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P053",
+      "doi": "10.1002/mp.70118",
+      "source": "https://api.crossref.org/works/10.1002%2Fmp.70118",
+      "status": "identifier_title_match",
+      "source_title": "Frequency\u2010aware domain randomization for single\u2010source domain generalization in medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1002/mp.70118",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P054",
+      "doi": "10.1109/tnnls.2025.3620853",
+      "source": "https://api.crossref.org/works/10.1109%2Ftnnls.2025.3620853",
+      "status": "identifier_title_match",
+      "source_title": "FIESTA: Fourier-Based Semantic Augmentation With Uncertainty Guidance for Enhanced Domain Generalizability in Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tnnls.2025.3620853",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P055",
+      "doi": "10.1109/tmi.2025.3605162",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3605162",
+      "status": "identifier_title_match",
+      "source_title": "Teacher\u2013Student Instance-Level Adversarial Augmentation for Single Domain Generalized Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3605162",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P056",
+      "doi": "10.1109/tip.2024.3451934",
+      "source": "https://api.crossref.org/works/10.1109%2Ftip.2024.3451934",
+      "status": "identifier_title_match",
+      "source_title": "Style Consistency Unsupervised Domain Adaptation Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tip.2024.3451934",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P057",
+      "doi": "10.1016/j.neunet.2024.107073",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.neunet.2024.107073",
+      "status": "identifier_title_match",
+      "source_title": "Dynamic domain generalization for medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.neunet.2024.107073",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P058",
+      "doi": "10.1016/j.media.2024.103422",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2024.103422",
+      "status": "identifier_title_match",
+      "source_title": "Improving cross-domain generalizability of medical image segmentation using uncertainty and shape-aware continual test-time domain adaptation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2024.103422",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P059",
+      "doi": "10.1109/tmi.2023.3306105",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2023.3306105",
+      "status": "identifier_title_match",
+      "source_title": "FVP: Fourier Visual Prompting for Source-Free Unsupervised Domain Adaptation of Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2023.3306105",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P060",
+      "doi": "10.1109/tmi.2023.3346285",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2023.3346285",
+      "status": "identifier_title_match",
+      "source_title": "Multi-Source Domain Adaptation for Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2023.3346285",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P061",
+      "doi": "10.1109/tmi.2026.3714338",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2026.3714338",
+      "status": "identifier_title_match",
+      "source_title": "Taking a Deep Look at Multi-Rater Agreement for Calibrated Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2026.3714338",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P062",
+      "doi": "10.1109/tmi.2024.3394045",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2024.3394045",
+      "status": "identifier_title_match",
+      "source_title": "Calibrate the Inter-Observer Segmentation Uncertainty via Diagnosis-First Principle",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2024.3394045",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P063",
+      "doi": "10.1016/j.scib.2024.06.037",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.scib.2024.06.037",
+      "status": "identifier_title_match",
+      "source_title": "Multi-rater Prism: Learning self-calibrated medical image segmentation from multiple raters",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.scib.2024.06.037",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P064",
+      "doi": "10.1016/j.media.2025.103812",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2025.103812",
+      "status": "identifier_title_match",
+      "source_title": "CaliDiff: Multi-rater annotation calibrating diffusion probabilistic model towards medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2025.103812",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P065",
+      "doi": "10.1016/j.compbiomed.2025.111024",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compbiomed.2025.111024",
+      "status": "identifier_title_match",
+      "source_title": "Calibration and Uncertainty for multiRater Volume Assessment in multiorgan Segmentation (CURVAS) challenge results",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compbiomed.2025.111024",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P066",
+      "doi": "10.1016/j.artmed.2025.103289",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.artmed.2025.103289",
+      "status": "identifier_title_match",
+      "source_title": "Multi-annotation agreement and prediction consistency networks: Improving semi-supervised segmentation of medical images with ambiguous boundaries",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.artmed.2025.103289",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P067",
+      "doi": "10.2147/opth.s492872",
+      "source": "https://api.crossref.org/works/10.2147%2Fopth.s492872",
+      "status": "identifier_title_match",
+      "source_title": "Evaluating the Influence of Clinical Data on Inter-Observer Variability in Optic Disc Analysis for AI-Assisted Glaucoma Screening",
+      "title_similarity": 1.0,
+      "source_doi": "10.2147/opth.s492872",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P068",
+      "doi": "10.1109/tmi.2025.3561117",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3561117",
+      "status": "identifier_title_match",
+      "source_title": "Contour-Aware Multi-Expert Model for Ambiguous Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3561117",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P069",
+      "doi": "10.1016/j.media.2023.103028",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2023.103028",
+      "status": "identifier_title_match",
+      "source_title": "Modeling annotator preference and stochastic annotation error for medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2023.103028",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P070",
+      "doi": "10.1016/j.patcog.2023.109400",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.patcog.2023.109400",
+      "status": "identifier_title_match",
+      "source_title": "Learning from multiple annotators for medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.patcog.2023.109400",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P071",
+      "doi": "10.1016/j.media.2026.104291",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2026.104291",
+      "status": "identifier_title_match",
+      "source_title": "Uncertainty as risk: A plug-and-play evidence-guided framework with error-aligned calibration for medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2026.104291",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P072",
+      "doi": "10.1109/tcyb.2025.3604432",
+      "source": "https://api.crossref.org/works/10.1109%2Ftcyb.2025.3604432",
+      "status": "identifier_title_match",
+      "source_title": "Toward Reliable Medical Image Segmentation by Modeling Evidential Calibrated Uncertainty",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tcyb.2025.3604432",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P073",
+      "doi": "10.1109/tmi.2026.3673118",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2026.3673118",
+      "status": "identifier_title_match",
+      "source_title": "Average Calibration Losses for Reliable Uncertainty in Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2026.3673118",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P074",
+      "doi": "10.1109/tmi.2026.3720501",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2026.3720501",
+      "status": "identifier_title_match",
+      "source_title": "Exploring the Connection between Uncertainty and Tissue Boundaries in Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2026.3720501",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P075",
+      "doi": "10.1007/s11517-026-03673-2",
+      "source": "https://api.crossref.org/works/10.1007%2Fs11517-026-03673-2",
+      "status": "identifier_title_match",
+      "source_title": "A unified medical image segmentation evaluation method combining multi-metrics and confidence",
+      "title_similarity": 1.0,
+      "source_doi": "10.1007/s11517-026-03673-2",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P076",
+      "doi": "10.1007/s11517-026-03591-3",
+      "source": "https://api.crossref.org/works/10.1007%2Fs11517-026-03591-3",
+      "status": "identifier_title_match",
+      "source_title": "Uncertainty-guided model learning for trustworthy medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1007/s11517-026-03591-3",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P077",
+      "doi": "10.1109/isbi61048.2026.11515329",
+      "source": "https://api.crossref.org/works/10.1109%2Fisbi61048.2026.11515329",
+      "status": "identifier_title_match",
+      "source_title": "Segmentation Confidence for Arbitrary CNNS",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/isbi61048.2026.11515329",
+      "source_type": "proceedings-article"
+    },
+    {
+      "paper_id": "P078",
+      "doi": "10.1007/s10278-026-01907-1",
+      "source": "https://api.crossref.org/works/10.1007%2Fs10278-026-01907-1",
+      "status": "identifier_title_match",
+      "source_title": "Out-of-Distribution Detection in Medical Image Segmentation with $$\\beta $$-VAE and Likelihood Regret",
+      "title_similarity": 0.975,
+      "source_doi": "10.1007/s10278-026-01907-1",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P079",
+      "doi": "10.1016/j.compmedimag.2025.102574",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compmedimag.2025.102574",
+      "status": "identifier_title_match",
+      "source_title": "Evaluation of uncertainty estimation methods in medical image segmentation: Exploring the usage of uncertainty in clinical deployment",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compmedimag.2025.102574",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P080",
+      "doi": "10.1016/j.compmedimag.2024.102459",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compmedimag.2024.102459",
+      "status": "identifier_title_match",
+      "source_title": "Exploring transformer reliability in clinically significant prostate cancer segmentation: A comprehensive in-depth investigation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compmedimag.2024.102459",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P081",
+      "doi": "10.1016/j.media.2024.103392",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2024.103392",
+      "status": "identifier_title_match",
+      "source_title": "Comparative benchmarking of failure detection methods in medical image segmentation: Unveiling the role of confidence aggregation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2024.103392",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P082",
+      "doi": "10.1109/tmi.2025.3589058",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3589058",
+      "status": "identifier_title_match",
+      "source_title": "Region Uncertainty Estimation for Medical Image Segmentation With Noisy Labels",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3589058",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P083",
+      "doi": "10.1016/j.artmed.2026.103459",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.artmed.2026.103459",
+      "status": "identifier_title_match",
+      "source_title": "Annotator reliability and probabilistic consensus for semantic segmentation in digital pathology",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.artmed.2026.103459",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P084",
+      "doi": "10.1016/j.media.2026.104046",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2026.104046",
+      "status": "identifier_title_match",
+      "source_title": "OOD-SEG: Exploiting out-of-distribution detection techniques for learning image segmentation from sparse multi-class positive-only annotations",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2026.104046",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P085",
+      "doi": "10.1016/j.media.2025.103489",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.media.2025.103489",
+      "status": "identifier_title_match",
+      "source_title": "Learning robust medical image segmentation from multi-source annotations",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.media.2025.103489",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P086",
+      "doi": "10.1016/j.compmedimag.2024.102476",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.compmedimag.2024.102476",
+      "status": "identifier_title_match",
+      "source_title": "Post-hoc out-of-distribution detection for cardiac MRI segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.compmedimag.2024.102476",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P087",
+      "doi": "10.1016/j.engappai.2025.113118",
+      "source": "https://api.crossref.org/works/10.1016%2Fj.engappai.2025.113118",
+      "status": "identifier_title_match",
+      "source_title": "Uncertainty- and hardness-weighted loss functions for medical image segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1016/j.engappai.2025.113118",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P088",
+      "doi": "10.1109/tmi.2025.3535478",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3535478",
+      "status": "identifier_title_match",
+      "source_title": "Uncertainty-Driven Edge Prompt Generation Network for Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3535478",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P089",
+      "doi": "10.1109/tmi.2025.3570310",
+      "source": "https://api.crossref.org/works/10.1109%2Ftmi.2025.3570310",
+      "status": "identifier_title_match",
+      "source_title": "Uncertainty Co-Estimator for Improving Semi-Supervised Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/tmi.2025.3570310",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P090",
+      "doi": "10.1109/jbhi.2026.3702069",
+      "source": "https://api.crossref.org/works/10.1109%2Fjbhi.2026.3702069",
+      "status": "identifier_title_match",
+      "source_title": "Class Sensitive Calibration and Discrepancy-Aware Synthesis for Semi-Supervised Medical Image Segmentation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1109/jbhi.2026.3702069",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P091",
+      "doi": "10.1038/s41592-023-02150-0",
+      "source": "https://api.crossref.org/works/10.1038%2Fs41592-023-02150-0",
+      "status": "identifier_title_match",
+      "source_title": "Understanding metric-related pitfalls in image analysis validation",
+      "title_similarity": 1.0,
+      "source_doi": "10.1038/s41592-023-02150-0",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P092",
+      "doi": "10.1148/ryai.260835",
+      "source": "https://api.crossref.org/works/10.1148%2Fryai.260835",
+      "status": "identifier_title_match",
+      "source_title": "Checklist for Artificial Intelligence in Medical Imaging (CLAIM):                     Explanation, Elaboration, and Examples",
+      "title_similarity": 1.0,
+      "source_doi": "10.1148/ryai.260835",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P093",
+      "doi": "10.1007/s10278-026-02403-2",
+      "source": "https://api.crossref.org/works/10.1007%2Fs10278-026-02403-2",
+      "status": "identifier_title_match",
+      "source_title": "Building and Validating a Data-Governance Workflow for Artificial Intelligence\u2013Based Tuberculosis Detection from Chest Radiographs, and Quantifying the Impact of Data Leakage",
+      "title_similarity": 1.0,
+      "source_doi": "10.1007/s10278-026-02403-2",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P094",
+      "doi": "10.1007/s10278-026-02430-z",
+      "source": "https://api.crossref.org/works/10.1007%2Fs10278-026-02430-z",
+      "status": "identifier_title_match",
+      "source_title": "Measuring Data Leakage in the Absence of Patient Identifiers: A Public Kidney CT Benchmark and a Transferable Screen",
+      "title_similarity": 1.0,
+      "source_doi": "10.1007/s10278-026-02430-z",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P095",
+      "doi": "10.1148/ryai.240300",
+      "source": "https://api.crossref.org/works/10.1148%2Fryai.240300",
+      "status": "identifier_title_match",
+      "source_title": "Checklist for Artificial Intelligence in Medical Imaging (CLAIM):                     2024 Update",
+      "title_similarity": 1.0,
+      "source_doi": "10.1148/ryai.240300",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P096",
+      "doi": "10.3233/shti220391",
+      "source": "https://api.crossref.org/works/10.3233%2Fshti220391",
+      "status": "identifier_title_match",
+      "source_title": "MISeval: A Metric Library for Medical Image Segmentation Evaluation",
+      "title_similarity": 1.0,
+      "source_doi": "10.3233/shti220391",
+      "source_type": "book-chapter"
+    },
+    {
+      "paper_id": "P097",
+      "doi": "10.1038/s41597-022-01618-6",
+      "source": "https://api.crossref.org/works/10.1038%2Fs41597-022-01618-6",
+      "status": "identifier_title_match",
+      "source_title": "Inflation of test accuracy due to data leakage in deep learning-based classification of OCT images",
+      "title_similarity": 1.0,
+      "source_doi": "10.1038/s41597-022-01618-6",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P098",
+      "doi": "10.1038/s41598-021-01681-w",
+      "source": "https://api.crossref.org/works/10.1038%2Fs41598-021-01681-w",
+      "status": "identifier_title_match",
+      "source_title": "Effect of data leakage in brain MRI classification using 2D convolutional neural networks",
+      "title_similarity": 1.0,
+      "source_doi": "10.1038/s41598-021-01681-w",
+      "source_type": "journal-article"
+    },
+    {
+      "paper_id": "P099",
+      "status": "primary_preprint_already_checked_separately",
+      "doi": "10.48550/arXiv.1903.12261"
+    },
+    {
+      "paper_id": "P100",
+      "status": "primary_preprint_already_checked_separately",
+      "doi": "10.48550/arXiv.1906.02530"
+    }
+  ]
+}

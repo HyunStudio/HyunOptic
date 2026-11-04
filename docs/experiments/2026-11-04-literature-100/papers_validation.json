@@ -1,0 +1,55 @@
+{
+  "count": 100,
+  "date_cutoff": "2026-11-04",
+  "future_first_publication_dates": [],
+  "future_issue_years": [],
+  "exact_key_duplicates": [],
+  "exact_normalized_title_duplicates": [],
+  "fuzzy_threshold": 0.74,
+  "fuzzy_pairs_manually_reviewed": [
+    {
+      "ids": [
+        "P019",
+        "P023"
+      ],
+      "title_similarity": 0.7442,
+      "decision": "distinct papers retained",
+      "reason": "Different DOI/title and distinct described methods or reporting scope; abstract/summary checked"
+    },
+    {
+      "ids": [
+        "P049",
+        "P060"
+      ],
+      "title_similarity": 0.7717,
+      "decision": "distinct papers retained",
+      "reason": "Different DOI/title and distinct described methods or reporting scope; abstract/summary checked"
+    },
+    {
+      "ids": [
+        "P057",
+        "P060"
+      ],
+      "title_similarity": 0.7778,
+      "decision": "distinct papers retained",
+      "reason": "Different DOI/title and distinct described methods or reporting scope; abstract/summary checked"
+    },
+    {
+      "ids": [
+        "P092",
+        "P095"
+      ],
+      "title_similarity": 0.7712,
+      "decision": "distinct papers retained",
+      "reason": "Different DOI/title and distinct described methods or reporting scope; abstract/summary checked"
+    }
+  ],
+  "preprint_article_pairs_not_separately_counted": {
+    "P062": "2208.03016 related preprint; TMI DOI canonical",
+    "P063": "2212.00601 related preprint/conference lineage; ScienceBulletin journal DOI canonical",
+    "P081": "2406.03323 related preprint; MedicalImageAnalysis DOI canonical",
+    "P099": "1903.12261 supersedes1807.01697; olderID not counted"
+  },
+  "metadata_title_mismatches_found": [],
+  "metadata_title_limit": "98EuropePMC original-publication title/DOI pairs checked; all DOI landing pages not separately checked. P095publisher title confirmed. Relatedpreprints can differ from journal versions."
+}

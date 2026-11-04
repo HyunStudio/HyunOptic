@@ -1,0 +1,25 @@
+{
+  "full_suite_passed": 380,
+  "warnings": 2,
+  "seconds": 371.98,
+  "warnings_scope": "Two existing CUDA nondeterministic-kernel warnings; no bitwise CUDA reproducibility claim",
+  "independent_code_review": {
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "review_scope": "Seven production modules, three regression files, CI test selection; not clinical or paper-model validation"
+  },
+  "separate_independent_checks": {
+    "review_budget_cases": 41,
+    "segmentation_metric_export_contract_cases": 77,
+    "genuine_zip_compatibility_packages": 20
+  },
+  "red_evidence": {
+    "segmentation_promoted_initial_failed": 17,
+    "separate_dice_failed": 3,
+    "metric_entrypoints_failed": 8,
+    "review_boundary_initial_failed": 8,
+    "numpy_integer_results_failed": 2
+  },
+  "statement": "Failing assertions precede fixes. Counts overlap across runs; do not sum them as unique defects or patient evidence."
+}

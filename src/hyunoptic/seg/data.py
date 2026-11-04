@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 import numpy as np
@@ -46,13 +47,36 @@ def verify_split_manifest(payload: dict) -> dict:
     if not isinstance(payload, dict) or set(payload) != {"manifest", "sha256"}:
         raise ValueError("Invalid split manifest structure")
     body = payload["manifest"]
-    if body.get("schema") != SPLIT_SCHEMA:
+    if not isinstance(body, dict) or body.get("schema") != SPLIT_SCHEMA:
         raise ValueError("Unsupported split manifest schema")
     if canonical_sha256(body) != payload["sha256"]:
         raise ValueError("Split manifest content does not match its SHA-256")
-    patients = [set(body["patients"][s]) for s in ("development", "validation", "holdout")]
-    if patients[0] & patients[1] or patients[0] & patients[2] or patients[1] & patients[2]:
-        raise ValueError("A patient appears in more than one split")
+    names = ("development", "validation", "holdout")
+    partitions = {}
+    for field in ("splits", "patients"):
+        mapping = body.get(field)
+        if not isinstance(mapping, dict) or set(mapping) != set(names):
+            raise ValueError(f"Split manifest {field} must contain the three named partitions")
+        seen = set()
+        partitions[field] = {}
+        for name in names:
+            entries = mapping[name]
+            if not isinstance(entries, list) or any(not isinstance(v, str) or not v.strip() for v in entries):
+                raise ValueError(f"Split manifest {field}/{name} must be a list of nonempty identifiers")
+            normalized = {v.upper() for v in entries}
+            if len(normalized) != len(entries):
+                raise ValueError(f"Duplicate identifier in {field}/{name}")
+            if seen & normalized:
+                raise ValueError(f"An identifier in {field} appears in more than one split")
+            seen.update(normalized)
+            partitions[field][name] = normalized
+    for name in names:
+        images = partitions["splits"][name]
+        patients = partitions["patients"][name]
+        matches = [re.fullmatch(r"(RET\d{3})(OD|OS)", image) for image in images]
+        parsed_patients = {match.group(1) for match in matches if match is not None}
+        if not parsed_patients <= patients or (all(matches) and parsed_patients != patients):
+            raise ValueError(f"Image/patient membership is inconsistent in {name}")
     return body
 
 

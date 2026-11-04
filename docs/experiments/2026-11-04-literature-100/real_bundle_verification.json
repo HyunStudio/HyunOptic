@@ -1,0 +1,90 @@
+[
+  {
+    "bundle": "papila_camera_robust_seed43_20261025",
+    "verified": true,
+    "bytes_unchanged": true,
+    "files_sha256": {
+      "bundle_manifest.json": "af0c26429997e7c4cf00d81a86f00a6608f00cb13d086c05771e15eebf07710a",
+      "config.json": "cc4d2cdd32e52973853df453c55e067395c52eb92b40c2fdf6c4d8e35e36a531",
+      "history.json": "3e1b28733b28c7d57812fee2ea0c46f312dd97dbf0ba7bff05c7e7b43b274beb",
+      "split_manifest.json": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+      "weights.pt": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4"
+    },
+    "images": {
+      "development": 292,
+      "validation": 98,
+      "holdout": 98
+    },
+    "patients": {
+      "development": 146,
+      "validation": 49,
+      "holdout": 49
+    }
+  },
+  {
+    "bundle": "papila_real_seed43_20261025",
+    "verified": true,
+    "bytes_unchanged": true,
+    "files_sha256": {
+      "bundle_manifest.json": "947ce4fbbb06bf22e72898b7ea46522634a67f27f2db9c726d06a2c745388cd8",
+      "config.json": "d0262eaf8a340131db65e6d55a9d876a79336bb2fae2ed3cbb247d0b7e73b4e1",
+      "history.json": "dd2717bb0513e19c8640309db62a8b55f219e098165360f67db9af8fcdb6f6e3",
+      "split_manifest.json": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+      "weights.pt": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747"
+    },
+    "images": {
+      "development": 292,
+      "validation": 98,
+      "holdout": 98
+    },
+    "patients": {
+      "development": 146,
+      "validation": 49,
+      "holdout": 49
+    }
+  },
+  {
+    "bundle": "papila_real_seed44_20261025",
+    "verified": true,
+    "bytes_unchanged": true,
+    "files_sha256": {
+      "bundle_manifest.json": "367b3d7552e8d7155bfcb5ab1b0e0ea51196b7df1912199e0170fdc8cf6405d8",
+      "config.json": "39ffdfd7866f155cd8f1e122f4a72894243d28e0aa902b427314b5888cbf5aa9",
+      "history.json": "23b63b86abf615828e1e556518be0f73011321dfd4de4a8eeb06f474bef3df67",
+      "split_manifest.json": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+      "weights.pt": "e092958143798f0e24ff708e49bd9092c981efe9480f5ec96d908f1791adaa87"
+    },
+    "images": {
+      "development": 292,
+      "validation": 98,
+      "holdout": 98
+    },
+    "patients": {
+      "development": 146,
+      "validation": 49,
+      "holdout": 49
+    }
+  },
+  {
+    "bundle": "papila_real_v1_20261025",
+    "verified": true,
+    "bytes_unchanged": true,
+    "files_sha256": {
+      "bundle_manifest.json": "1b9feab9dbae68ff11929f68a50d5bca7a2fa9397b30e9631d496c68f9a7de53",
+      "config.json": "f22341c0f30ad9b0ece5f0a6ae1ae6dd37e68cfe875e2f748d8ccccc0fded95b",
+      "history.json": "36d25f128bb1bbdf3279ba798fad7d8e5ad0d63822de57e45d680888b31a5ea6",
+      "split_manifest.json": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+      "weights.pt": "8d7c01bad42fa6b8c4b6520b47558d37ebbe162e980561396edd552391be15ff"
+    },
+    "images": {
+      "development": 292,
+      "validation": 98,
+      "holdout": 98
+    },
+    "patients": {
+      "development": 146,
+      "validation": 49,
+      "holdout": 49
+    }
+  }
+]
