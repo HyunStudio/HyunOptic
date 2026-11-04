@@ -52,10 +52,12 @@ class ChaksuCase:
     def mask_member(self, expert: str, structure: str) -> str:
         return self.mask_members[(expert, structure)]
 
-def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
+def scan_test_archive(path: str | Path, *, require_complete: bool = True) -> tuple[list[ChaksuCase], dict]:
     """Index archive paths and warn on incomplete or ambiguous images/annotations.
 
     No bytes extracted, and no fabricated labels inferred from fusion masks.
+    Image-only model evaluation may opt to retain missing-reference cases; the
+    structural manifest still counts only complete five-reader cases as complete.
     """
     path = Path(path)
     if not zipfile.is_zipfile(path):
@@ -108,7 +110,7 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
                 if key in masks:
                     duplicate.append(str(key))
                 masks[key] = entry.filename
-    cases, missing = [], []
+    cases, missing, complete_cases = [], [], []
     for (cam, stem), image_member in sorted(images.items()):
         found = {(expert, structure): masks.get((cam, stem, expert, structure))
                  for expert in EXPERTS for structure in ("disc", "cup")}
@@ -116,7 +118,10 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
         if absent:
             missing.append({"case_id": f"{cam}/{stem}", "missing": absent})
         else:
-            cases.append(ChaksuCase(f"{cam}/{stem}", cam, image_member, found))
+            complete_cases.append(ChaksuCase(f"{cam}/{stem}", cam, image_member, found))
+        if not absent or not require_complete:
+            cases.append(ChaksuCase(f"{cam}/{stem}", cam, image_member,
+                                    {key: value for key, value in found.items() if value is not None}))
     # Do not mistake consecutive photographs for independent subjects.
     # This is only a partial linkage, NOT complete unique-patient identification.
     known_groups = {}
@@ -125,20 +130,20 @@ def scan_test_archive(path: str | Path) -> tuple[list[ChaksuCase], dict]:
         if matched:
             known_groups.setdefault((cam, matched.group(1).lower()), 0)
             known_groups[(cam, matched.group(1).lower())] += 1
-    camera_counts = {cam: sum(c.camera == cam for c in cases) for cam in CAMERAS}
+    camera_counts = {cam: sum(c.camera == cam for c in complete_cases) for cam in CAMERAS}
     fingerprint = hashlib.sha256(json.dumps({
         "images": sorted(images.items()), "masks": sorted(masks.items()),
         "entry_names_and_sizes": sorted(sizes),
     }, sort_keys=True).encode()).hexdigest()
     complete = (camera_counts == EXPECTED_TEST and len(images) == 336
-                and len(cases) == 336 and not duplicate and not suspicious)
+                and len(complete_cases) == 336 and not duplicate and not suspicious)
     manifest = {
         "dataset": "Chaksu", "study_partition": "published Test only",
         "source": "local ZIP; no upload of eye images",
         "published_test_counts": EXPECTED_TEST,
         "image_entries": len(images),
         "ignored_os_metadata_entries": ignored_os_metadata,
-        "complete_5_reader_cases": len(cases),
+        "complete_5_reader_cases": len(complete_cases),
         "images_with_partially_decodable_patient_id": sum(known_groups.values()),
         "known_repeat_patient_groups": sum(n > 1 for n in known_groups.values()),
         "images_in_known_repeat_groups": sum(n for n in known_groups.values() if n > 1),
