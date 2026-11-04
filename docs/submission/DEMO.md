@@ -1,6 +1,8 @@
 # Three-minute demonstration script
 
-**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. Native 200% zoom, new YouTube publication confirmation, personal final review and actual Devpost entry remain pending.
+**Current public refresh:** [November 5 video and verification](VIDEO_PUBLICATION_20261105.md). Historical footage and publication details below retain their original scope.
+
+**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. [New public video](https://youtu.be/C5KE1KaHWGI) is published with verified English captions and public playback. Native 200% zoom, personal final review and actual Devpost entry remain pending.
 
 **Historical public YouTube version (older source):** https://youtu.be/xbs47mX0d5g. Thumbnail, English timed SRT, description and AI-use disclosure are applied. Public hosted playback and anonymous oEmbed availability were checked; see [publication record](VIDEO_PUBLICATION.md). Any earlier references below to pending upload describe the preparation state before this publication.
 

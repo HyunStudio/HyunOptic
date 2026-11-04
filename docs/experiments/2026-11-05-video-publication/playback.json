@@ -1,0 +1,33 @@
+{
+  "url": "https://www.youtube.com/watch?v=C5KE1KaHWGI",
+  "observed_utc": "2026-11-04T22:22:01.506Z",
+  "initial_playback": [
+    {
+      "currentTime": 41.021145,
+      "duration": 167.401,
+      "muted": false,
+      "paused": false,
+      "readyState": 4,
+      "videoHeight": 720,
+      "videoWidth": 960
+    }
+  ],
+  "final_playback": [
+    {
+      "currentTime": 167.401,
+      "duration": 167.401,
+      "ended": true,
+      "muted": false,
+      "paused": true,
+      "readyState": 4,
+      "videoHeight": 720,
+      "videoWidth": 960
+    }
+  ],
+  "played_to_end": true,
+  "english_caption_menu_observed": true,
+  "uploaded_srt_cues": 30,
+  "published_confirmation_observed": true,
+  "thumbnail_applied": true,
+  "scope": "Observed hosted playback and captions; not a human medical or A4 review"
+}
