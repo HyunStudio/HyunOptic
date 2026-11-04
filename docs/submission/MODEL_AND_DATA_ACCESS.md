@@ -12,18 +12,24 @@ Use two distinct bundles with a verified `bundle_manifest.json`, `config.json`, 
 
 ## Reproducible synthetic demonstration
 
-Synthetic fixtures are created by project code and contain no patient images. `hyunoptic-demo-data --help` and `hyunoptic-seg train --help` describe local preparation; `--allow-partial` is necessary for tiny synthetic cohorts. Train two small runs with different seeds. They are labeled synthetic and demonstrate the mechanism only. Tests perform this on tiny fixtures and fake predictions; fake predictions are never reported as real model performance.
+Synthetic fixtures are created by project code and contain no patient images. The preparation script trains two actual models and creates an isolated workspace. The CPU integration test also trains and verifies real bundles; separate test adapters remain explicitly synthetic. Neither type is reported as clinical performance.
 
 From an activated environment at the repository root, using new output folders:
 
 ```powershell
-hyunoptic-demo-data --output-dir demo_data/review --patients 10 --per-camera 2
-hyunoptic-seg train --papila-root demo_data/review/PAPILA_SYNTHETIC --output models/review_demo_42 --image-size 64 --epochs 2 --batch-size 4 --base-channels 4 --depth 2 --seed 42 --device cpu --allow-partial
-hyunoptic-seg train --papila-root demo_data/review/PAPILA_SYNTHETIC --output models/review_demo_43 --image-size 64 --epochs 2 --batch-size 4 --base-channels 4 --depth 2 --seed 43 --device cpu --allow-partial
-streamlit run app.py
+python scripts/prepare_submission_demo.py --output demo_data/submission --launch
 ```
 
-Select these two bundles in Review Queue and images from `demo_data/review/PAPILA_SYNTHETIC/FundusImages`. Tiny two-epoch models may return invalid geometry; show that failure as a recorded limitation rather than selecting examples to imply good accuracy. Training refuses an existing output folder to preserve frozen bundles.
+Defaults: ten synthetic patients, 512×384 original images, model input 64×64, 80 epochs, base channels 8, depth 2, learning rate 0.003, seeds 42/43, CPU with up to four threads, partial-data declaration. The output contains `models/synthetic_42`, `models/synthetic_43`, fixed first-four images plus an unreadable input under `inputs`, and `workspace/workspace.json`. Existing output folders are refused. The launcher sets the isolated workspace only for the child app and does not change an existing workspace setting.
+
+To relaunch after preparation, without retraining:
+
+```powershell
+$env:HYUNOPTIC_WORKSPACE = (Resolve-Path demo_data/submission/workspace).Path
+python -m streamlit run app.py --server.address 127.0.0.1
+```
+
+Select the two synthetic bundles in Review Queue and files under `demo_data/submission/inputs`. The older two-epoch recipe actually produced four invalid-geometry outputs for seed 43 on the fixed four examples; the improved recipe produced measurable outputs for both models on those same examples. This does not establish anatomical accuracy. Preserve any failures rather than selecting examples to imply good performance. [Preparation and execution audit](../experiments/2026-11-04-submission-readiness/README.md).
 
 ## Public demonstration limits
 

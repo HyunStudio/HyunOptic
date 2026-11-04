@@ -14,6 +14,14 @@ python -m pytest -q
 streamlit run app.py
 ```
 
+For an isolated, runnable demonstration without private datasets or weights, replace the last command with:
+
+```powershell
+python scripts/prepare_submission_demo.py --output demo_data/submission --launch
+```
+
+This generates synthetic data and actually trains two small CPU models (80 epochs each). It refuses an existing output folder. In Review Queue, select the two `synthetic_42` / `synthetic_43` bundles and import the generated `demo_data/submission/inputs` files. The unreadable example is intentional. See [model/data access](MODEL_AND_DATA_ACCESS.md) for relaunching the isolated workspace. Synthetic execution does not establish accuracy.
+
 Open **Model Inference** to configure the models directory, then **Review Queue**. Two distinct verified local model bundles are required for a new review session. Their preparation and access restrictions are in [MODEL_AND_DATA_ACCESS.md](MODEL_AND_DATA_ACCESS.md). Without models, existing review records remain inspectable and the page shows an honest creation gate.
 
 ## Main task
@@ -35,6 +43,10 @@ python -m hyunoptic.review.export path/to/evidence.zip
 
 ## Evidence and scope
 
+- [Current readiness decision and remaining submission requirements](READINESS.md)
+- [Devpost description draft](DEVPOST_DRAFT.md)
+- [Rubric-to-evidence map](RUBRIC_EVIDENCE.md)
+- [November 4 actual browser and cold-source audit](../experiments/2026-11-04-submission-readiness/README.md)
 - [Baseline and contribution boundary](BASELINE.md)
 - [Actual development dates](EVENT_CHANGES.md)
 - [AI use and human verification](AI_DISCLOSURE.md)

@@ -1,0 +1,38 @@
+{
+  "synthetic": true,
+  "partial": true,
+  "state": "ready",
+  "epochs": 80,
+  "patients": 10,
+  "image_size": 64,
+  "device": "cpu",
+  "models": [
+    {
+      "identity": "8ec4ef6bb226c32023f533a65c33aeacf8912dfe415c14b0aca0653e18a41076",
+      "run_id": "seg-20261104-034249-47e91de2",
+      "weights_sha256": "47e91de2b00e0f70b79cb1a6599a08327e2bea5fda7a116669fff7f28c544679",
+      "synthetic": true
+    },
+    {
+      "identity": "1c013cf7fd5a9d7a66d6205008add688020477de5c9fc7dbb1c99f6c810d03d2",
+      "run_id": "seg-20261104-034302-3231ffb2",
+      "weights_sha256": "3231ffb24cf04c84cb3f238732b24365b35bf8188826d75c4ec3df4f705c92b0",
+      "synthetic": true
+    }
+  ],
+  "fixed_four_example_prediction_statuses": [
+    [
+      "ok",
+      "ok",
+      "ok",
+      "ok"
+    ],
+    [
+      "ok",
+      "ok",
+      "ok",
+      "ok"
+    ]
+  ],
+  "interpretation": "Synthetic mechanics only; invalid geometry remains visible; no accuracy claim."
+}

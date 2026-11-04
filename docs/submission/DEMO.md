@@ -2,6 +2,10 @@
 
 Record the actual final application. Use synthetic images/models unless you have verified public display rights. Label synthetic fixtures and any time-compressed or precomputed steps throughout. A written script is not an uploaded video.
 
+November 4 preparation produced a **180-second silent, captioned local draft from actual browser screenshots**, with prepared synthetic models and edited stills labeled throughout. This is a reviewable storyboard/video draft, not continuous interaction footage or an already published final video. The local file is `reports/submission_audit_20261104/video/hyunoptic_demo_draft.mp4` (ignored; not distributed with patient data). Its [captions](../experiments/2026-11-04-submission-readiness/video_storyboard.json) and [actual execution report](../experiments/2026-11-04-submission-readiness/README.md) are public. Full decode passed; duration 180 seconds, 1280×960, 10 fps, no audio. The submitter should decide whether to record continuous interaction for the final public video.
+
+The current local software result is **326 passed, 2 warnings**. The actual browser session retained four completed synthetic images/eight predictions and one unreadable input, a held/uncertain decision after refresh, and a downloaded independently verified six-payload ZIP. Do not present the earlier script's timings as a recording of events that did not occur.
+
 | Time | Actual action / message |
 | --- | --- |
 | 0:00–0:25 | Explain the research problem: a model can output a measurement on the wrong structure. State research-only scope and the demo's synthetic status. |

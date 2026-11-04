@@ -1,0 +1,28 @@
+{
+  "files": {
+    "held_review.jpg": {
+      "bytes": 31368,
+      "sha256": "234686834d32c5c665405d6eef6173bd4387febab70e693bf6d728b749da40c7"
+    },
+    "run_workflow_audit.py": {
+      "bytes": 3852,
+      "sha256": "9cbf0dc5720ebe33a3507d983d5db33159198e0551502805537bd54b0bcba90e"
+    },
+    "synthetic_model_preview.jpg": {
+      "bytes": 32946,
+      "sha256": "7c768472629b85e2212a2a252be2348e44dcde960e762efde65bca185d166ff6"
+    },
+    "synthetic_setup.json": {
+      "bytes": 988,
+      "sha256": "96004bc2f82171d1cff88dc0ae13923b352034d608b383eb4a7689b9b7315c19"
+    },
+    "video_storyboard.json": {
+      "bytes": 3434,
+      "sha256": "c6082e5ac25b88bc32204f578780d5ad254a43debd4c4df1fbc6f340688cc238"
+    },
+    "workflow_audit.json": {
+      "bytes": 2640,
+      "sha256": "ff039ab57545df35914c1f462b5ca69e05acf66c04a021ace111c30cc67715a3"
+    }
+  }
+}

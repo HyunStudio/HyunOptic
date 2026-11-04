@@ -9,3 +9,5 @@ Earlier PAPILA, Chákṣu, FairSeg, OLIVES, Iowa and Duke analyses remain prior 
 New work authorized on 2026-11-03: inference cache/input/bundle corrections, persistent review sessions, two-model comparisons, review decisions, resumable processing, static evidence export and its verification, tests and submission documentation. These changes are also pre-event work.
 
 At the actual event start, preserve the exact then-current commit and inventory any further uncommitted work. Only changes genuinely completed during the event should appear as event-period contributions. No event-period contribution is claimed by this document.
+
+November 4 reader/review experiments, integrity fixes, isolated synthetic preparation, browser audit, submission materials and local video draft also precede the event. Implementation commits `a93d8de` and `4948636` do not represent an event-start snapshot. See [dated disclosure](EVENT_CHANGES.md).
