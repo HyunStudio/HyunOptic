@@ -1,0 +1,19 @@
+{
+  "software_implementation": true,
+  "final_installed_cpu_tests_passed": 442,
+  "current_browser_page_opened": true,
+  "current_browser_end_to_end_creation_import": false,
+  "responsive_390_768px": false,
+  "zoom_200_percent": false,
+  "keyboard_only": false,
+  "new_actual_ui_captures": false,
+  "refreshed_video_rendered_or_uploaded": false,
+  "storyboard_and_draft_captions_prepared": true,
+  "personal_A4_completed": false,
+  "repository_about_topics_changed": false,
+  "author_license_changed": false,
+  "all_design_acceptance_items_met": false,
+  "browser_stop": "Filechooser event timed out in IAB; Chrome fallback was stopped because current Windows browser URL could not be verified confidently for policy. No more app/browser input was attempted after the stop.",
+  "historical_media_preserved": true,
+  "all_changes_pre_event": true
+}

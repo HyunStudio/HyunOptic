@@ -1,0 +1,32 @@
+{
+  "files": {
+    "acceptance_status.json": {
+      "bytes": 867,
+      "sha256": "fb8048fceabbff2e8e10e002a3719559e6215090ceb924e79d6dfa7705eb29f7"
+    },
+    "benchmark_large.json": {
+      "bytes": 5926,
+      "sha256": "c76dc13879a5fcb14b11e8ba81b0ba2669abaa8566f3a7343c4ba128460e70d7"
+    },
+    "benchmark_small.json": {
+      "bytes": 8503,
+      "sha256": "f184ef4f99b726d24614bb95e72af0820057f59470b48e4d13fdbf98d5c2e735"
+    },
+    "independent_review.json": {
+      "bytes": 537,
+      "sha256": "050976e3c744352cdefb18b405fd70655b70e31a21edc31a5c594448ac4de0b9"
+    },
+    "latency.svg": {
+      "bytes": 76652,
+      "sha256": "978b81902642fa3368e33ec9a927da48ac15043aaf1161793874dc716734568e"
+    },
+    "render_benchmark_chart.py": {
+      "bytes": 1979,
+      "sha256": "60c14e68cb028a58a54de822cfaef45b3371695ec7c0d7aac8c4b9c3cdfd91e2"
+    },
+    "verification.json": {
+      "bytes": 4380,
+      "sha256": "c5fbb3e65bced863ee93d5548e0c216119b522196fd59d88ae396683834feeef"
+    }
+  }
+}

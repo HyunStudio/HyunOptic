@@ -1,6 +1,6 @@
 # Final publication checklist
 
-**Latest software audit (2026-11-04):** [Git/distribution and lifecycle audit](../experiments/2026-11-04-submission-code-audit/README.md) — 404 tests passed in the development environment and 404 against a non-editable wheel in a new CPU-only environment. Four reproduced defects were corrected with 14 regression cases. Default two-seed/80-epoch synthetic preparation, installed-package processing, held-state reload, ZIP verification and managed deletion passed. These are software checks; earlier browser and real-data evidence retains its original scope.
+**Current software verification:** [Usability and provenance audit](../experiments/2026-11-04-review-usability/README.md) — final installed-wheel CPU suite: **442 passed**, plus 80 final targeted checks in development. Safe deletion consent, terminal input handling, case navigation, source provenance and recorded-metadata listing are implemented. **Current browser/responsive/zoom/keyboard acceptance and refreshed video remain incomplete after browser control stopped.** Automated checks do not replace those items.
 
 
 The prepared software and public media are not a completed Devpost submission. [Readiness and official timing](READINESS.md).
@@ -31,3 +31,11 @@ The prepared software and public media are not a completed Devpost submission. [
 - [ ] Submit by November 29, 2026, 08:00 KST; record completion only after it occurs.
 
 A hosted app, outside tester, new video production or new clinical study is not required to finish this bounded submission package. No unsupported efficiency, clinical-performance, human-approval or organizer-endorsement claim should be added.
+
+## Open current-version acceptance
+
+- [ ] Complete actual browser import-to-download workflow and responsive/zoom/keyboard checks.
+- [ ] Capture, render and inspect the current-version demonstration; record any actual upload separately.
+- [ ] Apply repository About/topics if desired; suggested text is in the usability audit.
+
+These items are not claimed complete by the automated suite. Human A4 and genuine event work remain separately disclosed.
