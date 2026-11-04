@@ -1,0 +1,63 @@
+{
+  "created_utc": "2026-11-04T07:42:34.484532+00:00",
+  "purpose": "Exploratory supplemental artifact verification following inspection of first-pass results; NOT untouched confirmation and no tuning/training. No author RIM classification benchmark comparison.",
+  "n_images": 174,
+  "unique_image_model_pairs": 348,
+  "n_additional_actual_inferences": 348,
+  "total_actual_inferences_across_both_passes": 696,
+  "not_new_subjects": true,
+  "models": {
+    "papila_real_seed43_20261025": {
+      "run_id": "seg-20261025-053553-c5282e43",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+      "bundle_identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153"
+    },
+    "papila_camera_robust_seed43_20261025": {
+      "run_id": "seg-20261025-062335-1430f6c9",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+      "bundle_identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3"
+    }
+  },
+  "first_protocol_sha256": "26dcf5241c793140c067f518e91523cc9fe32c6d4b37e4c092fb360b71da2ab6",
+  "first_aggregate_sha256": "9e707ddb8ded9f3284610636d6ef4ca1230d65f679116995fae5c272b5fe6557",
+  "manifest_sha256": "34cb5c58ab14f1591bfc6d3c5326c3b38950c52fe93b9e2b8766002122ff09c0",
+  "archives": {
+    "images": {
+      "sha256": "85aed5f95c794f52d11b6ed953032108a66576ffcff4b587365df467491b603d",
+      "bytes": 222561134
+    },
+    "segmentations": {
+      "sha256": "edc363b1f0deabc8ed7a356250a9e1fb21825bf06f7337889fd1e764e1947901",
+      "bytes": 1608386
+    }
+  },
+  "prediction": "Complete174 images for each same frozen model, sequential CPUthreads2. Save original-resolution labels PNG (0background,1disc-rim,2cup) and SHA256/status/measurement before scoring. Missing labels saved as zero solely as explicit failure sentinel.",
+  "phase_order": "Finish and hash all348 predictions, compute existing image-only priority from both saved labels for all174, freeze priorities and timestamps, THEN read GT masks and perform independent pixel arithmetic. No scores change prediction/priority artifacts.",
+  "independent_metrics": "Direct boolean intersection/sums Dice at supplied original resolution; vCDR span=maxrow-minrow+1, cup/disc, measurable only if both nonempty. No shared measure.dice or measure.measure_masks called.",
+  "comparison": "Compare every first/second-pass status, errors, disc/cup Dice and measurable vCDR absolute error; retain all discrepancies without replacement or winner selection.",
+  "research_events": {
+    "baseline": "baseline error/invalid geometry => True; else min(discDice,cupDice)<threshold when reference valid; otherwise None, never negative.",
+    "thresholds": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "review_fractions": [
+      0.1,
+      0.2,
+      0.5
+    ],
+    "ordering": "existing review.validation.order_cases over existing review.priority applied to saved two-model predictions. Also separately report both-models-ok subgroup with its own denominator.",
+    "interpretation": "Technical segmentation research events, not clinical outcomes; no threshold selection or model promotion."
+  },
+  "source_sha256": {
+    "reports\\full_validation_20261104\\new_external\\supplemental_run.py": "e8b166dbf128fabe030a4df1426cbc732b84d4797827b041066a9c971935e291",
+    "src\\hyunoptic\\seg\\inference.py": "cf0ff5ff602ea1e480f7424dafc23f1b05ea518e1d276c0c5ec2eb3b363ba62a",
+    "src\\hyunoptic\\seg\\preprocess.py": "c36a8e4be2114ff651f562ecbe04fe4e4a81a9e4940c52dc39657b4e9b9cb382",
+    "src\\hyunoptic\\seg\\model.py": "f598f8bd5c5da2edead75ae042e9f68680c63af03f398d4189dc35d0e0314594",
+    "src\\hyunoptic\\seg\\bundle.py": "49b9f3118f6730b417513fd8595ea42c031fc73bacb46e8992804c0540f92863",
+    "src\\hyunoptic\\review\\priority.py": "41e28791d5b694f2981a9dfd3f827462cb2ccd73bea4bf816b044ff4509c8071",
+    "src\\hyunoptic\\review\\inputs.py": "1a34438cdadd0159962e088e344a729f8346b64a5132fb9d7e0a6948b93dbdf4",
+    "src\\hyunoptic\\review\\validation.py": "be246b451733772cde58a82f01bb8104a55c9cf4c980f42d9d76b84278207a16"
+  }
+}

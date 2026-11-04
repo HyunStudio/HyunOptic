@@ -1,0 +1,4 @@
+{
+  "wall_seconds": 3347.83,
+  "scope": "image loading, transforms, inference, original-resolution metrics, mask saving and image-only priority; no reference scoring"
+}

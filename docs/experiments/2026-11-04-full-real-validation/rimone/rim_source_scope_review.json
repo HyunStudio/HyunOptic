@@ -1,0 +1,12 @@
+{
+  "paper_pdf_sha256": "203192c9c0a70891aa922eef85171cdeaab455326672acfdcd6ed9ed50ac5133",
+  "pdf_page": 4,
+  "paper_page": 164,
+  "source_url": "https://www.ias-iss.org/ojs/IAS/article/download/2346/1128/6451",
+  "finding": "The original paper states that images were squarely cropped around the optic nerve head using a shared proportionality criterion. These are dataset-supplied crops, preceding this external evaluation; no new reference-derived crop is applied by the evaluation harness. The paper also describes one image per patient and eye, which does not establish that all selected eyes are independent patients.",
+  "official_conversion_sources_reviewed": [
+    "dcseg_to_binary_mask.py",
+    "generate_dir_binary_masks.py"
+  ],
+  "conversion_finding": "Official parser reads 16 contour points as x/y coordinates minus one; converts them to row/column, interpolates a closed contour and emits a boolean interior mask. The directory converter uses img_as_ubyte to save the boolean foreground as 255 and background as 0. Independent full-cohort coordinate audit supports this mapping for all 348 PNG/TXT pairs, without claiming full interpolated raster equivalence."
+}

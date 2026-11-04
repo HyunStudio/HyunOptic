@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-11-04T08:03:52.804568+00:00",
+  "status": "POST HOC exploratory addendum after partial reference inspection",
+  "reference_rows_already_scored": 263,
+  "event": "For each model, status error/invalid_geometry is True independent of reference; otherwise min(original-resolution discDice,cupDice)<threshold if reference valid, else None. Either-model event is True if any True; None if no True and any None; else False.",
+  "thresholds": [
+    0.4,
+    0.5,
+    0.6
+  ],
+  "budgets": [
+    0.1,
+    0.2,
+    0.5
+  ],
+  "subgroups": [
+    "all 336 images in unchanged frozen app queue",
+    "both model statuses ok; filter frozen queue without reordering; budget over subgroup count"
+  ],
+  "interpretation": "Report all thresholds; no optimization, tuning, or new inference. Complements and does not replace predeclared vCDR outcomes with explicit unknowns."
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "hyunoptic-independent-final-full-data-review/v1",
+  "passed": true,
+  "critical_findings": [],
+  "important_findings": [],
+  "minor_open_findings": [],
+  "minor_resolved_findings": [
+    "RIM reproduction now creates required data/output directories before downloading.",
+    "Chaksu technical-event table now explicitly identifies either-model/all336 scope."
+  ],
+  "review_scope": [
+    "Product reader-isolation, missing-reference and ZIP-CRC changes; regression tests and CPU CI inclusion.",
+    "PAPILA full saved-artifact independent-verification evidence, original196crossrun, public52aggregates and reporting scope.",
+    "Chaksu full3284stored-Dice aggregate arithmetic and120summary cells;30case stratified original-pixel QA;315queue budget cells.",
+    "RIM frozen protocol/harness byte identities, two-pass scope, independent348saved-mask and348PNG/TXT-pair verification evidence.",
+    "Public source normalization receipt, aggregate plots, copyback/privacy and experiment manifests."
+  ],
+  "observed_verification": {
+    "full_suite": {
+      "passed": 388,
+      "warnings": 2,
+      "source_and_log_hashes_checked": true
+    },
+    "papila": {
+      "n_predictions": 2548,
+      "n_original_images": 98,
+      "n_patients": 49,
+      "n_conditions": 13,
+      "n_model_condition_reader_aggregates": 52,
+      "n_bootstrap_comparisons": 312,
+      "n_queue_budget_results": 234,
+      "independent_passed": true,
+      "public_private_byte_copy_checks": 9,
+      "crossrun_original_mask_pairs": 196,
+      "crossrun_pixel_differences": 0,
+      "crossrun_metric_values": 1176,
+      "crossrun_metric_differences": 0
+    },
+    "chaksu": {
+      "stored_dice_rows": 3284,
+      "aggregate_summary_cells": 120,
+      "pixel_qa_cases": 30,
+      "pixel_qa_prediction_masks": 60,
+      "pixel_qa_reference_rasters": 300,
+      "pixel_qa_valid_reader_references": 143,
+      "pixel_qa_failed_reader_references_retained": 7,
+      "pixel_qa_model_reader_dice_pairs": 286,
+      "queue_budget_cells": 315,
+      "queue_field_checks": 5040,
+      "public_queue_verifier_compiled_and_executed": true
+    },
+    "rim": {
+      "n_source_images": 174,
+      "n_unique_image_model_pairs": 348,
+      "n_actual_inferences": 696,
+      "frozen_public_private_harness_file_checks": 12,
+      "frozen_public_private_protocol_and_aggregate_checks": 4
+    },
+    "publication": {
+      "evidence_payloads_verified": 129,
+      "experiment_manifests_verified": 7,
+      "public_json_privacy_files_checked": 39,
+      "tested_committed_source_normalization_checks": 4,
+      "plots_visually_reviewed": 2
+    }
+  },
+  "evidence_hashes": {
+    "papila_protocol": "e12506aecb9c0894af3e103532e62b69284b5003bfcf301a695b89ec804833b1",
+    "papila_independent_verification": "43debbff45bc6df58a249110c58c27ba37a32d901a6e547fa0c71e5694558044",
+    "papila_original_crossrun_verification": "0e19f5ee13007004c594703cc8caf81bf497f77d0566020a7fa71032727fef08",
+    "source_publication_verification": "2effe578c1f2dcb5f3ec6f36ea5185613b1407edf21f8d6e760306d1ee785fc2",
+    "reviewed_manifest": "5e052a84568c0be3b152255b89b9886469793d63a5d86cf04ed5ce8b9c632162"
+  },
+  "scope_limits": [
+    "No inference performed by this reviewer.",
+    "Chaksu fresh original-pixel QA is30selected cases; all3284scores received independent aggregate arithmetic, not full raw-pixel recomputation.",
+    "PAPILA verifier shares contour loading and polygon rasterization; metric/bootstrap/priority/budget arithmetic is independently implemented.",
+    "RIM first-pass rasters were not retained; repeat metric/status equality does not establish first-pass pixel identity.",
+    "Reused cohorts, correlated experts/transformations, incomplete external patient linkage and posthoc analyses remain explicit.",
+    "No clinical sufficiency, model promotion, author-benchmark replication or triage-benefit claim is supported.",
+    "This local review does not certify a future PR CI result; regenerate/verify the public manifest after subsequent publication edits."
+  ]
+}

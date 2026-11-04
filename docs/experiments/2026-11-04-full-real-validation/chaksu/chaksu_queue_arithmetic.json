@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "scope": "Independent full Chaksu original-vCDR and posthoc technical queue budget arithmetic from stored private rows; existing frozen order used without new inference.",
+  "checks": {
+    "budget_fields": 5040,
+    "primary_budget_cells": 45,
+    "technical_budget_cells": 270
+  },
+  "unknowns_preserved": true,
+  "limitations": [
+    "Does not independently recompute priority function or Wilson intervals."
+  ]
+}

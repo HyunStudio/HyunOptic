@@ -1,0 +1,87 @@
+{
+  "created_utc": "2026-11-04T07:58:24.474109+00:00",
+  "official_repository": "https://github.com/miag-ull/rim-one-dl",
+  "official_source_commit": "5f56b8c9957656282c2d00d40fc420a850bd1fe4",
+  "official_metadata_files": [
+    {
+      "name": "README.md",
+      "url": "https://raw.githubusercontent.com/miag-ull/rim-one-dl/5f56b8c9957656282c2d00d40fc420a850bd1fe4/README.md",
+      "sha256": "6c41cc5a81b594c50e8299cc4b724a9480333679961e5ec12897ad96fb25b057",
+      "bytes": 7758,
+      "status": 200
+    },
+    {
+      "name": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/miag-ull/rim-one-dl/5f56b8c9957656282c2d00d40fc420a850bd1fe4/LICENSE.txt",
+      "sha256": "1f080a4492cc5a533de82f88af3796f624330940ffff8c0368a8b008b12f7a5e",
+      "bytes": 2462,
+      "status": 200
+    },
+    {
+      "name": "dcseg_to_binary_mask.py",
+      "url": "https://raw.githubusercontent.com/miag-ull/rim-one-dl/5f56b8c9957656282c2d00d40fc420a850bd1fe4/dcseg_to_binary_mask.py",
+      "sha256": "9e5a39a93c2639d5a9b1b09adaea3c13bedcda880c82ed0e8bc9e309b7c4ff07",
+      "bytes": 1684,
+      "status": 200
+    },
+    {
+      "name": "generate_dir_binary_masks.py",
+      "url": "https://raw.githubusercontent.com/miag-ull/rim-one-dl/5f56b8c9957656282c2d00d40fc420a850bd1fe4/generate_dir_binary_masks.py",
+      "sha256": "5bc659edc3a0438955ed35d394c2c9f6a0cb1914d0b0f4a3625e4662c2566c2a",
+      "bytes": 2661,
+      "status": 200
+    }
+  ],
+  "official_assets": {
+    "images": {
+      "author_link": "https://bit.ly/rim-one-dl-images",
+      "bytes": 222561134,
+      "sha256": "85aed5f95c794f52d11b6ed953032108a66576ffcff4b587365df467491b603d"
+    },
+    "references": {
+      "author_link": "https://bit.ly/rim-one-dl-reference-segmentations",
+      "bytes": 1608386,
+      "sha256": "edc363b1f0deabc8ed7a356250a9e1fb21825bf06f7337889fd1e764e1947901"
+    }
+  },
+  "official_paper": {
+    "url": "https://www.ias-iss.org/ojs/IAS/article/download/2346/1128/6451",
+    "bytes": 1509152,
+    "sha256": "203192c9c0a70891aa922eef85171cdeaab455326672acfdcd6ed9ed50ac5133"
+  },
+  "dataset_access": {
+    "final": "Official public downloads succeeded, no authentication or mirrors.",
+    "initial_image_response": "Normal large-file scan-warning HTML followed through official confirmation form.",
+    "article_landing_page": "Initial timeout; official journal PDF endpoint then succeeded."
+  },
+  "repository_head": "9cd674e3ee54d903410a24071f6a4de99fb38cdf",
+  "models": {
+    "papila_real_seed43_20261025": {
+      "run_id": "seg-20261025-053553-c5282e43",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+      "bundle_identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153"
+    },
+    "papila_camera_robust_seed43_20261025": {
+      "run_id": "seg-20261025-062335-1430f6c9",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+      "bundle_identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3"
+    }
+  },
+  "first_protocol_sha256": "26dcf5241c793140c067f518e91523cc9fe32c6d4b37e4c092fb360b71da2ab6",
+  "supplement_protocol_sha256": "c1fea8f2c3f66388a77d52d22df55e5c850df7c6059e4b0a7761535990c78c4c",
+  "n_images": 174,
+  "n_reference_valid": 174,
+  "n_reference_failure": 0,
+  "n_reference_cup_outside_disc_warning": 1,
+  "n_reference_cup_outside_disc_pixels": 46,
+  "patient_linkage": "Authoritative patient linkage unknown; 174 images must not be called 174 independent patients.",
+  "inference_counts": {
+    "first": 348,
+    "supplement": 348,
+    "total": 696,
+    "unique_image_model_pairs": 348
+  },
+  "gt_visibility": "Complete reference pre-audit before first inference, so first pass is not label-blind. Both checkpoints remained frozen. Supplemental pass is exploratory after known results; all prediction PNGs and priorities were frozen before supplemental GT raster scoring.",
+  "permissions": "Research/educational use only; no redistribution of dataset images, identifiers, masks, TXT contours or weights; no original RIM classification benchmark or leaderboard claim.",
+  "source_redistribution": "Third-party README/LICENSE/code/PDF bytes are excluded; only official source URLs, file sizes and hashes are supplied."
+}

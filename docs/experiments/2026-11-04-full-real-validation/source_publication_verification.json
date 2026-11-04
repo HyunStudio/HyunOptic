@@ -1,0 +1,40 @@
+{
+  "schema": "hyunoptic-tested-source-git-normalization/v1",
+  "source_commit": "a3d8040ad84b55b321ad81234556ba769e0cc7e0",
+  "git_core_autocrlf": true,
+  "verification": "All committed files equal tested bytes after CRLF-to-LF normalization; Python ASTs match. No product behavior changed after the 388-test run.",
+  "files": [
+    {
+      "path": "src/hyunoptic/chaksu.py",
+      "tested_working_tree_sha256": "5e7b691c051c7500f2a2a20a94d2ea829188ac73fcefb9865b5bd44c35ea7651",
+      "committed_git_sha256": "e5eea2fd412a309ddb84f956c9c600d36a3ed5e56099d0e0d0245ed55570518c",
+      "working_tree_still_matches_tested": true,
+      "only_git_CRLF_normalization": true,
+      "python_ast_equal": true
+    },
+    {
+      "path": "src/hyunoptic/seg/evaluate.py",
+      "tested_working_tree_sha256": "5d5a27c4b213fe3834546329ff3964010df212a3f8883c90832a1845ac0e4a4e",
+      "committed_git_sha256": "2fb5a5371bc3725841ea072afdd9653b349a4100ae88e0156db0a5b598d5f6a0",
+      "working_tree_still_matches_tested": true,
+      "only_git_CRLF_normalization": true,
+      "python_ast_equal": true
+    },
+    {
+      "path": "tests/test_evaluation_reader_isolation.py",
+      "tested_working_tree_sha256": "90c391b514a152de1c0b67f80e37744887b6bd1a985da54aca86192986ee6fcf",
+      "committed_git_sha256": "90c391b514a152de1c0b67f80e37744887b6bd1a985da54aca86192986ee6fcf",
+      "working_tree_still_matches_tested": true,
+      "only_git_CRLF_normalization": true,
+      "python_ast_equal": true
+    },
+    {
+      "path": ".github/workflows/tests.yml",
+      "tested_working_tree_sha256": "92fb5bda300d07240242d68e3db100800b427c6a5950d05be5bcb19015a4e4d3",
+      "committed_git_sha256": "3adf5b6a2705e25742637fbb374250d8f5252ab2289b24b666f80d5a3610295c",
+      "working_tree_still_matches_tested": true,
+      "only_git_CRLF_normalization": true,
+      "python_ast_equal": null
+    }
+  ]
+}

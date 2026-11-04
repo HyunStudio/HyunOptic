@@ -1,0 +1,52 @@
+{
+  "created_utc": "2026-11-04T07:31:14.355125+00:00",
+  "dataset": "RIM-ONE DL",
+  "purpose": "Exploratory frozen PAPILA-trained external segmentation evaluation, NOT a reproduction of the original RIM-ONE DL benchmark or eligible RIM-only training leaderboard comparison.",
+  "terms": "Research/education only; no redistribution or commercial use. All images/masks/IDs/weights and individual rows stay ignored/local.",
+  "official_repository": "https://github.com/miag-ull/rim-one-dl",
+  "partition": "Complete partitioned_by_hospital/test_set, HUMS+HCSC; do not add random partition or training images.",
+  "n_selected": 174,
+  "n_reference_valid": 174,
+  "n_reference_failure": 0,
+  "groups": {
+    "glaucoma": 56,
+    "normal": 118
+  },
+  "patient_linkage": "Unknown. No authoritative patient-to-image linkage verified; n_images must never be described as n_independent_patients. Image bootstrap intervals are descriptive and do not account for patient clustering.",
+  "reference": "Official supplied binary PNG masks; foreground 255, background 0. Official conversion source archived for format provenance; no contour refitting, resizing or geometry repair.",
+  "prediction": "Existing Predictor.predict(RGB image) only, bundle-fixed letterbox and postprocess; no reference crops, tuning, training or outcome-driven retries. CPU threads=2.",
+  "dice": "Original supplied image resolution; disc includes cup. Per-image macro mean over reference-valid selected images, including invalid geometry and errors. Missing prediction masks replaced by all-empty masks for Dice; preserve statuses separately.",
+  "vcdr": "Axis-aligned nonzero-mask vertical spans including endpoints; absolute error only where reference and prediction have valid nonempty disc/cup. Publish measurable numerator and reference-valid/selected denominators, plus failures and warnings.",
+  "statistics": "Mean, SD, median, min,max; deterministic 2000 image bootstrap mean 95% percentile CI seed=20261104; exploratory, unclustered, no formal superiority claims.",
+  "models": {
+    "papila_real_seed43_20261025": {
+      "run_id": "seg-20261025-053553-c5282e43",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+      "bundle_identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153"
+    },
+    "papila_camera_robust_seed43_20261025": {
+      "run_id": "seg-20261025-062335-1430f6c9",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+      "bundle_identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3"
+    }
+  },
+  "archives": {
+    "images": {
+      "sha256": "85aed5f95c794f52d11b6ed953032108a66576ffcff4b587365df467491b603d",
+      "bytes": 222561134
+    },
+    "segmentations": {
+      "sha256": "edc363b1f0deabc8ed7a356250a9e1fb21825bf06f7337889fd1e764e1947901",
+      "bytes": 1608386
+    }
+  },
+  "manifest_sha256": "34cb5c58ab14f1591bfc6d3c5326c3b38950c52fe93b9e2b8766002122ff09c0",
+  "source_sha256": {
+    "reports\\full_validation_20261104\\new_external\\evaluate_rimone.py": "2c82f6abb0e7557e073e52bec8421aa07074f129296638879e0431b5e2b2e27b",
+    "src\\hyunoptic\\seg\\inference.py": "cf0ff5ff602ea1e480f7424dafc23f1b05ea518e1d276c0c5ec2eb3b363ba62a",
+    "src\\hyunoptic\\seg\\preprocess.py": "c36a8e4be2114ff651f562ecbe04fe4e4a81a9e4940c52dc39657b4e9b9cb382",
+    "src\\hyunoptic\\seg\\model.py": "f598f8bd5c5da2edead75ae042e9f68680c63af03f398d4189dc35d0e0314594",
+    "src\\hyunoptic\\seg\\bundle.py": "49b9f3118f6730b417513fd8595ea42c031fc73bacb46e8992804c0540f92863",
+    "src\\hyunoptic\\measure.py": "6526ba808bf1afb7a14ada28b0ba855380477b0e3be53dcf57309a3a7e616604"
+  }
+}

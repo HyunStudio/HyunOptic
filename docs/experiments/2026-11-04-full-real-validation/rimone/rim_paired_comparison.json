@@ -1,0 +1,31 @@
+{
+  "schema": "hyunoptic-rim-common-case-comparison/v1",
+  "source_score_sha256": [
+    "5d23fc9320eccda7694bc6b2fdb3f48d5f54bdf6a77232094768dfef56e5dea6",
+    "e1da4b695529ec8c178843936929230ea28518b66f0f66865eb552951b544f6b"
+  ],
+  "n_paired_images": 174,
+  "paired_disc_dice": {
+    "baseline_mean": 0.012226423748742464,
+    "camera_robust_mean": 0.01838035082128234,
+    "mean_camera_robust_minus_baseline": 0.006153927072539873
+  },
+  "paired_cup_dice": {
+    "baseline_mean": 0.0018260932386955475,
+    "camera_robust_mean": 0.006450434820324607,
+    "mean_camera_robust_minus_baseline": 0.00462434158162906
+  },
+  "paired_conditional_vcdr": {
+    "n_common_images": 2,
+    "baseline_mae": 0.15832767402376907,
+    "camera_robust_mae": 0.14890459710069215,
+    "mean_camera_robust_minus_baseline": -0.009423076923076923
+  },
+  "unpaired_vcdr_availability": {
+    "baseline": 14,
+    "camera_robust": 42,
+    "selected_images": 174
+  },
+  "interpretation": "The full-cohort paired Dice differences are small in absolute terms while both models fail severely in this supplied cropped-ROI domain. Conditional vCDR means on 14 versus 42 measurable eyes use different subsets and cannot rank models. The exact common subset has only two images; its descriptive paired difference is too small a sample for an efficacy or superiority claim. No confidence interval, tuning or model promotion follows.",
+  "privacy": "Aggregate-only; no image identifiers, raw assets or subject linkage."
+}

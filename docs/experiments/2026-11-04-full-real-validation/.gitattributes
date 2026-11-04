@@ -1,0 +1,7 @@
+# Frozen evidence must survive Windows/Linux checkout without newline conversion.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Retain historical harness EOF bytes required by the published source hashes.
+rimone/build_report.py whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+rimone/build_supplement_report.py whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+rimone/final_verify_saved_masks.py whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+rimone/verify_numeric.py whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol

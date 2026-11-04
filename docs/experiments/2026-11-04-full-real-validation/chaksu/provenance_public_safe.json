@@ -1,0 +1,70 @@
+{
+  "created_utc": "2026-11-04T08:13:36.549822+00:00",
+  "dataset": "Chaksu published Test",
+  "n_images": 336,
+  "new_predictions": 672,
+  "archive_sha256": "90e89ad01bfb0c4c238ba22a4a46ab46b5849e2fc9253c7bda09509f6ca259fa",
+  "seed": 20261104,
+  "threads": 2,
+  "original_protocol_sha256": "2fb54e95e72b596efbfcaf7df3aca81919b61a9c27bda764fbe287d564bd35f9",
+  "original_harness_sha256": "d44c0a86109e63d12300193127b987d64f4784888f74d598585775a1103bad3c",
+  "source_sha256_as_executed": {
+    "src/hyunoptic/chaksu.py": "8c0f50af23ed5a9e77ae17d3e0b49650cb58d81cee8e34bbd3137142473198a6",
+    "src/hyunoptic/seg/inference.py": "cf0ff5ff602ea1e480f7424dafc23f1b05ea518e1d276c0c5ec2eb3b363ba62a",
+    "src/hyunoptic/seg/preprocess.py": "c36a8e4be2114ff651f562ecbe04fe4e4a81a9e4940c52dc39657b4e9b9cb382",
+    "src/hyunoptic/seg/model.py": "f598f8bd5c5da2edead75ae042e9f68680c63af03f398d4189dc35d0e0314594",
+    "src/hyunoptic/measure.py": "6526ba808bf1afb7a14ada28b0ba855380477b0e3be53dcf57309a3a7e616604",
+    "src/hyunoptic/review/priority.py": "41e28791d5b694f2981a9dfd3f827462cb2ccd73bea4bf816b044ff4509c8071",
+    "src/hyunoptic/review/validation.py": "be246b451733772cde58a82f01bb8104a55c9cf4c980f42d9d76b84278207a16"
+  },
+  "models": [
+    {
+      "name": "papila_real_seed43_20261025",
+      "identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+      "split_sha256": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+      "training_source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2"
+    },
+    {
+      "name": "papila_camera_robust_seed43_20261025",
+      "identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+      "split_sha256": "9c524c981166e5b3128f21b2be3aaf3ea79c6534dc8e4b3b10e25ad0993d9f4c",
+      "training_source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2"
+    }
+  ],
+  "source_change_semantic_proof": {
+    "baseline_git_revision": "9cd674e",
+    "reader_functions": {
+      "_read_member": {
+        "ast_identical_without_line_attributes": true,
+        "ast_sha256": "8a5fa703005df28fa55ee16c87e9e89316cc7195ad68ca8ffa1ae344bcc17304"
+      },
+      "load_test_case": {
+        "ast_identical_without_line_attributes": true,
+        "ast_sha256": "3e33cdb21e891f0c6d096709666be55b087f4659f3cc7d1758604634abbf1ff6"
+      }
+    },
+    "default_strict_scan_metadata_path_fingerprint_matches": true,
+    "camera_counts_match": true,
+    "default_strict_scan_optional_incomplete_case_path_not_used": true
+  },
+  "source_changes_during_run": [
+    {
+      "path": "src/hyunoptic/chaksu.py",
+      "executed_source_sha256": "8c0f50af23ed5a9e77ae17d3e0b49650cb58d81cee8e34bbd3137142473198a6",
+      "post_run_source_sha256": "5e7b691c051c7500f2a2a20a94d2ea829188ac73fcefb9865b5bd44c35ea7651"
+    }
+  ],
+  "source_functions_identical_and_336_original_case_ids_verified": true,
+  "n_mask_file_and_pixel_hashes_verified": 672,
+  "n_image_inference_exceptions": 0,
+  "n_reference_pair_failures": 38,
+  "n_images_with_any_reference_failure": 25,
+  "limitations": [
+    "Exploratory rerun: October 2026 model evaluation and candidate QC inspected Chaksu Test; earlier evaluation had only expert1/2 metrics and whole-case reference failures. Same frozen models and same images are reused. No untouched external confirmation, author benchmark replication, or clinical validation claim.",
+    "2000 image-IID bootstrap means, paired image-IID bootstrap model deltas, Wilson event intervals; descriptive sensitivity only, incomplete patient linkage violates independence; no patient bootstrap or population/clinical guarantee.",
+    "Strict reference failures excluded separately per expert; missing outcomes remain unknown.",
+    "Five experts are correlated annotations, not five independent datasets."
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "schema": "hyunoptic-full-holdout-robustness-protocol/v1",
+  "date_kst": "2026-11-04",
+  "base_commit": "9cd674e3ee54d903410a24071f6a4de99fb38cdf",
+  "seed": 20261104,
+  "device": "cpu",
+  "threads": 4,
+  "conditions": [
+    {
+      "name": "original",
+      "family": "original",
+      "value": null
+    },
+    {
+      "name": "brightness_low",
+      "family": "brightness",
+      "value": 0.5
+    },
+    {
+      "name": "brightness_high",
+      "family": "brightness",
+      "value": 1.5
+    },
+    {
+      "name": "contrast_low",
+      "family": "contrast",
+      "value": 0.5
+    },
+    {
+      "name": "contrast_high",
+      "family": "contrast",
+      "value": 1.5
+    },
+    {
+      "name": "grayscale",
+      "family": "saturation",
+      "value": 0
+    },
+    {
+      "name": "gamma_low",
+      "family": "gamma",
+      "value": 0.7
+    },
+    {
+      "name": "gamma_high",
+      "family": "gamma",
+      "value": 1.5
+    },
+    {
+      "name": "blur",
+      "family": "blur_px",
+      "value": 2
+    },
+    {
+      "name": "noise",
+      "family": "gaussian_noise_sigma",
+      "value": 8
+    },
+    {
+      "name": "jpeg",
+      "family": "jpeg_quality",
+      "value": 25
+    },
+    {
+      "name": "downsample",
+      "family": "downsample_restore_width",
+      "value": 128
+    },
+    {
+      "name": "rgb_shift",
+      "family": "rgb_gains",
+      "value": [
+        0.7,
+        1.2,
+        1.2
+      ]
+    }
+  ],
+  "n_patients": 49,
+  "n_original_images": 98,
+  "n_expected_predictions": 2548,
+  "selection": "Every image in the preserved patient-disjoint PAPILA holdout; reused evaluation cohort.",
+  "reference_read_after_all_predictions_and_priorities": true,
+  "source_content_sha256": "ed88b1b15d96df5de27b514d599139f262dd8e0520f8a50d9f7b19f8629860f2",
+  "models": [
+    {
+      "identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153",
+      "run_id": "seg-20261025-053553-c5282e43",
+      "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747"
+    },
+    {
+      "identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3",
+      "run_id": "seg-20261025-062335-1430f6c9",
+      "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4"
+    }
+  ],
+  "source_sha256": {
+    "docs\\experiments\\2026-11-04-full-real-validation\\run_full_holdout.py": "54767cd2112f0cbdc9ca0f5e8312ef8500bdaf2da7f3c3bafc2355d95d9ee757",
+    "docs\\experiments\\2026-11-04-literature-100\\run_stress100.py": "1a553b6b4a730584d8c1125af232b7e92e907ea6df24b40277322687cfc9c6f5",
+    "src\\hyunoptic\\seg\\inference.py": "cf0ff5ff602ea1e480f7424dafc23f1b05ea518e1d276c0c5ec2eb3b363ba62a"
+  },
+  "evaluation": {
+    "readers": [
+      "exp1",
+      "exp2"
+    ],
+    "bootstrap_draws": 2000,
+    "bootstrap_estimand": "equal-patient mean, patient resampling; paired common-case changes",
+    "queue_event": "baseline invalid/error or min(disc Dice,cup Dice) below threshold",
+    "queue_thresholds": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "review_fractions": [
+      0.1,
+      0.2,
+      0.5
+    ]
+  },
+  "limitations": [
+    "Reused holdout, exploratory, correlated eyes and perturbations; not an independent clinical validation.",
+    "No training, target-label tuning, checkpoint selection or default-policy promotion.",
+    "Own fixed perturbation strengths informed by literature, not original author benchmark reproduction.",
+    "Conditional vCDR error must be read with availability and common-case comparisons.",
+    "Patient bootstrap is descriptive on this reused cohort, with no multiplicity-adjusted efficacy claims."
+  ]
+}

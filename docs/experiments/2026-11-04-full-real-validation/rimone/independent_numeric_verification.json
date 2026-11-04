@@ -1,0 +1,35 @@
+{
+  "verified_utc": "2026-11-04T07:42:45.413084+00:00",
+  "checks": [
+    "Frozen protocol precedes inference; all 174 selected rows accounted once for both models; independently recomputed macro means match aggregates to 1e-12."
+  ],
+  "models": [
+    {
+      "model": "papila_real_seed43_20261025",
+      "all_rows_accounted": true,
+      "macro_means_independently_verified": true,
+      "n_selected": 174,
+      "n_reference_valid": 174,
+      "n_vcdr_measurable": 14,
+      "n_reference_warning": 1,
+      "strict_no_warning_vcdr": {
+        "n": 14,
+        "mae": 0.21852758258469715
+      }
+    },
+    {
+      "model": "papila_camera_robust_seed43_20261025",
+      "all_rows_accounted": true,
+      "macro_means_independently_verified": true,
+      "n_selected": 174,
+      "n_reference_valid": 174,
+      "n_vcdr_measurable": 42,
+      "n_reference_warning": 1,
+      "strict_no_warning_vcdr": {
+        "n": 42,
+        "mae": 0.23722003858903243
+      }
+    }
+  ],
+  "scope": "Independent arithmetic/accounting verification from saved individual results, not independent re-inference or raw predicted-mask Dice recomputation; prediction masks were not saved by protocol."
+}

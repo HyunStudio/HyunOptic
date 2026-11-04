@@ -1,0 +1,20 @@
+# Literature-to-test and reporting scope
+
+This is a bounded retrospective research-software audit, not a claim of clinical sufficiency, CLAIM certification, or reproduction of the 100 papers' models. The [earlier 100-paper register](../2026-11-04-literature-100/papers.csv) remains unchanged. The following connections are our interpretation of the original sources.
+
+| Source | Concrete audit application | Limit that remains |
+| --- | --- | --- |
+| [CLAIM 2024, original guideline](https://pubs.rsna.org/doi/10.1148/ryai.240300), sections on study goal, data sources, missing data, preprocessing, reference standards and testing datasets | Identify retrospective/exploratory purpose, reused internal/external data, new external dataset, every reference/prediction failure, input processing and per-reader denominators | This is a reporting aid, not an endorsement, quality score, clinical study or complete compliance claim. No prospective sample-size justification was established. |
+| [Hendrycks and Dietterich, original corruption/perturbation paper](https://arxiv.org/abs/1903.12261) | Freeze 13 own image conditions before new PAPILA inference and include all held-out patients instead of selecting outcomes | Own retinal conditions, strengths, model and metrics differ from the original benchmark; correlated transformations are not new subjects. |
+| [Ovadia et al., original dataset-shift paper](https://arxiv.org/abs/1906.02530) | Evaluate failure availability alongside error under shift; do not equate two models' agreement with correctness | Hard label maps and disagreement are not calibrated probabilities. No ECE, Brier, NLL, uncertainty guarantee or OOD-detection accuracy is claimed. |
+| [Kovalyk et al., PAPILA data paper](https://doi.org/10.1038/s41597-022-01388-1) | Respect preserved patient-disjoint holdout, evaluate both original experts, resample patients and pair exactly common measurable eyes | Reused 49-patient cohort, not untouched confirmation; intervals describe an equal-patient estimand and are separate from image-weighted means. |
+| [Kumar et al., Chákṣu data paper](https://doi.org/10.1038/s41597-023-01943-4) | Fresh predictions on all Test images, evaluate five original readers separately, retain camera groups and malformed references without repair | Patient linkage is incomplete; no patient-independent confidence interval or camera causal effect is inferred. |
+| [Fumero Batista et al., RIM-ONE DL original paper](https://doi.org/10.5566/ias.2346) and [official data/code](https://github.com/miag-ull/rim-one-dl) | First evaluation on the complete official hospital Test partition, preserve supplied cropped ROI and binary references, avoid counting duplicate random-partition copies | PAPILA-trained external segmentation is not the original RIM-only glaucoma-classification benchmark. No classification AUROC/accuracy comparison. The new dataset's image-to-patient linkage was not independently established. |
+
+The CLAIM publisher text was read again for the sections above during this audit; earlier catalogue screening remains the historical record. RIM-ONE DL source access, archive hashes, official repository commit, the journal PDF and PNG/TXT format checks are recorded in the new dataset provenance. A failed web fetch of a source is not represented as a successful full-text read.
+
+## Sufficient for what?
+
+Coverage of available internal Test data, a reused external multi-reader Test set and one genuinely new external Test partition can expose concrete software and transfer failures. It does not establish sufficient evidence for diagnosis, automated clinical measurements, calibrated abstention, improved clinician efficiency or deployment across devices/sites. A prospective, independently recruited and appropriately powered study remains outside this work.
+
+No model, augmentation, cutoff or postprocessing setting is promoted based on these Test outcomes. Any future domain-specific model changes need development/tuning data and a separately protected future evaluation; these repeatedly examined sets cannot become untouched confirmation again.

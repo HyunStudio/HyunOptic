@@ -1,0 +1,70 @@
+{
+  "verified_utc": "2026-11-04T07:56:13.494658+00:00",
+  "artifacts": {
+    "protocol.json": {
+      "sha256": "26dcf5241c793140c067f518e91523cc9fe32c6d4b37e4c092fb360b71da2ab6",
+      "date_annotations": {
+        "created_utc": "2026-11-04T07:31:14.355125+00:00"
+      }
+    },
+    "inference_started.json": {
+      "sha256": "9e5c99fdf43090213119172438b697245183118403deed14a1002dcf0bf04b11",
+      "date_annotations": {
+        "started_utc": "2026-11-04T07:32:06.753345+00:00"
+      }
+    },
+    "aggregate.json": {
+      "sha256": "9e707ddb8ded9f3284610636d6ef4ca1230d65f679116995fae5c272b5fe6557",
+      "date_annotations": {
+        "completed_utc": "2026-11-04T07:41:05.947752+00:00"
+      }
+    },
+    "supplemental_verification/protocol.json": {
+      "sha256": "c1fea8f2c3f66388a77d52d22df55e5c850df7c6059e4b0a7761535990c78c4c",
+      "date_annotations": {
+        "created_utc": "2026-11-04T07:42:34.484532+00:00"
+      }
+    },
+    "supplemental_verification/inference_started.json": {
+      "sha256": "794f5ce13e489173734626c6117e32bce9fe860f8ebcccc3933e33ca4827dc4a",
+      "date_annotations": {
+        "started_utc": "2026-11-04T07:43:16.354510+00:00"
+      }
+    },
+    "supplemental_verification/predictions_complete.json": {
+      "sha256": "b6e95d77af4e20a301fc730f9495565d26bec31960da744fd57adb6a2f196295",
+      "date_annotations": {
+        "completed_utc": "2026-11-04T07:53:04.924327+00:00"
+      }
+    },
+    "supplemental_verification/priorities_before_gt.json": {
+      "sha256": "8d66db5ae713051fc4a5f0aab769a35f756198b7fade88172e16a184568dbdde",
+      "date_annotations": {
+        "frozen_utc": "2026-11-04T07:53:05.017149+00:00"
+      }
+    },
+    "supplemental_verification/scoring_started.json": {
+      "sha256": "4f9fed656839aabede35b367697e2655c4445733bb62094ba0b68a4bcd2d9fc0",
+      "date_annotations": {
+        "started_utc": "2026-11-04T07:53:05.025803+00:00"
+      }
+    },
+    "supplemental_verification/aggregate.json": {
+      "sha256": "0a351b7f26b7d8af6e86a4f54dfe1d235729c8ee96982400fac59a3f7c5b7642",
+      "date_annotations": {
+        "completed_utc": "2026-11-04T07:53:08.247527+00:00"
+      }
+    },
+    "supplemental_verification/independent_final_artifact_verification.json": {
+      "sha256": "707a19658fba8353353d40763f878ed9d1296272e7a496a0d497e2e9671718f8",
+      "date_annotations": {}
+    }
+  },
+  "all348_png_hashes_verified": true,
+  "all_prediction_metadata_hashes_verified": true,
+  "queue_sha256_matches_scoring_start": true,
+  "frozen_sources_verified": true,
+  "n_first_second_metric_status_discrepancies": 0,
+  "gt_visibility": "First-pass references were pre-audited before prediction. Supplemental protocol was explicitly exploratory after known outcomes; within supplemental pass all348predictions and174priorities preceded any GT raster scoring.",
+  "permissions": "Research/education only; no dataset imagery/IDs/masks/weights redistribution; not original RIM classification benchmark or leaderboard reproduction."
+}

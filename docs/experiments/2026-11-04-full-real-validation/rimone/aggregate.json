@@ -1,0 +1,287 @@
+{
+  "dataset": "RIM-ONE DL hospital-heldout test",
+  "protocol_sha256": "26dcf5241c793140c067f518e91523cc9fe32c6d4b37e4c092fb360b71da2ab6",
+  "completed_utc": "2026-11-04T07:41:05.947752+00:00",
+  "models": [
+    {
+      "model": "papila_real_seed43_20261025",
+      "identity": {
+        "run_id": "seg-20261025-053553-c5282e43",
+        "weights_sha256": "c5282e43e9ede7b6774f3ad1e453592d5f7ea1dacd6bac98160593cbc700e747",
+        "bundle_identity": "027e45bafd0227c8203ed87c26cdafb6b4cb17055aa1d80fe259a93f824e3153"
+      },
+      "n_selected": 174,
+      "n_reference_valid": 174,
+      "n_reference_failure": 0,
+      "prediction_status_counts": {
+        "invalid_geometry": 160,
+        "ok": 14
+      },
+      "disc_dice": {
+        "n": 174,
+        "mean": 0.012226423748742464,
+        "sd": 0.02394109776315496,
+        "median": 6.152207547827115e-05,
+        "min": 0.0,
+        "max": 0.13034081463009145,
+        "image_bootstrap_95ci_mean": [
+          0.008902743297771066,
+          0.015911300197295457
+        ]
+      },
+      "cup_dice": {
+        "n": 174,
+        "mean": 0.0018260932386955475,
+        "sd": 0.015185976596789968,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.1585949973390101,
+        "image_bootstrap_95ci_mean": [
+          0.0,
+          0.004319111004811073
+        ]
+      },
+      "vcdr_abs_error": {
+        "n": 14,
+        "mean": 0.21852758258469712,
+        "sd": 0.16602027210527678,
+        "median": 0.1802783794421545,
+        "min": 0.011459129106187932,
+        "max": 0.5982229090206683,
+        "image_bootstrap_95ci_mean": [
+          0.13931837691906865,
+          0.3036980725872485
+        ]
+      },
+      "vcdr_measurable": 14,
+      "vcdr_reference_valid_denominator": 174,
+      "vcdr_selected_denominator": 174,
+      "reference_warning_count": 1,
+      "prediction_warning_count": 0,
+      "by_group": {
+        "normal": {
+          "n_images": 118,
+          "disc_dice": {
+            "n": 118,
+            "mean": 0.01302033912530717,
+            "sd": 0.025632888857672946,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.13034081463009145,
+            "image_bootstrap_95ci_mean": [
+              0.008600083754005934,
+              0.01795453819010024
+            ]
+          },
+          "cup_dice": {
+            "n": 118,
+            "mean": 0.001709282675948722,
+            "sd": 0.015096628847585048,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.1585949973390101,
+            "image_bootstrap_95ci_mean": [
+              0.0,
+              0.004771722184944713
+            ]
+          },
+          "vcdr_measurable": 10,
+          "vcdr_abs_error": {
+            "n": 10,
+            "mean": 0.18316925153503466,
+            "sd": 0.11275570938703451,
+            "median": 0.1802783794421545,
+            "min": 0.011459129106187932,
+            "max": 0.3864839613827468,
+            "image_bootstrap_95ci_mean": [
+              0.11691475020757565,
+              0.24921097214176993
+            ]
+          }
+        },
+        "glaucoma": {
+          "n_images": 56,
+          "disc_dice": {
+            "n": 56,
+            "mean": 0.010553530633838262,
+            "sd": 0.020024583294378097,
+            "median": 0.001492403621691122,
+            "min": 0.0,
+            "max": 0.08791338119336237,
+            "image_bootstrap_95ci_mean": [
+              0.005883355796921406,
+              0.01612685466758535
+            ]
+          },
+          "cup_dice": {
+            "n": 56,
+            "mean": 0.002072229781626359,
+            "sd": 0.01550714773903044,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.11604486777107612,
+            "image_bootstrap_95ci_mean": [
+              0.0,
+              0.006216689344879077
+            ]
+          },
+          "vcdr_measurable": 4,
+          "vcdr_abs_error": {
+            "n": 4,
+            "mean": 0.3069234102088534,
+            "sd": 0.25828501353018146,
+            "median": 0.280001232116635,
+            "min": 0.06946826758147506,
+            "max": 0.5982229090206683,
+            "image_bootstrap_95ci_mean": [
+              0.08999729168547438,
+              0.5238495287322323
+            ]
+          }
+        }
+      },
+      "completed_utc": "2026-11-04T07:36:26.807253+00:00"
+    },
+    {
+      "model": "papila_camera_robust_seed43_20261025",
+      "identity": {
+        "run_id": "seg-20261025-062335-1430f6c9",
+        "weights_sha256": "1430f6c9192cbf0dbacdae9fcbad441ef23be2e6acbb21d923d310b35aca6cc4",
+        "bundle_identity": "2d2705e6d078f1c012a7d47537ec752b4d15e208f4e8e4b95ed146e663d178e3"
+      },
+      "n_selected": 174,
+      "n_reference_valid": 174,
+      "n_reference_failure": 0,
+      "prediction_status_counts": {
+        "ok": 42,
+        "invalid_geometry": 132
+      },
+      "disc_dice": {
+        "n": 174,
+        "mean": 0.01838035082128234,
+        "sd": 0.02616248205096479,
+        "median": 0.008096083663292217,
+        "min": 0.0,
+        "max": 0.12415043044857273,
+        "image_bootstrap_95ci_mean": [
+          0.014676507189102744,
+          0.02246299232477414
+        ]
+      },
+      "cup_dice": {
+        "n": 174,
+        "mean": 0.006450434820324607,
+        "sd": 0.023350049952390154,
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.1865502476702208,
+        "image_bootstrap_95ci_mean": [
+          0.0032268737142122678,
+          0.010243867174532175
+        ]
+      },
+      "vcdr_abs_error": {
+        "n": 42,
+        "mean": 0.23722003858903243,
+        "sd": 0.1564522088796237,
+        "median": 0.18896877438647086,
+        "min": 0.021469715482632212,
+        "max": 0.6975635593220338,
+        "image_bootstrap_95ci_mean": [
+          0.19340672331320183,
+          0.28456434191933533
+        ]
+      },
+      "vcdr_measurable": 42,
+      "vcdr_reference_valid_denominator": 174,
+      "vcdr_selected_denominator": 174,
+      "reference_warning_count": 1,
+      "prediction_warning_count": 0,
+      "by_group": {
+        "normal": {
+          "n_images": 118,
+          "disc_dice": {
+            "n": 118,
+            "mean": 0.019628842433003335,
+            "sd": 0.027898512943817344,
+            "median": 0.008096083663292217,
+            "min": 0.0,
+            "max": 0.12415043044857273,
+            "image_bootstrap_95ci_mean": [
+              0.014812119347604303,
+              0.024716388518823507
+            ]
+          },
+          "cup_dice": {
+            "n": 118,
+            "mean": 0.007558165164127506,
+            "sd": 0.027367995739079463,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.1865502476702208,
+            "image_bootstrap_95ci_mean": [
+              0.0032481071595138857,
+              0.013170363101199872
+            ]
+          },
+          "vcdr_measurable": 28,
+          "vcdr_abs_error": {
+            "n": 28,
+            "mean": 0.20670513400646695,
+            "sd": 0.12526382041634862,
+            "median": 0.18406798373862715,
+            "min": 0.021469715482632212,
+            "max": 0.57086406743941,
+            "image_bootstrap_95ci_mean": [
+              0.16233136119421826,
+              0.2556232198627767
+            ]
+          }
+        },
+        "glaucoma": {
+          "n_images": 56,
+          "disc_dice": {
+            "n": 56,
+            "mean": 0.015749600639441665,
+            "sd": 0.022065397114385616,
+            "median": 0.007368641653295924,
+            "min": 0.0,
+            "max": 0.11423609436055768,
+            "image_bootstrap_95ci_mean": [
+              0.010367378090148283,
+              0.02175917252355705
+            ]
+          },
+          "cup_dice": {
+            "n": 56,
+            "mean": 0.0041162887387399295,
+            "sd": 0.010651640571366206,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.052364047119573986,
+            "image_bootstrap_95ci_mean": [
+              0.0017284007461913012,
+              0.007095619167708721
+            ]
+          },
+          "vcdr_measurable": 14,
+          "vcdr_abs_error": {
+            "n": 14,
+            "mean": 0.29824984775416336,
+            "sd": 0.19644807170801992,
+            "median": 0.24737024436934363,
+            "min": 0.08143153526970959,
+            "max": 0.6975635593220338,
+            "image_bootstrap_95ci_mean": [
+              0.19849254168003913,
+              0.4032818683729225
+            ]
+          }
+        }
+      },
+      "completed_utc": "2026-11-04T07:41:05.942754+00:00"
+    }
+  ],
+  "patient_linkage": "Unknown. No authoritative patient-to-image linkage verified; n_images must never be described as n_independent_patients. Image bootstrap intervals are descriptive and do not account for patient clustering.",
+  "purpose": "Exploratory frozen PAPILA-trained external segmentation evaluation, NOT a reproduction of the original RIM-ONE DL benchmark or eligible RIM-only training leaderboard comparison."
+}
