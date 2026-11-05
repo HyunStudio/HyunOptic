@@ -1,0 +1,114 @@
+{
+  "synthetic_only": true,
+  "checks": [
+    {
+      "name": "ordinary_held_reopened",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "ordinary_export",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "repeat_held_reopened",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "repeat_export",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "repeat_prediction_png_hashes",
+      "expected": [
+        [
+          "fcb0d2c718cf886e481cbde9624faf10ed2e75fe704c816a490a5d3d9ef35c88",
+          "e44da8d86a9ef037e2fadec6d04db93ec23beae270a6dc085839f6b0516c2c96"
+        ],
+        [
+          "d27eddfc4987af5554fc53cb0eff4668e2d7c5ecb26aa0451ea204d52374b244",
+          "283b0bfdb0b587d1b5487ec47b105b8aea81883756c1faa4da9edb68a93faee6"
+        ]
+      ],
+      "actual": [
+        [
+          "fcb0d2c718cf886e481cbde9624faf10ed2e75fe704c816a490a5d3d9ef35c88",
+          "e44da8d86a9ef037e2fadec6d04db93ec23beae270a6dc085839f6b0516c2c96"
+        ],
+        [
+          "d27eddfc4987af5554fc53cb0eff4668e2d7c5ecb26aa0451ea204d52374b244",
+          "283b0bfdb0b587d1b5487ec47b105b8aea81883756c1faa4da9edb68a93faee6"
+        ]
+      ]
+    },
+    {
+      "name": "demanding_held_reopened",
+      "expected": 1,
+      "actual": 1
+    },
+    {
+      "name": "demanding_export",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "demanding_counts",
+      "expected": [
+        101,
+        100,
+        1,
+        200
+      ],
+      "actual": [
+        101,
+        100,
+        1,
+        200
+      ]
+    },
+    {
+      "name": "changed_bundle_counts",
+      "expected": [
+        2,
+        1,
+        1
+      ],
+      "actual": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "changed_bundle_export",
+      "expected": true,
+      "actual": true
+    }
+  ],
+  "ordinary": {
+    "total": 2,
+    "complete": 2,
+    "error": 0,
+    "predictions": 4,
+    "seconds": 1.488
+  },
+  "repeat": {
+    "total": 2,
+    "complete": 2,
+    "error": 0,
+    "predictions": 4,
+    "seconds": 1.617
+  },
+  "demanding": {
+    "total": 101,
+    "complete": 100,
+    "error": 1,
+    "predictions": 200,
+    "seconds": 36.611
+  },
+  "interpretation": "Synthetic workflow execution; 100 repeated cases are not 100 patients. Recovery uses a controlled unfinished claim, not an OS crash. No accuracy or efficiency claim.",
+  "source_commit": "d75ad096b094dae9b201f467f1aed8ad95f731d8"
+}
