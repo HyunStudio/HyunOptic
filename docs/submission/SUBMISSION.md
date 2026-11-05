@@ -3,7 +3,7 @@
 **Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. [New public video](https://youtu.be/C5KE1KaHWGI) is published with verified English captions and public playback. Native 200% zoom, personal final review and actual Devpost entry remain pending.
 
 
-This is the prepared public package for personal final review. It is not a claim of Devpost submission, event eligibility approval, clinical validation or human acceptance. All work through 2026-11-04 is pre-event.
+This is the prepared public package for personal final review. It is not a claim of Devpost submission, event eligibility approval, clinical validation or human acceptance. All work through 2026-11-05 is pre-event.
 
 ## Copy-ready fields
 

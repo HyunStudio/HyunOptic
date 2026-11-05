@@ -1,5 +1,7 @@
 # Readiness decision — 2026-11-05
 
+**Precision-review decision:** the research-review software and public demonstration are technically prepared for entry. [Fresh workflow tests, independent code review, corrected submission links and remaining conditions](../experiments/2026-11-05-contest-review/README.md). Eligibility/roster confirmation, truthful event-period disclosure and the actual Devpost entry are still personal/platform actions. Native 200% zoom is a remaining usability check; A4 personal checking is a scoring item, not a separate entry gate.
+
 **Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. [New public video](https://youtu.be/C5KE1KaHWGI) is published with verified English captions and public playback. Native 200% zoom, personal final review and actual Devpost entry remain pending.
 
 

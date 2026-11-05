@@ -64,4 +64,8 @@ python -m hyunoptic.review.export path/to/evidence.zip
 - [Final publication checklist](CHECKLIST.md)
 - [Prior real-data study results](../experiments/2026-10-25-university-transfer/README.md)
 
-There is no new independent clinical study or review-efficiency result in this release. Existing transfer failures motivate the workflow but do not validate its ranking. Reference annotations do not enter prediction or priority. The public video is available above and identifies its earlier source version. No hosted app is provided or required for routine judging. The RIM-ONE DL queue endpoint equalled random expectation.
+There is no new independent clinical study or review-efficiency result in this release. Existing transfer failures motivate the workflow but do not validate its ranking. Reference annotations do not enter prediction or priority. The current public video is linked above with its exact source/capture basis; the older video remains separately labeled as historical. No hosted app is provided or required for routine judging. The RIM-ONE DL queue endpoint equalled random expectation.
+
+## Reproducible source boundary
+
+A review session’s `software_commit` is its **creation-time** source identifier, not a per-prediction execution attestation. Resuming under different code does not record each execution commit. For a reproducible study, keep the application checkout and dependencies fixed for the session and preserve its source/environment alongside exported evidence. Installed wheels can report `unknown` for Git identity; package version and model identities remain separately recorded. This release does not claim cross-version execution attestation.
