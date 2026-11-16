@@ -217,8 +217,9 @@ if visible:
                     st.image(overlay, caption=f'{role} prediction · research only', width='stretch')
                 st.caption(model['run_id'])
                 st.write(status_label)
-                if pred.get('measurement'):
-                    st.write({'Predicted vCDR': pred['measurement'].get('vertical_cdr')})
+                vertical_cdr = (pred.get('measurement') or {}).get('vertical_cdr')
+                if vertical_cdr is not None:
+                    st.caption(f'Predicted vCDR {vertical_cdr:.4f}')
                 else:
                     st.caption('No valid measurement. ' + '; '.join(pred.get('errors', [])))
 

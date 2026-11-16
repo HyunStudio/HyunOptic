@@ -102,6 +102,14 @@ def test_queue_persistent_case_and_held_review(tmp_path, monkeypatch):
     assert restored['reasons'] == ['wrong_location']
 
 
+def test_comparison_displays_vcdr_as_compact_readable_text(tmp_path, monkeypatch):
+    _seed_session(tmp_path)
+    app = _page(monkeypatch, tmp_path, 'model_review_queue', models_dir=str(tmp_path / 'missing'))
+    assert not app.exception
+    values = [caption.value for caption in app.caption if caption.value.startswith('Predicted vCDR')]
+    assert values == ['Predicted vCDR 0.5000', 'Predicted vCDR 0.5000']
+
+
 def test_stale_form_shows_explicit_conflict(tmp_path, monkeypatch):
     store, sid, cid = _seed_session(tmp_path)
     app = _page(monkeypatch, tmp_path, 'model_review_queue', models_dir=str(tmp_path / 'missing'))
