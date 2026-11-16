@@ -1,8 +1,8 @@
 # Final publication checklist
 
-[November 5 precision review](../experiments/2026-11-05-contest-review/README.md) separates verified software/media preparation from actual entry, person-specific confirmation and the remaining native-zoom check. Copy-ready description links now use absolute public URLs; inspect them again in the actual Devpost preview when entering.
+[November 5 precision review](../experiments/2026-11-05-contest-review/README.md) records earlier software and media checks. Inspect the public links again in the Devpost preview before entering.
 
-**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. [New public video](https://youtu.be/C5KE1KaHWGI) is published with verified English captions and public playback. Native 200% zoom, personal final review and actual Devpost entry remain pending.
+**Current acceptance (2026-11-16).** [Fresh Windows checkout, native Chrome 200% and verified browser ZIP](../experiments/2026-11-16-windows-demo-acceptance/README.md). Personal final review and the Devpost entry remain pending.
 
 
 The prepared software and public media are not a completed Devpost submission. [Readiness and official timing](READINESS.md).
@@ -37,7 +37,7 @@ A hosted app, outside tester, new video production or new clinical study is not 
 ## Open current-version acceptance
 
 - [x] Complete actual browser import-to-download workflow, desktop/tablet/phone and review-control keyboard checks.
-- [ ] Complete native 200% browser zoom (attempt did not apply; manual result pending).
+- [x] Verify native Chrome 200% zoom, readable comparison values and keyboard access to save and export.
 - [x] Capture, render and independently inspect the current-version local demonstration.
 - [x] New public YouTube upload, English captions, 720p playback and anonymous oEmbed checks: [publication](VIDEO_PUBLICATION_20261105.md). Actual Devpost embed remains pending.
 - [ ] Apply repository About/topics if desired; suggested text is in the usability audit.

@@ -217,8 +217,9 @@ if visible:
                     st.image(overlay, caption=f'{role} prediction · research only', width='stretch')
                 st.caption(model['run_id'])
                 st.write(status_label)
-                if pred.get('measurement'):
-                    st.write({'Predicted vCDR': pred['measurement'].get('vertical_cdr')})
+                vertical_cdr = (pred.get('measurement') or {}).get('vertical_cdr')
+                if vertical_cdr is not None:
+                    st.caption(f'Predicted vCDR {vertical_cdr:.4f}')
                 else:
                     st.caption('No valid measurement. ' + '; '.join(pred.get('errors', [])))
 
@@ -287,7 +288,7 @@ with st.expander('Export and local retention'):
             path = export_session(store, sid, target)
             verify_export(path)
             st.download_button('Download verified ZIP', Path(path).read_bytes(), file_name=f'{sid}.zip',
-                               mime='application/zip')
+                               mime='application/zip', on_click='ignore')
         except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
             st.error(f'Export failed: {exc}')
     confirm = st.checkbox(f'Delete this session ({sid[:8]}), {len(rows)} input copies, predictions and review records',

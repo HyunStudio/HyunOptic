@@ -1,6 +1,6 @@
 # HyunOptic — local AI prediction review
 
-**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. [New public video](https://youtu.be/C5KE1KaHWGI) is published with verified English captions and public playback. Native 200% zoom, personal final review and actual Devpost entry remain pending.
+**Current acceptance (2026-11-16).** [Fresh Windows checkout, native Chrome 200% and verified browser ZIP](../experiments/2026-11-16-windows-demo-acceptance/README.md). [November 5 audit and video capture](../experiments/2026-11-05-final-acceptance/README.md). Personal final review and the Devpost entry remain pending.
 
 Research software for inspecting optic disc/cup predictions, recording review decisions and exporting traceable evidence. A measurable result is not necessarily an anatomically correct result. This project is not a diagnostic or patient-care tool.
 
@@ -20,7 +20,15 @@ python -m pytest -q
 streamlit run app.py
 ```
 
-For an isolated, runnable demonstration without private datasets or weights, replace the last command with:
+If editable installation stalls while installing isolated build dependencies, the fresh Windows audit used these commands inside the virtual environment. The `--no-cache-dir` option limits disk use from downloaded packages.
+
+```powershell
+python -m pip install --no-cache-dir setuptools wheel
+python -m pip install --no-cache-dir --no-build-isolation -e ".[ui,dev,ml]"
+python -m pip check
+```
+
+For an isolated, runnable demonstration without private datasets or weights, replace `streamlit run app.py` with:
 
 ```powershell
 python scripts/prepare_submission_demo.py --output demo_data/submission --launch

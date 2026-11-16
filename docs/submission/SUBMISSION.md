@@ -1,9 +1,9 @@
 # HyunOptic — submission package
 
-**Current acceptance (2026-11-05):** [Actual browser and current-source audit](../experiments/2026-11-05-final-acceptance/README.md) — 442 tests passed in development and 442 against a non-editable CPU wheel. Actual browser import, inference, compare, hold/save-next, reload, keyboard save and independently verified ZIP download passed. A narrow-screen header defect was fixed. [New local 2:47 demonstration](media-20261105/README.md) is rendered and independently checked. [New public video](https://youtu.be/C5KE1KaHWGI) is published with verified English captions and public playback. Native 200% zoom, personal final review and actual Devpost entry remain pending.
+**Current acceptance (2026-11-16).** [Fresh Windows checkout, native Chrome 200% and verified browser ZIP](../experiments/2026-11-16-windows-demo-acceptance/README.md). [November 5 audit and video capture](../experiments/2026-11-05-final-acceptance/README.md). Personal final review and the Devpost entry remain pending.
 
 
-This is the prepared public package for personal final review. It is not a claim of Devpost submission, event eligibility approval, clinical validation or human acceptance. All work through 2026-11-05 is pre-event.
+This is the prepared public package for personal final review. All work through 2026-11-16 is pre-event.
 
 ## Copy-ready fields
 
@@ -22,7 +22,7 @@ This is the prepared public package for personal final review. It is not a claim
 | Gallery image | [Actual current synthetic comparison](media-20261105/thumbnail.png) |
 | Model/data access | [Public synthetic preparation and private research-bundle limitations](MODEL_AND_DATA_ACCESS.md) |
 | AI / development disclosure | [AI contribution](AI_DISCLOSURE.md), [pre-event boundary](EVENT_CHANGES.md), [baseline](BASELINE.md) |
-| Evidence | [Current browser/wheel/media checks and remaining native zoom](../experiments/2026-11-05-final-acceptance/README.md), [Final source/browser verification](../experiments/2026-11-04-final-submission-polish/README.md), [Full real-data audit and material failures](../experiments/2026-11-04-full-real-validation/README.md), [Execution audit](../experiments/2026-11-04-submission-readiness/README.md), [reader/review experiment](../experiments/2026-11-04-reader-review-validation/README.md), [rubric map](RUBRIC_EVIDENCE.md) |
+| Evidence | [Windows and Chrome acceptance](../experiments/2026-11-16-windows-demo-acceptance/README.md), [November 5 wheel and media checks](../experiments/2026-11-05-final-acceptance/README.md), [Full real-data audit and material failures](../experiments/2026-11-04-full-real-validation/README.md), [Execution audit](../experiments/2026-11-04-submission-readiness/README.md), [reader/review experiment](../experiments/2026-11-04-reader-review-validation/README.md), [rubric map](RUBRIC_EVIDENCE.md) |
 
 The final repository version should be selected from the merged commit shown in GitHub. Copy its full commit permalink into Devpost when freezing the entry; do not substitute a mutable branch URL for a claimed immutable version. The new local demonstration identifies source ea4e768 and the exact capture basis in [current validation](media-20261105/validation.json). Historical media identifies its own earlier source separately.
 
