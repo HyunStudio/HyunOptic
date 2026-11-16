@@ -288,7 +288,7 @@ with st.expander('Export and local retention'):
             path = export_session(store, sid, target)
             verify_export(path)
             st.download_button('Download verified ZIP', Path(path).read_bytes(), file_name=f'{sid}.zip',
-                               mime='application/zip')
+                               mime='application/zip', on_click='ignore')
         except (OSError, ValueError, RuntimeError, sqlite3.Error) as exc:
             st.error(f'Export failed: {exc}')
     confirm = st.checkbox(f'Delete this session ({sid[:8]}), {len(rows)} input copies, predictions and review records',

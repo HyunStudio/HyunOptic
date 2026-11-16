@@ -110,6 +110,16 @@ def test_comparison_displays_vcdr_as_compact_readable_text(tmp_path, monkeypatch
     assert values == ['Predicted vCDR 0.5000', 'Predicted vCDR 0.5000']
 
 
+def test_verified_zip_download_does_not_rerun_its_builder(tmp_path, monkeypatch):
+    _seed_session(tmp_path)
+    app = _page(monkeypatch, tmp_path, 'model_review_queue', models_dir=str(tmp_path / 'missing'))
+    next(button for button in app.button if button.label == 'Build and verify evidence ZIP').click().run()
+    assert not app.exception
+    download, = app.get('download_button')
+    assert download.proto.label == 'Download verified ZIP'
+    assert download.proto.ignore_rerun
+
+
 def test_stale_form_shows_explicit_conflict(tmp_path, monkeypatch):
     store, sid, cid = _seed_session(tmp_path)
     app = _page(monkeypatch, tmp_path, 'model_review_queue', models_dir=str(tmp_path / 'missing'))
