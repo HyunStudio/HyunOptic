@@ -28,7 +28,7 @@ python -m pip install --no-cache-dir --no-build-isolation -e ".[ui,dev,ml]"
 python -m pip check
 ```
 
-For an isolated, runnable demonstration without private datasets or weights, replace the last command with:
+For an isolated, runnable demonstration without private datasets or weights, replace `streamlit run app.py` with:
 
 ```powershell
 python scripts/prepare_submission_demo.py --output demo_data/submission --launch

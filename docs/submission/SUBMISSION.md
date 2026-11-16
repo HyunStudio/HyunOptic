@@ -3,7 +3,7 @@
 **Current acceptance (2026-11-16).** [Fresh Windows checkout, native Chrome 200% and verified browser ZIP](../experiments/2026-11-16-windows-demo-acceptance/README.md). [November 5 audit and video capture](../experiments/2026-11-05-final-acceptance/README.md). Personal final review and the Devpost entry remain pending.
 
 
-This is the prepared public package for personal final review. It is not a claim of Devpost submission, event eligibility approval, clinical validation or human acceptance. All work through 2026-11-05 is pre-event.
+This is the prepared public package for personal final review. All work through 2026-11-16 is pre-event.
 
 ## Copy-ready fields
 

@@ -20,4 +20,4 @@ The [older public video](https://youtu.be/xbs47mX0d5g) and original media remain
 
 ## Remaining acceptance
 
-Native 200% browser zoom remains **unverified**. The IAB and Chrome automation shortcuts changed no actual browser zoom metrics; native Windows control stopped because it could not safely establish the current browser URL. Narrow viewport checks are separately documented, not substituted for native zoom. Personal review, roster/eligibility/rights confirmation, genuine event-period disclosure and actual Devpost entry also remain pending. No submission or full accessibility certification is claimed.
+At publication, the browser automation had been unable to apply native 200% zoom. The [November 16 Windows audit](../experiments/2026-11-16-windows-demo-acceptance/README.md) verifies native Chrome 200% against the later source. Personal review, entrant eligibility and rights confirmation, event-period disclosure and the Devpost entry remain pending.
